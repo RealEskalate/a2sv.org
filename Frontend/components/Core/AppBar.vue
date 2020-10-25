@@ -23,6 +23,11 @@ export default {
           title: 'Inspire',
           to: '/inspire',
         },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Support Us',
+          to: '/support',
+        },
       ],
     }
   },

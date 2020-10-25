@@ -70,7 +70,7 @@
       </v-row>
 
       <v-row>
-        <v-col v-for="i in 5" md="6" cols="12">
+        <v-col v-for="i in 5" :key="i" md="6" cols="12">
           <v-card tile outlined class="px-3">
             <v-card-title class="primary--text"> Problem Solving </v-card-title>
 
@@ -1655,7 +1655,11 @@
           />
         </v-col>
         <v-col cols="8" md="10">
-          <v-pagination class="float-right" v-model="pagination.page" :length="pagination.length" />
+          <v-pagination
+            v-model="pagination.page"
+            class="float-right"
+            :length="pagination.length"
+          />
         </v-col>
       </v-row>
     </v-card>

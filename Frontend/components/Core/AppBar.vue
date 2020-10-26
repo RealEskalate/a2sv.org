@@ -31,6 +31,11 @@ export default {
           title: 'Events',
           to: '/events',
         },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'News',
+          to: '/news',
+        },
       ],
     }
   },

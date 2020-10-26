@@ -24,6 +24,10 @@ export default {
           to: '/inspire',
         },
         {
+          title: 'Team',
+          to: '/team',
+        },
+        {
           title: 'Support Us',
           to: '/support',
         },

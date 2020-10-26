@@ -1,6 +1,6 @@
 <template>
   <v-footer padless>
-    <v-card flat tile class="white text-center">
+    <v-card outlined tile class="white shadow-sm text-center">
       <v-card-text>
         <v-btn
           v-for="icon in icons"

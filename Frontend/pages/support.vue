@@ -1,5 +1,7 @@
 <template>
-  <v-container>
+  <v-container class="py-10">
+    <hero />
+
     <v-card tile flat class="my-15">
       <v-card-title class="font-weight-light"
         >THE CHANGE YOU ARE MAKING</v-card-title
@@ -161,7 +163,12 @@
 </template>
 
 <script>
+import Hero from '~/components/Hero'
+
 export default {
+  components: {
+    Hero,
+  },
   filters: {
     uppercase(value) {
       if (!value) return ''

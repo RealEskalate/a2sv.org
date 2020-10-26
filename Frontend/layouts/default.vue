@@ -2,9 +2,7 @@
   <v-app id="inspire">
     <app-bar />
     <v-main class="grey lighten-5">
-      <v-container>
-        <nuxt />
-      </v-container>
+      <nuxt />
     </v-main>
     <app-footer />
   </v-app>
@@ -33,5 +31,18 @@ export default {
 
 .shadow-none {
   box-shadow: none !important;
+}
+
+.v-pagination__item,
+.v-pagination__navigation {
+  border-radius: 0 !important;
+  border: #e0e0e0 solid 1px;
+  box-shadow: none !important;
+}
+
+.v-input,
+.v-menu__content,
+.v-event {
+  border-radius: 0 !important;
 }
 </style>

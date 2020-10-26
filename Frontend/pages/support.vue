@@ -163,7 +163,7 @@
 </template>
 
 <script>
-import Hero from '~/components/Hero'
+import Hero from '@/components/Core/Hero.Vue'
 
 export default {
   components: {

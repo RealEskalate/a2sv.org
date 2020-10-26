@@ -1,18 +1,9 @@
 <template>
   <v-container>
-    <!-- Placeholder until a header component (which is common to all pages) is built -->
-    <v-carousel v-model="model" height="300">
-      <v-carousel-item v-for="(color, i) in colors" :key="color">
-        <v-sheet :color="color" height="100%" tile>
-          <v-row class="fill-height" align="center" justify="center">
-            <div class="display-3">Slide {{ i + 1 }}</div>
-          </v-row>
-        </v-sheet>
-      </v-carousel-item>
-    </v-carousel>
-
-    <v-card outline tile class="my-15">
-      <v-card-title>THE CHANGE YOU ARE MAKING</v-card-title>
+    <v-card tile flat class="my-15">
+      <v-card-title class="font-weight-light"
+        >THE CHANGE YOU ARE MAKING</v-card-title
+      >
       <v-card-text
         >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure commodi,
         distinctio laudantium quam repudiandae quia odit dolorum ex quaerat
@@ -25,17 +16,17 @@
     </v-card>
 
     <div>
-      <h2 class="text-center display-1">WAYS TO SUPPORT US</h2>
+      <h2 class="text-center font-weight-medium">WAYS TO SUPPORT US</h2>
       <v-divider class="mt-2"></v-divider>
-      <v-row class="my-8" no-gutters align="center" justify="center">
+      <v-row class="my-8" align="center" justify="center">
         <template v-for="(support, i) in support_ways">
           <v-col :key="i" col="12" sm="3">
-            <v-hover v-slot="{ hover }">
+            <v-hover v-slot="{ hover }" disabled>
               <v-card
                 max-width="374"
                 outlined
                 tile
-                :elevation="hover ? 12 : 0"
+                :elevation="hover ? 10 : 0"
                 :class="{ 'on-hover': hover }"
               >
                 <v-img height="150" :src="support.image"></v-img>

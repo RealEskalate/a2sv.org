@@ -2,11 +2,12 @@
   <v-app id="inspire">
     <app-bar />
     <v-main class="grey lighten-5">
-      <v-container>
+      <v-container fluid>
         <nuxt />
       </v-container>
     </v-main>
     <app-footer />
+
   </v-app>
 </template>
 
@@ -15,6 +16,8 @@ import AppBar from '~/components/Core/AppBar'
 import AppFooter from '~/components/Core/AppFooter'
 export default {
   components: { AppBar, AppFooter },
+
+
 }
 </script>
 

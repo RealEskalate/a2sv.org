@@ -161,7 +161,7 @@ export default {
 }
 </script>
 <style>
-@import 'node_modules/vuetify/dist/vuetify.min.css';
+/*@import 'node_modules/vuetify/dist/vuetify.min.css';*/
 @import 'https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css';
 .motto {
   font-family: Lato, serif !important;

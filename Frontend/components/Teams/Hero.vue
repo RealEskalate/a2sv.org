@@ -1,7 +1,7 @@
 <template>
   <v-parallax
     dark
-    class="my--1 mb-3"
+    class="hero mb-3"
     src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
   >
     <v-row
@@ -26,3 +26,8 @@
     </v-row>
   </v-parallax>
 </template>
+<style>
+.hero {
+  margin: -1em;
+}
+</style>

@@ -1,5 +1,7 @@
 <template>
   <v-container class="py-10">
+    <hero />
+
     <v-card class="shadow-sm pa-8" tile>
       <h1 class="mb-6 primary--text font-weight-light">Hello Events</h1>
       <v-calendar
@@ -1667,7 +1669,11 @@
 </template>
 
 <script>
+import Hero from '~/components/Hero'
 export default {
+  components: {
+    Hero,
+  },
   data: () => ({
     value: '',
     events: [

@@ -24,7 +24,6 @@ export default {
           to: '/inspire',
         },
         {
-<<<<<<< HEAD
           title: 'Support Us',
           to: '/support',
         },
@@ -33,8 +32,6 @@ export default {
           to: '/events',
         },
         {
-=======
->>>>>>> af65f55... added news to navbar
           icon: 'mdi-chart-bubble',
           title: 'News',
           to: '/news',

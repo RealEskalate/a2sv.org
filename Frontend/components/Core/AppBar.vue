@@ -24,7 +24,10 @@ export default {
           to: '/inspire',
         },
         {
-          icon: 'mdi-chart-bubble',
+          title: 'Support Us',
+          to: '/support',
+        },
+        {
           title: 'Events',
           to: '/events',
         },

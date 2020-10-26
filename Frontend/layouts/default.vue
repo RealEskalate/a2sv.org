@@ -1,43 +1,117 @@
 <template>
-  <v-app id="inspire">
-    <app-bar />
-    <v-main class="grey lighten-5">
-      <nuxt />
+  <v-app dark>
+    <v-navigation-drawer
+      v-model="drawer"
+      :mini-variant="miniVariant"
+      :clipped="clipped"
+      fixed
+      app
+    >
+      <v-list>
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+          :to="item.to"
+          router
+          exact
+        >
+          <v-list-item-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title" />
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar
+      :clipped-left="clipped"
+      fixed
+      app
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-btn
+        icon
+        @click.stop="miniVariant = !miniVariant"
+      >
+        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        @click.stop="clipped = !clipped"
+      >
+        <v-icon>mdi-application</v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        @click.stop="fixed = !fixed"
+      >
+        <v-icon>mdi-minus</v-icon>
+      </v-btn>
+      <v-toolbar-title v-text="title" />
+      <v-spacer />
+      <v-btn
+        icon
+        @click.stop="rightDrawer = !rightDrawer"
+      >
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
+    </v-app-bar>
+    <v-main>
+      <v-container>
+        <nuxt />
+      </v-container>
     </v-main>
-    <app-footer />
+    <v-navigation-drawer
+      v-model="rightDrawer"
+      :right="right"
+      temporary
+      fixed
+    >
+      <v-list>
+        <v-list-item @click.native="right = !right">
+          <v-list-item-action>
+            <v-icon light>
+              mdi-repeat
+            </v-icon>
+          </v-list-item-action>
+          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-footer
+      :absolute="!fixed"
+      app
+    >
+      <span>&copy; {{ new Date().getFullYear() }}</span>
+    </v-footer>
   </v-app>
 </template>
 
 <script>
-import AppBar from '~/components/Core/AppBar'
-import AppFooter from '~/components/Core/AppFooter'
 export default {
-  components: { AppBar, AppFooter },
+  data () {
+    return {
+      clipped: false,
+      drawer: false,
+      fixed: false,
+      items: [
+        {
+          icon: 'mdi-apps',
+          title: 'Welcome',
+          to: '/'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Inspire',
+          to: '/inspire'
+        }
+      ],
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
+      title: 'Vuetify.js'
+    }
+  }
 }
 </script>
-
-<style>
-.shadow-sm {
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1) !important;
-}
-.shadow {
-  box-shadow: 0 0.35rem 0.75rem rgba(0, 0, 0, 0.07) !important;
-}
-.shadow-lg {
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15) !important;
-}
-.shadow-none {
-  box-shadow: none !important;
-}
-.v-pagination__item,
-.v-pagination__navigation {
-  border-radius: 0 !important;
-  border: #e0e0e0 solid 1px;
-  box-shadow: none !important;
-}
-.v-input,
-.v-menu__content,
-.v-event {
-  border-radius: 0 !important;
-}
-</style>

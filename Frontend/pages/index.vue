@@ -163,6 +163,7 @@ export default {
 <style>
 /*@import 'node_modules/vuetify/dist/vuetify.min.css';*/
 @import 'https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css';
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
 .motto {
   font-family: Lato, serif !important;
   color: #334ac0 !important;

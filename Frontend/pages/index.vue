@@ -1,7 +1,7 @@
 <template>
   <v-container class="mt-12">
     <v-container>
-      <v-row style="margin-top: 50px">
+      <v-row style="mt-10">
         <v-col cols="12" sm="5">
           <h2 class="motto">Creating opportunities for african students</h2>
           <p
@@ -30,38 +30,47 @@
           </v-sheet>
         </v-col>
       </v-row>
-      <div class="about-us mt-md-5">
+      <div class="about-us my-10">
         <div class="row">
-          <v-row class="col-md-8 mx-auto my-6">
-            <h2
-              class="text-center col-md-12"
-              style="font-family: Lato, sans-serif"
-            >
-              We are working closely with
-            </h2>
-            <v-col
-              v-for="icon in icons"
-              :key="icon.logo"
-              cols="2"
-              align-self="center"
-              class="mx-auto"
-            >
-              <v-img :src="'/' + icon.logo" :width="icon.width" />
-            </v-col>
-          </v-row>
-          <div class="col-md-10 ml-auto mr-auto text-center">
-            <h2 class="page-titles">Objective</h2>
-            <p
-              class="description blackish mt-md-7"
-              style="font-size: 18px; line-height: 36px"
-            >
-              Talent is everywhere, opportunity is not. Africa has a lot of
-              smart, hardworking, dedicated, and most importantly, hungry for
-              success students. We founded an academy, A2SV, which offers a 360°
-              software engineer training program that initially focuses on
-              problem-solving and personal development.
-            </p>
-          </div>
+          <v-col cols="10" sm="6" md="3" class="mx-auto">
+            <v-card class="shadow" style="height: 100%; padding: 5px">
+              <v-img src="/train.svg" style="max-height: 15rem" />
+              <v-card-text>
+                First training initially focuses on problem-solving and personal
+                development.
+              </v-card-text>
+              <v-card-actions>
+                <button class="btn programmes" style="position: absolute">
+                  Learn More
+                </button>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+          <v-col cols="10" sm="6" md="3" class="mx-auto">
+            <v-card class="shadow" style="padding: 5px">
+              <v-img src="/mock.svg" style="max-height: 15rem" />
+              <v-card-text>
+                Mock interviews with peers, other trainees, and industry
+                professionals in the Silicon valley.
+              </v-card-text>
+              <v-card-actions>
+                <button class="btn programmes">Learn More</button>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+          <v-col cols="10" sm="6" md="3" class="mx-auto">
+            <v-card class="shadow" style="height: 100%; padding: 5px">
+              <v-img src="/work.svg" style="max-height: 15rem" />
+              <v-card-text>
+                Trainees work on social projects with industry experts.
+              </v-card-text>
+              <v-card-actions>
+                <button class="btn programmes" style="position: absolute">
+                  Learn More
+                </button>
+              </v-card-actions>
+            </v-card>
+          </v-col>
         </div>
       </div>
       <div class="about-us mt-md-5">
@@ -101,45 +110,63 @@
       </div>
     </v-container>
 
-    <v-row class="mt-md-10">
+    <v-row class="my-md-10">
       <h2 class="page-titles col-12 mb-5 text-center mx-auto">You can help</h2>
+      <v-col cols="12" sm="5" class="mx-auto" style="height: 100%">
+        <v-card class="shadow px-5 py-10" min-height="268">
+          <h1 class="ml-5 mb-3" style="font-family: Lato, sans-serif">
+            Become A2SV partner
+          </h1>
+          <p class="donate-p px-5">
+            Interview these folks for software engineering internship positions
+            at your company.
+          </p>
+          <p class="px-5 donate-p">Our partners are:</p>
+          <v-row class="mx-auto px-3">
+            <v-col
+              v-for="icon in icons"
+              :key="icon.logo"
+              cols="3"
+              align-self="center"
+              class="mx-auto"
+            >
+              <v-img :src="'/' + icon.logo" :width="icon.width" />
+            </v-col>
+          </v-row>
+          <v-card-actions>
+            <button class="btn mt-2 mb-0">Learn More</button>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+
       <v-col cols="12" sm="5" class="mx-auto">
-        <v-sheet
-          class="shadow px-5 py-10"
-          min-height="268"
+        <v-card
+          class="shadow px-5 py-10 donate"
+          height="100%"
           style="border-radius: 10px"
         >
           <h1
-            class="text-center mb-3"
-            style="color: #2b2a35; font-family: Lato, sans-serif"
+            class="text-center mb-3 text--white"
+            style="font-family: Lato, sans-serif"
           >
             Donate Now
           </h1>
           <p class="donate-p px-5">
-            Your donation can help A2SV to train more students students across
-            Africa.
+            Your donation can help A2SV to train more students across Africa.
           </p>
-          <button class="mx-5 btn">Donate</button>
-        </v-sheet>
-      </v-col>
-
-      <v-col cols="12" sm="5" class="mx-auto">
-        <v-sheet class="shadow px-5 py-10 donate" min-height="268">
-          <h1 class="text-center mb-3" style="font-family: Lato, sans-serif">
-            For HR/Engineer
-          </h1>
-          <p class="donate-p px-5">
-            Interview these folks for summer software engineering internship
-            positions at your company.
-          </p>
-          <v-btn
-            dark
-            outlined
-            class="mx-5"
-            style="border-color: #d4c1c1 !important"
-            >Learn More</v-btn
-          >
-        </v-sheet>
+          <v-card-actions>
+            <v-btn
+              dark
+              outlined
+              style="
+                border-color: #d4c1c1 !important;
+                bottom: 3.2rem;
+                position: absolute;
+              "
+              >Donate</v-btn
+            >
+          </v-card-actions>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -150,20 +177,19 @@ export default {
   data() {
     return {
       icons: [
-        { logo: 'google-icon.svg', width: '3rem' },
+        { logo: 'google-icon.svg', width: '2rem' },
         { logo: 'palantir-icon.svg', width: '30rem' },
         { logo: 'coinbase-icon.svg', width: '15rem' },
         { logo: 'eskalate-icon.svg', width: '3rem' },
-        { logo: 'aau-icon.webp', width: '3rem' },
+        // { logo: 'aau-icon.webp', width: '3rem' },
       ],
     }
   },
 }
 </script>
 <style>
-/*@import 'node_modules/vuetify/dist/vuetify.min.css';*/
+@import 'node_modules/vuetify/dist/vuetify.min.css';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css';
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
 .motto {
   font-family: Lato, serif !important;
   color: #334ac0 !important;
@@ -180,8 +206,8 @@ export default {
 }
 .blackish {
   color: #545465;
-  font-size: 19px;
-  line-height: 37px;
+  font-size: 18px;
+  line-height: 32px;
   font-family: 'Nunito', sans-serif;
 }
 .donate {
@@ -229,5 +255,10 @@ export default {
   text-transform: capitalize !important;
   font-size: 16px;
   line-height: 16px;
+}
+.programmes {
+  max-width: 8rem;
+  bottom: 1rem;
+  font-size: 12.5px;
 }
 </style>

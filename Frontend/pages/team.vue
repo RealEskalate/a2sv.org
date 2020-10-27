@@ -1,6 +1,6 @@
 <template>
 <div>
-<hero />
+<banner />
 <navigation-drawer :drawer="drawer" />
 <v-container class="grey lighten-5">
     <h1 class="text-center my-3">
@@ -22,6 +22,36 @@
     </v-row>
 
   </v-container>
+  <v-divider></v-divider>
+          <v-card
+            flat
+            class="row col-sm-8 px-0 py-0  mx-auto my-8"
+
+          >
+            <v-img
+              src="/banner.jpg"
+              class="col-sm-6"
+                style="max-height: 26rem; vertical-align: top"
+            />
+            <p
+              class="col-sm-6 blackish px-5 py-4"
+              style="line-height: 30px; font-size: 17px"
+            >
+              Join US on this Journey reach the level that I want to
+              get to. The challenges and the problems we solve every day has
+              showed to pay attention to the important parts of any problem and
+              come up with an efficient solution. <br />
+
+              <v-btn
+              class="my-6"
+              tile
+              outlined
+              >
+              Work with us
+              </v-btn>
+
+            </p>
+          </v-card>
 </div>
 
 </template>
@@ -29,7 +59,8 @@
 <script>
 import item from '~/components/Teams/item'
 import NavigationDrawer from '~/components/Teams/NavigationDrawer'
-import Hero from '~/components/Teams/Hero'
+import Banner from '~/components/Teams/Banner'
+import Hero from '@/components/Core/Hero'
 export default {
   data () {
     return {

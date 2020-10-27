@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 -63 883 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="a" gradientTransform="rotate(0)">
+      <stop stop-color="#F7FAFC" offset="0" stop-opacity="0.8"/>
+      <stop stop-color="#7a8adc" offset="0.8" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+  <path d="M 551.284 14.157 C 618.574 20.49 833.242 72.026 796.034 257.568 C 770.93 382.753 438.593 427.705 314.953 482.331 C 252.001 510.145 101.057 608.095 -2 742.936 C 2.723 742.936 -4.158 75.973 1.524 72.976 C 1.524 72.976 280.355 -11.342 551.284 14.157 Z" fill="url(#a)" fill-rule="evenodd" style=""/>
+</svg>

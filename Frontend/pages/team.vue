@@ -60,7 +60,6 @@
 import item from '~/components/Teams/item'
 import NavigationDrawer from '~/components/Teams/NavigationDrawer'
 import Banner from '~/components/Teams/Banner'
-import Hero from '@/components/Core/Hero'
 export default {
   data () {
     return {

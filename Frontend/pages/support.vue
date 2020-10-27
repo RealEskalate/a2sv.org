@@ -7,10 +7,11 @@
         >THE CHANGE YOU ARE MAKING</v-card-title
       >
       <v-card-text
-        >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure commodi,
-        distinctio laudantium quam repudiandae quia odit dolorum ex quaerat
-        tempora vel quae odio tempore cum nemo voluptate velit libero.
-        Dignissimos?
+        >By supporting us, you are helping A2SV to train more students in
+        Africa. In turn, this help students get all-rounded software engineering
+        training and create software programs that address local challenges in
+        Africa. You are also helping our students get connected with your
+        company for internship/full-time positions.
       </v-card-text>
       <v-card-actions>
         <v-btn text color="primary">Share Message</v-btn>
@@ -185,7 +186,7 @@ export default {
           'https://i.ibb.co/4tsyJwp/Employees-giving-hands-and-helping-colleagues-to-walk-upstairs-Team-giving-support-growing-together.jpg',
         title: 'Donate',
         description:
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea enim quae debitis eum quia necessitatibus provident tenetur suscipit, porro illo.',
+          'Help to upskill more developers and launch new digital solution in Africa.',
         button_text: 'Go To PayPal',
       },
       {
@@ -194,7 +195,7 @@ export default {
           'https://i.ibb.co/4tsyJwp/Employees-giving-hands-and-helping-colleagues-to-walk-upstairs-Team-giving-support-growing-together.jpg',
         title: 'Interviews',
         description:
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea enim quae debitis eum quia necessitatibus provident tenetur suscipit, porro illo.',
+          'Connect our students with your company for internship positions.',
         button_text: 'Contact Us',
       },
       {
@@ -202,7 +203,7 @@ export default {
           'https://i.ibb.co/4tsyJwp/Employees-giving-hands-and-helping-colleagues-to-walk-upstairs-Team-giving-support-growing-together.jpg',
         title: 'Mentorship',
         description:
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea enim quae debitis eum quia necessitatibus provident tenetur suscipit, porro illo.',
+          'We want experienced people from the tech-industry to guide our students.',
         button_text: 'Contact Us',
       },
       {
@@ -211,7 +212,7 @@ export default {
           'https://i.ibb.co/4tsyJwp/Employees-giving-hands-and-helping-colleagues-to-walk-upstairs-Team-giving-support-growing-together.jpg',
         title: 'Q & A',
         description:
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea enim quae debitis eum quia necessitatibus provident tenetur suscipit, porro illo.',
+          "Share your story with us and let's have a fun Q & A session.",
         button_text: 'Request',
       },
     ],

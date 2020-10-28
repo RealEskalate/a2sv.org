@@ -19,17 +19,8 @@ export default {
           to: '/',
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
-        },
-        {
           title: 'Team',
           to: '/team',
-        },
-        {
-          title: 'Support Us',
-          to: '/support',
         },
         {
           title: 'Events',
@@ -39,6 +30,10 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'News',
           to: '/news',
+        },
+        {
+          title: 'Support Us',
+          to: '/support',
         },
       ],
     }

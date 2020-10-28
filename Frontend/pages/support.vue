@@ -1,28 +1,50 @@
 <template>
-  <v-container class="py-10">
-    <hero />
+  <div>
+    <Banner
+      :image-src="banner.image_src"
+      :title-one="banner.title_one"
+      :title-two="banner.title_two"
+      :description="banner.description"
+    />
 
-    <v-card tile flat class="my-15">
-      <v-card-title class="font-weight-light"
-        >THE CHANGE YOU ARE MAKING</v-card-title
-      >
-      <v-card-text
-        >By supporting us, you are helping A2SV to train more students in
-        Africa. In turn, this help students get all-rounded software engineering
-        training and create software programs that address local challenges in
-        Africa. You are also helping our students get connected with your
-        company for internship/full-time positions.
-      </v-card-text>
-      <v-card-actions>
-        <v-btn text color="primary">Share Message</v-btn>
-      </v-card-actions>
-    </v-card>
-
-    <div>
-      <h2 class="text-center font-weight-medium">WAYS TO SUPPORT US</h2>
-      <v-divider class="mt-2"></v-divider>
-      <v-row class="my-8" align="center" justify="center">
-        <template v-for="(support, i) in support_ways">
+    <v-container class="mt-15">
+      <h2 class="page-titles text-center">Ways to support us</h2>
+      <v-row class="my-10">
+        <v-col
+          v-for="(support, i) in support_ways"
+          :key="i"
+          cols="10"
+          sm="6"
+          md="3"
+          class="mx-auto"
+        >
+          <v-card class="shadow" style="height: 100%; padding: 5px">
+            <v-img :src="support.image" style="max-height: 15rem" />
+            <v-card-title style="color: #545465" class="justify-center">
+              {{ support.title | uppercase }}
+            </v-card-title>
+            <v-card-text class="text-center">
+              {{ support.description }}
+            </v-card-text>
+            <v-card-actions class="justify-center">
+              <button v-if="support.title === 'Donate'" class="btn programmes">
+                {{ support.button_text }}
+              </button>
+              <button
+                v-else
+                v-scroll-to="{
+                  el: '#form_card',
+                  offset: -60,
+                }"
+                class="btn programmes"
+                @click="showForm(support.title)"
+              >
+                {{ support.button_text }}
+              </button>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+        <!-- <template v-for="(support, i) in support_ways">
           <v-col :key="i" col="12" sm="3">
             <v-hover v-slot="{ hover }" disabled>
               <v-card
@@ -71,104 +93,105 @@
               </v-card>
             </v-hover>
           </v-col>
-        </template>
+        </template> -->
       </v-row>
-    </div>
 
-    <v-card
-      v-if="form_type.interview || form_type.mentorship || form_type.q_and_a"
-      id="form_card"
-      class="mx-auto my-15"
-      max-width="500"
-      outlined
-      tile
-    >
-      <v-card-title v-if="form_type.interview" class="justify-center">
-        Interviews
-      </v-card-title>
-      <v-card-title v-else-if="form_type.mentorship" class="justify-center">
-        Mentorship
-      </v-card-title>
-      <v-card-title v-else class="justify-center">Q and A</v-card-title>
-      <v-form ref="form" v-model="valid" class="pa-5">
-        <v-text-field
-          v-model="contact.name"
-          class="v-card--shaped"
-          outlined
-          dense
-          :label="labels.name"
-          :rules="rules.nameRules"
-          counter="30"
-        />
-        <v-text-field
+      <v-card
+        v-if="form_type.interview || form_type.mentorship || form_type.q_and_a"
+        id="form_card"
+        class="shadow mx-auto my-15"
+        max-width="500"
+      >
+        <v-card-title
           v-if="form_type.interview"
-          v-model="contact.email"
-          class="v-card--shaped"
-          outlined
-          dense
-          :label="labels.company_email"
-          :rules="rules.emailRules"
-        />
-        <v-text-field
-          v-else
-          v-model="contact.email"
-          class="v-card--shaped"
-          outlined
-          dense
-          :label="labels.email"
-          :rules="rules.emailRules"
-        />
-        <v-textarea
-          v-if="form_type.interview"
-          v-model="contact.message"
-          class="v-card--shaped"
-          outlined
-          dense
-          rows="5"
-          :label="labels.additional_message"
-        />
-        <v-textarea
+          class="justify-center"
+          style="color: #545465"
+        >
+          Interviews
+        </v-card-title>
+        <v-card-title
           v-else-if="form_type.mentorship"
-          v-model="contact.message"
-          class="v-card--shaped"
-          outlined
-          dense
-          rows="5"
-          :label="labels.experience"
-          :rules="rules.experienceRules"
-        />
-        <v-textarea
+          class="justify-center blackish"
+          style="color: #545465"
+        >
+          Mentorship
+        </v-card-title>
+        <v-card-title
           v-else
-          v-model="contact.message"
-          class="v-card--shaped"
-          outlined
-          dense
-          rows="5"
-          :label="labels.story"
-          :rules="rules.storyRules"
-        />
-        <div class="text-center py-3">
-          <v-btn
-            tile
-            width="100"
-            class="primary mx-auto v-card--shaped"
-            @click="sendForm"
-          >
-            Send
-            <v-icon class="ml-2" small />
-          </v-btn>
-        </div>
-      </v-form>
-    </v-card>
-  </v-container>
+          class="justify-center blackish"
+          style="color: #545465"
+          >Q and A</v-card-title
+        >
+        <v-divider class="mb-5"></v-divider>
+        <v-form ref="form" v-model="valid" class="pa-5">
+          <v-text-field
+            v-model="contact.name"
+            class="v-card--shaped"
+            dense
+            :label="labels.name"
+            :rules="rules.nameRules"
+            counter="30"
+          />
+          <v-text-field
+            v-if="form_type.interview"
+            v-model="contact.email"
+            class="v-card--shaped"
+            dense
+            :label="labels.company_email"
+            :rules="rules.emailRules"
+          />
+          <v-text-field
+            v-else
+            v-model="contact.email"
+            class="v-card--shaped"
+            dense
+            :label="labels.email"
+            :rules="rules.emailRules"
+          />
+          <v-textarea
+            v-if="form_type.interview"
+            v-model="contact.message"
+            class="v-card--shaped"
+            dense
+            rows="5"
+            :label="labels.additional_message"
+          />
+          <v-textarea
+            v-else-if="form_type.mentorship"
+            v-model="contact.message"
+            class="v-card--shaped"
+            dense
+            rows="5"
+            :label="labels.experience"
+            :rules="rules.experienceRules"
+          />
+          <v-textarea
+            v-else
+            v-model="contact.message"
+            class="v-card--shaped"
+            dense
+            rows="5"
+            :label="labels.story"
+            :rules="rules.storyRules"
+          />
+          <div class="text-center py-3">
+            <v-btn width="100" class="primary mx-auto" @click="sendForm">
+              Send
+              <v-icon class="ml-2" small />
+            </v-btn>
+          </div>
+        </v-form>
+      </v-card>
+    </v-container>
+  </div>
 </template>
 
 <script>
-import Hero from '@/components/Core/Hero.Vue'
+import Banner from '@/components/Core/Banner'
 
 export default {
   components: {
-    Hero,
+    Banner,
   },
   filters: {
     uppercase(value) {
@@ -179,11 +202,16 @@ export default {
   data: () => ({
     model: 0,
     colors: ['primary', 'secondary', 'yellow darken-2', 'red', 'orange'],
+    banner: {
+      image_src: 'https://i.ibb.co/xMHdzk6/team-hero-3.jpg',
+      title_one: 'Be part of our journey',
+      title_two: 'Support us',
+      description: 'You are helping A2SV to train more students in Africa',
+    },
     support_ways: [
       {
         // image: 'https://i.ibb.co/Jn02MkP/donate.png',
-        image:
-          'https://i.ibb.co/4tsyJwp/Employees-giving-hands-and-helping-colleagues-to-walk-upstairs-Team-giving-support-growing-together.jpg',
+        image: '/mock.svg',
         title: 'Donate',
         description:
           'Help to upskill more developers and launch new digital solution in Africa.',
@@ -191,25 +219,23 @@ export default {
       },
       {
         // image: 'https://i.ibb.co/GPLyPHM/hr.jpg',
-        image:
-          'https://i.ibb.co/4tsyJwp/Employees-giving-hands-and-helping-colleagues-to-walk-upstairs-Team-giving-support-growing-together.jpg',
+        image: '/mock.svg',
         title: 'Interviews',
         description:
           'Connect our students with your company for internship positions.',
         button_text: 'Contact Us',
       },
       {
-        image:
-          'https://i.ibb.co/4tsyJwp/Employees-giving-hands-and-helping-colleagues-to-walk-upstairs-Team-giving-support-growing-together.jpg',
+        // image:
+        //   'https://i.ibb.co/4tsyJwp/Employees-giving-hands-and-helping-colleagues-to-walk-upstairs-Team-giving-support-growing-together.jpg',
+        image: '/mock.svg',
         title: 'Mentorship',
-        description:
-          'We want experienced people from the tech-industry to guide our students.',
+        description: 'We want experienced people to guide our students.',
         button_text: 'Contact Us',
       },
       {
         // image: 'https://i.ibb.co/GnnVbNf/q-a.jpg',
-        image:
-          'https://i.ibb.co/4tsyJwp/Employees-giving-hands-and-helping-colleagues-to-walk-upstairs-Team-giving-support-growing-together.jpg',
+        image: '/mock.svg',
         title: 'Q & A',
         description:
           "Share your story with us and let's have a fun Q & A session.",
@@ -289,5 +315,47 @@ export default {
 
 .v-card:not(.on-hover) {
   opacity: 0.9;
+}
+
+.btn {
+  background-color: #5772f6;
+  border-radius: 4px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px 18px;
+  text-decoration: none;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.btn:hover {
+  background: #5772f6 linear-gradient(to bottom, #5772f6 5%, #8253ff 100%);
+}
+.btn:active {
+  position: relative;
+  background: #5772f6 !important;
+  top: 1px;
+}
+.btn:focus {
+  background-color: #5772f6;
+}
+.shadow {
+  --plyr-color-main: #334ac0;
+  /*--plyr-video-control-color: #fff;*/
+}
+.programmes {
+  max-width: 8rem;
+  bottom: 1rem;
+  font-size: 12.5px;
+}
+.page-titles {
+  font-family: Lato, serif !important;
+  color: #2b2a35;
+  font-size: 36px;
+  line-height: 30px;
+  font-weight: 800;
 }
 </style>

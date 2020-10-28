@@ -1,6 +1,11 @@
 <template>
   <div>
-    <banner />
+    <Banner
+      :image-src="banner.image_src"
+      :title-one="banner.title_one"
+      :title-two="banner.title_two"
+      :description="banner.description"
+    />
     <navigation-drawer :drawer="drawer" />
     <v-container class="grey lighten-5">
       <h1 class="text-center my-3">THE TEAM</h1>
@@ -41,7 +46,7 @@
 
 <script>
 import Item from '@/components/Teams/Item'
-import Banner from '@/components/Teams/Banner'
+import Banner from '@/components/Core/Banner'
 import NavigationDrawer from '~/components/Teams/NavigationDrawer'
 
 export default {
@@ -49,6 +54,12 @@ export default {
   data() {
     return {
       drawer: null,
+      banner: {
+        image_src: 'https://i.ibb.co/xMHdzk6/team-hero-3.jpg',
+        title_one: 'Meet Our Team',
+        title_two: 'Talented Students',
+        description: 'Working together for the common good',
+      },
     }
   },
 }

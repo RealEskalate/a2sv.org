@@ -45,3 +45,11 @@ export default {
   },
 }
 </script>
+<style>
+@import 'node_modules/vuetify/dist/vuetify.min.css';
+.v-tab {
+  font-family: Lato, sans-serif !important;
+  text-transform: capitalize !important;
+  font-size: 16px;
+}
+</style>

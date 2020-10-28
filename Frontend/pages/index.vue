@@ -18,7 +18,7 @@
           <button class="btn">Learn More</button>
         </v-col>
         <v-col cols="12" sm="7" class="px-5 mx-auto" max-height="60vh">
-          <v-sheet class="elevation-4">
+          <v-sheet class="elevation-4 plyr">
             <vue-plyr>
               <video
                 poster="/banner.jpg"
@@ -188,7 +188,6 @@ export default {
 }
 </script>
 <style>
-@import 'node_modules/vuetify/dist/vuetify.min.css';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css';
 .motto {
   font-family: Lato, serif !important;
@@ -246,15 +245,9 @@ export default {
 .btn:focus {
   background-color: #5772f6;
 }
-.shadow {
+.plyr {
   --plyr-color-main: #334ac0;
   /*--plyr-video-control-color: #fff;*/
-}
-.v-tab {
-  font-family: Lato, sans-serif !important;
-  text-transform: capitalize !important;
-  font-size: 16px;
-  line-height: 16px;
 }
 .programmes {
   max-width: 8rem;

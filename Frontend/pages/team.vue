@@ -40,11 +40,12 @@
 </template>
 
 <script>
-import item from '~/components/Teams/item'
+import Item from '@/components/Teams/Item'
+import Banner from '@/components/Teams/Banner'
 import NavigationDrawer from '~/components/Teams/NavigationDrawer'
-import Banner from '~/components/Teams/Banner'
+
 export default {
-  components: { Banner, item, NavigationDrawer },
+  components: { Banner, Item, NavigationDrawer },
   data() {
     return {
       drawer: null,

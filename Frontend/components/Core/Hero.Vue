@@ -3,7 +3,9 @@
     tile
     class="banner shadow-sm mb-10 d-flex align-center mb-6"
     style="
-      background: url(https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center; background-size: cover;
+      background: url(https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
+        no-repeat center;
+      background-size: cover;
     "
   >
     <div class="low-overlay primary darken-3" style="opacity: 0.15" />

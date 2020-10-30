@@ -44,154 +44,29 @@
             </v-card-actions>
           </v-card>
         </v-col>
-        <!-- <template v-for="(support, i) in support_ways">
-          <v-col :key="i" col="12" sm="3">
-            <v-hover v-slot="{ hover }" disabled>
-              <v-card
-                max-width="374"
-                outlined
-                tile
-                :elevation="hover ? 10 : 0"
-                :class="{ 'on-hover': hover }"
-              >
-                <v-img height="150" :src="support.image"></v-img>
-
-                <v-card-title class="justify-center">
-                  {{ support.title | uppercase }}
-                </v-card-title>
-
-                <v-card-text class="text-center">
-                  <div>
-                    {{ support.description }}
-                  </div>
-                </v-card-text>
-
-                <v-divider class="mx-4"></v-divider>
-
-                <v-card-actions class="justify-center">
-                  <v-btn
-                    v-if="support.title === 'Donate'"
-                    color="primary"
-                    text
-                    @click="showForm(support.title)"
-                  >
-                    {{ support.button_text }}
-                  </v-btn>
-                  <v-btn
-                    v-else
-                    v-scroll-to="{
-                      el: '#form_card',
-                      offset: -60,
-                    }"
-                    color="primary"
-                    text
-                    @click="showForm(support.title)"
-                  >
-                    {{ support.button_text }}
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-hover>
-          </v-col>
-        </template> -->
       </v-row>
 
-      <v-card
-        v-if="form_type.interview || form_type.mentorship || form_type.q_and_a"
-        id="form_card"
-        class="shadow mx-auto my-15"
-        max-width="500"
-      >
-        <v-card-title
-          v-if="form_type.interview"
-          class="justify-center"
-          style="color: #545465"
-        >
-          Interviews
-        </v-card-title>
-        <v-card-title
-          v-else-if="form_type.mentorship"
-          class="justify-center blackish"
-          style="color: #545465"
-        >
-          Mentorship
-        </v-card-title>
-        <v-card-title
-          v-else
-          class="justify-center blackish"
-          style="color: #545465"
-          >Q and A</v-card-title
-        >
-        <v-divider class="mb-5"></v-divider>
-        <v-form ref="form" v-model="valid" class="pa-5">
-          <v-text-field
-            v-model="contact.name"
-            class="v-card--shaped"
-            dense
-            :label="labels.name"
-            :rules="rules.nameRules"
-            counter="30"
-          />
-          <v-text-field
-            v-if="form_type.interview"
-            v-model="contact.email"
-            class="v-card--shaped"
-            dense
-            :label="labels.company_email"
-            :rules="rules.emailRules"
-          />
-          <v-text-field
-            v-else
-            v-model="contact.email"
-            class="v-card--shaped"
-            dense
-            :label="labels.email"
-            :rules="rules.emailRules"
-          />
-          <v-textarea
-            v-if="form_type.interview"
-            v-model="contact.message"
-            class="v-card--shaped"
-            dense
-            rows="5"
-            :label="labels.additional_message"
-          />
-          <v-textarea
-            v-else-if="form_type.mentorship"
-            v-model="contact.message"
-            class="v-card--shaped"
-            dense
-            rows="5"
-            :label="labels.experience"
-            :rules="rules.experienceRules"
-          />
-          <v-textarea
-            v-else
-            v-model="contact.message"
-            class="v-card--shaped"
-            dense
-            rows="5"
-            :label="labels.story"
-            :rules="rules.storyRules"
-          />
-          <div class="text-center py-3">
-            <v-btn width="100" class="primary mx-auto" @click="sendForm">
-              Send
-              <v-icon class="ml-2" small />
-            </v-btn>
-          </div>
-        </v-form>
-      </v-card>
+      <div id="form_card">
+        <InterviewForm v-if="form_type['Interviews']" />
+        <MentorshipForm v-else-if="form_type['Mentorship']" />
+        <QandAForm v-else />
+      </div>
     </v-container>
   </div>
 </template>
 
 <script>
 import Banner from '@/components/Core/Banner'
+import InterviewForm from '@/components/Support/InterviewForm'
+import MentorshipForm from '@/components/Support/MentorshipForm'
+import QandAForm from '@/components/Support/QandAForm'
 
 export default {
   components: {
     Banner,
+    InterviewForm,
+    MentorshipForm,
+    QandAForm,
   },
   filters: {
     uppercase(value) {
@@ -242,67 +117,20 @@ export default {
         button_text: 'Request',
       },
     ],
-    valid: false,
-    contact: {
-      name: '',
-      email: '',
-      additional_message: '',
-      experience: '',
-      story: '',
-    },
-    labels: {
-      name: 'Name',
-      email: 'Email',
-      company_email: 'Company Email',
-      additional_message: 'Additional Message (Optional)',
-      experience: 'Experience',
-      story: 'Story',
-    },
     form_type: {
-      interview: false,
-      mentorship: false,
-      q_and_a: false,
-    },
-    rules: {
-      nameRules: [
-        (v) => !!v || 'Name is required',
-        (v) => (v && v.length <= 30) || 'Name must be less than 30 characters',
-      ],
-      emailRules: [
-        (v) => !!v || 'E-mail is required',
-        (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-      ],
-      experienceRules: [
-        (v) => !!v || 'Experience is required',
-        (v) =>
-          (v && v.length <= 150) ||
-          'Experience must be less than 150 characters',
-      ],
-      storyRules: [
-        (v) => !!v || 'Story is required',
-        (v) =>
-          (v && v.length <= 150) || 'Story must be less than 150 characters',
-      ],
+      Interviews: false,
+      Mentorship: false,
+      'Q & A': false,
     },
   }),
   methods: {
     showForm(title) {
-      if (title === 'Interviews') {
-        this.form_type.interview = true
-        this.form_type.mentorship = false
-        this.form_type.q_and_a = false
-      } else if (title === 'Mentorship') {
-        this.form_type.interview = false
-        this.form_type.mentorship = true
-        this.form_type.q_and_a = false
-      } else if (title === 'Q & A') {
-        this.form_type.interview = false
-        this.form_type.mentorship = false
-        this.form_type.q_and_a = true
+      this.form_type[title] = true
+      for (const type in this.form_type) {
+        if (type !== title) {
+          this.form_type[type] = false
+        }
       }
-    },
-    sendForm() {
-      this.$refs.form.reset()
     },
   },
 }

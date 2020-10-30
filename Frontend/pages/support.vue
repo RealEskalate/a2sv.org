@@ -18,15 +18,15 @@
           md="3"
           class="mx-auto"
         >
-          <v-card class="shadow" style="height: 100%; padding: 5px">
+          <v-card class="shadow pt-2 pr-2 pl-2 pb-10" height="100%">
             <v-img :src="support.image" style="max-height: 15rem" />
-            <v-card-title style="color: #545465" class="justify-center">
+            <v-card-title style="color: #545465">
               {{ support.title | uppercase }}
             </v-card-title>
-            <v-card-text class="text-center">
+            <v-card-text>
               {{ support.description }}
             </v-card-text>
-            <v-card-actions class="justify-center">
+            <v-card-actions class="card-actions">
               <button v-if="support.title === 'Donate'" class="btn programmes">
                 {{ support.button_text }}
               </button>
@@ -48,8 +48,8 @@
 
       <div id="form_card">
         <InterviewForm v-if="form_type['Interviews']" />
-        <MentorshipForm v-else-if="form_type['Mentorship']" />
-        <QandAForm v-else />
+        <MentorshipForm v-if="form_type['Mentorship']" />
+        <QandAForm v-if="form_type['Q & A']" />
       </div>
     </v-container>
   </div>
@@ -86,15 +86,15 @@ export default {
     support_ways: [
       {
         // image: 'https://i.ibb.co/Jn02MkP/donate.png',
-        image: '/mock.svg',
+        image: '/donate.svg',
         title: 'Donate',
         description:
-          'Help to upskill more developers and launch new digital solution in Africa.',
+          'Help upskill more developers and launch new digital solution in Africa.',
         button_text: 'Go To PayPal',
       },
       {
         // image: 'https://i.ibb.co/GPLyPHM/hr.jpg',
-        image: '/mock.svg',
+        image: '/interview.svg',
         title: 'Interviews',
         description:
           'Connect our students with your company for internship positions.',
@@ -110,7 +110,7 @@ export default {
       },
       {
         // image: 'https://i.ibb.co/GnnVbNf/q-a.jpg',
-        image: '/mock.svg',
+        image: '/question.svg',
         title: 'Q & A',
         description:
           "Share your story with us and let's have a fun Q & A session.",
@@ -185,5 +185,13 @@ export default {
   font-size: 36px;
   line-height: 30px;
   font-weight: 800;
+}
+.card-outter {
+  position: relative;
+  padding-bottom: 200px;
+}
+.card-actions {
+  position: absolute;
+  bottom: 5px;
 }
 </style>

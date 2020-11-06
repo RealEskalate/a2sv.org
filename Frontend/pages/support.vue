@@ -7,7 +7,7 @@
       :description="banner.description"
     />
 
-    <v-container style="margin-top: -5%">
+    <v-container style="margin-top: -75px">
       <v-row class="mb-10">
         <v-col
           v-for="(support, i) in support_ways"
@@ -18,17 +18,17 @@
           class="mx-auto"
         >
           <v-card
-            class="shadow"
+            class="shadow d-flex flex-column"
             style="height: 100%; padding: 5px; background-color: white"
           >
-            <v-img :src="support.image" style="max-height: 15rem" />
-            <v-card-title style="color: #545465">
+            <v-card-title class="justify-center" style="color: #545465">
               {{ support.title | uppercase }}
             </v-card-title>
-            <v-card-text>
+            <v-card-text class="text-center">
               {{ support.description }}
             </v-card-text>
-            <v-card-actions class="card-actions">
+            <v-spacer />
+            <v-card-actions class="justify-center">
               <button v-if="support.title === 'Donate'" class="btn programmes">
                 {{ support.button_text }}
               </button>
@@ -49,9 +49,9 @@
       </v-row>
 
       <div id="form_card">
-        <InterviewForm v-if="form_type['Interviews']" />
-        <MentorshipForm v-if="form_type['Mentorship']" />
-        <QandAForm v-if="form_type['Q & A']" />
+        <InterviewForm v-if="form_type === 'Interviews'" />
+        <MentorshipForm v-if="form_type === 'Mentorship'" />
+        <QandAForm v-if="form_type === 'Q & A'" />
       </div>
     </v-container>
   </div>
@@ -59,16 +59,13 @@
 
 <script>
 import Banner from "@/components/Core/TextOnlyBanner";
-import InterviewForm from "@/components/Support/InterviewForm";
-import MentorshipForm from "@/components/Support/MentorshipForm";
-import QandAForm from "@/components/Support/QandAForm";
 
 export default {
   components: {
     Banner,
-    InterviewForm,
-    MentorshipForm,
-    QandAForm
+    InterviewForm: () => import("@/components/Support/InterviewForm"),
+    MentorshipForm: () => import("@/components/Support/MentorshipForm"),
+    QandAForm: () => import("@/components/Support/QandAForm")
   },
   filters: {
     uppercase(value) {
@@ -87,52 +84,34 @@ export default {
     },
     support_ways: [
       {
-        // image: 'https://i.ibb.co/Jn02MkP/donate.png',
-        image: "/mock.svg",
         title: "Donate",
         description:
-          "Help to upskill more developers and launch new digital solution in Africa.",
+          "Help upskill more developers and launch new digital solution in Africa",
         button_text: "Go To PayPal"
       },
       {
-        // image: 'https://i.ibb.co/GPLyPHM/hr.jpg',
-        image: "/mock.svg",
         title: "Interviews",
         description:
-          "Connect our students with your company for internship positions.",
+          "Connect our students with your company for internship positions",
         button_text: "Contact Us"
       },
       {
-        // image:
-        //   'https://i.ibb.co/4tsyJwp/Employees-giving-hands-and-helping-colleagues-to-walk-upstairs-Team-giving-support-growing-together.jpg',
-        image: "/mock.svg",
         title: "Mentorship",
-        description: "We want experienced people to guide our students.",
+        description: "We want experienced people to guide our students",
         button_text: "Contact Us"
       },
       {
-        // image: 'https://i.ibb.co/GnnVbNf/q-a.jpg',
-        image: "/mock.svg",
         title: "Q & A",
         description:
-          "Share your story with us and let's have a fun Q & A session.",
+          "Share your story with us and let's have a fun Q & A session",
         button_text: "Request"
       }
     ],
-    form_type: {
-      Interviews: false,
-      Mentorship: false,
-      "Q & A": false
-    }
+    form_type: ""
   }),
   methods: {
     showForm(title) {
-      this.form_type[title] = true;
-      for (const type in this.form_type) {
-        if (type !== title) {
-          this.form_type[type] = false;
-        }
-      }
+      this.form_type = title;
     }
   }
 };
@@ -195,5 +174,6 @@ export default {
 .card-actions {
   position: absolute;
   bottom: 5px;
+  left: 10px;
 }
 </style>

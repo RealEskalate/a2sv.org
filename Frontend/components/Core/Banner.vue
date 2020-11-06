@@ -1,19 +1,17 @@
 <template v-slot:activator="{ on, attrs }">
   <div id="inspire">
-    <v-parallax src="/" class="parallax" height="450" jumbotron>
+    <v-parallax src="/" class="main-gradient" height="450" jumbotron>
       <v-container>
         <v-row>
           <v-col md="4" xl="5">
             <h1
-              class="motto text-center"
+              class="motto text-center white--text"
               style="
-                font-family: Lato, sans-serif;
-                color: white !important;
                 font-size: 58px !important;
                 line-height: 68px !important;
               "
             >
-              A passionate team
+              A Passionate Team
             </h1>
             <p class="text-center mt-5" style="font-size: 20px">
               Diversity is at the core of our Vision, Mission, and Values.
@@ -39,25 +37,3 @@ export default {
   }
 };
 </script>
-<style>
-/*@import 'node_modules/vuetify/dist/vuetify.min.css';*/
-.parallax {
-  background: rgb(73, 102, 247);
-  background: -moz-linear-gradient(
-    121deg,
-    rgba(73, 102, 247, 1) 0%,
-    rgba(130, 83, 255, 1) 64%
-  );
-  background: -webkit-linear-gradient(
-    121deg,
-    rgba(73, 102, 247, 1) 0%,
-    rgba(130, 83, 255, 1) 64%
-  );
-  background: linear-gradient(
-    121deg,
-    rgba(73, 102, 247, 1) 0%,
-    rgba(130, 83, 255, 1) 64%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4966f7",endColorstr="#8253ff",GradientType=1);
-}
-</style>

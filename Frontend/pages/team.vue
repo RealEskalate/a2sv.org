@@ -8,45 +8,34 @@
       @toggle-drawer="drawer = !drawer"
     />
     <v-container class="grey lighten-5">
-      <h1 class="text-center my-5" style="color: #2b2a35">
-        Core Team
-      </h1>
       <v-row no-gutters>
         <v-col
           v-for="(member, i) in getTeamMembers"
           :key="i"
           cols="12"
           sm="4"
-          class="my-4"
-          @click="userId = i"
-          @click.stop="drawer = !drawer"
+          class="pa-5"
         >
-          <v-card class="mx-auto" max-width="344" tile flat>
-            <div class="d-flex profile">
-              <v-avatar class="ma-0" size="150" tile>
-                <v-img :src="baseUrl + '/img' + member.img" />
-              </v-avatar>
+          <v-hover v-slot="{ hover }">
+            <v-card
+              tile
+              class="shadow-sm overflow-hidden"
+              @click="userId = i"
+              @click.stop="drawer = !drawer"
+            >
+              <v-list-item class="px-0" :class="{'primary' : hover}">
+                <v-list-item-avatar class="ma-0" size="120" tile>
+                  <v-img :src="baseUrl + '/img' + member.img" height="100%" />
+                </v-list-item-avatar>
 
-              <v-card-text class="headline">
-                <div class="mb-1">
-                  <p class="country">
-                    Ethiopia
-                  </p>
-                </div>
-                <div>
-                  <p class="name">
-                    {{ member.name }}
-                  </p>
-                </div>
-
-                <div>
-                  <p class="job">
-                    {{ member.career }}
-                  </p>
-                </div>
-              </v-card-text>
-            </div>
-          </v-card>
+                <v-list-item-content :class="{'white--text' : hover}" class="pl-5 my-0" style="height: 100%">
+                  <span class="overline my-0">Ethiopia</span>
+                  <span class="headline my-0">{{ member.name }}</span>
+                  <span class="caption my-1">{{ member.career }}</span>
+                </v-list-item-content>
+              </v-list-item>
+            </v-card>
+          </v-hover>
         </v-col>
       </v-row>
     </v-container>
@@ -77,35 +66,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.headline div {
-  margin-bottom: -0.3em;
-}
-.country {
-  text-transform: uppercase;
-  font-size: small;
-  font-weight: 300;
-  margin: 0 !important;
-}
-.name {
-  font-size: large;
-  text-transform: uppercase;
-  font-weight: 500;
-  margin: 0 !important;
-}
-.job {
-  font-family: unset;
-  font-size: medium;
-  font-weight: lighter;
-  margin: 0 !important;
-}
-.v-avatar {
-  border-radius: 0;
-}
-.profile:hover {
-  cursor: pointer;
-  background-color: rgb(49, 151, 235);
-  color: white;
-}
-</style>

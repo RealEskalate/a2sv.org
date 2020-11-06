@@ -15,9 +15,13 @@
           </v-btn>
           <v-row class="mt-5">
             <v-col cols="6" md="3" class="mx-auto">
-              <h2 class="text-left page-titles mb-4">
-                A2SV
-              </h2>
+              <v-img
+                alt="A2SV LOGO"
+                width="175"
+                class="mb-5"
+                contain
+                src="./logo-blue.png"
+              />
               <p class="blackish footer-texts">
                 © Copyright 2020 A2SV NPO. All rights reserved.
               </p>

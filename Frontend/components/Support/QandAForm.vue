@@ -3,7 +3,7 @@
     <v-card-title class="justify-center" style="color: #545465">
       Q & A
     </v-card-title>
-    <v-divider class="mb-5"></v-divider>
+    <v-divider class="mb-5" />
     <v-form ref="form" v-model="valid" class="pa-5">
       <v-text-field
         v-model="contact.name"
@@ -40,41 +40,41 @@
 
 <script>
 export default {
-  name: 'InterviewForm',
+  name: "InterviewForm",
   data: () => ({
     valid: false,
     contact: {
-      name: '',
-      email: '',
-      story: '',
+      name: "",
+      email: "",
+      story: ""
     },
     labels: {
-      name: 'Name',
-      email: 'Email',
-      story: 'Story',
+      name: "Name",
+      email: "Email",
+      story: "Story"
     },
     rules: {
       nameRules: [
-        (v) => !!v || 'Name is required',
-        (v) => (v && v.length <= 30) || 'Name must be less than 30 characters',
+        (v) => !!v || "Name is required",
+        (v) => (v && v.length <= 30) || "Name must be less than 30 characters"
       ],
       emailRules: [
-        (v) => !!v || 'E-mail is required',
-        (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+        (v) => !!v || "E-mail is required",
+        (v) => /.+@.+\..+/.test(v) || "E-mail must be valid"
       ],
       storyRules: [
-        (v) => !!v || 'Story is required',
+        (v) => !!v || "Story is required",
         (v) =>
-          (v && v.length <= 150) || 'Story must be less than 150 characters',
-      ],
-    },
+          (v && v.length <= 150) || "Story must be less than 150 characters"
+      ]
+    }
   }),
   methods: {
     sendForm() {
-      this.$refs.form.reset()
-    },
-  },
-}
+      this.$refs.form.reset();
+    }
+  }
+};
 </script>
 
 <style scoped></style>

@@ -1,19 +1,12 @@
 <template>
-  <v-container>
-    <!-- Placeholder until a header component (which is common to all pages) is built -->
-    <v-carousel v-model="model" height="300">
-      <v-carousel-item v-for="(color, i) in colors" :key="color">
-        <v-sheet :color="color" height="100%" tile>
-          <v-row class="fill-height" align="center" justify="center">
-            <div class="display-3">Slide {{ i + 1 }}</div>
-          </v-row>
-        </v-sheet>
-      </v-carousel-item>
-    </v-carousel>
+  <div>
+    <banner title="News" />
 
-    <div class="my-15">
-      <h2 class="display-1">Latest Updates</h2>
-      <v-divider class="mt-2"></v-divider>
+    <v-container class="my-15">
+      <h2 class="display-1">
+        Latest Updates
+      </h2>
+      <v-divider class="mt-2" />
       <template v-for="post in posts">
         <v-hover v-slot="{ hover }" :key="post.id">
           <nuxt-link :to="`/news/${post.title}`">
@@ -27,14 +20,14 @@
             >
               <v-row class="mx-2 align-center">
                 <v-col cols="12" sm="4">
-                  <v-img height="150" :src="post.image"></v-img>
+                  <v-img height="150" :src="post.image" />
                 </v-col>
                 <v-col cols="12" sm="8">
                   <v-card-title class="justify-space-between">
                     <h2>{{ post.title }}</h2>
                     <small>{{ post.date }}</small>
                   </v-card-title>
-                  <v-divider></v-divider>
+                  <v-divider />
 
                   <v-card-text>
                     <div>
@@ -47,54 +40,58 @@
           </nuxt-link>
         </v-hover>
       </template>
-    </div>
-  </v-container>
+    </v-container>
+  </div>
 </template>
 
 <script>
+import Banner from "@/components/Core/TextOnlyBanner";
 export default {
+  components: {
+    Banner
+  },
   data() {
     return {
       model: 0,
-      colors: ['primary', 'secondary', 'yellow darken-2', 'red', 'orange'],
+      colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
       posts: [
         {
           id: 1,
-          title: 'First Post',
-          date: 'Oct 26, 2020',
+          title: "First Post",
+          date: "Oct 26, 2020",
           image:
-            'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+            "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
           content:
-            '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. Vitae, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam vero voluptatibus facere veritatis impedit omnis.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. <strong>Vitae</strong>, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam vero voluptatibus facere veritatis impedit omnis.</p>',
+            "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. Vitae, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam vero voluptatibus facere veritatis impedit omnis.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. <strong>Vitae</strong>, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam vero voluptatibus facere veritatis impedit omnis.</p>",
           preview:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. Vitae, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam.',
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. Vitae, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam."
         },
         {
           id: 2,
-          title: 'Second Post',
-          date: 'Oct 26, 2020',
+          title: "Second Post",
+          date: "Oct 26, 2020",
           image:
-            'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+            "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
           content:
-            '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. Vitae, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam vero voluptatibus facere veritatis impedit omnis.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. <strong>Vitae</strong>, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam vero voluptatibus facere veritatis impedit omnis.</p>',
+            "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. Vitae, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam vero voluptatibus facere veritatis impedit omnis.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. <strong>Vitae</strong>, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam vero voluptatibus facere veritatis impedit omnis.</p>",
           preview:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. Vitae, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam.',
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. Vitae, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam."
         },
         {
           id: 3,
-          title: 'Third Post',
-          date: 'Oct 26, 2020',
+          title: "Third Post",
+          date: "Oct 26, 2020",
           image:
-            'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+            "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
           content:
-            '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. Vitae, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam vero voluptatibus facere veritatis impedit omnis.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. <strong>Vitae</strong>, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam vero voluptatibus facere veritatis impedit omnis.</p>',
+            "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. Vitae, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam vero voluptatibus facere veritatis impedit omnis.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. <strong>Vitae</strong>, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam vero voluptatibus facere veritatis impedit omnis.</p>",
           preview:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. Vitae, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam.',
-        },
-      ],
-    }
-  },
-}
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quod deleniti neque ratione suscipit! Nihil laborum totam mollitia quibusdam facilis iure neque minima. Vitae, suscipit commodi neque aliquid itaque at quae nulla doloremque quos? Praesentium quo molestias id repudiandae quisquam."
+        }
+      ]
+    };
+  }
+};
 </script>
 
 <style scoped>

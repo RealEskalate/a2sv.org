@@ -1,6 +1,6 @@
 <template>
   <v-navigation-drawer
-    v-model="drawer"
+    v-model="navDrawer"
     absolute
     right
     temporary
@@ -10,66 +10,78 @@
     <v-row class="mt-12 mb-4">
       <v-avatar class="ma-0" size="160" tile>
         <v-img
-          src="https://acumen.org/wp-content/uploads/2016/09/AKK-Photo-1-580x580.jpg"
+          :src="baseUrl + '/img' + member.img"
         />
       </v-avatar>
 
       <v-col style="margin-left: 2em">
-        <h3 class="nav-name my-2">CARLYLE Caption</h3>
-        <p class="nav-job">
-          Associate Director, Internal Communications & Engagement
+        <h1 class="nav-name my-2">
+          {{ member.name }}
+        </h1>
+        <p class="blackish">
+          {{ member.team }}
+        </p>
+        <p class="blackish">
+          {{ member.career }}
         </p>
       </v-col>
     </v-row>
     <v-row class="mx-lg-3">
-      <p class="details">
-        As Associate Director of Internal Communications and Engagement, Carla
-        oversees engagement and communications for Acumen’s community of 350+
-        donors and produces major brand and fundraising activations around the
-        world--from Palo Alto to London to Nairobi--to elevate and deepen the
-        impact of Acumen’s work tackling poverty. Previously at Acumen, Carla
-        has managed Acumen’s brand across eight global offices, co-led the roll
-        out of Acumen’s rebranding by agency Johnson Banks, and driven grant
-        writing and reporting. Carla joined Acumen in 2012 from Vancouver,
-        Canada where she spent almost four years as an Associate with Renewal
-        Funds to launch Renewal2, a CAD $35 million venture capital fund
-        investing in organic food and sustainable consumer goods companies.
-        Carla holds a bachelor of business administration degree with a double
-        major in communications from Simon Fraser University, as well as an
-        honors certificate in sustainability from the Segal Graduate School of
-        Business.
+      <p class="details mx-6">
+        {{ member.description }}
       </p>
     </v-row>
   </v-navigation-drawer>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  props: ['drawer'],
-  data() {
-    return {}
+  props: {
+    "drawer": Boolean,
+    "userId": {
+      type: Number, default: 0
+    }
   },
-}
+  data() {
+    return {
+      navDrawer: this.drawer,
+      baseUrl: process.env.baseUrl
+    };
+  },
+  computed: {
+    ...mapGetters("team", ["getTeamMemberDetails"]),
+    member() {
+      return this.getTeamMemberDetails(this.userId);
+    }
+  },
+  watch: {
+    drawer (val) {
+      this.navDrawer = val; // not to change props value directly.
+    },
+    navDrawer(val) {
+      if (val === false)
+        this.$emit("toggle-drawer");
+    }
+  }
+};
 </script>
 <style>
 .nav-name {
-  font-size: large;
-  font-family: 'Roboto';
+  font-size: 32px;
   text-transform: uppercase;
   font-weight: 100;
-  margin: 0px !important;
+  margin: 0 !important;
 }
 .nav-job {
   font-size: medium;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  margin: 0px !important;
+  margin: 0 !important;
 }
 .details {
-  /* font-family: caecilial; */
-  font-style: italic;
   font-weight: 300;
   width: 170em;
-  font-size: medium;
-  margin-left: 4em;
+  font-size: 18px;
 }
 </style>

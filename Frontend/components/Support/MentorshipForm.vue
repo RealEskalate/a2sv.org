@@ -3,7 +3,7 @@
     <v-card-title class="justify-center" style="color: #545465">
       Mentorship
     </v-card-title>
-    <v-divider class="mb-5"></v-divider>
+    <v-divider class="mb-5" />
     <v-form ref="form" v-model="valid" class="pa-5">
       <v-text-field
         v-model="contact.name"
@@ -40,42 +40,42 @@
 
 <script>
 export default {
-  name: 'InterviewForm',
+  name: "InterviewForm",
   data: () => ({
     valid: false,
     contact: {
-      name: '',
-      email: '',
-      experience: '',
+      name: "",
+      email: "",
+      experience: ""
     },
     labels: {
-      name: 'Name',
-      email: 'Email',
-      experience: 'Experience',
+      name: "Name",
+      email: "Email",
+      experience: "Experience"
     },
     rules: {
       nameRules: [
-        (v) => !!v || 'Name is required',
-        (v) => (v && v.length <= 30) || 'Name must be less than 30 characters',
+        (v) => !!v || "Name is required",
+        (v) => (v && v.length <= 30) || "Name must be less than 30 characters"
       ],
       emailRules: [
-        (v) => !!v || 'E-mail is required',
-        (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+        (v) => !!v || "E-mail is required",
+        (v) => /.+@.+\..+/.test(v) || "E-mail must be valid"
       ],
       experienceRules: [
-        (v) => !!v || 'Experience is required',
+        (v) => !!v || "Experience is required",
         (v) =>
           (v && v.length <= 150) ||
-          'Experience must be less than 150 characters',
-      ],
-    },
+          "Experience must be less than 150 characters"
+      ]
+    }
   }),
   methods: {
     sendForm() {
-      this.$refs.form.reset()
-    },
-  },
-}
+      this.$refs.form.reset();
+    }
+  }
+};
 </script>
 
 <style scoped></style>

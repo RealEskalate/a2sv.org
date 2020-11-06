@@ -3,7 +3,7 @@
     <v-card-title class="justify-center" style="color: #545465">
       Interviews
     </v-card-title>
-    <v-divider class="mb-5"></v-divider>
+    <v-divider class="mb-5" />
     <v-form ref="form" v-model="valid" class="pa-5">
       <v-text-field
         v-model="contact.name"
@@ -39,36 +39,36 @@
 
 <script>
 export default {
-  name: 'InterviewForm',
+  name: "InterviewForm",
   data: () => ({
     valid: false,
     contact: {
-      name: '',
-      company_email: '',
-      additional_message: '',
+      name: "",
+      company_email: "",
+      additional_message: ""
     },
     labels: {
-      name: 'Name',
-      company_email: 'Company Email',
-      additional_message: 'Additional Message (Optional)',
+      name: "Name",
+      company_email: "Company Email",
+      additional_message: "Additional Message (Optional)"
     },
     rules: {
       nameRules: [
-        (v) => !!v || 'Name is required',
-        (v) => (v && v.length <= 30) || 'Name must be less than 30 characters',
+        (v) => !!v || "Name is required",
+        (v) => (v && v.length <= 30) || "Name must be less than 30 characters"
       ],
       emailRules: [
-        (v) => !!v || 'E-mail is required',
-        (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-      ],
-    },
+        (v) => !!v || "E-mail is required",
+        (v) => /.+@.+\..+/.test(v) || "E-mail must be valid"
+      ]
+    }
   }),
   methods: {
     sendForm() {
-      this.$refs.form.reset()
-    },
-  },
-}
+      this.$refs.form.reset();
+    }
+  }
+};
 </script>
 
 <style scoped></style>

@@ -1,15 +1,14 @@
 <template>
   <div>
     <Banner
-      :image-src="banner.image_src"
-      :title-one="banner.title_one"
-      :title-two="banner.title_two"
+      img-width="10rem"
+      img="/character-15.svg"
+      :title="banner.title_one"
       :description="banner.description"
     />
 
-    <v-container class="mt-15">
-      <h2 class="page-titles text-center">Ways to support us</h2>
-      <v-row class="my-10">
+    <v-container style="margin-top: -5%">
+      <v-row class="mb-10">
         <v-col
           v-for="(support, i) in support_ways"
           :key="i"
@@ -18,7 +17,10 @@
           md="3"
           class="mx-auto"
         >
-          <v-card class="shadow pt-2 pr-2 pl-2 pb-10" height="100%">
+          <v-card
+            class="shadow"
+            style="height: 100%; padding: 5px; background-color: white"
+          >
             <v-img :src="support.image" style="max-height: 15rem" />
             <v-card-title style="color: #545465">
               {{ support.title | uppercase }}
@@ -56,84 +58,84 @@
 </template>
 
 <script>
-import Banner from '@/components/Core/Banner'
-import InterviewForm from '@/components/Support/InterviewForm'
-import MentorshipForm from '@/components/Support/MentorshipForm'
-import QandAForm from '@/components/Support/QandAForm'
+import Banner from "@/components/Core/TextOnlyBanner";
+import InterviewForm from "@/components/Support/InterviewForm";
+import MentorshipForm from "@/components/Support/MentorshipForm";
+import QandAForm from "@/components/Support/QandAForm";
 
 export default {
   components: {
     Banner,
     InterviewForm,
     MentorshipForm,
-    QandAForm,
+    QandAForm
   },
   filters: {
     uppercase(value) {
-      if (!value) return ''
-      return value.toUpperCase()
-    },
+      if (!value) return "";
+      return value.toUpperCase();
+    }
   },
   data: () => ({
     model: 0,
-    colors: ['primary', 'secondary', 'yellow darken-2', 'red', 'orange'],
+    colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
     banner: {
-      image_src: 'https://i.ibb.co/xMHdzk6/team-hero-3.jpg',
-      title_one: 'Be part of our journey',
-      title_two: 'Support us',
-      description: 'You are helping A2SV to train more students in Africa',
+      image_src: "https://i.ibb.co/xMHdzk6/team-hero-3.jpg",
+      title_one: "Be part of our journey",
+      title_two: "Support us",
+      description: "You are helping A2SV to train more students in Africa"
     },
     support_ways: [
       {
         // image: 'https://i.ibb.co/Jn02MkP/donate.png',
-        image: '/donate.svg',
-        title: 'Donate',
+        image: "/mock.svg",
+        title: "Donate",
         description:
-          'Help upskill more developers and launch new digital solution in Africa.',
-        button_text: 'Go To PayPal',
+          "Help to upskill more developers and launch new digital solution in Africa.",
+        button_text: "Go To PayPal"
       },
       {
         // image: 'https://i.ibb.co/GPLyPHM/hr.jpg',
-        image: '/interview.svg',
-        title: 'Interviews',
+        image: "/mock.svg",
+        title: "Interviews",
         description:
-          'Connect our students with your company for internship positions.',
-        button_text: 'Contact Us',
+          "Connect our students with your company for internship positions.",
+        button_text: "Contact Us"
       },
       {
         // image:
         //   'https://i.ibb.co/4tsyJwp/Employees-giving-hands-and-helping-colleagues-to-walk-upstairs-Team-giving-support-growing-together.jpg',
-        image: '/mock.svg',
-        title: 'Mentorship',
-        description: 'We want experienced people to guide our students.',
-        button_text: 'Contact Us',
+        image: "/mock.svg",
+        title: "Mentorship",
+        description: "We want experienced people to guide our students.",
+        button_text: "Contact Us"
       },
       {
         // image: 'https://i.ibb.co/GnnVbNf/q-a.jpg',
-        image: '/question.svg',
-        title: 'Q & A',
+        image: "/mock.svg",
+        title: "Q & A",
         description:
           "Share your story with us and let's have a fun Q & A session.",
-        button_text: 'Request',
-      },
+        button_text: "Request"
+      }
     ],
     form_type: {
       Interviews: false,
       Mentorship: false,
-      'Q & A': false,
-    },
+      "Q & A": false
+    }
   }),
   methods: {
     showForm(title) {
-      this.form_type[title] = true
+      this.form_type[title] = true;
       for (const type in this.form_type) {
         if (type !== title) {
-          this.form_type[type] = false
+          this.form_type[type] = false;
         }
       }
-    },
-  },
-}
+    }
+  }
+};
 </script>
 
 <style scoped>

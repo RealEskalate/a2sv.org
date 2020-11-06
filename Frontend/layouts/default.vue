@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import AppBar from '~/components/Core/AppBar'
-import AppFooter from '~/components/Core/AppFooter'
+import AppBar from "~/components/Core/AppBar";
+import AppFooter from "~/components/Core/AppFooter";
 export default {
-  components: { AppBar, AppFooter },
-}
+  components: { AppBar, AppFooter }
+};
 </script>
 
 <style>

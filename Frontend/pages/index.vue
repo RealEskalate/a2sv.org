@@ -3,7 +3,9 @@
     <v-container>
       <v-row style="mt-10">
         <v-col cols="12" sm="5">
-          <h2 class="motto">Creating opportunities for african students</h2>
+          <h2 class="motto">
+            Creating opportunities for african students
+          </h2>
           <p
             class="description blackish mt-md-7"
             style="
@@ -15,19 +17,20 @@
             A2SV offers training program that initially focuses on
             problem-solving and personal development.
           </p>
-          <button class="btn">Learn More</button>
+          <button class="btn">
+            Learn More
+          </button>
         </v-col>
         <v-col cols="12" sm="7" class="px-5 mx-auto" max-height="60vh">
-          <v-sheet class="elevation-4 plyr">
-            <vue-plyr>
-              <video
-                poster="/banner.jpg"
-                src="/video.webm"
-                width="750px"
-                style="background: transparent !important"
-              ></video>
-            </vue-plyr>
-          </v-sheet>
+          <vue-plyr>
+            <video
+              preload="none"
+              poster="/lidia.webp"
+              src="/video.webm"
+              width="750px"
+              style="background: transparent !important"
+            />
+          </vue-plyr>
         </v-col>
       </v-row>
       <div class="about-us my-10">
@@ -54,7 +57,9 @@
                 professionals in the Silicon valley.
               </v-card-text>
               <v-card-actions>
-                <button class="btn programmes">Learn More</button>
+                <button class="btn programmes">
+                  Learn More
+                </button>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -76,7 +81,9 @@
       <div class="about-us mt-md-5">
         <div class="row">
           <div class="col-md-8 ml-auto mr-auto text-center">
-            <h2 class="page-titles">Achievements</h2>
+            <h2 class="page-titles">
+              Achievements
+            </h2>
             <p class="description blackish mt-md-7">
               First trainees achieved an unheard rate of 27% acceptance at
               Google software engineering internship interviews.
@@ -87,7 +94,7 @@
             style="border-radius: 10px"
           >
             <v-img
-              src="/banner.jpg"
+              src="/ise.webp"
               class="col-sm-6"
               style="max-height: 26rem; vertical-align: top"
             />
@@ -100,10 +107,11 @@
               showed me one better direction to reach the level that I want to
               get to. The challenges and the problems we solve every day has
               showed to pay attention to the important parts of any problem and
-              come up with an efficient solution. <br />
-              <b class="blackish" style="font-size: 16px"
-                >Mohammed Alewi, 4th year SE student</b
-              >
+              come up with an efficient solution. <br>
+              <b
+                class="blackish"
+                style="font-size: 16px"
+              >Mohammed Alewi, 4th year SE student</b>
             </p>
           </v-card>
         </div>
@@ -111,7 +119,9 @@
     </v-container>
 
     <v-row class="my-md-10">
-      <h2 class="page-titles col-12 mb-5 text-center mx-auto">You can help</h2>
+      <h2 class="page-titles col-12 mb-5 text-center mx-auto">
+        You can help
+      </h2>
       <v-col cols="12" sm="5" class="mx-auto" style="height: 100%">
         <v-card class="shadow px-5 py-10" min-height="268">
           <h1 class="ml-5 mb-3" style="font-family: Lato, sans-serif">
@@ -121,7 +131,9 @@
             Interview these folks for software engineering internship positions
             at your company.
           </p>
-          <p class="px-5 donate-p">Our partners are:</p>
+          <p class="px-5 donate-p">
+            Our partners are:
+          </p>
           <v-row class="mx-auto px-3">
             <v-col
               v-for="icon in icons"
@@ -134,7 +146,9 @@
             </v-col>
           </v-row>
           <v-card-actions>
-            <button class="btn mt-2 mb-0">Learn More</button>
+            <button class="btn mt-2 mb-0">
+              Learn More
+            </button>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -163,8 +177,9 @@
                 bottom: 3.2rem;
                 position: absolute;
               "
-              >Donate</v-btn
             >
+              Donate
+            </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -173,27 +188,30 @@
 </template>
 <script>
 export default {
-  name: 'LandingPage',
+  name: "LandingPage",
   data() {
     return {
       icons: [
-        { logo: 'google-icon.svg', width: '2rem' },
-        { logo: 'palantir-icon.svg', width: '30rem' },
-        { logo: 'coinbase-icon.svg', width: '15rem' },
-        { logo: 'eskalate-icon.svg', width: '3rem' },
+        { logo: "google-icon.svg", width: "2rem" },
+        { logo: "palantir-icon.svg", width: "30rem" },
+        { logo: "coinbase-icon.svg", width: "15rem" },
+        { logo: "eskalate-icon.svg", width: "3rem" }
         // { logo: 'aau-icon.webp', width: '3rem' },
-      ],
-    }
+      ]
+    };
   },
-}
+  mounted() {
+    this.$store.dispatch("setActiveLink", "light");
+  }
+};
 </script>
 <style>
 @import 'https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css';
 .motto {
   font-family: Lato, serif !important;
   color: #334ac0 !important;
-  font-size: clamp(1rem, 0.4231rem + 2.5641vw, 3.5rem) !important;
-  line-height: 8vh;
+  font-size: clamp(2rem, 0.5rem + 2.6vw, 4rem) !important;
+  line-height: clamp(3rem, 0.8rem + 2.8vw, 4rem) !important;
   font-weight: 900;
 }
 .page-titles {

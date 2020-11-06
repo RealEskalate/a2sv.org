@@ -1,68 +1,111 @@
 <template>
   <div>
-    <Banner
-      :image-src="banner.image_src"
-      :title-one="banner.title_one"
-      :title-two="banner.title_two"
-      :description="banner.description"
+    <Banner />
+    <navigation-drawer
+      v-if="drawer"
+      :drawer="drawer"
+      :user-id="userId"
+      @toggle-drawer="drawer = !drawer"
     />
-    <navigation-drawer :drawer="drawer" />
     <v-container class="grey lighten-5">
-      <h1 class="text-center my-3">THE TEAM</h1>
+      <h1 class="text-center my-5" style="color: #2b2a35">
+        Core Team
+      </h1>
       <v-row no-gutters>
         <v-col
-          v-for="n in 12"
-          :key="n"
+          v-for="(member, i) in getTeamMembers"
+          :key="i"
           cols="12"
           sm="4"
           class="my-4"
+          @click="userId = i"
           @click.stop="drawer = !drawer"
         >
-          <item />
+          <v-card class="mx-auto" max-width="344" tile flat>
+            <div class="d-flex profile">
+              <v-avatar class="ma-0" size="150" tile>
+                <v-img :src="baseUrl + '/img' + member.img" />
+              </v-avatar>
+
+              <v-card-text class="headline">
+                <div class="mb-1">
+                  <p class="country">
+                    Ethiopia
+                  </p>
+                </div>
+                <div>
+                  <p class="name">
+                    {{ member.name }}
+                  </p>
+                </div>
+
+                <div>
+                  <p class="job">
+                    {{ member.career }}
+                  </p>
+                </div>
+              </v-card-text>
+            </div>
+          </v-card>
         </v-col>
       </v-row>
     </v-container>
-    <v-divider></v-divider>
-    <v-card flat class="row col-sm-8 px-0 py-0 mx-auto my-8">
-      <v-img
-        src="/banner.jpg"
-        class="col-sm-6"
-        style="max-height: 26rem; vertical-align: top"
-      />
-      <p
-        class="col-sm-6 blackish px-5 py-4"
-        style="line-height: 30px; font-size: 17px"
-      >
-        Join US on this Journey reach the level that I want to get to. The
-        challenges and the problems we solve every day has showed to pay
-        attention to the important parts of any problem and come up with an
-        efficient solution. <br />
-
-        <v-btn class="my-6" tile outlined> Work with us </v-btn>
-      </p>
-    </v-card>
   </div>
 </template>
 
 <script>
-import Item from '@/components/Teams/Item'
-import Banner from '@/components/Core/Banner'
-import NavigationDrawer from '~/components/Teams/NavigationDrawer'
+import { mapGetters } from "vuex";
+import Banner from "@/components/Core/Banner";
 
 export default {
-  components: { Banner, Item, NavigationDrawer },
+  components: {
+    Banner,
+    NavigationDrawer: () => import("~/components/Teams/NavigationDrawer")
+  },
   data() {
     return {
       drawer: null,
-      banner: {
-        image_src: 'https://i.ibb.co/xMHdzk6/team-hero-3.jpg',
-        title_one: 'Meet Our Team',
-        title_two: 'Talented Students',
-        description: 'Working together for the common good',
-      },
-    }
+      userId: null,
+      baseUrl: process.env.baseUrl
+    };
   },
-}
+  computed: {
+    ...mapGetters("team", ["getTeamMembers"])
+  },
+  created() {
+    this.$store.dispatch("team/fetchMembers");
+  }
+};
 </script>
 
-<style></style>
+<style>
+.headline div {
+  margin-bottom: -0.3em;
+}
+.country {
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: 300;
+  margin: 0 !important;
+}
+.name {
+  font-size: large;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 0 !important;
+}
+.job {
+  font-family: unset;
+  font-size: medium;
+  font-weight: lighter;
+  margin: 0 !important;
+}
+.v-avatar {
+  border-radius: 0;
+}
+.profile:hover {
+  cursor: pointer;
+  background-color: rgb(49, 151, 235);
+  color: white;
+}
+</style>

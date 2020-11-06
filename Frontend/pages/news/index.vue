@@ -1,6 +1,11 @@
 <template>
   <div>
-    <banner title="News" />
+    <banner
+      img-width="18rem"
+      title="News"
+      description="Get the Latest on Us"
+      img="./news.svg"
+    />
 
     <v-container class="my-15">
       <h2 class="display-1">

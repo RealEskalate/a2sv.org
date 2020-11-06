@@ -7,8 +7,8 @@
       :description="banner.description"
     />
 
-    <v-container style="margin-top: -5%">
-      <v-row class="mb-10">
+    <v-container class="mb-12" style="margin-top: -10%">
+      <v-row class="mb-12">
         <v-col
           v-for="(support, i) in support_ways"
           :key="i"
@@ -18,8 +18,8 @@
           class="mx-auto"
         >
           <v-card
-            class="shadow"
-            style="height: 100%; padding: 5px; background-color: white"
+            class="shadow-sm"
+            style="height: 100%;"
           >
             <v-img :src="support.image" style="max-height: 15rem" />
             <v-card-title style="color: #545465" class="justify-center">
@@ -29,20 +29,22 @@
               {{ support.description }}
             </v-card-text>
             <v-card-actions class="justify-center">
-              <button v-if="support.title === 'Donate'" class="btn programmes">
+              <v-btn v-if="support.title === 'Donate'" outlined class="text-capitalize my-3" color="primary">
                 {{ support.button_text }}
-              </button>
-              <button
+              </v-btn>
+              <v-btn
                 v-else
                 v-scroll-to="{
                   el: '#form_card',
                   offset: -60,
                 }"
-                class="btn programmes"
+                outlined
+                class="text-capitalize my-3"
+                color="primary"
                 @click="showForm(support.title)"
               >
                 {{ support.button_text }}
-              </button>
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -314,10 +316,6 @@ export default {
 <style scoped>
 .v-card {
   transition: opacity 0.4s ease-in-out;
-}
-
-.v-card:not(.on-hover) {
-  opacity: 0.9;
 }
 
 .btn {

@@ -2,11 +2,11 @@
 <svg viewBox="0 0 250 100" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="SvgjsLinearGradient1685">
-      <stop offset="0" stop-color="#2d388a" id="SvgjsStop1686"/>
+      <stop offset="0" stop-color="#334aC0" id="SvgjsStop1686"/>
       <stop offset="1" stop-color="#00aeef" id="SvgjsStop1687"/>
     </linearGradient>
     <linearGradient id="SvgjsLinearGradient1688">
-      <stop offset="0" stop-color="#2d388a" id="SvgjsStop1689"/>
+      <stop offset="0" stop-color="#334aC0" id="SvgjsStop1689"/>
       <stop offset="1" stop-color="#00aeef" id="SvgjsStop1690"/>
     </linearGradient>
   </defs>

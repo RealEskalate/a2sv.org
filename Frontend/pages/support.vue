@@ -1,15 +1,14 @@
 <template>
   <div>
     <Banner
-      :image-src="banner.image_src"
-      :title-one="banner.title_one"
-      :title-two="banner.title_two"
+      img-width="10rem"
+      img="/character-15.svg"
+      :title="banner.title_one"
       :description="banner.description"
     />
 
-    <v-container class="mt-15">
-      <h2 class="page-titles text-center">Ways to support us</h2>
-      <v-row class="my-10">
+    <v-container style="margin-top: -5%">
+      <v-row class="mb-10">
         <v-col
           v-for="(support, i) in support_ways"
           :key="i"
@@ -18,7 +17,10 @@
           md="3"
           class="mx-auto"
         >
-          <v-card class="shadow" style="height: 100%; padding: 5px">
+          <v-card
+            class="shadow"
+            style="height: 100%; padding: 5px; background-color: white"
+          >
             <v-img :src="support.image" style="max-height: 15rem" />
             <v-card-title style="color: #545465" class="justify-center">
               {{ support.title | uppercase }}
@@ -120,9 +122,10 @@
           v-else
           class="justify-center blackish"
           style="color: #545465"
-          >Q and A</v-card-title
         >
-        <v-divider class="mb-5"></v-divider>
+          Q and A
+        </v-card-title>
+        <v-divider class="mb-5" />
         <v-form ref="form" v-model="valid" class="pa-5">
           <v-text-field
             v-model="contact.name"
@@ -187,125 +190,125 @@
 </template>
 
 <script>
-import Banner from '@/components/Core/Banner'
+import Banner from "@/components/Core/TextOnlyBanner";
 
 export default {
   components: {
-    Banner,
+    Banner
   },
   filters: {
     uppercase(value) {
-      if (!value) return ''
-      return value.toUpperCase()
-    },
+      if (!value) return "";
+      return value.toUpperCase();
+    }
   },
   data: () => ({
     model: 0,
-    colors: ['primary', 'secondary', 'yellow darken-2', 'red', 'orange'],
+    colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
     banner: {
-      image_src: 'https://i.ibb.co/xMHdzk6/team-hero-3.jpg',
-      title_one: 'Be part of our journey',
-      title_two: 'Support us',
-      description: 'You are helping A2SV to train more students in Africa',
+      image_src: "https://i.ibb.co/xMHdzk6/team-hero-3.jpg",
+      title_one: "Be part of our journey",
+      title_two: "Support us",
+      description: "You are helping A2SV to train more students in Africa"
     },
     support_ways: [
       {
         // image: 'https://i.ibb.co/Jn02MkP/donate.png',
-        image: '/mock.svg',
-        title: 'Donate',
+        image: "/mock.svg",
+        title: "Donate",
         description:
-          'Help to upskill more developers and launch new digital solution in Africa.',
-        button_text: 'Go To PayPal',
+          "Help to upskill more developers and launch new digital solution in Africa.",
+        button_text: "Go To PayPal"
       },
       {
         // image: 'https://i.ibb.co/GPLyPHM/hr.jpg',
-        image: '/mock.svg',
-        title: 'Interviews',
+        image: "/mock.svg",
+        title: "Interviews",
         description:
-          'Connect our students with your company for internship positions.',
-        button_text: 'Contact Us',
+          "Connect our students with your company for internship positions.",
+        button_text: "Contact Us"
       },
       {
         // image:
         //   'https://i.ibb.co/4tsyJwp/Employees-giving-hands-and-helping-colleagues-to-walk-upstairs-Team-giving-support-growing-together.jpg',
-        image: '/mock.svg',
-        title: 'Mentorship',
-        description: 'We want experienced people to guide our students.',
-        button_text: 'Contact Us',
+        image: "/mock.svg",
+        title: "Mentorship",
+        description: "We want experienced people to guide our students.",
+        button_text: "Contact Us"
       },
       {
         // image: 'https://i.ibb.co/GnnVbNf/q-a.jpg',
-        image: '/mock.svg',
-        title: 'Q & A',
+        image: "/mock.svg",
+        title: "Q & A",
         description:
           "Share your story with us and let's have a fun Q & A session.",
-        button_text: 'Request',
-      },
+        button_text: "Request"
+      }
     ],
     valid: false,
     contact: {
-      name: '',
-      email: '',
-      additional_message: '',
-      experience: '',
-      story: '',
+      name: "",
+      email: "",
+      additional_message: "",
+      experience: "",
+      story: ""
     },
     labels: {
-      name: 'Name',
-      email: 'Email',
-      company_email: 'Company Email',
-      additional_message: 'Additional Message (Optional)',
-      experience: 'Experience',
-      story: 'Story',
+      name: "Name",
+      email: "Email",
+      company_email: "Company Email",
+      additional_message: "Additional Message (Optional)",
+      experience: "Experience",
+      story: "Story"
     },
     form_type: {
       interview: false,
       mentorship: false,
-      q_and_a: false,
+      q_and_a: false
     },
     rules: {
       nameRules: [
-        (v) => !!v || 'Name is required',
-        (v) => (v && v.length <= 30) || 'Name must be less than 30 characters',
+        (v) => !!v || "Name is required",
+        (v) => (v && v.length <= 30) || "Name must be less than 30 characters"
       ],
       emailRules: [
-        (v) => !!v || 'E-mail is required',
-        (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+        (v) => !!v || "E-mail is required",
+        (v) => /.+@.+\..+/.test(v) || "E-mail must be valid"
       ],
       experienceRules: [
-        (v) => !!v || 'Experience is required',
+        (v) => !!v || "Experience is required",
         (v) =>
           (v && v.length <= 150) ||
-          'Experience must be less than 150 characters',
+          "Experience must be less than 150 characters"
       ],
       storyRules: [
-        (v) => !!v || 'Story is required',
+        (v) => !!v || "Story is required",
         (v) =>
-          (v && v.length <= 150) || 'Story must be less than 150 characters',
-      ],
-    },
+          (v && v.length <= 150) || "Story must be less than 150 characters"
+      ]
+    }
   }),
   methods: {
     showForm(title) {
-      if (title === 'Interviews') {
-        this.form_type.interview = true
-        this.form_type.mentorship = false
-        this.form_type.q_and_a = false
-      } else if (title === 'Mentorship') {
-        this.form_type.interview = false
-        this.form_type.mentorship = true
-        this.form_type.q_and_a = false
-      } else if (title === 'Q & A') {
-        this.form_type.interview = false
-        this.form_type.mentorship = false
-        this.form_type.q_and_a = true
+      if (title === "Interviews") {
+        this.form_type.interview = true;
+        this.form_type.mentorship = false;
+        this.form_type.q_and_a = false;
+      } else if (title === "Mentorship") {
+        this.form_type.interview = false;
+        this.form_type.mentorship = true;
+        this.form_type.q_and_a = false;
+      } else if (title === "Q & A") {
+        this.form_type.interview = false;
+        this.form_type.mentorship = false;
+        this.form_type.q_and_a = true;
       }
     },
     sendForm() {
-      this.$refs.form.reset()
-    },
-  },
-}
+      this.$refs.form.reset();
+    }
+  }
+};
 </script>
 
 <style scoped>

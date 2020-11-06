@@ -1,37 +1,63 @@
 <template v-slot:activator="{ on, attrs }">
-  <v-parallax dark class="hero mb-3" :src="imageSrc">
-    <v-row align="center" justify="end">
-      <v-col class="mr-8" cols="4">
-        <h3 class="text-uppercase font-weight-thin">{{ titleOne }}</h3>
-        <v-divider></v-divider>
-        <br />
-        <h1 class="text-uppercase">{{ titleTwo }}</h1>
-        <h2 class="text-uppercase font-weight-thin upper-case">
-          {{ description }}
-        </h2>
-      </v-col>
-    </v-row>
-  </v-parallax>
+  <div id="inspire">
+    <v-parallax src="/" class="parallax" height="450" jumbotron>
+      <v-container>
+        <v-row>
+          <v-col md="4" xl="5">
+            <h1
+              class="motto text-center"
+              style="
+                font-family: Lato, sans-serif;
+                color: white !important;
+                font-size: 58px !important;
+                line-height: 68px !important;
+              "
+            >
+              A passionate team
+            </h1>
+            <p class="text-center mt-5" style="font-size: 20px">
+              Diversity is at the core of our Vision, Mission, and Values.
+            </p>
+          </v-col>
+          <v-col
+            md="8"
+            xl="6"
+            class="pr-xl-12"
+            style="bottom: 0; position: absolute; right: 0; padding-bottom: 0"
+          >
+            <v-img src="/team.webp" style="min-height: 10rem" />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-parallax>
+  </div>
 </template>
-
 <script>
 export default {
-  name: 'HeroV2',
-  props: {
-    imageSrc: String,
-    titleOne: String,
-    titleTwo: String,
-    description: String,
-  },
-}
+  mounted() {
+    this.$store.dispatch("setActiveLink", "colored");
+  }
+};
 </script>
-<style scoped>
-.hero {
-  margin: -1em;
-  /* https://i.ibb.co/y82WVwJ/team-hero.jpg
-    https://i.ibb.co/KsQGgwh/team-hero-2.jpg */
-}
-.theme--light.v-divider {
-  border-color: whitesmoke !important;
+<style>
+/*@import 'node_modules/vuetify/dist/vuetify.min.css';*/
+.parallax {
+  background: rgb(73, 102, 247);
+  background: -moz-linear-gradient(
+    121deg,
+    rgba(73, 102, 247, 1) 0%,
+    rgba(130, 83, 255, 1) 64%
+  );
+  background: -webkit-linear-gradient(
+    121deg,
+    rgba(73, 102, 247, 1) 0%,
+    rgba(130, 83, 255, 1) 64%
+  );
+  background: linear-gradient(
+    121deg,
+    rgba(73, 102, 247, 1) 0%,
+    rgba(130, 83, 255, 1) 64%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4966f7",endColorstr="#8253ff",GradientType=1);
 }
 </style>

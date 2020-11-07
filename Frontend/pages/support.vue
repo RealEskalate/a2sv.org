@@ -7,8 +7,8 @@
       :description="banner.description"
     />
 
-    <v-container class="mb-12" style="margin-top: -10%">
-      <v-row class="mb-12">
+    <v-container style="margin-top: -75px">
+      <v-row class="mb-10">
         <v-col
           v-for="(support, i) in support_ways"
           :key="i"
@@ -18,16 +18,16 @@
           class="mx-auto"
         >
           <v-card
-            class="shadow-sm"
-            style="height: 100%;"
+            class="shadow-sm d-flex flex-column"
+            style="height: 100%"
           >
-            <v-img :src="support.image" style="max-height: 15rem" />
-            <v-card-title style="color: #545465" class="justify-center">
+            <v-card-title class="justify-center" style="color: #545465">
               {{ support.title | uppercase }}
             </v-card-title>
             <v-card-text class="text-center">
               {{ support.description }}
             </v-card-text>
+            <v-spacer />
             <v-card-actions class="justify-center">
               <v-btn v-if="support.title === 'Donate'" outlined class="text-capitalize my-3" color="primary">
                 {{ support.button_text }}
@@ -48,145 +48,13 @@
             </v-card-actions>
           </v-card>
         </v-col>
-        <!-- <template v-for="(support, i) in support_ways">
-          <v-col :key="i" col="12" sm="3">
-            <v-hover v-slot="{ hover }" disabled>
-              <v-card
-                max-width="374"
-                outlined
-                tile
-                :elevation="hover ? 10 : 0"
-                :class="{ 'on-hover': hover }"
-              >
-                <v-img height="150" :src="support.image"></v-img>
-
-                <v-card-title class="justify-center">
-                  {{ support.title | uppercase }}
-                </v-card-title>
-
-                <v-card-text class="text-center">
-                  <div>
-                    {{ support.description }}
-                  </div>
-                </v-card-text>
-
-                <v-divider class="mx-4"></v-divider>
-
-                <v-card-actions class="justify-center">
-                  <v-btn
-                    v-if="support.title === 'Donate'"
-                    color="primary"
-                    text
-                    @click="showForm(support.title)"
-                  >
-                    {{ support.button_text }}
-                  </v-btn>
-                  <v-btn
-                    v-else
-                    v-scroll-to="{
-                      el: '#form_card',
-                      offset: -60,
-                    }"
-                    color="primary"
-                    text
-                    @click="showForm(support.title)"
-                  >
-                    {{ support.button_text }}
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-hover>
-          </v-col>
-        </template> -->
       </v-row>
 
-      <v-card
-        v-if="form_type.interview || form_type.mentorship || form_type.q_and_a"
-        id="form_card"
-        class="shadow mx-auto my-15"
-        max-width="500"
-      >
-        <v-card-title
-          v-if="form_type.interview"
-          class="justify-center"
-          style="color: #545465"
-        >
-          Interviews
-        </v-card-title>
-        <v-card-title
-          v-else-if="form_type.mentorship"
-          class="justify-center blackish"
-          style="color: #545465"
-        >
-          Mentorship
-        </v-card-title>
-        <v-card-title
-          v-else
-          class="justify-center blackish"
-          style="color: #545465"
-        >
-          Q and A
-        </v-card-title>
-        <v-divider class="mb-5" />
-        <v-form ref="form" v-model="valid" class="pa-5">
-          <v-text-field
-            v-model="contact.name"
-            class="v-card--shaped"
-            dense
-            :label="labels.name"
-            :rules="rules.nameRules"
-            counter="30"
-          />
-          <v-text-field
-            v-if="form_type.interview"
-            v-model="contact.email"
-            class="v-card--shaped"
-            dense
-            :label="labels.company_email"
-            :rules="rules.emailRules"
-          />
-          <v-text-field
-            v-else
-            v-model="contact.email"
-            class="v-card--shaped"
-            dense
-            :label="labels.email"
-            :rules="rules.emailRules"
-          />
-          <v-textarea
-            v-if="form_type.interview"
-            v-model="contact.message"
-            class="v-card--shaped"
-            dense
-            rows="5"
-            :label="labels.additional_message"
-          />
-          <v-textarea
-            v-else-if="form_type.mentorship"
-            v-model="contact.message"
-            class="v-card--shaped"
-            dense
-            rows="5"
-            :label="labels.experience"
-            :rules="rules.experienceRules"
-          />
-          <v-textarea
-            v-else
-            v-model="contact.message"
-            class="v-card--shaped"
-            dense
-            rows="5"
-            :label="labels.story"
-            :rules="rules.storyRules"
-          />
-          <div class="text-center py-3">
-            <v-btn width="100" class="primary mx-auto" @click="sendForm">
-              Send
-              <v-icon class="ml-2" small />
-            </v-btn>
-          </div>
-        </v-form>
-      </v-card>
+      <div id="form_card">
+        <InterviewForm v-if="getForm(0)" />
+        <MentorshipForm v-if="getForm(1)" />
+        <QandAForm v-if="getForm(2)" />
+      </div>
     </v-container>
   </div>
 </template>
@@ -196,7 +64,10 @@ import Banner from "@/components/Core/TextOnlyBanner";
 
 export default {
   components: {
-    Banner
+    Banner,
+    InterviewForm: () => import("@/components/Support/InterviewForm"),
+    MentorshipForm: () => import("@/components/Support/MentorshipForm"),
+    QandAForm: () => import("@/components/Support/QandAForm")
   },
   filters: {
     uppercase(value) {
@@ -215,99 +86,38 @@ export default {
     },
     support_ways: [
       {
-        // image: 'https://i.ibb.co/Jn02MkP/donate.png',
-        image: "/mock.svg",
         title: "Donate",
         description:
-          "Help to upskill more developers and launch new digital solution in Africa.",
+          "Help upskill more developers and launch new digital solution in Africa",
         button_text: "Go To PayPal"
       },
       {
-        // image: 'https://i.ibb.co/GPLyPHM/hr.jpg',
-        image: "/mock.svg",
         title: "Interviews",
         description:
-          "Connect our students with your company for internship positions.",
+          "Connect our students with your company for internship positions",
         button_text: "Contact Us"
       },
       {
-        // image:
-        //   'https://i.ibb.co/4tsyJwp/Employees-giving-hands-and-helping-colleagues-to-walk-upstairs-Team-giving-support-growing-together.jpg',
-        image: "/mock.svg",
         title: "Mentorship",
-        description: "We want experienced people to guide our students.",
+        description: "We want experienced people to guide our students",
         button_text: "Contact Us"
       },
       {
-        // image: 'https://i.ibb.co/GnnVbNf/q-a.jpg',
-        image: "/mock.svg",
         title: "Q & A",
         description:
-          "Share your story with us and let's have a fun Q & A session.",
+          "Share your story with us and let's have a fun Q & A session",
         button_text: "Request"
       }
     ],
-    valid: false,
-    contact: {
-      name: "",
-      email: "",
-      additional_message: "",
-      experience: "",
-      story: ""
-    },
-    labels: {
-      name: "Name",
-      email: "Email",
-      company_email: "Company Email",
-      additional_message: "Additional Message (Optional)",
-      experience: "Experience",
-      story: "Story"
-    },
-    form_type: {
-      interview: false,
-      mentorship: false,
-      q_and_a: false
-    },
-    rules: {
-      nameRules: [
-        (v) => !!v || "Name is required",
-        (v) => (v && v.length <= 30) || "Name must be less than 30 characters"
-      ],
-      emailRules: [
-        (v) => !!v || "E-mail is required",
-        (v) => /.+@.+\..+/.test(v) || "E-mail must be valid"
-      ],
-      experienceRules: [
-        (v) => !!v || "Experience is required",
-        (v) =>
-          (v && v.length <= 150) ||
-          "Experience must be less than 150 characters"
-      ],
-      storyRules: [
-        (v) => !!v || "Story is required",
-        (v) =>
-          (v && v.length <= 150) || "Story must be less than 150 characters"
-      ]
-    }
+    form_type: "",
+    forms: ["Interviews", "Mentorship", "Q & A"]
   }),
   methods: {
     showForm(title) {
-      if (title === "Interviews") {
-        this.form_type.interview = true;
-        this.form_type.mentorship = false;
-        this.form_type.q_and_a = false;
-      } else if (title === "Mentorship") {
-        this.form_type.interview = false;
-        this.form_type.mentorship = true;
-        this.form_type.q_and_a = false;
-      } else if (title === "Q & A") {
-        this.form_type.interview = false;
-        this.form_type.mentorship = false;
-        this.form_type.q_and_a = true;
-      }
+      this.form_type = title;
     },
-    sendForm() {
-      this.$refs.form.reset();
+    getForm(id) {
+      return this.form_type === this.forms[id];
     }
   }
 };
@@ -358,5 +168,14 @@ export default {
   font-size: 36px;
   line-height: 30px;
   font-weight: 800;
+}
+.card-outter {
+  position: relative;
+  padding-bottom: 200px;
+}
+.card-actions {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
 }
 </style>

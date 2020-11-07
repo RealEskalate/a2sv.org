@@ -1,27 +1,27 @@
 <template>
   <v-container class="mt-12">
-    <v-container>
-      <v-row style="mt-10">
-        <v-col cols="12" sm="5">
-          <h2 class="motto">
-            Creating opportunities for african students
-          </h2>
-          <p
-            class="description blackish mt-md-7"
-            style="
+    <v-row class="my-12">
+      <v-col cols="12" sm="5">
+        <h2 class="motto">
+          Creating opportunities for african students
+        </h2>
+        <p
+          class="blackish mt-md-7"
+          style="
               font-size: 22px;
               line-height: 36px;
               font-family: Lato, sans-serif !important;
             "
-          >
-            A2SV offers training program that initially focuses on
-            problem-solving and personal development.
-          </p>
-          <button class="btn">
-            Learn More
-          </button>
-        </v-col>
-        <v-col cols="12" sm="7" class="px-5 mx-auto" max-height="60vh">
+        >
+          A2SV offers training program that initially focuses on
+          problem-solving and personal development.
+        </p>
+        <v-btn class="text-capitalize shadow-sm" depressed color="primary">
+          Learn More
+        </v-btn>
+      </v-col>
+      <v-col cols="12" sm="7" class="px-5 mx-auto" max-height="60vh">
+        <v-card class="shadow-sm overflow-hidden">
           <vue-plyr>
             <video
               preload="none"
@@ -31,75 +31,68 @@
               style="background: transparent !important"
             />
           </vue-plyr>
-        </v-col>
-      </v-row>
-      <div class="about-us my-10">
-        <div class="row">
-          <v-col cols="10" sm="6" md="3" class="mx-auto">
-            <v-card class="shadow" style="height: 100%; padding: 5px">
-              <v-img src="/train.svg" style="max-height: 15rem" />
-              <v-card-text>
-                First training initially focuses on problem-solving and personal
-                development.
-              </v-card-text>
-              <v-card-actions>
-                <button class="btn programmes" style="position: absolute">
-                  Learn More
-                </button>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-          <v-col cols="10" sm="6" md="3" class="mx-auto">
-            <v-card class="shadow" style="padding: 5px">
-              <v-img src="/mock.svg" style="max-height: 15rem" />
-              <v-card-text>
-                Mock interviews with peers, other trainees, and industry
-                professionals in the Silicon valley.
-              </v-card-text>
-              <v-card-actions>
-                <button class="btn programmes">
-                  Learn More
-                </button>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-          <v-col cols="10" sm="6" md="3" class="mx-auto">
-            <v-card class="shadow" style="height: 100%; padding: 5px">
-              <v-img src="/work.svg" style="max-height: 15rem" />
-              <v-card-text>
-                Trainees work on social projects with industry experts.
-              </v-card-text>
-              <v-card-actions>
-                <button class="btn programmes" style="position: absolute">
-                  Learn More
-                </button>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-        </div>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <v-row class="my-12 py-12 px-5">
+      <v-col
+        v-for="(action, i) in actions"
+        :key="'action' + i"
+        cols="10"
+        sm="6"
+        md="4"
+        class="px-10"
+      >
+        <v-card class="shadow-sm pa-5" style="height: 100%;">
+          <v-img :src="action.image" style="max-height: 15rem" />
+          <p class="body-1 mt-8 mb-6 text-center">
+            {{ action.description }}
+          </p>
+          <v-card-actions>
+            <v-btn
+              small
+              depressed
+              outlined
+              color="primary"
+              style="
+                    bottom: 1rem;
+                    left: 33%;
+                    position: absolute;
+                  "
+              class="text-capitalize"
+            >
+              {{ action.action }}
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <v-row class="px-10 my-12">
+      <div class="col-md-8 ml-auto mr-auto text-center">
+        <h2 class="display-2 font-weight-bold">
+          Achievements
+        </h2>
+        <p class="body-2 mt-md-7">
+          First trainees achieved an unheard rate of 27% acceptance at
+          Google software engineering internship interviews.
+        </p>
       </div>
-      <div class="about-us mt-md-5">
-        <div class="row">
-          <div class="col-md-8 ml-auto mr-auto text-center">
-            <h2 class="page-titles">
-              Achievements
-            </h2>
-            <p class="description blackish mt-md-7">
-              First trainees achieved an unheard rate of 27% acceptance at
-              Google software engineering internship interviews.
-            </p>
-          </div>
-          <v-card
-            class="row col-sm-8 px-0 py-0 shadow mx-auto my-4"
-            style="border-radius: 10px"
-          >
+      <v-card
+        max-width="900"
+        class="shadow-sm my-5 pa-0 mx-auto overflow-hidden"
+      >
+        <v-row>
+          <v-col class="pa-0" cols="12" sm="6">
             <v-img
-              src="/ise.webp"
-              class="col-sm-6"
-              style="max-height: 26rem; vertical-align: top"
+              cover
+              src="/lidia.webp"
+              style="height: 100%"
             />
+          </v-col>
+          <v-col class="pa-12" cols="12" sm="6">
             <p
-              class="col-sm-6 blackish px-5 py-4"
               style="line-height: 30px; font-size: 17px"
             >
               Before I joined A2SV, I was clueless on what path to take in order
@@ -108,81 +101,96 @@
               get to. The challenges and the problems we solve every day has
               showed to pay attention to the important parts of any problem and
               come up with an efficient solution. <br>
-              <b
-                class="blackish"
+              <v-card-subtitle
                 style="font-size: 16px"
-              >Mohammed Alewi, 4th year SE student</b>
+              >
+                Mohammed Alewi, 4th year SE student
+              </v-card-subtitle>
             </p>
-          </v-card>
-        </div>
+          </v-col>
+        </v-row>
+      </v-card>
+    </v-row>
+
+    <v-row class="my-md-10 py-12">
+      <div class="col-md-8 ml-auto mr-auto text-center">
+        <h2 class="display-2 font-weight-bold">
+          You Can Help
+        </h2>
       </div>
-    </v-container>
-
-    <v-row class="my-md-10">
-      <h2 class="page-titles col-12 mb-5 text-center mx-auto">
-        You can help
-      </h2>
-      <v-col cols="12" sm="5" class="mx-auto" style="height: 100%">
-        <v-card class="shadow px-5 py-10" min-height="268">
-          <h1 class="ml-5 mb-3" style="font-family: Lato, sans-serif">
-            Become A2SV partner
-          </h1>
-          <p class="donate-p px-5">
-            Interview these folks for software engineering internship positions
-            at your company.
-          </p>
-          <p class="px-5 donate-p">
-            Our partners are:
-          </p>
-          <v-row class="mx-auto px-3">
-            <v-col
-              v-for="icon in icons"
-              :key="icon.logo"
-              cols="3"
-              align-self="center"
-              class="mx-auto"
-            >
-              <v-img :src="'/' + icon.logo" :width="icon.width" />
-            </v-col>
-          </v-row>
-          <v-card-actions>
-            <button class="btn mt-2 mb-0">
-              Learn More
-            </button>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-
-      <v-col cols="12" sm="5" class="mx-auto">
-        <v-card
-          class="shadow px-5 py-10 donate"
-          height="100%"
-          style="border-radius: 10px"
-        >
-          <h1
-            class="text-center mb-3 text--white"
-            style="font-family: Lato, sans-serif"
-          >
-            Donate Now
-          </h1>
-          <p class="donate-p px-5">
-            Your donation can help A2SV to train more students across Africa.
-          </p>
-          <v-card-actions>
-            <v-btn
-              dark
-              outlined
-              style="
-                border-color: #d4c1c1 !important;
-                bottom: 3.2rem;
+      <v-row class="my-5">
+        <v-col cols="12" sm="6" class="px-12">
+          <v-card class="shadow-sm px-5 py-10" min-height="268">
+            <h1 class="ml-5 mb-3" style="font-family: Lato, sans-serif">
+              Become A2SV partner
+            </h1>
+            <p class="donate-p px-5">
+              Interview these folks for software engineering internship positions
+              at your company.
+            </p>
+            <p class="px-5 donate-p">
+              Our partners are:
+            </p>
+            <v-row class="mx-auto px-3 my-5">
+              <v-col
+                v-for="icon in icons"
+                :key="icon.logo"
+                cols="3"
+                align-self="center"
+                class="mx-auto"
+              >
+                <v-img :src="'/' + icon.logo" :width="icon.width" />
+              </v-col>
+            </v-row>
+            <v-card-actions class="mt-8">
+              <v-btn
+                large
+                color="primary"
+                style="
+                bottom: 1.5rem;
+                left: 37%;
                 position: absolute;
               "
+                class="text-capitalize shadow-sm"
+              >
+                Learn More
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12" sm="6" class="px-12">
+          <v-card
+            class="shadow-sm px-5 py-10 donate"
+            height="100%"
+          >
+            <h1
+              class="text-center mb-3 text--white"
+              style="font-family: Lato, sans-serif"
             >
-              Donate
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
+              Donate Now
+            </h1>
+            <p class="donate-p px-5">
+              Your donation can help A2SV to train more students across Africa.
+            </p>
+            <v-card-actions>
+              <v-btn
+                large
+                outlined
+                color="white"
+                style="
+                bottom: 1.5rem;
+                left: 41%;
+                position: absolute;
+              "
+                class="shadow-sm"
+              >
+                Donate
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-row>
   </v-container>
 </template>
@@ -197,6 +205,11 @@ export default {
         { logo: "coinbase-icon.svg", width: "15rem" },
         { logo: "eskalate-icon.svg", width: "3rem" }
         // { logo: 'aau-icon.webp', width: '3rem' },
+      ],
+      actions: [
+        { image: "/train.svg", action: "Learn More", description: "First training initially focuses on problem-solving and personal development.", link: "/" },
+        { image: "/mock.svg", action: "Learn More", description: "Mock interviews with peers, other trainees, and industry professionals.", link: "/" },
+        { image: "/work.svg", action: "Learn More", description: "Trainees work on social projects with industry experts.", link: "/" }
       ]
     };
   },
@@ -214,13 +227,6 @@ export default {
   line-height: clamp(3rem, 0.8rem + 2.8vw, 4rem) !important;
   font-weight: 900;
 }
-.page-titles {
-  font-family: Lato, serif !important;
-  color: #2b2a35;
-  font-size: 36px;
-  line-height: 30px;
-  font-weight: 800;
-}
 .blackish {
   color: #545465;
   font-size: 18px;
@@ -229,7 +235,7 @@ export default {
 }
 .donate {
   border-radius: 10px;
-  background: linear-gradient(91.56deg, #5772f6 0, #8253ff 122.55%);
+  background: linear-gradient(90deg, #00aeef 0, #334aC0 122.55%);
   color: #f1f0f0 !important;
 }
 .donate-p {
@@ -238,38 +244,8 @@ export default {
   letter-spacing: 0.2px;
   font-family: 'Nunito', sans-serif;
 }
-.btn {
-  background-color: #5772f6;
-  border-radius: 4px;
-  display: inline-block;
-  cursor: pointer;
-  color: #ffffff;
-  font-family: 'Nunito', sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 8px 18px;
-  text-decoration: none;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12);
-}
-.btn:hover {
-  background: #5772f6 linear-gradient(to bottom, #5772f6 5%, #8253ff 100%);
-}
-.btn:active {
-  position: relative;
-  background: #5772f6 !important;
-  top: 1px;
-}
-.btn:focus {
-  background-color: #5772f6;
-}
 .plyr {
-  --plyr-color-main: #334ac0;
+  --plyr-color-main: #334aC0;
   /*--plyr-video-control-color: #fff;*/
-}
-.programmes {
-  max-width: 8rem;
-  bottom: 1rem;
-  font-size: 12.5px;
 }
 </style>

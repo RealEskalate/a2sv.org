@@ -61,8 +61,8 @@ export default {
       dark: false,
       themes: {
         light: {
-          primary: "#334ac0",
-          accent: colors.grey.lighten3,
+          primary: "#334aC0",
+          accent: "#00aeef",
           secondary: colors.amber.lighten3,
           info: colors.teal.darken1,
           warning: colors.amber.base,
@@ -70,8 +70,8 @@ export default {
           success: colors.green.accent3
         },
         dark: {
-          primary: "#334ac0",
-          accent: colors.grey.darken3,
+          primary: "#334aC0",
+          accent: "#00aeef",
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
           warning: colors.amber.base,

@@ -18,8 +18,8 @@
           class="mx-auto"
         >
           <v-card
-            class="shadow d-flex flex-column"
-            style="height: 100%; padding: 5px; background-color: white"
+            class="shadow-sm d-flex flex-column"
+            style="height: 100%"
           >
             <v-card-title class="justify-center" style="color: #545465">
               {{ support.title | uppercase }}
@@ -29,20 +29,22 @@
             </v-card-text>
             <v-spacer />
             <v-card-actions class="justify-center">
-              <button v-if="support.title === 'Donate'" class="btn programmes">
+              <v-btn v-if="support.title === 'Donate'" outlined class="text-capitalize my-3" color="primary">
                 {{ support.button_text }}
-              </button>
-              <button
+              </v-btn>
+              <v-btn
                 v-else
                 v-scroll-to="{
                   el: '#form_card',
                   offset: -60,
                 }"
-                class="btn programmes"
+                outlined
+                class="text-capitalize my-3"
+                color="primary"
                 @click="showForm(support.title)"
               >
                 {{ support.button_text }}
-              </button>
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -124,10 +126,6 @@ export default {
 <style scoped>
 .v-card {
   transition: opacity 0.4s ease-in-out;
-}
-
-.v-card:not(.on-hover) {
-  opacity: 0.9;
 }
 
 .btn {

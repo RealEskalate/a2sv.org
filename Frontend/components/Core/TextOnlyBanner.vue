@@ -16,7 +16,7 @@
       <v-img
         :width="imgWidth"
         :src="img"
-        style="bottom: 0; right: 0; position: absolute"
+        style="bottom: 0; right: 0; position: absolute; max-width: 50vw!important;"
       />
     </v-container>
   </v-parallax>

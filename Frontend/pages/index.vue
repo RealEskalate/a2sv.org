@@ -1,5 +1,5 @@
 <template>
-  <v-container class="mt-12">
+  <v-container class="mt-md-12">
     <v-row class="my-12">
       <v-col cols="12" sm="5">
         <h2 class="motto">
@@ -16,7 +16,7 @@
           A2SV offers training program that initially focuses on
           problem-solving and personal development.
         </p>
-        <v-btn class="text-capitalize shadow-sm" depressed color="primary">
+        <v-btn class="text-capitalize" color="primary">
           Learn More
         </v-btn>
       </v-col>
@@ -39,10 +39,10 @@
       <v-col
         v-for="(action, i) in actions"
         :key="'action' + i"
-        cols="10"
-        sm="6"
+        cols="12"
+        sm="10"
         md="4"
-        class="px-10"
+        class="px-md-10"
       >
         <v-card class="shadow-sm pa-5" style="height: 100%;">
           <v-img :src="action.image" style="max-height: 15rem" />
@@ -74,7 +74,7 @@
         <h2 class="display-2 font-weight-bold">
           Achievements
         </h2>
-        <p class="body-2 mt-md-7">
+        <p class="mt-md-7 blackish">
           First trainees achieved an unheard rate of 27% acceptance at
           Google software engineering internship interviews.
         </p>
@@ -87,7 +87,7 @@
           <v-col class="pa-0" cols="12" sm="6">
             <v-img
               cover
-              src="/lidia.webp"
+              src="/ise.webp"
               style="height: 100%"
             />
           </v-col>
@@ -104,7 +104,7 @@
               <v-card-subtitle
                 style="font-size: 16px"
               >
-                Mohammed Alewi, 4th year SE student
+                Ise Boge, 4th year SE student
               </v-card-subtitle>
             </p>
           </v-col>
@@ -118,8 +118,8 @@
           You Can Help
         </h2>
       </div>
-      <v-row class="my-5">
-        <v-col cols="12" sm="6" class="px-12">
+      <v-row class="my-5 container">
+        <v-col cols="12" sm="6" class="px-md-12">
           <v-card class="shadow-sm px-5 py-10" min-height="268">
             <h1 class="ml-5 mb-3" style="font-family: Lato, sans-serif">
               Become A2SV partner
@@ -144,14 +144,13 @@
             </v-row>
             <v-card-actions class="mt-8">
               <v-btn
-                large
-                color="primary"
+                color="primary px-3"
                 style="
                 bottom: 1.5rem;
                 left: 37%;
                 position: absolute;
               "
-                class="text-capitalize shadow-sm"
+                class="text-capitalize"
               >
                 Learn More
               </v-btn>
@@ -159,7 +158,7 @@
           </v-card>
         </v-col>
 
-        <v-col cols="12" sm="6" class="px-12">
+        <v-col cols="12" sm="6" class="px-md-12">
           <v-card
             class="shadow-sm px-5 py-10 donate"
             height="100%"
@@ -175,7 +174,6 @@
             </p>
             <v-card-actions>
               <v-btn
-                large
                 outlined
                 color="white"
                 style="
@@ -183,7 +181,7 @@
                 left: 41%;
                 position: absolute;
               "
-                class="shadow-sm"
+                class="px-3"
               >
                 Donate
               </v-btn>
@@ -239,10 +237,9 @@ export default {
   color: #f1f0f0 !important;
 }
 .donate-p {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 32px;
   letter-spacing: 0.2px;
-  font-family: 'Nunito', sans-serif;
 }
 .plyr {
   --plyr-color-main: #334aC0;

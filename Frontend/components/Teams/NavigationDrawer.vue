@@ -5,7 +5,7 @@
     right
     temporary
     width="30em"
-    style="position: fixed"
+    style="position: fixed; max-width: 80vw!important;"
   >
     <v-row class="mt-12 mb-4">
       <v-avatar class="ma-0" size="160" tile>

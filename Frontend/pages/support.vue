@@ -49,9 +49,9 @@
       </v-row>
 
       <div id="form_card">
-        <InterviewForm v-if="form_type === 'Interviews'" />
-        <MentorshipForm v-if="form_type === 'Mentorship'" />
-        <QandAForm v-if="form_type === 'Q & A'" />
+        <InterviewForm v-if="getForm(0)" />
+        <MentorshipForm v-if="getForm(1)" />
+        <QandAForm v-if="getForm(2)" />
       </div>
     </v-container>
   </div>
@@ -107,11 +107,15 @@ export default {
         button_text: "Request"
       }
     ],
-    form_type: ""
+    form_type: "",
+    forms: ["Interviews", "Mentorship", "Q & A"]
   }),
   methods: {
     showForm(title) {
       this.form_type = title;
+    },
+    getForm(id) {
+      return this.form_type === this.forms[id];
     }
   }
 };

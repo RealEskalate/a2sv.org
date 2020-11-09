@@ -9,13 +9,13 @@ export default {
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { hid: "description", name: "description", content: "" },
-      { name: "og:title", content: "A2SV - Africa to Silicon Valley" },
-      { name: "og:description", content: "Creating opportunities for african Students: A2SV offers training program that initially focuses on problem-solving and personal development." },
-      { name: "og:image", content: this.BASE_URL + "logo.png" },
-      { name: "og:image:width", content: "200px" },
-      { name: "og:image:height", content: "200px" },
-      { name: "og:url", content: "https://a2sv.org/" },
-      { name: "og:type", content: "article" }
+      { property: "og:title", content: "A2SV - Africa to Silicon Valley" },
+      { property: "og:description", content: "Creating opportunities for african Students: A2SV offers training program that initially focuses on problem-solving and personal development." },
+      { property: "og:image", content: this.BASE_URL + "logo.png" },
+      { property: "og:image:width", content: "200px" },
+      { property: "og:image:height", content: "200px" },
+      { property: "og:url", content: "https://a2sv.org/" },
+      { property: "og:type", content: "article" }
     ],
     link: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },

@@ -11,7 +11,7 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "og:title", content: "A2SV - Africa to Silicon Valley" },
       { name: "og:description", content: "Creating opportunities for african Students: A2SV offers training program that initially focuses on problem-solving and personal development." },
-      { name: "og:image", content: "<%= BASE_URL %>logo.png" },
+      { name: "og:image", content: this.BASE_URL + "logo.png" },
       { name: "og:image:width", content: "200px" },
       { name: "og:image:height", content: "200px" },
       { name: "og:url", content: "https://a2sv.org/" },

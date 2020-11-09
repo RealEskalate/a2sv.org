@@ -7,6 +7,8 @@
             <h1
               class="motto text-center white--text"
               style="
+                font-size: 58px !important;
+                line-height: 68px !important;
               "
             >
               A Passionate Team

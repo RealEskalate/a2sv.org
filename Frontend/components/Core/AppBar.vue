@@ -101,7 +101,7 @@ export default {
       return this.$store.getters.getColor === "colored";
     },
     getLogo() {
-      return this.isColored ? "./logo-white.png" : "./logo-blue.png";
+      return this.isColored ? "./logos/logo-white.png" : "./logos/logo-blue.png";
     }
   },
   created() {

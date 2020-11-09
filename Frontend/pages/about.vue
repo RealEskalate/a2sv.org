@@ -4,7 +4,7 @@
       img-width="15rem"
       title="About A2SV"
       description="Learn more about what what we do"
-      img="./about.svg"
+      img="./illustrations/char-1.svg"
     />
     <v-container class="text-center">
       <v-row class="my-12">

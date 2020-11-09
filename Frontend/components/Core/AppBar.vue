@@ -61,7 +61,6 @@ import {
   mdiMenu,
   mdiHome,
   mdiGroup,
-  mdiNewspaper,
   mdiCalendar,
   mdiInformation
 } from "@mdi/js";
@@ -78,11 +77,6 @@ export default {
           to: "/"
         },
         {
-          icon: mdiInformation,
-          title: "About Us",
-          to: "/about"
-        },
-        {
           icon: mdiGroup,
           title: "Team",
           to: "/team"
@@ -93,9 +87,9 @@ export default {
           to: "/events"
         },
         {
-          icon: mdiNewspaper,
-          title: "News",
-          to: "/news"
+          icon: mdiInformation,
+          title: "About Us",
+          to: "/about"
         }
       ]
     };

@@ -44,7 +44,7 @@
               <v-container class="pa-5">
                 <v-card-title class="justify-center primary--text mb-3">
                   {{
-                  act.title
+                    act.title
                   }}
                 </v-card-title>
                 <p class="body-1">

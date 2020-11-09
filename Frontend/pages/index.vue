@@ -25,7 +25,7 @@
           <vue-plyr>
             <video
               preload="none"
-              poster="/lidia.webp"
+              poster="/team/lidia.webp"
               src="/video.webm"
               width="750px"
               style="background: transparent !important"
@@ -87,7 +87,7 @@
           <v-col class="pa-0" cols="12" sm="6">
             <v-img
               cover
-              src="/ise.webp"
+              src="/team/ise.webp"
               style="height: 100%"
             />
           </v-col>
@@ -139,7 +139,7 @@
                 align-self="center"
                 class="mx-auto"
               >
-                <v-img :src="'/' + icon.logo" :width="icon.width" />
+                <v-img :src="icon.logo" :width="icon.width" />
               </v-col>
             </v-row>
             <v-card-actions class="mt-8">
@@ -198,10 +198,10 @@ export default {
   data() {
     return {
       icons: [
-        { logo: "google-icon.svg", width: "2rem" },
-        { logo: "palantir-icon.svg", width: "30rem" },
-        { logo: "coinbase-icon.svg", width: "15rem" },
-        { logo: "eskalate-icon.svg", width: "3rem" }
+        { logo: "./icons/google-icon.svg", width: "2rem" },
+        { logo: "./icons/palantir-icon.svg", width: "30rem" },
+        { logo: "./icons/coinbase-icon.svg", width: "15rem" },
+        { logo: "./icons/eskalate-icon.svg", width: "3rem" }
         // { logo: 'aau-icon.webp', width: '3rem' },
       ],
       actions: [

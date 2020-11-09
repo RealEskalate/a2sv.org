@@ -15,15 +15,17 @@
           {{ mdiMenu }}
         </v-icon>
       </v-app-bar-nav-icon>
-      <v-img
-        alt="A2SV LOGO"
-        class="mx-5 logo"
-        contain
-        :src="getLogo"
-      />
+      <div style="max-width: 110px; width: 10vw; min-width: 50px" class="mx-5">
+        <v-img
+          alt="A2SV LOGO"
+          class="logo"
+          :src="getLogo"
+        />
+      </div>
       <v-tabs
         v-if="$vuetify.breakpoint.mdAndUp"
         centered
+        optional
         :color="isColored ? 'white' : 'primary'"
       >
         <v-tab v-for="link in links" :key="link.to" :class="{ 'white--text': isColored }" :to="link.to">
@@ -99,7 +101,7 @@ export default {
       return this.$store.getters.getColor === "colored";
     },
     getLogo() {
-      return this.isColored ? "./logo-white.png" : "./logo-blue.png";
+      return this.isColored ? "./logos/logo-white.png" : "./logos/logo-blue.png";
     }
   },
   created() {
@@ -113,12 +115,4 @@ export default {
   text-transform: capitalize !important;
   font-size: 16px;
 }
-.logo {
-  width: 110px;
-}
-  @media screen and (max-width: 900px) {
-    .logo {
-      width: 50px;
-    }
-  }
 </style>

@@ -20,7 +20,7 @@
                 width="175"
                 class="mb-5"
                 contain
-                src="./logo-blue.png"
+                src="./logos/logo-blue.png"
               />
               <p class="blackish footer-texts">
                 © Copyright 2020 A2SV NPO. All rights reserved.

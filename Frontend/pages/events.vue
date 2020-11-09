@@ -4,7 +4,6 @@
       img-width="25rem"
       title="Events"
       description="All upcoming and past events"
-      img="./calendar-2.svg"
     />
     <v-container class="mb-12 pt-0">
       <v-card class="shadow-sm px-6 pb-7">

@@ -2,7 +2,7 @@
   <div>
     <Banner
       img-width="10rem"
-      img="/character-15.svg"
+      img="/illustrations/character-15.svg"
       :title="banner.title_one"
       :description="banner.description"
     />
@@ -19,7 +19,7 @@
         >
           <v-card
             class="shadow-sm d-flex flex-column"
-            style="height: 100%"
+            style="height: 100%; background-color: rgba(255, 255, 255, 0.9)"
           >
             <v-card-title class="justify-center" style="color: #545465">
               {{ support.title | uppercase }}

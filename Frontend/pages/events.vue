@@ -6,22 +6,30 @@
       description="All upcoming and past events"
       img="./calendar-2.svg"
     />
-    <v-container class="my-12">
-      <v-card class="shadow-sm pa-8" tile>
+    <v-container class="mb-12 pt-0">
+      <v-card class="shadow-sm px-6 pb-7">
+        <div class="d-flex align-center" style="margin-top: -90px">
+          <v-btn rounded depressed class="my-5" color="primary" @click="$refs.calendar.prev()">
+            <v-icon v-text="mdiChevronLeft" />
+          </v-btn>
+          <v-spacer />
+          <span class="title"> {{ currentMonth }} </span>
+          <v-spacer />
+          <v-btn rounded depressed class="my-5" color="primary" @click="$refs.calendar.next()">
+            <v-icon v-text="mdiChevronRight" />
+          </v-btn>
+        </div>
         <v-calendar
           ref="calendar"
-          v-model="value"
-          type="month"
+          v-model="date"
           :events="events"
-          event-overlap-mode="stack"
-          :event-overlap-threshold="30"
           :event-color="getEventColor"
         />
       </v-card>
-      <v-card tile class="shadow-sm my-8 pa-8">
-        <h1 class="mb-6 primary--text font-weight-light">
-          Filter all Events
-        </h1>
+      <section class="mt-12 mb-5 pt-3">
+        <h2 class="display-2 my-8 font-weight-bold">
+          All Events
+        </h2>
         <v-row>
           <v-col cols="6" md="4">
             <v-menu
@@ -40,7 +48,7 @@
                   outlined
                   dense
                   hide-details
-                  prepend-inner-icon="mdi-calendar"
+                  :prepend-inner-icon="mdiCalendar"
                   label="Date Range"
                   readonly
                   v-bind="attrs"
@@ -79,7 +87,7 @@
 
         <v-row>
           <v-col v-for="i in 5" :key="i" md="6" cols="12">
-            <v-card tile outlined class="px-3">
+            <v-card class="px-3 shadow-sm">
               <v-card-title class="primary--text">
                 Problem Solving
               </v-card-title>
@@ -114,18 +122,19 @@
 
                 <v-spacer />
                 <div v-if="[1, 4].includes(i)" class="text-center">
-                  <v-chip small class="ma-2 rounded-0" color="primary" to="/">
+                  <v-chip small pill class="ma-2" color="primary" to="/">
                     Link 1
                   </v-chip>
-                  <v-chip small class="ma-2 rounded-0" color="primary" to="/">
+                  <v-chip small class="ma-2" color="primary" to="/">
                     Link 2
                   </v-chip>
                 </div>
               </v-card-actions>
 
-              <div
+              <v-card
                 v-if="[3, 4].includes(i)"
-                class="px-3 pb-5"
+                flat
+                class="mx-3 pb-5 overflow-hidden"
               >
                 <v-divider />
                 <div
@@ -1637,7 +1646,7 @@
                     data="https://lh3.googleusercontent.com/4UmPklmZj_MXGRG0G6kj92NcouPSOhOME0nLwQI_xOybKkPHpx1ih3lPNVlNpLihx0bHH1B6VlGQKCj3CUNnLjMt7eytTynZJMR8X5pEjohdsJiU15bMFcTEn7mCepTQUWkykimb5Xw=w1920-h1080"
                   />
                 </div>
-              </div>
+              </v-card>
             </v-card>
           </v-col>
         </v-row>
@@ -1660,52 +1669,55 @@
             />
           </v-col>
         </v-row>
-      </v-card>
+      </section>
     </v-container>
   </div>
 </template>
 
 <script>
 import Banner from "@/components/Core/TextOnlyBanner.vue";
+import { mdiCalendar, mdiChevronLeft, mdiChevronRight } from "@mdi/js";
 export default {
   components: {
     Banner
   },
   data: () => ({
-    value: "",
+    mdiCalendar,
+    mdiChevronLeft,
+    mdiChevronRight,
+    date: new Date(),
     events: [
       {
         name: "Meeting",
-        start: "2020-10-10",
-        end: "2020-10-10",
+        start: "2020-11-10",
+        end: "2020-11-10",
         color: "primary"
       },
       {
         name: "Holiday",
-        start: "2020-10-01",
-        end: "2020-10-01",
-        color: "yellow"
+        start: "2020-11-01",
+        end: "2020-11-01",
+        color: "accent"
       },
       {
         name: "PTO",
-        start: "2020-10-15",
-        end: "2020-10-15",
-        color: "indigo"
+        start: "2020-11-15",
+        end: "2020-11-15",
+        color: "main-gradient"
       },
       {
         name: "Travel",
-        start: "2020-10-25",
-        end: "2020-10-26",
+        start: "2020-11-25",
+        end: "2020-11-26",
         color: "red"
       },
       {
         name: "Event",
-        start: "2020-10-30",
-        end: "2020-10-30",
-        color: "orange"
+        start: "2020-11-30",
+        end: "2020-11-30",
+        color: "main-gradient"
       }
     ],
-    show: -1,
     dateMenu: false,
     filter: {
       dateRange: [
@@ -1721,6 +1733,14 @@ export default {
       length: 6
     }
   }),
+  head: {
+    title: "Events"
+  },
+  computed: {
+    currentMonth() {
+      return `${this.date.getMonth() + 1} - ${this.date.getFullYear()}`;
+    }
+  },
   mounted() {
     const galleryScript = document.createElement("script");
     galleryScript.setAttribute(

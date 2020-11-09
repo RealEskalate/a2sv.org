@@ -7,7 +7,7 @@
       :description="banner.description"
     />
 
-    <v-container style="margin-top: -75px">
+    <v-container style="margin-top: -90px">
       <v-row class="mb-10">
         <v-col
           v-for="(support, i) in support_ways"
@@ -112,6 +112,9 @@ export default {
     form_type: "",
     forms: ["Interviews", "Mentorship", "Q & A"]
   }),
+  head: {
+    title: "Support Us"
+  },
   methods: {
     showForm(title) {
       this.form_type = title;
@@ -122,60 +125,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.v-card {
-  transition: opacity 0.4s ease-in-out;
-}
-
-.btn {
-  background-color: #5772f6;
-  border-radius: 4px;
-  display: inline-block;
-  cursor: pointer;
-  color: #ffffff;
-  font-family: 'Nunito', sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 8px 18px;
-  text-decoration: none;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12);
-}
-.btn:hover {
-  background: #5772f6 linear-gradient(to bottom, #5772f6 5%, #8253ff 100%);
-}
-.btn:active {
-  position: relative;
-  background: #5772f6 !important;
-  top: 1px;
-}
-.btn:focus {
-  background-color: #5772f6;
-}
-.shadow {
-  --plyr-color-main: #334ac0;
-  /*--plyr-video-control-color: #fff;*/
-}
-.programmes {
-  max-width: 8rem;
-  bottom: 1rem;
-  font-size: 12.5px;
-}
-.page-titles {
-  font-family: Lato, serif !important;
-  color: #2b2a35;
-  font-size: 36px;
-  line-height: 30px;
-  font-weight: 800;
-}
-.card-outter {
-  position: relative;
-  padding-bottom: 200px;
-}
-.card-actions {
-  position: absolute;
-  bottom: 5px;
-  left: 10px;
-}
-</style>

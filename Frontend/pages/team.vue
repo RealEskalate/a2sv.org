@@ -58,6 +58,9 @@ export default {
       baseUrl: process.env.baseUrl
     };
   },
+  head: {
+    title: "Team"
+  },
   computed: {
     ...mapGetters("team", ["getTeamMembers"])
   },

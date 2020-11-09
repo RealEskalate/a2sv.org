@@ -17,7 +17,7 @@
       </v-card-title>
       <v-divider />
       <v-card-text>
-        <div v-html="post.content" />
+        <div v-text="post.content" />
       </v-card-text>
     </v-card>
   </v-container>
@@ -61,7 +61,6 @@ const posts = [
 ];
 
 const getPost = (title) => {
-  console.log(title);
   return posts.filter((post) => post.title === title);
 };
 

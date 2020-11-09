@@ -19,11 +19,7 @@ export const mutations = {
 };
 export const actions = {
   async fetchMembers({ commit }) {
-    try {
-      const response = await this.$axios.get("/api/team");
-      commit("setTeamMembers", response.data);
-    } catch (e) {
-       console.error(e);
-    }
+    const response = await this.$axios.get("/api/team");
+    commit("setTeamMembers", response.data);
   }
 };

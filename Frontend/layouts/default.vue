@@ -31,15 +31,9 @@ export default {
 }
 .v-pagination__item,
 .v-pagination__navigation {
-  border-radius: 0 !important;
-  border: #e0e0e0 solid 1px;
-  box-shadow: none !important;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1) !important;
 }
-.v-input,
-.v-menu__content,
-.v-event {
-  border-radius: 0 !important;
-}
+
 </style>
 
 <style lang="scss">

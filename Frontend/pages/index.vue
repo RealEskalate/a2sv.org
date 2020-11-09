@@ -211,6 +211,9 @@ export default {
       ]
     };
   },
+  head: {
+    title: "Welcome"
+  },
   mounted() {
     this.$store.dispatch("setActiveLink", "light");
   }

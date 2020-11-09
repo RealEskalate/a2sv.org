@@ -65,84 +65,87 @@
     components: {
       Banner
     },
-  data() {
-    return {
-      lists: [
-        {
-          title: "What We Do in the first part?",
-          subtitle: "Here's what we have been upto",
-          list: [
-            {
-              title: "Technical Training",
-              content:
-                "6 days a week, 3 hours lectures and practice sessions to improve problem solving skills"
-            },
-            {
-              title: "Contests",
-              content:
-                "Bi-weekly contests to get better at competitive programming and problem solving on online platform"
-            },
-            {
-              title: "Q&As",
-              content:
-                "Q&A Sessions with engineers, founders, and data scientists from top SV companies to learn from their best practices and to realize that they are normal people"
-            },
-            {
-              title: "Problem Solving",
-              content:
-                "Problem solving sessions to get a feel of explaining solutions on the whiteboard"
-            },
-            {
-              title: "Learning How to Approach",
-              content:
-                "Learning how to approach sessions to learn best practices from an experienced problem solver"
-            },
-            {
-              title: "1-1s",
-              content:
-                "Bi-weekly 1:1s with students to get to know each other and open a communication channel"
-            }
-          ]
-        },
-        {
-          title: "What We Do in the Second part?",
-          subtitle:
-            "On the top of what we do in the first part, we have a month long camp, 6 days a week.",
-          list: [
-            {
-              title: "Daily Contests",
-              content:
-                "Daily contests to get better at competitive programming and problem solving"
-            },
-            {
-              title: "Communication Skill Assessments",
-              content:
-                "Problem solving and interview video recordings to improve communication skills"
-            },
-            {
-              title: "Mock Interviews",
-              content:
-                "Mock interviews with peers, other trainees, and industry professionals in the SV"
-            },
-            {
-              title: "Moonwalks",
-              content:
-                "Daily half an hour pair walks among teammates to improve connections"
-            },
-            {
-              title: "Weekly 1-1s",
-              content:
-                "Weekly 1:1s to check progress and to provide personalized improvement plan"
-            },
-            {
-              title: "Social Activities",
-              content: "Games and social activities for team building"
-            }
-          ]
-        }
-      ]
-    };
-  }
+    data() {
+      return {
+        lists: [
+          {
+            title: "What We Do in the first part?",
+            subtitle: "Here's what we have been upto",
+            list: [
+              {
+                title: "Technical Training",
+                content:
+                  "6 days a week, 3 hours lectures and practice sessions to improve problem solving skills"
+              },
+              {
+                title: "Contests",
+                content:
+                  "Bi-weekly contests to get better at competitive programming and problem solving on online platform"
+              },
+              {
+                title: "Q&As",
+                content:
+                  "Q&A Sessions with engineers, founders, and data scientists from top SV companies to learn from their best practices and to realize that they are normal people"
+              },
+              {
+                title: "Problem Solving",
+                content:
+                  "Problem solving sessions to get a feel of explaining solutions on the whiteboard"
+              },
+              {
+                title: "Learning How to Approach",
+                content:
+                  "Learning how to approach sessions to learn best practices from an experienced problem solver"
+              },
+              {
+                title: "1-1s",
+                content:
+                  "Bi-weekly 1:1s with students to get to know each other and open a communication channel"
+              }
+            ]
+          },
+          {
+            title: "What We Do in the Second part?",
+            subtitle:
+              "On the top of what we do in the first part, we have a month long camp, 6 days a week.",
+            list: [
+              {
+                title: "Daily Contests",
+                content:
+                  "Daily contests to get better at competitive programming and problem solving"
+              },
+              {
+                title: "Communication Skill Assessments",
+                content:
+                  "Problem solving and interview video recordings to improve communication skills"
+              },
+              {
+                title: "Mock Interviews",
+                content:
+                  "Mock interviews with peers, other trainees, and industry professionals in the SV"
+              },
+              {
+                title: "Moonwalks",
+                content:
+                  "Daily half an hour pair walks among teammates to improve connections"
+              },
+              {
+                title: "Weekly 1-1s",
+                content:
+                  "Weekly 1:1s to check progress and to provide personalized improvement plan"
+              },
+              {
+                title: "Social Activities",
+                content: "Games and social activities for team building"
+              }
+            ]
+          }
+        ]
+      };
+    },
+    head: {
+      title: "About Us"
+    }
 };
 </script>
 

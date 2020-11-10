@@ -21,11 +21,7 @@ mongoose.connect(
       console.log("Error connecting to database. " + err);
     } else {
       console.log(
-        "Connected to Database! " +
-          process.env.NODE_ENV +
-          " via " +
-          connectionString
-      );
+        "Connected to Database! " + process.env.NODE_ENV + " via " + connectionString);
     }
   }
 );

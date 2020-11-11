@@ -24,8 +24,17 @@
             <v-card-title class="justify-center" style="color: #545465">
               {{ support.title | uppercase }}
             </v-card-title>
-            <v-card-text class="text-center">
-              {{ support.description }}
+            <v-card-text class="text-center mt-3">
+              {{ support.description }} 
+              <div v-if="support.title === 'Donate'" class="mt-3">
+                Support A2SV from as little as $1 – and it only takes a minute. Thank you!
+              </div>
+              <div v-else class="mt-3">
+                <span class="display-2" style="display: block">
+                  {{ supports[support.title].number }}
+                </span>
+                <span style="font-weight: bold">{{ supports[support.title].text }}</span>
+              </div>
             </v-card-text>
             <v-spacer />
             <v-card-actions class="justify-center">
@@ -88,27 +97,41 @@ export default {
       {
         title: "Donate",
         description:
-          "Help upskill more developers and launch new digital solution in Africa",
+          "Help upskill more developers and launch new digital solution in Africa.",
         button_text: "Go To PayPal"
       },
       {
         title: "Interviews",
         description:
-          "Connect our students with your company for internship positions",
+          "Connect our students with your company for internship positions.",
         button_text: "Contact Us"
       },
       {
         title: "Mentorship",
-        description: "We want experienced people to guide our students",
+        description: "We want experienced people to guide our students.",
         button_text: "Contact Us"
       },
       {
         title: "Q & A",
         description:
-          "Share your story with us and let's have a fun Q & A session",
+          "Share your story with us and let's have a fun Q & A session.",
         button_text: "Request"
       }
     ],
+    supports: {
+      "Interviews": {
+        number: "5",
+        text: "companies working with us"
+      },
+      "Mentorship": {
+        number: "10+",
+        text: "mentors joined our team"
+      },
+      "Q & A": {
+        number: "20+",
+        text: "Q & As so far"
+      }
+    },
     form_type: "",
     forms: ["Interviews", "Mentorship", "Q & A"]
   }),

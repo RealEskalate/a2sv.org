@@ -7,34 +7,100 @@
     />
     <v-container class="mb-12 pt-0">
       <v-card class="shadow-sm px-6 pb-7">
-        <div class="d-flex align-center" style="margin-top: -90px">
+        <div class="d-flex align-center" style="margin-top: -100px">
           <v-btn rounded depressed class="my-5" color="primary" @click="$refs.calendar.prev()">
             <v-icon v-text="mdiChevronLeft" />
           </v-btn>
-          <v-spacer />
-          <span class="title"> {{ currentMonth }} </span>
-          <v-spacer />
+          <span class="title text-center" style="width: 250px"> {{ currentMonth }} </span>
           <v-btn rounded depressed class="my-5" color="primary" @click="$refs.calendar.next()">
             <v-icon v-text="mdiChevronRight" />
           </v-btn>
+          <v-spacer />
+          <div style="width: 250px">
+            <v-select
+              v-model="type"
+              dense
+              hide-details
+              :items="[{ text: 'Month', value: 'month'}, { text: 'Week', value: 'week'}]"
+              label="Type"
+              outlined
+            />
+          </div>
         </div>
         <v-calendar
           ref="calendar"
           v-model="date"
+          style="height: 500px"
+          class="overflow-auto"
+          color="primary"
           :events="events"
+          :type="type"
           :event-color="getEventColor"
+          @click:event="showEvent"
         />
+
+        <v-menu
+          v-model="detailEvent"
+          :activator="selectedElement"
+          :close-on-content-click="false"
+        >
+          <v-card class="px-3 shadow-sm" width="400px">
+            <v-card-title :class="selectedEvent.color + '--text'">
+              {{ selectedEvent.name }}
+            </v-card-title>
+
+            <v-card-subtitle>
+              <span>
+                <span :class="selectedEvent.color + '--text'">Starts : </span>
+                {{ selectedEvent.start }}
+              </span>
+
+              <span class="float-md-right">
+                <span :class="selectedEvent.color + '--text'">Ends : </span>
+                {{ selectedEvent.end }}
+              </span>
+            </v-card-subtitle>
+
+            <v-card-text class="pb-0">
+              I'm a thing. But, like most politicians, he promised more than
+              he could deliver. You won't have time for sleeping, soldier, not
+              with all the bed making you'll be doing. Then we'll go with that
+              data file! Hey, you add a one and two zeros to that or we walk!
+              You're going to do his laundry? I've got to find a way to
+              escape.
+            </v-card-text>
+
+            <v-card-actions>
+              <v-subheader :class="selectedEvent.color + '--text font-weight-light px-3 '">
+                This Location, This City
+              </v-subheader>
+              <v-spacer />
+              <v-chip small dark pill class="mx-2" :color="selectedEvent.color">
+                Event Type
+              </v-chip>
+            </v-card-actions>
+          </v-card>
+        </v-menu>
       </v-card>
       <section class="mt-12 mb-5 pt-3">
         <h2 class="display-2 my-8 font-weight-bold">
           All Events
         </h2>
         <v-row>
-          <v-col cols="6" md="4">
+          <v-col cols="6" md="3">
+            <v-text-field
+              v-model="filter.keyword"
+              label="Search"
+              placeholder="Keyword"
+              outlined
+              dense
+            />
+          </v-col>
+          <v-col cols="6" md="3">
             <v-menu
+              tile
               ref="menu"
               v-model="dateMenu"
-              tile
               :close-on-content-click="false"
               :return-value.sync="filter.dateRange"
               transition="scale-transition"
@@ -62,17 +128,17 @@
               />
             </v-menu>
           </v-col>
-          <v-col cols="6" md="4">
+          <v-col cols="6" md="3">
             <v-select
               v-model="filter.type"
               dense
               hide-details
-              :items="['All', 'Galleries']"
-              label="Type"
+              :items="['All', 'Q&A', 'Contest']"
+              label="Event Type"
               outlined
             />
           </v-col>
-          <v-col cols="6" md="4">
+          <v-col cols="6" md="3">
             <v-select
               v-model="filter.location"
               dense
@@ -119,7 +185,6 @@
 
                 <v-spacer />
 
-                <v-spacer />
                 <div v-if="[1, 4].includes(i)" class="text-center">
                   <v-chip small pill class="ma-2" color="primary" to="/">
                     Link 1
@@ -1684,7 +1749,7 @@ export default {
     mdiCalendar,
     mdiChevronLeft,
     mdiChevronRight,
-    date: new Date(),
+    date: new Date().toISOString().substr(0, 10),
     events: [
       {
         name: "Meeting",
@@ -1717,8 +1782,13 @@ export default {
         color: "main-gradient"
       }
     ],
+    detailEvent: false,
+    selectedEvent: {},
+    selectedElement: null,
     dateMenu: false,
+    type: "month",
     filter: {
+      keyword: "",
       dateRange: [
         new Date().toISOString().substr(0, 10),
         new Date().toISOString().substr(0, 10)
@@ -1737,7 +1807,7 @@ export default {
   },
   computed: {
     currentMonth() {
-      return `${this.date.getMonth() + 1} - ${this.date.getFullYear()}`;
+      return this.date;
     }
   },
   mounted() {
@@ -1749,8 +1819,26 @@ export default {
     document.head.appendChild(galleryScript);
   },
   methods: {
-    getEventColor(event) {
+    getEventColor (event) {
       return event.color;
+    },
+    showEvent ({ nativeEvent, event }) {
+      const open = () => {
+        this.selectedEvent = event;
+        this.selectedElement = nativeEvent.target;
+        setTimeout(() => {
+          this.selectedOpen = true;
+        }, 10);
+      };
+
+      if (this.selectedOpen) {
+        this.selectedOpen = false;
+        setTimeout(open, 10);
+      } else {
+        open();
+      }
+
+      nativeEvent.stopPropagation();
     }
   }
 };

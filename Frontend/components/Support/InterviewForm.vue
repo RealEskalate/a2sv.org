@@ -20,13 +20,6 @@
         :label="labels.company_email"
         :rules="rules.emailRules"
       />
-      <v-textarea
-        v-model="contact.message"
-        class="v-card--shaped"
-        dense
-        rows="5"
-        :label="labels.additional_message"
-      />
       <div class="text-center py-3">
         <v-btn width="100" class="primary mx-auto" @click="sendForm">
           Send
@@ -44,13 +37,11 @@ export default {
     valid: false,
     contact: {
       name: "",
-      company_email: "",
-      additional_message: ""
+      company_email: ""
     },
     labels: {
       name: "Name",
-      company_email: "Company Email",
-      additional_message: "Additional Message (Optional)"
+      company_email: "Company Email"
     },
     rules: {
       nameRules: [

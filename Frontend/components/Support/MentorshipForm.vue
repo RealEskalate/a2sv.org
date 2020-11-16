@@ -20,6 +20,12 @@
         :label="labels.email"
         :rules="rules.emailRules"
       />
+      <v-text-field
+        v-model="contact.linkedin"
+        class="v-card--shaped"
+        dense
+        :label="labels.linkedin"
+      />
       <v-textarea
         v-model="contact.experience"
         class="v-card--shaped"
@@ -46,11 +52,13 @@ export default {
     contact: {
       name: "",
       email: "",
+      linkedin: "",
       experience: ""
     },
     labels: {
       name: "Name",
       email: "Email",
+      linkedin: "LinkedIn Profile URL (Optional)",
       experience: "Experience"
     },
     rules: {

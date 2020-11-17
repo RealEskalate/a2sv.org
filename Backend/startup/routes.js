@@ -4,7 +4,7 @@ const informationRouter = require('../routes/InformationRouter')
 const eventRouter = require('../routes/EventRouter')
 
 router.use('/', indexRouter)
-router.use('/information/', informationRouter)
-router.use('/event/', eventRouter)
+router.use('/api/information/', informationRouter)
+router.use('/api/event/', eventRouter)
 
 module.exports = router

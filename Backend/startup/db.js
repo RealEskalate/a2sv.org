@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const mongoose = require("mongoose");
 require("dotenv").config();
-const app = require("../index");
+require("../index");
 var connectionString = "";
 if (process.env.NODE_ENV === "test") {
   connectionString = process.env.APP_DB_CONNECTION_TEST;
@@ -16,7 +16,7 @@ mongoose.connect(
     useUnifiedTopology: true,
     useFindAndModify: false,
   },
-  function (err, res) {
+  function (err) {
     if (err) {
       console.log("Error connecting to database. " + err);
     } else {

@@ -48,12 +48,13 @@ exports.get_contact_by_id = async(req,res) => {
 
 // Post a contact
 exports.post_contact_data = async (req, res) => {
-    const notValid = contactValidator(req.body);
+    const contact = new Contact(req.body);
+    
+    const notValid = contactValidator(contact);
     if (notValid) {
         return res.status(422).send(notValid.message);
     }
     
-    const contact = new Contact(req.body);
     contact._id = mongoose.Types.ObjectId()
     await contact.save();
 
@@ -68,12 +69,14 @@ exports.update_contact = async (req, res) => {
         return res.status(404).send("Contact doesn't exist.s");
     }
 
-    const notValid = contactValidator(req.body);
+    contact.set(req.body)
+
+    const notValid = contactValidator(contact);
     if (notValid) {
         return res.status(422).send(notValid.message);
     }
 
-    contact = await Contact.findByIdAndUpdate(req.params.id,req.body,{new: true})
+    await contact.save()
     return res.status(200).send(contact);
 };
 
@@ -84,6 +87,6 @@ exports.delete_contact = async (req, res) => {
     if (!contact) {
         return res.status(404).send("contact not found");
     }
-    
+
     return res.status(200).send(contact);
 };

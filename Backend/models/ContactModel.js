@@ -33,7 +33,7 @@ let contactValidator = function(obj) {
 		email: Joi.string().email().required(),
 		message: Joi.string().min(10).max(3600).required(),
 	})
-    let { error } =  schema.validate(obj);
+    let { error } =  schema.validate(obj,{allowUnknown:true});
     return error
 }
 

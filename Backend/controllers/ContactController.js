@@ -1,4 +1,5 @@
 const {Contact,contactValidator} = require("../models/ContactModel.js");
+const { paginate } = require('../utilities/util')
 const mongoose = require("mongoose");
 
 // getting all contacts
@@ -20,22 +21,10 @@ exports.get_all_contacts = async (req, res) => {
     }
 
 
-    let page = parseInt(req.query.page) || 1;
-    let size = parseInt(req.query.size) || 15;
+    const query =  Contact.aggregate([filter])
+    const paginatedResult = await paginate(req, query)
 
-    const contacts = await Contact.find(
-        filter,{},
-        { skip: (page - 1) * size, limit: size * 1 }
-    );
-
-    let result = {
-        data_count: await Contact.countDocuments(filter),
-        page_size: size,
-        current_page: page,
-        data: contacts,
-    };
-
-    return res.send(result);   
+    return res.send(paginatedResult);   
 };
 
 

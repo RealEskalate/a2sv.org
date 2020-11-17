@@ -27,7 +27,7 @@ exports.updateEvent = async (req, res) => {
     const { id } = req.params
     const event = await Event.findOne({_id: id})
     if(!event){
-        res.status(404).send(`Event with id ${id} is not found`)
+        return res.status(404).send(`Event with id ${id} is not found`)
     }
     event.set(req.body)
     await event.save()
@@ -42,7 +42,7 @@ exports.addEventLink = async(req, res) => {
     const link = { name: req.body.linkName, link: req.body.link }
     const event = await Event.findOne({_id: id})
     if(!event){
-        res.status(404).send(`Event with id ${id} is not found`)
+        return res.status(404).send(`Event with id ${id} is not found`)
     }
     await Event.updateOne({_id: id}, {$push: {links: link}})
     return res.status(200).send('Event updated successfully!')
@@ -52,7 +52,7 @@ exports.deleteEvent = async (req, res) => {
     const { id } = req.params
     const event = await Event.findOne({_id: id})
     if(!event){
-        res.status(404).send(`Event with id ${id} is not found`)
+        return res.status(404).send(`Event with id ${id} is not found`)
     }
     await event.remove()
     return res.status(200).send(event)

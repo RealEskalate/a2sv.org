@@ -31,7 +31,7 @@ exports.updateInformation = async (req, res) => {
     const { id } = req.params
     const information = await Information.findOne({_id: id})
     if(!information){
-        res.status(404).send(`Information with id ${id} is not found`)
+        return res.status(404).send(`Information with id ${id} is not found`)
     }
     information.set(req.body)
     await information.save()
@@ -42,7 +42,7 @@ exports.deleteInformation = async (req, res) => {
     const { id } = req.params
     const information = await Information.findOne({_id: id})
     if(!information){
-        res.status(404).send(`Information with id ${id} is not found`)
+        return res.status(404).send(`Information with id ${id} is not found`)
     }
     await information.remove()
     return res.status(200).send(information)

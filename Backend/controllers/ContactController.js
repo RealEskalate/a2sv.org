@@ -35,23 +35,16 @@ exports.get_all_contacts = async (req, res) => {
         data: contacts,
     };
 
-    try {
-        res.send(result);
-    } catch (err) {
-        res.status(500).send(err.toString());
-    }
+    return res.send(result);   
 };
+
 
 // get single contact
 exports.get_contact_by_id = async(req,res) => {
     const contact = await Contact.findById(req.params.id);
-
-    try {
-        return res.send(contact);
-    } catch (err) {
-        return res.status(500).send(err.toString());
-    }
+    return res.send(contact);
 };
+
 
 // Post a contact
 exports.post_contact_data = async (req, res) => {
@@ -59,15 +52,12 @@ exports.post_contact_data = async (req, res) => {
     if (notValid) {
         return res.status(422).send(notValid.message);
     }
-    try {
-        const contact = new Contact(req.body);
-        contact._id = mongoose.Types.ObjectId()
-        await contact.save();
+    
+    const contact = new Contact(req.body);
+    contact._id = mongoose.Types.ObjectId()
+    await contact.save();
 
-        return res.status(201).send(contact);
-    } catch (error) {
-        return res.status(500).send(error.toString());
-    }
+    return res.status(201).send(contact);
 };
 
 
@@ -77,24 +67,23 @@ exports.update_contact = async (req, res) => {
     if (!contact) {
         return res.status(404).send("Contact doesn't exist.s");
     }
-    try {
-        contact = await Contact.findByIdAndUpdate(req.params.id,req.body,{new: true})
-        return res.status(200).send(contact);
-    } catch (error) {
-        return res.status(500).send(error.toString());
+
+    const notValid = contactValidator(req.body);
+    if (notValid) {
+        return res.status(422).send(notValid.message);
     }
+
+    contact = await Contact.findByIdAndUpdate(req.params.id,req.body,{new: true})
+    return res.status(200).send(contact);
 };
 
 
 // Deleting a contact
 exports.delete_contact = async (req, res) => {
-    try {
-        let contact = await Contact.findByIdAndRemove(req.params.id);
-        if (!contact) {
-            res.status(404).send("contact not found");
-        }
-        res.status(200).send(contact);
-    } catch (error) {
-        res.status(500).send(error);
+    let contact = await Contact.findByIdAndRemove(req.params.id);
+    if (!contact) {
+        return res.status(404).send("contact not found");
     }
+    
+    return res.status(200).send(contact);
 };

@@ -27,6 +27,7 @@
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
     "nuxt-compress": "^4.0.0",
+    "vue-carousel-3d": "^1.0.1",
     "vue-plyr": "^6.0.4",
     "vue-scrollto": "^2.19.1"
   },

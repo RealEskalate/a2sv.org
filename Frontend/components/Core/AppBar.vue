@@ -64,7 +64,8 @@ import {
   mdiHome,
   mdiGroup,
   mdiCalendar,
-  mdiInformation
+  mdiInformation,
+  mdiEmail
 } from "@mdi/js";
 
 export default {
@@ -92,6 +93,11 @@ export default {
           icon: mdiInformation,
           title: "About Us",
           to: "/about"
+        },
+        {
+          icon: mdiEmail,
+          title: "Contact",
+          to: "/contact"
         }
       ]
     };

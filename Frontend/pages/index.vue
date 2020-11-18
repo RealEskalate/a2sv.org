@@ -82,7 +82,8 @@
       <div
         max-width="900"
         class="my-5 pa-0 mx-auto overflow-hidden"
-        style="background-image: url('back.png'); background-size: cover;">
+        style="background-image: url('back.png'); background-size: cover;"
+      >
         <v-row>
           <v-col class="pa-0" cols="12" sm="6">
             <v-img

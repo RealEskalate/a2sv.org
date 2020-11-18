@@ -41,17 +41,27 @@
       </v-row>
       <v-row class="mx-15 mb-15">
         <v-col cols="12" sm="6">
-          <v-img
-            style="margin-top: 160px"
-            height="350px"
-            src="http://res.cloudinary.com/eskalate/image/upload/v1596886905/gallery/IMG_20200306_140909-scaled_ajf84u.jpg"
-          />
+          <div class="polaroid">
+            <v-img
+              style="margin-top: 160px"
+              height="350px"
+              src="http://res.cloudinary.com/eskalate/image/upload/v1596886905/gallery/IMG_20200306_140909-scaled_ajf84u.jpg"
+            />
+            <div class="py-4">
+              <p>Problem Solving Session</p>
+            </div>
+          </div>
         </v-col>
         <v-col cols="12" sm="6">
-          <v-img
-            height="350px"
-            src="http://res.cloudinary.com/eskalate/image/upload/v1596887173/gallery/IMG_20200306_151818_gbvq7u.jpg"
-          />
+          <div class="polaroid">
+            <v-img
+              height="350px"
+              src="http://res.cloudinary.com/eskalate/image/upload/v1596887173/gallery/IMG_20200306_151818_gbvq7u.jpg"
+            />
+            <div class="py-4">
+              <p>Contest</p>
+            </div>
+          </div>
         </v-col>
       </v-row>
 
@@ -92,12 +102,18 @@
             </v-responsive>
           </template>
         </v-slide-group>
-        <v-btn x-large outlined class="text-capitalize mt-10 mb-5" color="primary" to="/support">
+        <v-btn
+          x-large
+          outlined
+          class="text-capitalize mt-10 mb-5"
+          color="primary"
+          to="/support"
+        >
           Partner with us
         </v-btn>
       </v-container>
     </div>
-
+    <Contact class="my-10" />
     <!-- <v-container class="text-center">
       <v-row class="my-12">
         <v-col>
@@ -158,9 +174,11 @@
 
 <script>
 import Banner from "@/components/Core/TextOnlyBanner";
+import Contact from "@/components/Contact";
 export default {
   components: {
-    Banner
+    Banner,
+    Contact
   },
   data() {
     return {
@@ -223,4 +241,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+div.polaroid {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+}
+</style>

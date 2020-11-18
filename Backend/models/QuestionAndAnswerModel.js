@@ -21,18 +21,21 @@ const QuestionAndAnswerSchema = mongoose.Schema({
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 }) 
 
-const validQuestionAndAnswerSchema = Joi.object({
+const validationSchema = Joi.object({
     name: Joi.string().required(),
     email: Joi.string().required(),
     profession: Joi.string().required(),
     bio: Joi.string(),
-})
+});
 
-const validator = function(obj) {
-    let { error } = validQuestionAndAnswerSchema.validate(obj, { allowUnknown: true })
-    return error
-}
+const editValidationSchema = Joi.object({
+    name: Joi.string(),
+    email: Joi.string(),
+    profession: Joi.string(),
+    bio: Joi.string(),
+});
 
 const QuestionAndAnswer = mongoose.model('QuestionAndAnswer', QuestionAndAnswerSchema)
 exports.QuestionAndAnswer = QuestionAndAnswer
-exports.validator = validator
+exports.validationSchema = validationSchema;
+exports.editValidationSchema = editValidationSchema;

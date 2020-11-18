@@ -84,7 +84,6 @@ describe('Question And Answer API', () => {
                 email: "Actor@google.com",
             });
         expect(response).to.have.status(422);
-        expect(response.body).to.be.a("object");
     });
     it("It should patch an example of Questions and Answers", async () => {
         let response = await chai

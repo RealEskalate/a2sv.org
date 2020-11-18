@@ -10,6 +10,44 @@
     <v-container class="grey lighten-5">
       <v-row no-gutters>
         <v-col
+          class="d-flex pa-5"
+          cols="12"
+          sm="4"
+        >
+          <v-select
+            :items="countries"
+            label="Location"
+            solo
+          />
+        </v-col>
+
+        <v-col
+          class="d-flex pa-5"
+          cols="12"
+          sm="4"
+        >
+          <v-select
+            :items="titles"
+            label="Title"
+            solo
+          />
+        </v-col>
+
+        <v-col
+          class="d-flex pa-5"
+          cols="12"
+          sm="4"
+        >
+          <v-text-field
+            label="Search"
+            solo
+            append-icon="mdi-map-marker"
+          />
+        </v-col>
+      </v-row>
+
+      <v-row no-gutters>
+        <v-col
           v-for="(member, i) in getTeamMembers"
           :key="i"
           cols="12"
@@ -46,6 +84,7 @@
 import { mapGetters } from "vuex";
 import Banner from "@/components/Core/Banner";
 
+
 export default {
   components: {
     Banner,
@@ -55,7 +94,9 @@ export default {
     return {
       drawer: null,
       userId: null,
-      baseUrl: process.env.baseUrl
+      baseUrl: process.env.baseUrl,
+      countries: ["Ethiopia", "Turkey", "USA"],
+      titles: ["Trainee", "Trainer", "Partners"]
     };
   },
   head: {
@@ -63,9 +104,15 @@ export default {
   },
   computed: {
     ...mapGetters("team", ["getTeamMembers"])
+
   },
   created() {
     this.$store.dispatch("team/fetchMembers");
   }
 };
 </script>
+<style scoped>
+.headline {
+    font-size: 1.22rem !important;
+    line-height: 1.25rem;}
+</style>

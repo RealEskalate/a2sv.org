@@ -4,7 +4,7 @@
     absolute
     right
     temporary
-    width="30em"
+    width="29em"
     style="position: fixed; max-width: 80vw!important;"
   >
     <v-row class="mt-12 mb-4">
@@ -15,19 +15,19 @@
       </v-avatar>
 
       <v-col style="margin-left: 2em">
-        <h1 class="nav-name my-2">
-          {{ member.name }}
-        </h1>
-        <p class="blackish">
+        <p class="nav-job pb-2">
           {{ member.team }}
         </p>
-        <p class="blackish">
+        <p class="nav-name font-weight-thin">
+          {{ member.name }}
+        </p>
+        <p class="nav-career">
           {{ member.career }}
         </p>
       </v-col>
     </v-row>
     <v-row class="mx-lg-3">
-      <p class="details mx-6">
+      <p class="details mx-10 my-2">
         {{ member.description }}
       </p>
     </v-row>
@@ -71,17 +71,24 @@ export default {
 .nav-name {
   font-size: 32px;
   text-transform: uppercase;
-  font-weight: 100;
+  /* font-weight: thin; */
   margin: 0 !important;
 }
 .nav-job {
   font-size: medium;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  /* font-family: Georgia, 'Times New Roman', Times, serif; */
+  margin: 0 !important;
+}
+.nav-career {
+  font-size: medium;
+  font-weight: bolder;
+  /* font-family: Georgia, 'Times New Roman', Times, serif; */
   margin: 0 !important;
 }
 .details {
-  font-weight: 300;
-  width: 170em;
+  font-weight: 200;
+  font-style: italic;
+  width: 100em;
   font-size: 18px;
 }
 </style>

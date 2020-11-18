@@ -1,8 +1,7 @@
 const router = require('express').Router()
 const informationController = require('../controllers/InformationController')
 const inputValidator = require('../middlewares/validator')
-const { validationSchema } = require('../models/Information')
-const { editValidationSchema } = require('../models/Information')
+const { validationSchema, editValidationSchema } = require('../models/Information')
 
 router.get('/', informationController.getAllInformation)
 router.get('/:id', informationController.getInformationById)

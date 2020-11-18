@@ -12,11 +12,10 @@ const informationSchema = new mongoose.Schema({
         required: true
     },
     description: {
-        type: mongoose.Schema.Types.Mixed,
-        default: null
+        type: mongoose.Schema.Types.Mixed
     }
 }, { 
-    timestamps: true
+    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 })
 
 const validInformationSchema = Joi.object({

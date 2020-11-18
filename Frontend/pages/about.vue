@@ -31,39 +31,39 @@
       <v-subheader class="justify-center">
         {{ lists[0].subtitle }}
       </v-subheader>
-      <v-row>
-        <v-col v-for="(item, i) in lists[0].list" :key="i" cols="12" sm="4">
-          <v-card-title class="justify-center primary--text">
-            {{ item.title }}
-          </v-card-title>
-          <p class="body-1" v-html="item.content" />
-        </v-col>
-      </v-row>
-      <v-row class="mx-15 mb-15">
-        <v-col cols="12" sm="6">
-          <div class="polaroid">
+      <carousel-3d
+        style="min-height: 350px"
+        :border="0"
+        :perspective="20"
+        :inverse-scaling="50"
+        :space="350"
+        autoplay
+        :autoplay-timeout="5000"
+        width="400"
+      >
+        <slide
+          v-for="(item, i) in lists[0].list"
+          :key="i"
+          class="overflow-visible"
+          :index="i"
+          style="height: auto; background-color: transparent"
+        >
+          <v-card class="shadow" outlined shaped>
             <v-img
-              style="margin-top: 160px"
-              height="350px"
-              src="http://res.cloudinary.com/eskalate/image/upload/v1596886905/gallery/IMG_20200306_140909-scaled_ajf84u.jpg"
-            />
-            <div class="py-4">
-              <p>Problem Solving Session</p>
-            </div>
-          </div>
-        </v-col>
-        <v-col cols="12" sm="6">
-          <div class="polaroid">
-            <v-img
-              height="350px"
-              src="http://res.cloudinary.com/eskalate/image/upload/v1596887173/gallery/IMG_20200306_151818_gbvq7u.jpg"
-            />
-            <div class="py-4">
-              <p>Contest</p>
-            </div>
-          </div>
-        </v-col>
-      </v-row>
+              class="white--text align-end"
+              height="200px"
+              :src="item.image"
+            >
+              <v-card-title class="mr-3" v-text="item.title" />
+            </v-img>
+            <v-card-text v-text="item.content" />
+          </v-card>
+        </slide>
+      </carousel-3d>
+
+      <v-icon size="100" class="mb-5" style="margin-top: -20px">
+        {{ mdiArrowDownBoldHexagonOutline }}
+      </v-icon>
 
       <h1 class="display-1 primary--text">
         {{ lists[1].title }}
@@ -71,14 +71,34 @@
       <v-subheader class="justify-center">
         {{ lists[1].subtitle }}
       </v-subheader>
-      <v-row>
-        <v-col v-for="(item, i) in lists[1].list" :key="i" cols="12" sm="4">
-          <v-card-title class="justify-center primary--text">
-            {{ item.title }}
-          </v-card-title>
-          <p class="body-1" v-html="item.content" />
-        </v-col>
-      </v-row>
+      <carousel-3d
+        style="min-height: 350px"
+        :border="0"
+        :perspective="20"
+        :inverse-scaling="50"
+        :space="350"
+        autoplay
+        :autoplay-timeout="5000"
+        width="400"
+      >
+        <slide
+          v-for="(item, i) in lists[1].list"
+          :key="i"
+          class="overflow-visible"
+          :index="i"
+          style="height: auto; background-color: transparent"
+        >
+          <v-card class="shadow" outlined shaped>
+            <v-img
+              class="align-end"
+              height="200px"
+              :src="item.image"
+            />
+            <v-card-title class="primary--text pb-0" v-text="item.title" />
+            <v-card-text v-text="item.content" />
+          </v-card>
+        </slide>
+      </carousel-3d>
     </v-container>
 
     <div class="grey lighten-4 mt-10 text-center">
@@ -113,7 +133,7 @@
         </v-btn>
       </v-container>
     </div>
-    <Contact class="my-10" />
+   
     <!-- <v-container class="text-center">
       <v-row class="my-12">
         <v-col>
@@ -174,14 +194,18 @@
 
 <script>
 import Banner from "@/components/Core/TextOnlyBanner";
-import Contact from "@/components/Contact";
+import { Carousel3d, Slide } from "vue-carousel-3d";
+import { mdiArrowDownBoldHexagonOutline } from "@mdi/js";
+
 export default {
   components: {
     Banner,
-    Contact
+    Slide,
+    "carousel-3d": Carousel3d
   },
   data() {
     return {
+      mdiArrowDownBoldHexagonOutline,
       icons: [
         "./icons/google-icon.svg",
         "./icons/palantir-icon.svg",
@@ -194,19 +218,46 @@ export default {
           subtitle: "Here's what we have been upto",
           list: [
             {
-              title: "Technical Training & Contests",
+              title: "Technical Training",
               content:
-                "6 days a week, 3 hours lectures and practice sessions to improve problem solving skills <br/><br/> Bi-weekly contests to get better at competitive programming and problem solving on online platform"
+                "6 days a week, 3 hours lectures and practice sessions to improve problem solving skills",
+              image:
+                "http://res.cloudinary.com/eskalate/image/upload/v1596886905/gallery/IMG_20200306_140909-scaled_ajf84u.jpg"
             },
             {
-              title: "Q&As & Problem Solving",
+              title: "Contests",
               content:
-                "Q&A Sessions with engineers, founders, and data scientists from top SV companies to learn from their best practices and to realize that they are normal people <br/><br/> Problem solving sessions to get a feel of explaining solutions on the whiteboard"
+                "Bi-weekly contests to get better at competitive programming and problem solving on online platform",
+              image:
+                "http://res.cloudinary.com/eskalate/image/upload/v1596886905/gallery/IMG_20200306_140909-scaled_ajf84u.jpg"
             },
             {
-              title: "Learning How to Approach & 1-1s",
+              title: "Q&As",
               content:
-                "Learning how to approach sessions to learn best practices from an experienced problem solver <br/><br/> Bi-weekly 1:1s with students to get to know each other and open a communication channel"
+                "Q&A Sessions with engineers, founders, and data scientists from top SV companies to learn from their best practices and to realize that they are normal people",
+              image:
+                "http://res.cloudinary.com/eskalate/image/upload/v1596886905/gallery/IMG_20200306_140909-scaled_ajf84u.jpg"
+            },
+            {
+              title: "Problem Solving",
+              content:
+                "Problem solving sessions to get a feel of explaining solutions on the whiteboard",
+              image:
+                "http://res.cloudinary.com/eskalate/image/upload/v1596886905/gallery/IMG_20200306_140909-scaled_ajf84u.jpg"
+            },
+            {
+              title: "Learning How to Approach",
+              content:
+                "Learning how to approach sessions to learn best practices from an experienced problem solver",
+              image:
+                "http://res.cloudinary.com/eskalate/image/upload/v1596886905/gallery/IMG_20200306_140909-scaled_ajf84u.jpg"
+            },
+            {
+              title: "1-1s",
+              content:
+                "Bi-weekly 1:1s with students to get to know each other and open a communication channel",
+              image:
+                "http://res.cloudinary.com/eskalate/image/upload/v1596886905/gallery/IMG_20200306_140909-scaled_ajf84u.jpg"
             }
           ]
         },
@@ -216,19 +267,39 @@ export default {
             "On the top of what we do in the first part, we have a month long camp, 6 days a week.",
           list: [
             {
-              title: "Daily Contests & Communication Skill Assessments",
+              title: "Daily Contests",
               content:
-                "Daily contests to get better at competitive programming and problem solving <br><br> Problem solving and interview video recordings to improve communication skills"
+                "Daily contests to get better at competitive programming and problem solving",
+              image: "http://res.cloudinary.com/eskalate/image/upload/v1596887173/gallery/IMG_20200306_151818_gbvq7u.jpg"
             },
             {
-              title: "Mock Interviews & Moonwalks",
+              title: "Communication Skill Assessments",
               content:
-                "Mock interviews with peers, other trainees, and industry professionals in the SV <br><br> Daily half an hour pair walks among teammates to improve connections"
+                "Problem solving and interview video recordings to improve communication skills",
+                image: "http://res.cloudinary.com/eskalate/image/upload/v1596887173/gallery/IMG_20200306_151818_gbvq7u.jpg"
             },
             {
-              title: "Weekly 1-1s & Social Activities",
+              title: "Mock Interviews",
               content:
-                "Weekly 1:1s to check progress and to provide personalized improvement plan <br><br> Games and social activities for team building"
+                "Mock interviews with peers, other trainees, and industry professionals in the SV",
+                image: "http://res.cloudinary.com/eskalate/image/upload/v1596887173/gallery/IMG_20200306_151818_gbvq7u.jpg"
+            },
+            {
+              title: "Moonwalks",
+              content:
+                "Daily half an hour pair walks among teammates to improve connections",
+                image: "http://res.cloudinary.com/eskalate/image/upload/v1596887173/gallery/IMG_20200306_151818_gbvq7u.jpg"
+            },
+            {
+              title: "Weekly 1-1s",
+              content:
+                "Weekly 1:1s to check progress and to provide personalized improvement plan",
+                image: "http://res.cloudinary.com/eskalate/image/upload/v1596887173/gallery/IMG_20200306_151818_gbvq7u.jpg"
+            },
+            {
+              title: "Social Activities",
+              content: "Games and social activities for team building",
+              image: "http://res.cloudinary.com/eskalate/image/upload/v1596887173/gallery/IMG_20200306_151818_gbvq7u.jpg"
             }
           ]
         }
@@ -242,9 +313,4 @@ export default {
 </script>
 
 <style>
-div.polaroid {
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 8px;
-}
 </style>

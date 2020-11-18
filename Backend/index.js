@@ -7,7 +7,7 @@ const router = require('./startup/routes')
 require("./startup/db.js");
 
 process.on('unhandledRejection', (ex) => {
-  throw ex
+    throw ex
 })
 const bodyParser = require("body-parser");
 const compression = require("compression");
@@ -23,18 +23,19 @@ app.use(router)
 
 // Centralizing error handling to avoid try catch blocks on the controllers
 app.use((err, req, res, next) => {
-  res.status(500).send('server error ' + err.toString())
-  next(err)
+    res.status(500).send('server error ' + err.toString())
+    next(err)
 })
 
 app.use(router)
 
 app.listen(port, () => {
-  console.log("Server is running... at port " + port);
+    // eslint-disable-next-line no-console
+    console.log("Server is running... at port " + port);
 });
 
 function shouldCompress(req, res) {
-  return compression.filter(req, res);
+    return compression.filter(req, res);
 }
 
 module.exports = app;

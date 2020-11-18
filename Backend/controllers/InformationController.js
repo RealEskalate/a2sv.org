@@ -1,14 +1,8 @@
 const { Information } = require('../models/Information')
 const { paginate } = require('../utilities/util')
-const _ = require('lodash')
 
 exports.addInformation = async(req, res) => {
-    const information = new Information(_.pick(req.body, ["title", "note"]))
-    await information.save()
-    const { description } = req.body
-    if(description){
-        information.set('description', description)
-    }
+    const information = new Information(req.body)
     await information.save()
     return res.status(201).send(information)
 }

@@ -79,28 +79,31 @@
           Google software engineering internship interviews.
         </p>
       </div>
-      <v-card
+      <div
         max-width="900"
-        class="shadow-sm my-5 pa-0 mx-auto overflow-hidden"
-      >
+        class="my-5 pa-0 mx-auto overflow-hidden"
+        style="background-image: url('back.png'); background-size: cover;">
         <v-row>
           <v-col class="pa-0" cols="12" sm="6">
             <v-img
               cover
-              src="/team/ise.webp"
+              src="/ise_transparent.png"
               style="height: 100%"
             />
           </v-col>
-          <v-col class="pa-12" cols="12" sm="6">
+          <v-col class="pa-12" cols="12" sm="6" style="margin-left: -5em; margin-top: -2em;">
+            <p class="display-2 font-weight-bold pb-8">
+              IMPACT STORY
+            </p>
             <p
-              style="line-height: 30px; font-size: 17px"
+              style="line-height: 27px; font-size: 17px; font-style:italic;"
             >
-              Before I joined A2SV, I was clueless on what path to take in order
+              <span class="mx-3" style="font-size: x-large; font-weight: 600;">" </span>  Before I joined A2SV, I was clueless on what path to take in order
               to become a good programmer. But after I joined the A2SV team, it
               showed me one better direction to reach the level that I want to
               get to. The challenges and the problems we solve every day has
               showed to pay attention to the important parts of any problem and
-              come up with an efficient solution. <br>
+              come up with an efficient solution. <span class="mx-2" style="font-size: x-large; font-weight: 600;">"</span> <br>
               <v-card-subtitle
                 style="font-size: 16px"
               >
@@ -109,7 +112,7 @@
             </p>
           </v-col>
         </v-row>
-      </v-card>
+      </div>
     </v-row>
 
     <v-row class="my-md-10 py-12">

@@ -22,7 +22,7 @@ describe("Information API", () => {
         await information.save();
     });
     afterEach(async () => {
-        await Information.deleteMany({});
+        await Information.findByIdAndDelete(information._id);
     });
 
     describe("GET information ", () => {
@@ -77,6 +77,7 @@ describe("Information API", () => {
                 .send(informationObject);
             expect(response).to.have.status(201);
             expect(response.body).to.be.a("object");
+            await Information.findByIdAndDelete(response.body._id)
         });
 
         it("It should add information with description text", async () => {   
@@ -87,7 +88,8 @@ describe("Information API", () => {
                 .send(informationObject);
             expect(response).to.have.status(201);
             expect(response.body).to.be.a("object");
-            expect(response.body).to.haveOwnProperty("description")
+            expect(response.body).to.haveOwnProperty("description");
+            await Information.findByIdAndDelete(response.body._id);
         });
 
         it("It should add information with description object", async () => {   
@@ -101,7 +103,8 @@ describe("Information API", () => {
                 .send(informationObject);
             expect(response).to.have.status(201);
             expect(response.body).to.be.a("object");
-            expect(response.body).to.haveOwnProperty("description")
+            expect(response.body).to.haveOwnProperty("description");
+            await Information.findByIdAndDelete(response.body._id);
         });
 
         it("It should not add information with missing required attribute", async () => {   

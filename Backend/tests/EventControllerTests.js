@@ -27,7 +27,7 @@ describe("Event API", () => {
         await event.save();
     });
     afterEach(async () => {
-        await Event.deleteMany({});
+        await Event.findByIdAndDelete(event._id);
     });
 
     
@@ -88,6 +88,7 @@ describe("Event API", () => {
                 .send(eventObject);
             expect(response).to.have.status(201);
             expect(response.body).to.be.a("object");
+            await Event.findByIdAndDelete(response.body._id)
         });
 
         it("It should not add event- with missing event attribute", async () => {   

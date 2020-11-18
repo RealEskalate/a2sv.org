@@ -4,7 +4,7 @@ exports.paginate = async (req, query) => {
     const page = parseInt(req.query.page) || 0
 
     const result = await query
-      .skip(page * limit)
-      .limit(limit)
+        .skip(page * limit)
+        .limit(limit)
     return { meta: { page: page, limit: limit}, data: result}
 }

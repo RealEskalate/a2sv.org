@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "eslint . && NODE_ENV=dev npx nodemon index.js",
-    "devWin": "eslint . & NODE_ENV=dev & npx nodemon index.js"
+    "devWin": "eslint . & NODE_ENV=dev & npx nodemon index.js",
+    "test": "mocha --timeout 0 --exit"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,9 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "eslint": "^7.13.0"
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.13.0",
+    "mocha": "^8.2.1"
   }
 }

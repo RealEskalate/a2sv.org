@@ -11,7 +11,7 @@
         class="d-flex align-center justify-center"
         style="height: 100%"
       >
-        <div
+        <v-container
           class="pa-8 text-center"
           :style="`width: ${$vuetify.breakpoint.mdAndUp ? '50%' : '90%'}`"
           style="background: rgba(250, 250, 250, 0.55)"
@@ -30,7 +30,7 @@
             A2SV - Africa to Silicon Valley, offers training program that initially focuses on
             problem-solving and personal development.
           </p>
-        </div>
+        </v-container>
       </div>
     </video-background>
 

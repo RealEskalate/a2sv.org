@@ -12,7 +12,5 @@ router.use('/api/mentorship', mentorshipRouter);
 router.use("/api/questionAndAnswer", questionAndAnswerRouter);
 router.use('/api/information/', informationRouter)
 router.use("/api/event/", eventRouter);
-router.use('/api/information/', informationRouter)
-router.use('/api/event/', eventRouter)
 
 module.exports = router

@@ -21,19 +21,22 @@ const MentorshipSchema = mongoose.Schema({
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 }) 
 
-const validMentorshipSchema = Joi.object({
+const validationSchema = Joi.object({
     name: Joi.string().required(),
     email: Joi.string().required(),
     experience: Joi.string().required(),
-    linkedin_url: Joi.string()
+    linkedin_url: Joi.string(),
+});
+const editValidationSchema = Joi.object({
+    name: Joi.string(),
+    email: Joi.string(),
+    experience: Joi.string(),
+    linkedin_url: Joi.string(),
 });
 
-const validator = function(obj) {
-    let { error } = validMentorshipSchema.validate(obj, { allowUnknown: true });
-    return error
-}
 
 const Mentorship = mongoose.model('Mentorship', MentorshipSchema);
 exports.Mentorship = Mentorship;
-exports.validator = validator;
+exports.validationSchema = validationSchema;
+exports.editValidationSchema = editValidationSchema;
 

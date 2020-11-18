@@ -7,7 +7,8 @@
     "start": "node index.js",
     "dev": "eslint . && NODE_ENV=dev npx nodemon index.js",
     "devWin": "eslint . & NODE_ENV=dev & npx nodemon index.js",
-    "test": "mocha --timeout 0 --exit"
+    "test": "nyc mocha --timeout 0 --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "eslint": "^7.13.0",
-    "mocha": "^8.2.1"
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0"
   }
 }

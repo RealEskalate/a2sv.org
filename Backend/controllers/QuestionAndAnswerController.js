@@ -1,4 +1,4 @@
-const { QuestionAndAnswer, validator } = require("../models/QuestionAndAnswerModel.js");
+const { QuestionAndAnswer } = require("../models/QuestionAndAnswerModel.js");
 const { paginate } = require("../utilities/util");
 
 exports.getAllQuestionsAndAnswers = async (req, res) => {
@@ -19,10 +19,6 @@ exports.getQuestionsAndAnswersByID = async (req, res) => {
 
 exports.createQuestionsAndAnswers = async (req, res) => {
     const questionAndAnswer = new QuestionAndAnswer(req.body);
-    const notValid = validator(questionAndAnswer);
-    if (notValid) {
-        return res.status(422).send(notValid.message);
-    }
     await questionAndAnswer.save();
     return res.status(201).send(questionAndAnswer);
 };
@@ -34,10 +30,6 @@ exports.patchQuestionsAndAnswers = async (req, res) => {
         return res.status(404).send(`QuestionAndAnswer with id ${id} is not found`);
     }
     questionAndAnswer.set(req.body);
-    const notValid = validator(questionAndAnswer);
-    if (notValid) {
-        return res.status(422).send(notValid.message);
-    }
     await questionAndAnswer.save();
     return res.status(200).send(questionAndAnswer);
 };

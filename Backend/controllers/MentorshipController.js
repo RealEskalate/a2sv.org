@@ -1,4 +1,4 @@
-const { Mentorship, validator } = require("../models/MentorshipModel.js");
+const { Mentorship } = require("../models/MentorshipModel.js");
 const { paginate } = require("../utilities/util");
 
 exports.getAllMentorships = async (req, res) => {
@@ -19,10 +19,6 @@ exports.getMentorshipsByID = async (req, res) => {
 
 exports.createMentorships = async (req, res) => {
     const mentorship = new Mentorship(req.body)
-    const notValid = validator(mentorship)
-    if (notValid) {
-        return res.status(422).send(notValid.message)
-    }
     await mentorship.save()
     return res.status(201).send(mentorship)
 };
@@ -34,10 +30,6 @@ exports.patchMentorships = async (req, res) => {
         return res.status(404).send(`Mentorship with id ${id} is not found`);
     }
     mentorship.set(req.body)
-    const notValid = validator(mentorship);
-    if (notValid) {
-        return res.status(422).send(notValid.message)
-    }
     await mentorship.save()
     return res.status(200).send(mentorship)
 };

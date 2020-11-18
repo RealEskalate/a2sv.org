@@ -4,7 +4,7 @@ const { paginate } = require('../utilities/util')
 exports.addEvent = async(req, res) => {
     const event = new Event(req.body)
     await event.save()
-    return res.status(201).send('Event saved successfully!')
+    return res.status(201).send(event)
 }
 
 exports.getAllEvents = async(req, res) => {
@@ -18,7 +18,7 @@ exports.getEventById = async (req, res) => {
     const { id } = req.params
     const event = await Event.findOne({_id: id})
     if(!event){
-        return res.status(400).send('Information not found!')
+        return res.status(404).send('Event not found!')
     }
     return res.status(200).send(event)
 }
@@ -36,10 +36,8 @@ exports.updateEvent = async (req, res) => {
 
 exports.addEventLink = async(req, res) => {
     const { id } = req.params
-    if(!req.body.linkName || !req.body.link){
-        return res.status(400).send('Link name or the link or both are missing')
-    }
-    const link = { name: req.body.linkName, link: req.body.link }
+
+    const link = req.body
     const event = await Event.findOne({_id: id})
     if(!event){
         return res.status(404).send(`Event with id ${id} is not found`)

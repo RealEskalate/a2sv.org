@@ -13,7 +13,6 @@ chai.use(chaiHttp);
 
 describe("Contact API", () => {
     let contact;
-
     beforeEach(async () => {
         contact = new Contact({
             _id: mongoose.Types.ObjectId(),
@@ -37,6 +36,7 @@ describe("Contact API", () => {
         expect(response).to.have.status(200);
         expect(response.body).to.be.a("object");
         expect(response.body.data).to.be.a("array");
+        expect(response.body.data).to.have.lengthOf(1);
     });
 
     it("It should fetch all contact  with name = vader ", async () => {
@@ -46,6 +46,8 @@ describe("Contact API", () => {
         expect(response).to.have.status(200);
         expect(response.body).to.be.a("object");
         expect(response.body.data).to.be.a("array");
+        expect(response.body.data).to.have.lengthOf(1);
+
     });
 
     it("It should fetch all contact  with email = vader@tatooine.com ", async () => {
@@ -55,6 +57,7 @@ describe("Contact API", () => {
         expect(response).to.have.status(200);
         expect(response.body).to.be.a("object");
         expect(response.body.data).to.be.a("array");
+        expect(response.body.data).to.have.lengthOf(1);
     });
 
     it("It should fetch all contact  with given subject ", async () => {
@@ -64,6 +67,7 @@ describe("Contact API", () => {
         expect(response).to.have.status(200);
         expect(response.body).to.be.a("object");
         expect(response.body.data).to.be.a("array");
+        expect(response.body.data).to.have.lengthOf(1);
     });
 
     it("It should fetch all contact  with given query params ", async () => {
@@ -73,6 +77,7 @@ describe("Contact API", () => {
         expect(response).to.have.status(200);
         expect(response.body).to.be.a("object");
         expect(response.body.data).to.be.a("array");
+        expect(response.body.data).to.have.lengthOf(1);
     });
 
 
@@ -97,6 +102,7 @@ describe("Contact API", () => {
             });
         expect(response).to.have.status(201);
         expect(response.body).to.be.a("object");
+        await Contact.findByIdAndDelete(response.body._id)
     });
 
     it("It should not add contact ", async () => {   
@@ -160,6 +166,14 @@ describe("Contact API", () => {
         expect(response).to.have.status(200);
         expect(response.body).to.be.a("object");
         expect(response.body.email).to.equal("vader@empire.com");
+    });
+
+    it("It should not update the contact", async () => {   
+        let response = await chai
+            .request(server)
+            .patch(`/api/contact/d4es23sdsds32ds`)
+            .send({email: "vader@empire.com"});
+        expect(response).to.have.status(500);
     });
 
     it("It should delete contact", async () => {   

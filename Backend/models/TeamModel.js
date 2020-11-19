@@ -29,21 +29,28 @@ var teamSchema = mongoose.Schema({
     },
 })
 
-let teamValidator = function(obj) {
-    var schema = Joi.object({
-        name: Joi.string().required(),
-        image: Joi.string().max(100).required(),
-        title: Joi.string().max(100).required(),
-        country: Joi.string().max(50).required(),
-        description: Joi.string().max(1000).required(),
-        email: Joi.string().email().required(),
-    })
-    let { error } =  schema.validate(obj,{allowUnknown:true});
-    return error
-}
+
+const validTeamSchema = Joi.object({
+    name: Joi.string().required(),
+    image: Joi.string().max(100).required(),
+    title: Joi.string().max(100).required(),
+    country: Joi.string().max(50).required(),
+    description: Joi.string().max(1000).required(),
+    email: Joi.string().email().required(),
+})
+
+const validTeamSchemaForUpdate = Joi.object({
+    name: Joi.string().optional(),
+    image: Joi.string().max(100).optional(),
+    title: Joi.string().max(100).optional(),
+    country: Joi.string().max(50).optional(),
+    description: Joi.string().max(1000).optional(),
+    email: Joi.string().email().optional(),
+})
 
 
-exports.teamValidator = teamValidator
+exports.validationSchema = validTeamSchema
+exports.editValidationSchema = validTeamSchemaForUpdate
 
 const Team = mongoose.model("Team", teamSchema);
 exports.Team = Team;

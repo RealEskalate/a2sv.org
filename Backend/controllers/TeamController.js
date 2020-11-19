@@ -1,4 +1,4 @@
-const {Team,teamValidator} = require("../models/TeamModel.js");
+const {Team} = require("../models/TeamModel.js");
 const { paginate } = require('../utilities/util')
 const mongoose = require("mongoose");
 
@@ -38,11 +38,6 @@ exports.get_member_by_id = async(req,res) => {
 exports.post_member_data = async (req, res) => {
     const team = new Team(req.body);
     
-    const notValid = teamValidator(team);
-    if (notValid) {
-        return res.status(422).send(notValid.message);
-    }
-    
     team._id = mongoose.Types.ObjectId()
     await team.save();
 
@@ -58,11 +53,6 @@ exports.update_team = async (req, res) => {
     }
 
     team.set(req.body)
-
-    const notValid = teamValidator(team);
-    if (notValid) {
-        return res.status(422).send(notValid.message);
-    }
 
     await team.save()
     return res.status(200).send(team);

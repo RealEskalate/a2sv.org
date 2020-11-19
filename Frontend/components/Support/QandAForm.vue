@@ -20,13 +20,20 @@
         :label="labels.email"
         :rules="rules.emailRules"
       />
+      <v-text-field
+        v-model="contact.profession"
+        class="v-card--shaped"
+        dense
+        :label="labels.profession"
+        :rules="rules.professionRules"
+      />
       <v-textarea
-        v-model="contact.story"
+        v-model="contact.bio"
         class="v-card--shaped"
         dense
         rows="5"
-        :label="labels.story"
-        :rules="rules.storyRules"
+        :label="labels.bio"
+        :rules="rules.bioRules"
       />
       <div class="text-center py-3">
         <v-btn width="100" class="primary mx-auto" @click="sendForm">
@@ -46,12 +53,14 @@ export default {
     contact: {
       name: "",
       email: "",
-      story: ""
+      profession: "",
+      bio: ""
     },
     labels: {
       name: "Name",
       email: "Email",
-      story: "Story"
+      profession: "Profession",
+      bio: "Short bio"
     },
     rules: {
       nameRules: [
@@ -62,10 +71,14 @@ export default {
         (v) => !!v || "E-mail is required",
         (v) => /.+@.+\..+/.test(v) || "E-mail must be valid"
       ],
-      storyRules: [
-        (v) => !!v || "Story is required",
+      professionRules: [
+        (v) => !!v || "Profession is required",
+        (v) => (v && v.length <= 30) || "Profession must be less than 30 characters"
+      ],
+      bioRules: [
+        (v) => !!v || "Bio is required",
         (v) =>
-          (v && v.length <= 150) || "Story must be less than 150 characters"
+          (v && v.length <= 250) || "Bio must be less than 250 characters"
       ]
     }
   }),

@@ -98,9 +98,9 @@
           </v-col>
           <v-col cols="6" md="3">
             <v-menu
-              tile
               ref="menu"
               v-model="dateMenu"
+              tile
               :close-on-content-click="false"
               :return-value.sync="filter.dateRange"
               transition="scale-transition"

@@ -3,9 +3,8 @@
     <v-app-bar
       app
       elevate-on-scroll
-      class="px-md-8"
-      :class="{ 'shadow-sm': true, 'main-gradient': isColored }"
-      color="grey lighten-5"
+      class="px-md-8 shadow-sm"
+      :class="{ 'transparent': $store.getters.getColor === 'transparent', 'main-gradient': $store.getters.getColor === 'colored' }"
     >
       <v-app-bar-nav-icon
         v-if="$vuetify.breakpoint.smAndDown"
@@ -64,7 +63,8 @@ import {
   mdiHome,
   mdiGroup,
   mdiCalendar,
-  mdiInformation
+  mdiInformation,
+  mdiEmail
 } from "@mdi/js";
 
 export default {
@@ -92,20 +92,25 @@ export default {
           icon: mdiInformation,
           title: "About Us",
           to: "/about"
+        },
+        {
+          icon: mdiEmail,
+          title: "Contact",
+          to: "/contact"
         }
       ]
     };
   },
   computed: {
     isColored() {
-      return this.$store.getters.getColor === "colored";
+      return ["colored", "transparent"].includes(this.$store.getters.getColor);
     },
     getLogo() {
       return this.isColored ? "./logos/logo-white.png" : "./logos/logo-blue.png";
     }
   },
   created() {
-    this.$store.dispatch("setActiveLink", "light");
+    this.$store.dispatch("setActiveLink", "transparent");
   }
 };
 </script>

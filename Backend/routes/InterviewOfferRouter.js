@@ -4,7 +4,7 @@ const inputValidator = require('../middlewares/validator')
 const { validationSchema, editValidationSchema } = require('../models/InterviewOfferModel')
 
 router.get('/',interviewOfferController.getAllInterviewOffer)
-router.get('/:id', interviewOfferController.getAllInterviewOfferById)
+router.get('/:id', interviewOfferController.getInterviewOfferById)
 
 router.post('/', inputValidator(validationSchema), interviewOfferController.addInterviewOffer)
 router.put('/:id', inputValidator(editValidationSchema), interviewOfferController.updateInterviewOffer)

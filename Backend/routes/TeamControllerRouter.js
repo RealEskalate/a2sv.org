@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const teamController = require('../controllers/TeamController')
 const inputValidator = require('../middlewares/validator')
-const { validationSchema, editValidationSchema } = require('../models/Information')
+const { validationSchema, editValidationSchema } = require('../models/TeamModel')
 
 router.get('/',teamController.get_all_team)
 router.get('/:id',teamController.get_member_by_id)

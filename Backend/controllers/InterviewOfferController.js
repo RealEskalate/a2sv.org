@@ -14,7 +14,7 @@ exports.getAllInterviewOffer = async(req,res) => {
     return res.status(200).send(paginatedResult)
 }
 
-exports.getAllInterviewOfferById = async(req, res) => {
+exports.getInterviewOfferById = async(req, res) => {
     const{ id } = req.params
     const interviewOffer = await InterviewOffer.findOne({_id: id})
     if (!interviewOffer){

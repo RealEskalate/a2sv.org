@@ -1,6 +1,5 @@
 const {Team} = require("../models/TeamModel.js");
 const { paginate } = require('../utilities/util')
-const mongoose = require("mongoose");
 
 // getting all team member
 exports.get_all_team = async (req, res) => {
@@ -30,6 +29,9 @@ exports.get_all_team = async (req, res) => {
 // get single team member
 exports.get_member_by_id = async(req,res) => {
     const team = await Team.findById(req.params.id);
+    if (!team) {
+        return res.status(404).send("Team member not found.");        
+    }
     return res.send(team);
 };
 
@@ -38,7 +40,6 @@ exports.get_member_by_id = async(req,res) => {
 exports.post_member_data = async (req, res) => {
     const team = new Team(req.body);
     
-    team._id = mongoose.Types.ObjectId()
     await team.save();
 
     return res.status(201).send(team);
@@ -49,7 +50,7 @@ exports.post_member_data = async (req, res) => {
 exports.update_team = async (req, res) => {
     let team = await Team.findById(req.params.id);
     if (!team) {
-        return res.status(404).send("team member doesn't exist.");
+        return res.status(404).send("Team member not found.");
     }
 
     team.set(req.body)
@@ -63,7 +64,7 @@ exports.update_team = async (req, res) => {
 exports.delete_a_member = async (req, res) => {
     let team = await Team.findByIdAndRemove(req.params.id);
     if (!team) {
-        return res.status(404).send("team member not found");
+        return res.status(404).send("Team member not found.");
     }
 
     return res.status(200).send(team);

@@ -2,7 +2,6 @@ var mongoose = require('mongoose')
 const Joi = require("@hapi/joi");
 
 var teamSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     name: {
         type: String,
         required: true,

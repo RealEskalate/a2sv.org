@@ -161,6 +161,7 @@ describe("Team API", () => {
                 .patch(`/api/team/${non_existing_id}`)
                 .send({ name: "Adam Sandler" });
             expect(response).to.have.status(404);
+            expect(response.text).to.equal("Team member not found.");
         });
 
         it("It should not update team - invalid id", async () => {
@@ -189,7 +190,7 @@ describe("Team API", () => {
                 .delete(`/api/team/${non_existing_id}`)
                 .send({});
             expect(response).to.have.status(404);
-            expect(response.body).to.be.a("object");
+            expect(response.text).to.equal("Team member not found.");
         });
 
         it("It should not delete team - invalid id", async () => {

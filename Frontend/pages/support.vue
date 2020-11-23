@@ -17,19 +17,18 @@
             md="3"
             class="mx-auto"
           >
+            <v-img :src="support.image" class="" style="height: 13rem" />
             <v-hover v-slot="{ hover }">
               <v-card
                 class="shadow-sm d-flex flex-column"
-                style="height: 100%; background-color: rgba(255, 255, 255, 0.9)"
-                :elevation="hover ? 10 : 2"
+                style="background-color: rgba(255, 255, 255, 0.9)"
                 :class="{ 'on-hover': hover }"
               >
-                <!-- <v-img :src="support.image" class="mt-5" style="max-height: 15rem" /> -->
                 <v-card-title class="justify-center" style="color: #545465">
                   {{ support.title | uppercase }}
                 </v-card-title>
-                <v-card-text class="text-center mt-3">
-                  {{ support.description }} 
+                <v-card-text class="text-center mt-3" style="height:10em;">
+                  {{ support.description }}
                   <div v-if="support.title === 'Donate'" class="mt-3">
                     Support A2SV from as little as $1 – and it only takes a minute. Thank you!
                   </div>

@@ -1,32 +1,37 @@
 var mongoose = require('mongoose')
 const Joi = require("@hapi/joi");
 
-var teamSchema = mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
+var teamSchema = mongoose.Schema(
+    {
+        name: {
+            type: String,
+            required: true,
+        },
+        email: {
+            type: String,
+            required: true,
+        },
+        image: {
+            type: String,
+            required: true,
+        },
+        title: {
+            type: String,
+            required: true,
+        },
+        description: {
+            type: String,
+            required: true,
+        },
+        country: {
+            type: String,
+            required: true,
+        },
     },
-    email: {
-        type: String,
-        required: true
-    },
-    image: {
-        type: String,
-        required: true
-    },
-    title: {
-        type: String,
-        required: true
-    },
-    description : {
-        type: String,
-        required: true
-    },
-    country: {
-        type: String,
-        required: true
-    },
-})
+    {
+        timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
+    }
+); 
 
 
 const validTeamSchema = Joi.object({

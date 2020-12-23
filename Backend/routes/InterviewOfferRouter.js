@@ -7,7 +7,7 @@ router.get('/',interviewOfferController.getAllInterviewOffer)
 router.get('/:id', interviewOfferController.getInterviewOfferById)
 
 router.post('/', inputValidator(validationSchema), interviewOfferController.addInterviewOffer)
-router.put('/:id', inputValidator(editValidationSchema), interviewOfferController.updateInterviewOffer)
+router.patch('/:id', inputValidator(editValidationSchema), interviewOfferController.updateInterviewOffer)
 router.delete('/:id', interviewOfferController.deleteInterviewOffer)
 
 module.exports = router

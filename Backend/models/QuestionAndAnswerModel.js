@@ -23,14 +23,14 @@ const QuestionAndAnswerSchema = mongoose.Schema({
 
 const validationSchema = Joi.object({
     name: Joi.string().required(),
-    email: Joi.string().required(),
+    email: Joi.string().email().required(),
     profession: Joi.string().required(),
     bio: Joi.string(),
 });
 
 const editValidationSchema = Joi.object({
     name: Joi.string(),
-    email: Joi.string(),
+    email: Joi.string().email(),
     profession: Joi.string(),
     bio: Joi.string(),
 });

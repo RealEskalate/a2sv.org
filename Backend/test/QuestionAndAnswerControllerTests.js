@@ -106,7 +106,7 @@ describe('Question And Answer API', () => {
             .request(server)
             .patch("/api/questionAndAnswer/" + mongoose.Types.ObjectId())
             .send({
-                email: "Actor",
+                email: "Actor@google.com",
             });
         expect(response).to.have.status(404);
     });

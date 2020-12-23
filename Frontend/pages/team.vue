@@ -15,6 +15,7 @@
           sm="4"
         >
           <v-select
+            flat
             :items="countries"
             label="Location"
             solo
@@ -27,6 +28,7 @@
           sm="4"
         >
           <v-select
+            flat
             :items="titles"
             label="Title"
             solo
@@ -39,6 +41,7 @@
           sm="4"
         >
           <v-text-field
+            flat
             label="Search"
             solo
             append-icon="mdi-map-marker"
@@ -51,27 +54,35 @@
           v-for="(member, i) in getTeamMembers"
           :key="i"
           cols="12"
-          sm="4"
-          class="pa-5"
+          sm="6"
+          md="3"
+          class="pa-5 py-0"
         >
           <v-hover v-slot="{ hover }">
             <v-card
-              tile
-              class="shadow-sm overflow-hidden"
-              @click="userId = i"
-              @click.stop="drawer = !drawer"
+              flat
+              class="transparent frame overflow-hidden"
             >
-              <v-list-item class="px-0" :class="{'primary' : hover}">
-                <v-list-item-avatar class="ma-0" size="120" tile>
-                  <v-img :src="baseUrl + '/img' + member.img" height="100%" />
-                </v-list-item-avatar>
-
-                <v-list-item-content :class="{'white--text' : hover}" class="pl-5 my-0" style="height: 100%">
-                  <span class="overline my-0">Ethiopia</span>
-                  <span class="headline my-0">{{ member.name }}</span>
-                  <span class="caption my-1">{{ member.career }}</span>
-                </v-list-item-content>
-              </v-list-item>
+              <v-container class="px-0" :class="{'tint' : hover}">
+                <v-img
+                  class="d-block mx-auto"
+                  :src="'/pose' + changeFormat(member.img)"
+                  height="100%"
+                  max-width="80%"
+                />
+                <v-card-title class="mx-auto text-center">
+                  <p class="text-center mx-auto">
+                    {{ member.name }}
+                  </p>
+                </v-card-title>
+                <v-card-subtitle class="text-center">
+                  {{ member.career }}
+                </v-card-subtitle>
+                <div class="details">
+                  <h4>{{ member.name }}</h4>
+                  <p> {{ member.description }} </p>
+                </div>
+              </v-container>
             </v-card>
           </v-hover>
         </v-col>
@@ -104,15 +115,59 @@ export default {
   },
   computed: {
     ...mapGetters("team", ["getTeamMembers"])
-
   },
   created() {
     this.$store.dispatch("team/fetchMembers");
+  },
+  methods: {
+    changeFormat(url) {
+      return url.replace(/jpeg|jpg|png/, "webp");
+    }
   }
 };
 </script>
 <style scoped>
-.headline {
-    font-size: 1.22rem !important;
-    line-height: 1.25rem;}
+.tint {
+  background-color: #eee;
+}
+.frame {
+  text-align: center;
+  position: relative;
+}
+.frame .details {
+  width: 80%;
+  height: 85%;
+  padding: 5% 8%;
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateY(90deg);
+  transform-origin: 50%;
+  background: rgba(255,255,255,0.9);
+  opacity: 0;
+  transition: all 0.4s ease-in;
+  font-size: 14px;
+  font-style: normal;
+  overflow-y:scroll;
+}
+.frame:hover .details {
+  transform: translate(-50%, -50%) rotateY(0deg);
+  opacity: 1;
+}
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #5668c6;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5668c6;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
 </style>

@@ -1,22 +1,24 @@
 const mongoose = require('mongoose')
 const Joi = require('@hapi/joi')
 
-const interviewOfferSchema = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-
-    name:{
-        type: String,
-        required: true
+const interviewOfferSchema = new mongoose.Schema(
+    {
+        name: {
+            type: String,
+            required: true,
+        },
+        company_email: {
+            type: String,
+            required: true,
+        },
+        message: {
+            type: String,
+        },
     },
-    company_email:{
-        type: String,
-        required: true
-    },
-    message:{
-        type: String
+    {
+        timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
     }
-    
-})
+); 
 
 const ValidationSchema = Joi.object({
     name: Joi.string().required(),
@@ -26,9 +28,9 @@ const ValidationSchema = Joi.object({
 
 const EditValidationSchema = Joi.object({
     name: Joi.string(),
-    company_email: Joi.string(),
-    message: Joi.string()
-})
+    company_email: Joi.string().email(),
+    message: Joi.string(),
+});
 
 const InterviewOffer = mongoose.model('InterviewOffer', interviewOfferSchema)
 exports.InterviewOffer = InterviewOffer

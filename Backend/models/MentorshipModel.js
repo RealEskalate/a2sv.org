@@ -23,15 +23,15 @@ const MentorshipSchema = mongoose.Schema({
 
 const validationSchema = Joi.object({
     name: Joi.string().required(),
-    email: Joi.string().required(),
+    email: Joi.string().email().required(),
     experience: Joi.string().required(),
-    linkedin_url: Joi.string(),
+    linkedin_url: Joi.string().uri(),
 });
 const editValidationSchema = Joi.object({
     name: Joi.string(),
-    email: Joi.string(),
+    email: Joi.string().email(),
     experience: Joi.string(),
-    linkedin_url: Joi.string(),
+    linkedin_url: Joi.string().uri(),
 });
 
 

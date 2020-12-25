@@ -80,37 +80,34 @@
           </p>
         </div>
         <div
-          max-width="900"
           class="my-5 pa-0 mx-auto overflow-hidden"
-          style="background-image: url('back.png'); background-size: cover;"
         >
           <v-row>
+            <p class="col-12 text-center display-2 font-weight-bold pb-8">
+              IMPACT STORY
+            </p>
             <v-col class="pa-0" cols="12" sm="6">
               <v-img
                 cover
-                src="/ise_transparent.png"
-                style="height: 100%"
+                src="/team/ise_transparent.webp"
+                style="height: 90%"
               />
             </v-col>
             <v-col class="pa-12" cols="12" sm="6" style="margin-left: -5em; margin-top: -2em;">
-              <p class="display-2 font-weight-bold pb-8">
-                IMPACT STORY
-              </p>
-              <p
-                style="line-height: 27px; font-size: 17px; font-style:italic;"
-              >
-                <span class="mx-3" style="font-size: x-large; font-weight: 600;">" </span>  Before I joined A2SV, I was clueless on what path to take in order
+              <p class="quote">
+                Before I joined A2SV, I was clueless on what path to take in order
                 to become a good programmer. But after I joined the A2SV team, it
                 showed me one better direction to reach the level that I want to
                 get to. The challenges and the problems we solve every day has
                 showed to pay attention to the important parts of any problem and
-                come up with an efficient solution. <span class="mx-2" style="font-size: x-large; font-weight: 600;">"</span> <br>
-                <v-card-subtitle
-                  style="font-size: 16px"
-                >
-                  Ise Boge, 4th year SE student
-                </v-card-subtitle>
+                come up with an efficient solution.
               </p>
+              <span
+                class="d-inline"
+                style="font-size: 16px"
+              >
+                Ise Boge, 4th year SE student
+              </span>
             </v-col>
           </v-row>
         </div>
@@ -149,11 +146,7 @@
               <v-card-actions class="mt-8">
                 <v-btn
                   color="primary px-3"
-                  style="
-                bottom: 1.5rem;
-                left: 37%;
-                position: absolute;
-              "
+                  style="bottom: 1.5rem; left: 37%; position: absolute;"
                   class="text-capitalize"
                 >
                   Learn More
@@ -178,14 +171,9 @@
               </p>
               <v-card-actions>
                 <v-btn
-                  outlined
-                  color="white"
-                  style="
-                bottom: 1.5rem;
-                left: 41%;
-                position: absolute;
-              "
-                  class="px-3"
+                  color="primary px-3"
+                  style="bottom: 1.5rem; left: 37%; position: absolute;"
+                  class="text-capitalize"
                 >
                   Donate
                 </v-btn>
@@ -254,8 +242,6 @@ export default {
 }
 .donate {
   border-radius: 10px;
-  background: linear-gradient(90deg, #00aeef 0, #334aC0 122.55%);
-  color: #f1f0f0 !important;
 }
 .donate-p {
   font-size: 17px;
@@ -265,5 +251,24 @@ export default {
 .plyr {
   --plyr-color-main: #334aC0;
   /*--plyr-video-control-color: #fff;*/
+}
+
+.quote {
+  position: relative;
+  padding-left: 1em;
+  border-left: 0.2em solid #334aC0;
+  font-weight: 100;
+  line-height: 2em;
+  font-size: 1.25em;
+  font-family: Nunito, sans-serif
+}
+.quote:before, .quote:after {
+  content: '\201C';
+  font-family: 'Sanchez';
+  font-size: 40px;
+  color: #334aC0;
+}
+.quote:after {
+  content: '\201D';
 }
 </style>

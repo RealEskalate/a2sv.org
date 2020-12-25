@@ -135,8 +135,8 @@ export default {
   position: relative;
 }
 .frame .details {
-  width: 80%;
-  height: 85%;
+  height: 95%;
+  width: 100%;
   padding: 5% 8%;
   position: absolute;
   content: "";

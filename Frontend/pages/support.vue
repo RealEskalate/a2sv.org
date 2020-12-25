@@ -17,7 +17,6 @@
             md="3"
             class="mx-auto"
           >
-            <v-img :src="support.image" class="" style="height: 13rem" />
             <v-hover v-slot="{ hover }">
               <v-card
                 class="shadow-sm d-flex flex-column"

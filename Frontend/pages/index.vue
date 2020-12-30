@@ -71,10 +71,10 @@
 
       <v-row class="px-10 my-12">
         <div class="col-md-8 ml-auto mr-auto text-center">
-          <h2 class="display-2 font-weight-bold">
-            Achievements
+          <h2 class="display-1 font-weight-bold">
+            Within 3 months
           </h2>
-          <p class="mt-md-7 blackish">
+          <p class="mt-md-7 blackish" style="font-size: 1.5em">
             First trainees achieved an unheard rate of 27% acceptance at
             Google software engineering internship interviews.
           </p>
@@ -83,8 +83,8 @@
           class="my-5 pa-0 mx-auto overflow-hidden"
         >
           <v-row>
-            <p class="col-12 text-center display-2 font-weight-bold pb-8">
-              IMPACT STORY
+            <p class="col-12 text-center display-1 font-weight-bold pb-8">
+              Impact story
             </p>
             <v-col class="pa-0" cols="12" sm="6">
               <v-img
@@ -103,84 +103,55 @@
                 come up with an efficient solution.
               </p>
               <span
-                class="d-inline"
-                style="font-size: 16px"
+                class="d-inline pl-md-4"
+                style="font-size: 14px"
               >
-                Ise Boge, 4th year SE student
+                &ndash; Ise Boge, 4th year SE student
               </span>
             </v-col>
           </v-row>
         </div>
       </v-row>
-
-      <v-row class="my-md-10 py-12">
-        <div class="col-md-8 ml-auto mr-auto text-center">
-          <h2 class="display-2 font-weight-bold">
-            You Can Help
-          </h2>
-        </div>
-        <v-row class="my-5 container">
-          <v-col cols="12" sm="6" class="px-md-12">
-            <v-card class="shadow-sm px-5 py-10" min-height="268">
-              <h1 class="ml-5 mb-3" style="font-family: Lato, sans-serif">
-                Become A2SV partner
-              </h1>
-              <p class="donate-p px-5">
-                Interview these folks for software engineering internship positions
-                at your company.
-              </p>
-              <p class="px-5 donate-p">
-                Our partners are:
-              </p>
-              <v-row class="mx-auto px-3 my-5">
-                <v-col
-                  v-for="icon in icons"
-                  :key="icon.logo"
-                  cols="3"
-                  align-self="center"
-                  class="mx-auto"
-                >
-                  <v-img :src="icon.logo" :width="icon.width" />
-                </v-col>
-              </v-row>
-              <v-card-actions class="mt-8">
-                <v-btn
-                  color="primary px-3"
-                  style="bottom: 1.5rem; left: 37%; position: absolute;"
-                  class="text-capitalize"
-                >
-                  Learn More
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-
-          <v-col cols="12" sm="6" class="px-md-12">
-            <v-card
-              class="shadow-sm px-5 py-10 donate"
-              height="100%"
+    </v-container>
+    <div class="grey lighten-4 mt-10 text-center">
+      <v-container>
+        <h1 class="display-1 mb-10 mt-5" style="color: #2b2a35; font-weight: 700">
+          We are closely working with
+        </h1>
+        <v-slide-group class="my-6">
+          <template v-for="(icon, n) in icons">
+            <v-slide-item :key="n" class="align-self-center">
+              <v-img :src="icon" color="grey" contain height="40" width="128" />
+            </v-slide-item>
+            <v-responsive
+              v-if="n < 3"
+              :key="`divider-${n}`"
+              class="text-center"
+              height="56"
+              width="48"
             >
-              <h1
-                class="text-center mb-3 text--white"
-                style="font-family: Lato, sans-serif"
-              >
-                Donate Now
-              </h1>
-              <p class="donate-p px-5">
-                Your donation can help A2SV to train more students across Africa.
-              </p>
-              <v-card-actions>
-                <v-btn
-                  color="primary px-3"
-                  style="bottom: 1.5rem; left: 37%; position: absolute;"
-                  class="text-capitalize"
-                >
-                  Donate
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-        </v-row>
+              <v-divider vertical />
+            </v-responsive>
+          </template>
+        </v-slide-group>
+      </v-container>
+    </div>
+    <v-container>
+      <v-row class="my-md-10 py-12">
+        <div class="col-md-11 ml-auto mr-auto text-center">
+          <h1 class="display-2 blackish text-center" style="line-height: 70px;">
+            The solutions are within reach. Your support will help us to train more smart students across Africa.
+          </h1>
+          <v-btn
+            x-large
+            outlined
+            class="text-capitalize mt-10 mb-5 button-fill-bottom"
+            color="primary"
+            to="/support"
+          >
+            Join us
+          </v-btn>
+        </div>
       </v-row>
     </v-container>
   </div>
@@ -191,10 +162,10 @@ export default {
   data() {
     return {
       icons: [
-        { logo: "./icons/google-icon.svg", width: "2rem" },
-        { logo: "./icons/palantir-icon.svg", width: "30rem" },
-        { logo: "./icons/coinbase-icon.svg", width: "15rem" },
-        { logo: "./icons/eskalate-icon.svg", width: "3rem" }
+        "./partners/google.svg",
+        "./partners/coinbase.svg",
+        "./partners/palantir.svg",
+        "./partners/aau.svg"
         // { logo: 'aau-icon.webp', width: '3rem' },
       ],
       actions: [
@@ -260,7 +231,8 @@ export default {
   font-weight: 100;
   line-height: 2em;
   font-size: 1.25em;
-  font-family: Nunito, sans-serif
+  font-family: Nunito, sans-serif;
+
 }
 .quote:before, .quote:after {
   content: '\201C';
@@ -271,4 +243,19 @@ export default {
 .quote:after {
   content: '\201D';
 }
+.button-fill-bottom {
+  box-shadow: inset 0 0 0 #2b2a35 !important;
+  transition: ease-in 0.5s !important;
+}
+
+.button-fill-bottom:hover {
+  color: white!important;
+  box-shadow: inset 0 -80px 0 #2b2a35 !important;
+}
+
+.display-1, .display-2 {
+  color: #2b2a35!important;
+}
+
+
 </style>

@@ -133,7 +133,7 @@
         </v-btn>
       </v-container>
     </div>
-   
+
     <!-- <v-container class="text-center">
       <v-row class="my-12">
         <v-col>
@@ -194,14 +194,11 @@
 
 <script>
 import Banner from "@/components/Core/TextOnlyBanner";
-import { Carousel3d, Slide } from "vue-carousel-3d";
 import { mdiArrowDownBoldHexagonOutline } from "@mdi/js";
 
 export default {
   components: {
-    Banner,
-    Slide,
-    "carousel-3d": Carousel3d
+    Banner
   },
   data() {
     return {

@@ -5,67 +5,65 @@
       poster="/team/lidia.webp"
       :style="`height: ${$vuetify.breakpoint.mdAndUp ? '75vh' : '100vh'}`"
       style="max-height: 900px; margin-top: -65px;"
-      overlay="linear-gradient(0deg, rgba(250,250,250,1) 0%, rgba(51,73,192,0.2) 20%)"
+      overlay="rgba(0, 0, 0, 0.25)"
     >
       <div
-        class="d-flex align-center justify-center"
+        class="d-flex align-center justify-center my-3"
         style="height: 100%"
       >
-        <v-container
-          class="pa-8 text-center"
-          :style="`width: ${$vuetify.breakpoint.mdAndUp ? '50%' : '90%'}`"
-          style="background: rgba(250, 250, 250, 0.55)"
+        <div
+          class="pa-8 text-center col-md-9"
+          style="color: #d9d9d9"
         >
-          <h2 class="motto">
-            Opportunities for African Students
+          <h2 class="display-3 text-uppercase text-bold">
+            Creating opportunities for African Students
           </h2>
           <p
-            class="grey--text text--darken-2 mt-7"
+            class="mt-7"
             style="
-              font-size: 22px;
-              line-height: 36px;
-              font-family: Lato, sans-serif !important;
+            font-size: 22px;
+            line-height: 36px;
+            font-family: Lato, sans-serif !important;
             "
           >
-            A2SV - Africa to Silicon Valley, offers training program that initially focuses on
-            problem-solving and personal development.
+            Helping students get equal opportunities as the rest of the world.
           </p>
-        </v-container>
+        </div>
       </div>
     </video-background>
 
-    <v-container class="mt-md-12">
-      <v-row class="my-12 py-12 px-5">
-        <v-col
-          v-for="(action, i) in actions"
-          :key="'action' + i"
-          cols="12"
-          sm="10"
-          md="4"
-          class="px-md-10"
-        >
-          <v-card class="shadow-sm pa-5" style="height: 100%;">
-            <v-img :src="action.image" style="max-height: 15rem" />
-            <p class="body-1 mt-8 mb-6 text-center">
-              {{ action.description }}
-            </p>
-            <v-card-actions>
-              <v-btn
-                small
-                depressed
-                outlined
-                color="primary"
-                style="
-                    bottom: 1rem;
-                    left: 33%;
-                    position: absolute;
-                  "
-                class="text-capitalize"
-              >
-                {{ action.action }}
-              </v-btn>
-            </v-card-actions>
-          </v-card>
+    <v-container class="mt-md-12 pa-5" style="background: url('bg.svg')">
+      <v-row class="my-md-6">
+        <v-col sm="12" md="6" class="my-md-12">
+          <h1 class="display-2 text-uppercase my-3" style="font-weight: 800">
+            offers a 360° training
+          </h1>
+          <p class="" style="font-size: 1.5rem;">
+            A2SV offers a 360° software engineer training program that initially
+            focuses on problem-solving and personal development.
+          </p>
+        </v-col>
+        <v-col sm="12" md="6" style="margin-top: -5%">
+          <v-img src="/landing/group.webp" />
+        </v-col>
+      </v-row>
+      <v-row class="mt-12">
+        <v-col sm="12" md="6" class="mt-12">
+          <v-img max-width="75%" class="d-inline-flex" src="/landing/selid.webp" style="z-index: 1" />
+          <v-img
+            width="12rem"
+            class="d-inline-flex"
+            src="https://eskalate.io/img/tracksym.svg"
+            style="margin-left: -6%; margin-top: 4%; position: absolute;"
+          />
+        </v-col>
+        <v-col sm="12" md="6" class="my-md-12">
+          <h1 class="display-2 text-uppercase my-3" style="font-weight: 800">
+            Trainees work on social projects
+          </h1>
+          <p style="font-size: 1.5rem;">
+            Trainees work on social projects with industry experts. Finally, they are connected with top Silicon Valley companies for interviews.
+          </p>
         </v-col>
       </v-row>
 
@@ -93,7 +91,7 @@
                 style="height: 90%"
               />
             </v-col>
-            <v-col class="pa-12" cols="12" sm="6" style="margin-left: -5em; margin-top: -2em;">
+            <v-col class="pa-12" cols="12" sm="10" md="6" style="margin-left: -5em; margin-top: -2em;">
               <p class="quote">
                 Before I joined A2SV, I was clueless on what path to take in order
                 to become a good programmer. But after I joined the A2SV team, it

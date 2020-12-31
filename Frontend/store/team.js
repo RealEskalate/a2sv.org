@@ -27,7 +27,6 @@ export const actions = {
 // this will just filter out team members who have no nice profile picture :(
 function filterMembers(members) {
   const blackListed = [
-    "Erden Oktay",
     "Mike Ward",
     "Abel Tsegaye",
     "Beimnet Zewdu",

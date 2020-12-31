@@ -54,7 +54,7 @@
             width="12rem"
             class="d-inline-flex"
             src="https://eskalate.io/img/tracksym.svg"
-            style="margin-left: -6%; margin-top: 4%; position: absolute;"
+            style="margin-left: -14%; margin-top: 3%; position: absolute;"
           />
         </v-col>
         <v-col sm="12" md="6" class="my-md-12">

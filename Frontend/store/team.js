@@ -28,7 +28,6 @@ export const actions = {
 function filterMembers(members) {
   const blackListed = [
     "Mike Ward",
-    "Abel Tsegaye",
     "Beimnet Zewdu",
     "Tumsa Umeta",
     "Kaleab Belay",

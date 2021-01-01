@@ -50,6 +50,22 @@
       </v-row>
 
       <v-row no-gutters>
+        <template v-if="!getTeamMembers">
+          <v-col
+            v-for="i in 4"
+            :key="i"
+            cols="12"
+            sm="6"
+            md="3"
+            class="pa-5"
+          >
+            <v-skeleton-loader
+              class="mx-auto"
+              max-width="300"
+              type="card"
+            />
+          </v-col>
+        </template>
         <v-col
           v-for="(member, i) in getTeamMembers"
           :key="i"

@@ -30,8 +30,7 @@ function filterMembers(members) {
     "Mike Ward",
     "Beimnet Zewdu",
     "Tumsa Umeta",
-    "Kaleab Belay",
-    "Süha Tanrıverdi"
+    "Kaleab Belay"
   ];
   return members.filter(member => {
     return blackListed.includes(member.name) === false;

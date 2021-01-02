@@ -9,47 +9,6 @@
     />
     <v-container class="grey lighten-5">
       <v-row no-gutters>
-        <v-col
-          class="d-flex pa-5"
-          cols="12"
-          sm="4"
-        >
-          <v-select
-            flat
-            :items="countries"
-            label="Location"
-            solo
-          />
-        </v-col>
-
-        <v-col
-          class="d-flex pa-5"
-          cols="12"
-          sm="4"
-        >
-          <v-select
-            flat
-            :items="titles"
-            label="Title"
-            solo
-          />
-        </v-col>
-
-        <v-col
-          class="d-flex pa-5"
-          cols="12"
-          sm="4"
-        >
-          <v-text-field
-            flat
-            label="Search"
-            solo
-            append-icon="mdi-map-marker"
-          />
-        </v-col>
-      </v-row>
-
-      <v-row no-gutters>
         <template v-if="!getTeamMembers">
           <v-col
             v-for="i in 4"

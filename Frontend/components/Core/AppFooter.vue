@@ -23,7 +23,7 @@
                 src="./logos/logo-blue.png"
               />
               <p class="blackish footer-texts">
-                © Copyright 2020 A2SV NPO. All rights reserved.
+                © Copyright 2020 A2SV. All rights reserved.
               </p>
             </v-col>
             <v-col cols="6" md="2" class="mx-auto">

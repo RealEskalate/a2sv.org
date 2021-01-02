@@ -103,34 +103,7 @@
 
     <div class="grey lighten-4 mt-10 text-center">
       <v-container>
-        <h1 class="display-1 primary--text mb-10 mt-5">
-          Partners
-        </h1>
-        <v-slide-group>
-          <template v-for="(icon, n) in icons">
-            <v-slide-item :key="n" class="align-self-center">
-              <v-img :src="icon" color="grey" contain height="40" width="128" />
-            </v-slide-item>
-            <v-responsive
-              v-if="n < 3"
-              :key="`divider-${n}`"
-              class="text-center"
-              height="56"
-              width="48"
-            >
-              <v-divider vertical />
-            </v-responsive>
-          </template>
-        </v-slide-group>
-        <v-btn
-          x-large
-          outlined
-          class="text-capitalize mt-10 mb-5"
-          color="primary"
-          to="/support"
-        >
-          Partner with us
-        </v-btn>
+        <Partners />
       </v-container>
     </div>
 
@@ -195,20 +168,16 @@
 <script>
 import Banner from "@/components/Core/TextOnlyBanner";
 import { mdiArrowDownBoldHexagonOutline } from "@mdi/js";
+import Partners from "@/components/Core/Partners";
 
 export default {
   components: {
-    Banner
+    Banner,
+    Partners
   },
   data() {
     return {
       mdiArrowDownBoldHexagonOutline,
-      icons: [
-        "./icons/google-icon.svg",
-        "./icons/palantir-icon.svg",
-        "./icons/coinbase-icon.svg",
-        "./icons/eskalate-icon.svg"
-      ],
       lists: [
         {
           title: "What We Do in the first part?",

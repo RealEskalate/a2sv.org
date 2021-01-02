@@ -112,39 +112,18 @@
       </v-row>
     </v-container>
     <div class="grey lighten-4 mt-10 text-center">
-      <v-container>
-        <h1 class="display-1 mb-10 mt-5" style="color: #2b2a35; font-weight: 700">
-          We are closely working with
-        </h1>
-        <v-slide-group class="my-6">
-          <template v-for="(icon, n) in icons">
-            <v-slide-item :key="n" class="align-self-center">
-              <v-img :src="icon" color="grey" contain height="40" width="128" />
-            </v-slide-item>
-            <v-responsive
-              v-if="n < 3"
-              :key="`divider-${n}`"
-              class="text-center"
-              height="56"
-              width="48"
-            >
-              <v-divider vertical />
-            </v-responsive>
-          </template>
-        </v-slide-group>
-      </v-container>
+      <partners />
     </div>
     <v-container>
       <v-row class="my-md-10 py-12">
         <div class="col-md-11 ml-auto mr-auto text-center">
           <h1 class="display-2 blackish text-center" style="line-height: 70px;">
-            The solutions are within reach. Your support will help us to train more smart students across Africa.
+            Do you want to be part of the digital transformation of Africa?
           </h1>
           <v-btn
             x-large
             outlined
             class="text-capitalize mt-10 mb-5 button-fill-bottom"
-            color="primary"
             to="/support"
           >
             Join us
@@ -155,17 +134,15 @@
   </div>
 </template>
 <script>
+import Partners from "@/components/Core/Partners";
+
 export default {
   name: "LandingPage",
+  components: {
+    Partners
+  },
   data() {
     return {
-      icons: [
-        "./partners/google.svg",
-        "./partners/coinbase.svg",
-        "./partners/palantir.svg",
-        "./partners/aau.svg"
-        // { logo: 'aau-icon.webp', width: '3rem' },
-      ],
       actions: [
         { image: "/train.svg", action: "Learn More", description: "First training initially focuses on problem-solving and personal development.", link: "/" },
         { image: "/mock.svg", action: "Learn More", description: "Mock interviews with peers, other trainees, and industry professionals.", link: "/" },
@@ -242,6 +219,7 @@ export default {
   content: '\201D';
 }
 .button-fill-bottom {
+  color: #2b2a35;
   box-shadow: inset 0 0 0 #2b2a35 !important;
   transition: ease-in 0.5s !important;
 }

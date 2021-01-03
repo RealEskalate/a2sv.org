@@ -49,34 +49,58 @@
       </v-row>
       <v-row class="mt-12">
         <v-col sm="12" md="6" class="mt-12">
-          <v-img max-width="75%" class="d-inline-flex" src="/landing/selid.webp" style="z-index: 1" />
+          <v-img
+            max-width="75%"
+            class="d-inline-flex"
+            src="/landing/selid.webp"
+            style="z-index: 1"
+          />
           <v-img
             width="12rem"
-            class="d-inline-flex"
+            class="d-inline-block tracksym"
             src="https://eskalate.io/img/tracksym.svg"
-            style="margin-left: -14%; margin-top: 3%; position: absolute;"
           />
         </v-col>
         <v-col sm="12" md="6" class="my-md-12">
           <h1 class="display-2 text-uppercase my-3" style="font-weight: 800">
-            Trainees work on social projects
+            Develop scalable products
           </h1>
           <p style="font-size: 1.5rem;">
-            Trainees work on social projects with industry experts. Finally, they are connected with top Silicon Valley companies for interviews.
+            Trainees work on social projects with industry experts.
+            <a href="https://tracksym.app" target="_blank">Tracksym</a> is an ongoing project which the first
+            trainees, closely worked with <a href="https://www.ephi.gov.et/" target="_blank">EPHI</a>,
+            have worked on.
           </p>
         </v-col>
       </v-row>
 
       <v-row class="px-10 my-12">
-        <div class="col-md-8 ml-auto mr-auto text-center">
-          <h2 class="display-1 font-weight-bold">
+        <div class="col-md-8 mx-auto text-center">
+          <h1 class="display-2 text-uppercase my-3" style="font-weight: 800">
             Within 3 months
-          </h2>
+          </h1>
           <p class="mt-md-7 blackish" style="font-size: 1.5em">
-            First trainees achieved an unheard rate of 27% acceptance at
+            Statistics shows that google's internship acceptance rate is only <b>2%</b>.
+            Our first trainees achieved an unheard rate of <b>27%</b> acceptance at
             Google software engineering internship interviews.
           </p>
         </div>
+        <v-col class="mx-auto" md="4" sm="6">
+          <v-sparkline
+            height="250"
+            :gradient="['#5EF7B7','#0CBB72']"
+            :smooth="5"
+            type="bar"
+            show-labels
+            label-size="18"
+            auto-line-width
+            :value="[2, 27]"
+            :labels="['2%', '27%']"
+          />
+          <span style="font-size: small">
+            Google intern acceptance rate <b>vs</b> What we have achieved within 3 months
+          </span>
+        </v-col>
         <div
           class="my-5 pa-0 mx-auto overflow-hidden"
         >
@@ -106,6 +130,10 @@
               >
                 &ndash; Ise Boge, 4th year SE student
               </span>
+              <br>
+              <v-btn class="mt-5 button-fill-bottom" to="/">
+                More Impact stories
+              </v-btn>
             </v-col>
           </v-row>
         </div>
@@ -233,5 +261,13 @@ export default {
   color: #2b2a35!important;
 }
 
-
+.tracksym {
+  margin-left: -10%;
+  margin-top: 3%;
+  position: absolute;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}
 </style>

@@ -28,8 +28,6 @@ export const actions = {
 function filterMembers(members) {
   const blackListed = [
     "Mike Ward",
-    "Beimnet Zewdu",
-    "Tumsa Umeta",
     "Kaleab Belay"
   ];
   return members.filter(member => {

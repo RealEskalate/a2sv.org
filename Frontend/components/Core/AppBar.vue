@@ -4,13 +4,13 @@
       app
       elevate-on-scroll
       class="px-md-8 shadow-sm"
-      :class="{ 'transparent': $store.getters.getColor === 'transparent', 'main-gradient': $store.getters.getColor === 'colored' }"
+      color="white"
     >
       <v-app-bar-nav-icon
         v-if="$vuetify.breakpoint.smAndDown"
         @click="drawer = !drawer"
       >
-        <v-icon :color="isColored ? 'white' : 'primary'" large>
+        <v-icon color="primary" large>
           {{ mdiMenu }}
         </v-icon>
       </v-app-bar-nav-icon>
@@ -18,23 +18,23 @@
         <v-img
           alt="A2SV LOGO"
           class="logo"
-          :src="getLogo"
+          src="/logos/logo-blue.png"
         />
       </div>
       <v-tabs
         v-if="$vuetify.breakpoint.mdAndUp"
         centered
         optional
-        :color="isColored ? 'white' : 'primary'"
+        color="primary"
       >
-        <v-tab v-for="link in links" :key="link.to" :class="{ 'white--text': isColored }" :to="link.to">
+        <v-tab v-for="link in links" :key="link.to" :to="link.to" class="blue-black">
           {{ link.title }}
         </v-tab>
       </v-tabs>
 
       <v-spacer />
 
-      <v-btn :color="isColored ? 'white' : 'primary'" depressed outlined to="/support">
+      <v-btn color="primary" to="/support">
         Support Us
       </v-btn>
     </v-app-bar>
@@ -62,9 +62,7 @@ import {
   mdiMenu,
   mdiHome,
   mdiGroup,
-  mdiCalendar,
-  mdiInformation,
-  mdiEmail
+  mdiInformation
 } from "@mdi/js";
 
 export default {
@@ -84,19 +82,9 @@ export default {
           to: "/team"
         },
         {
-          icon: mdiCalendar,
-          title: "Events",
-          to: "/events"
-        },
-        {
           icon: mdiInformation,
           title: "About Us",
           to: "/about"
-        },
-        {
-          icon: mdiEmail,
-          title: "Contact",
-          to: "/contact"
         }
       ]
     };
@@ -104,9 +92,6 @@ export default {
   computed: {
     isColored() {
       return ["colored", "transparent"].includes(this.$store.getters.getColor);
-    },
-    getLogo() {
-      return this.isColored ? "./logos/logo-white.png" : "./logos/logo-blue.png";
     }
   },
   created() {

@@ -1,18 +1,20 @@
 <template v-slot:activator="{ on, attrs }">
-  <v-parallax src="/" class="main-gradient" height="450" jumbotron>
+  <v-parallax src="/" class="blue-bg" height="450" jumbotron>
     <v-container>
       <h1
-        class="motto text-center white--text"
+        class="display-2 text-center blue-black text-uppercase"
         style="
-          font-size: 72px !important;
-          line-height: 68px !important;
+        font-weight: 800;
+          font-size: 65px !important;
+          line-height: 72px !important;
         "
       >
         {{ title }}
       </h1>
-      <p class="text-center mt-5" style="font-size: 20px">
+      <p class="col-md-8 mx-auto text-center mt-6 blue-black" style="font-size: 25px;">
         {{ description }}
       </p>
+      <slot />
       <v-img
         :width="imgWidth"
         :src="img"
@@ -30,3 +32,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.blue-bg {
+  background: #e8f5fd;
+}
+</style>

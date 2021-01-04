@@ -5,7 +5,7 @@
         <v-row>
           <v-col md="4" xl="5">
             <h1
-              class="motto text-center white--text"
+              class="motto text-center blue-black"
               style="
                 font-size: 58px !important;
                 line-height: 68px !important;
@@ -13,7 +13,7 @@
             >
               A Passionate Team
             </h1>
-            <p class="text-center mt-5" style="font-size: 20px">
+            <p class="text-center mt-5 blue-black" style="font-size: 20px">
               Diversity is at the core of our Vision, Mission, and Values.
             </p>
           </v-col>

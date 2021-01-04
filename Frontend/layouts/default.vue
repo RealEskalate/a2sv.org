@@ -37,23 +37,7 @@ export default {
 </style>
 
 <style lang="scss">
-  .main-gradient {
-    background: #334aC0;
-    background: -moz-linear-gradient(
-        90deg,
-        #334aC0 0%,
-        #00aeef 80%
-    );
-    background: -webkit-linear-gradient(
-        90deg,
-        #334aC0 0%,
-        #00aeef 80%
-    );
-    background: linear-gradient(
-        90deg,
-        #334aC0 0%,
-        #00aeef 80%
-    );
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4966f7",endColorstr="#8253ff",GradientType=1);
+  .blue-black {
+    color: #1C202B!important;
   }
 </style>

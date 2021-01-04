@@ -1,6 +1,11 @@
 <template>
   <div>
-    <Banner />
+    <banner
+      img-width="15rem"
+      title="Meet our Team"
+      description="Gathered from different parts of the world, from different domain of expertise for the same goal"
+      img=""
+    />
     <navigation-drawer
       v-if="drawer"
       :drawer="drawer"
@@ -68,7 +73,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import Banner from "@/components/Core/Banner";
+import Banner from "@/components/Core/TextOnlyBanner";
 
 
 export default {

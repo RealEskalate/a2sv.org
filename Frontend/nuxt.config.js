@@ -22,6 +22,10 @@ export default {
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nunito:wght@300;400;600;800&display=swap"
+      },
+      {
+        rel: "stylesheet",
+        href: "https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css"
       }
     ]
   },
@@ -78,7 +82,7 @@ export default {
       dark: false,
       themes: {
         light: {
-          primary: "#334aC0",
+          primary: "#0a61f7",
           accent: "#00aeef",
           secondary: colors.amber.lighten3,
           info: colors.teal.darken1,

@@ -1,73 +1,73 @@
 <template>
   <div>
-    <Banner
+    <banner
       img-width="10rem"
       img="/illustrations/character-15.svg"
       :title="banner.title_one"
       :description="banner.description"
-    />
+    >
+      <v-btn class="mx-auto d-block" color="primary">
+        Donate
+      </v-btn>
+    </banner>
 
-    <v-container style="margin-top: -90px">
-      <v-row class="mb-10">
-        <template v-for="(support, i) in support_ways">
-          <v-col
-            :key="i"
-            cols="10"
-            sm="6"
-            md="3"
-            class="mx-auto"
-          >
-            <v-hover v-slot="{ hover }">
-              <v-card
-                class="shadow-sm d-flex flex-column"
-                style="background-color: rgba(255, 255, 255, 0.9)"
-                :class="{ 'on-hover': hover }"
-              >
-                <v-card-title class="justify-center" style="color: #545465">
-                  {{ support.title | uppercase }}
-                </v-card-title>
-                <v-card-text class="text-center mt-3" style="height:10em;">
-                  {{ support.description }}
-                  <div v-if="support.title === 'Donate'" class="mt-3">
-                    Support A2SV from as little as $1 – and it only takes a minute. Thank you!
-                  </div>
-                  <div v-else class="mt-3">
-                    <span class="display-2" style="display: block">
-                      {{ supports[support.title].number }}
-                    </span>
-                    <span style="font-weight: bold">{{ supports[support.title].text }}</span>
-                  </div>
-                </v-card-text>
-                <v-spacer />
-                <v-card-actions class="justify-center">
-                  <v-btn v-if="support.title === 'Donate'" outlined class="text-capitalize my-3" color="primary">
-                    {{ support.button_text }}
-                  </v-btn>
-                  <v-btn
-                    v-else
-                    v-scroll-to="{
-                      el: '#form_card',
-                      offset: -60,
-                    }"
-                    outlined
-                    class="text-capitalize my-3"
-                    color="primary"
-                    @click="showForm(support.title)"
-                  >
-                    {{ support.button_text }}
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-hover>
+    <v-container style="margin-top: -9%">
+      <v-card class="shadow mx-auto my-15 contact-us" max-width="800">
+        <v-card-title class="justify-center display-1 blue-black">
+          Contact Us
+        </v-card-title>
+        <v-row>
+          <v-col sm="10" md="6">
+            <p class="px-12 blue-black" style="font-size: 20px;">
+              If you want to help A2SV by giving a mentorship, sharing your experience (Question and Answer),
+              if you are a recruiter or even giving a general feedback fill this form. We will get back to you
+              as soon as possible.
+            </p>
           </v-col>
-        </template>
-      </v-row>
+          <v-form ref="form" v-model="valid" class="px-12 col-md-6 col-sm-10" style="border-left: 0.2em solid #0a61f7;">
+            <v-text-field
+              v-model="contact.name"
+              class="v-card--shaped"
+              dense
+              :label="labels.name"
+              :rules="rules.nameRules"
+              counter="30"
+            />
+            <v-text-field
+              v-model="contact.email"
+              class="v-card--shaped"
+              dense
+              :label="labels.email"
+              :rules="rules.emailRules"
+            />
+            <v-select
+              label="Way of helping"
+              :items="['Q&A', 'Recruit', 'Mentor', 'Other']"
+            />
 
-      <div id="form_card">
-        <InterviewForm v-if="getForm(0)" />
-        <MentorshipForm v-if="getForm(1)" />
-        <QandAForm v-if="getForm(2)" />
-      </div>
+            <v-text-field
+              v-model="contact.linkedin"
+              class="v-card--shaped"
+              dense
+              :label="labels.linkedin"
+            />
+            <v-textarea
+              v-model="contact.experience"
+              class="v-card--shaped"
+              dense
+              rows="5"
+              :label="labels.experience"
+              :rules="rules.experienceRules"
+            />
+            <div class="text-center py-3">
+              <v-btn width="100" class="primary mx-auto" @click="sendForm">
+                Send
+                <v-icon class="ml-2" small />
+              </v-btn>
+            </div>
+          </v-form>
+        </v-row>
+      </v-card>
     </v-container>
   </div>
 </template>
@@ -77,10 +77,7 @@ import Banner from "@/components/Core/TextOnlyBanner";
 
 export default {
   components: {
-    Banner,
-    InterviewForm: () => import("@/components/Support/InterviewForm"),
-    MentorshipForm: () => import("@/components/Support/MentorshipForm"),
-    QandAForm: () => import("@/components/Support/QandAForm")
+    Banner
   },
   filters: {
     uppercase(value) {
@@ -97,62 +94,51 @@ export default {
       title_two: "Support us",
       description: "You are helping A2SV to train more students in Africa"
     },
-    support_ways: [
-      {
-        title: "Donate",
-        image: "/donate.svg",
-        description:
-          "Help upskill more developers and launch new digital solution in Africa.",
-        button_text: "Go To PayPal"
-      },
-      {
-        title: "Interviews",
-        image: "/interview.svg",
-        description:
-          "Connect our students with your company for internship positions.",
-        button_text: "Contact Us"
-      },
-      {
-        title: "Mentorship",
-        image: "/mock.svg",
-        description: "We want experienced people to guide our students.",
-        button_text: "Contact Us"
-      },
-      {
-        title: "Q & A",
-        image: "/question.svg",
-        description:
-          "Share your story with us and let's have a fun Q & A session.",
-        button_text: "Request"
-      }
-    ],
-    supports: {
-      "Interviews": {
-        number: "5",
-        text: "companies working with us"
-      },
-      "Mentorship": {
-        number: "10+",
-        text: "mentors joined our team"
-      },
-      "Q & A": {
-        number: "20+",
-        text: "Q & As so far"
-      }
-    },
     form_type: "",
-    forms: ["Interviews", "Mentorship", "Q & A"]
+    forms: ["Interviews", "Mentorship", "Q & A"],
+    valid: false,
+    contact: {
+      name: "",
+      email: "",
+      linkedin: "",
+      experience: ""
+    },
+    labels: {
+      name: "Name",
+      email: "Email",
+      linkedin: "LinkedIn Profile URL (Optional)",
+      experience: "Experience"
+    },
+    rules: {
+      nameRules: [
+        (v) => !!v || "Name is required",
+        (v) => (v && v.length <= 30) || "Name must be less than 30 characters"
+      ],
+      emailRules: [
+        (v) => !!v || "E-mail is required",
+        (v) => /.+@.+\..+/.test(v) || "E-mail must be valid"
+      ],
+      experienceRules: [
+        (v) => !!v || "Experience is required",
+        (v) =>
+          (v && v.length <= 150) ||
+          "Experience must be less than 150 characters"
+      ]
+    }
   }),
   head: {
     title: "Support Us"
   },
   methods: {
-    showForm(title) {
-      this.form_type = title;
-    },
-    getForm(id) {
-      return this.form_type === this.forms[id];
+    sendForm() {
+      this.$refs.form.reset();
     }
   }
 };
 </script>
+
+<style scoped>
+.contact-us {
+  background: rgba(255, 255, 255, 0.8)!important;
+}
+</style>

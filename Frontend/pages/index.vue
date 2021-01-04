@@ -38,7 +38,7 @@
           <h1 class="display-2 text-uppercase my-3" style="font-weight: 800">
             offers a 360° training
           </h1>
-          <p class="" style="font-size: 1.5rem;">
+          <p style="font-size: 1.5rem;">
             A2SV offers a 360° software engineer training program that initially
             focuses on problem-solving and personal development.
           </p>
@@ -203,7 +203,6 @@ export default {
 @import 'https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css';
 .motto {
   font-family: Lato, serif !important;
-  color: #334ac0 !important;
   font-size: clamp(2rem, 0.5rem + 2.6vw, 4rem) !important;
   line-height: clamp(3rem, 0.8rem + 2.8vw, 4rem) !important;
   font-weight: 900;
@@ -230,7 +229,7 @@ export default {
 .quote {
   position: relative;
   padding-left: 1em;
-  border-left: 0.2em solid #334aC0;
+  border-left: 0.2em solid #0a61f7;
   font-weight: 100;
   line-height: 2em;
   font-size: 1.25em;

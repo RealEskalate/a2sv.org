@@ -22,6 +22,7 @@
     "@mdi/js": "^5.8.55",
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/cloudinary": "^1.0.3-beta-2",
     "@nuxtjs/vuetify": "^1.11.2",
     "aos": "^3.0.0-beta.6",
     "core-js": "^3.6.5",

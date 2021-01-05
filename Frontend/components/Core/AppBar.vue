@@ -2,6 +2,7 @@
   <div>
     <v-app-bar
       app
+      height="70"
       elevate-on-scroll
       class="px-md-8 shadow-sm"
       color="white"
@@ -34,7 +35,7 @@
 
       <v-spacer />
 
-      <v-btn color="primary" to="/support">
+      <v-btn tile color="primary" class="pa-5" to="/support">
         Support Us
       </v-btn>
     </v-app-bar>
@@ -88,14 +89,6 @@ export default {
         }
       ]
     };
-  },
-  computed: {
-    isColored() {
-      return ["colored", "transparent"].includes(this.$store.getters.getColor);
-    }
-  },
-  created() {
-    this.$store.dispatch("setActiveLink", "transparent");
   }
 };
 </script>

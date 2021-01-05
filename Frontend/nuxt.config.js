@@ -1,43 +1,20 @@
-import colors from "vuetify/es5/util/colors";
+import head from "./config/head";
+import vuetify from "./config/vuetify";
+import cloudinary from "./config/cloudinary";
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
-  head: {
-    titleTemplate: "%s - A2SV",
-    title: "Africa to Silicon Valley",
-    meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
-      { property: "og:title", content: "A2SV - Africa to Silicon Valley" },
-      { property: "og:description", content: "Creating opportunities for african Students: A2SV offers training program that initially focuses on problem-solving and personal development." },
-      { property: "og:image", content: this.BASE_URL + "logo.png" },
-      { property: "og:image:width", content: "200px" },
-      { property: "og:image:height", content: "200px" },
-      { property: "og:url", content: "https://a2sv.org/" },
-      { property: "og:type", content: "article" }
-    ],
-    link: [
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nunito:wght@300;400;600;800&display=swap"
-      },
-      {
-        rel: "stylesheet",
-        href: "https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css"
-      }
-    ]
-  },
+  head,
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
+
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     "~/plugins/vue-plyr",
     { src: "~/plugins/video-background", ssr: false},
     { src: "~plugins/vue-carousel-3d", ssr: false }
-    ],
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -55,7 +32,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
-    "vue-scrollto/nuxt"
+    "vue-scrollto/nuxt",
+    "@nuxtjs/cloudinary"
   ],
   "nuxt-compress": {
     gzip: {
@@ -69,39 +47,12 @@ export default {
   axios: {
     baseURL: process.env.BASE_URL
   },
-  env: {
-    baseUrl: process.env.BASE_URL
-  },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
-  vuetify: {
-    treeShake: true,
-    defaultAssets: undefined,
-    customVariables: ["~/assets/variables.scss"],
-    theme: {
-      dark: false,
-      themes: {
-        light: {
-          primary: "#0a61f7",
-          accent: "#00aeef",
-          secondary: colors.amber.lighten3,
-          info: colors.teal.darken1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        },
-        dark: {
-          primary: "#334aC0",
-          accent: "#00aeef",
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
-    }
-  },
+  vuetify,
+
+  // cloudinary to serve optimized images
+  cloudinary,
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
@@ -111,3 +62,4 @@ export default {
     color: "#00aeef"
   }
 };
+

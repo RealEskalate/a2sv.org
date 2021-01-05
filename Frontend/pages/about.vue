@@ -8,7 +8,7 @@
     />
     <v-container class="text-center mt-12">
       <vue-plyr class="col-sm-10 col-md-10 mx-auto">
-        <div data-plyr-provider="youtube" data-plyr-embed-id="qy00E8FklC0" />
+        <div data-plyr-provider="youtube" data-plyr-embed-id="fFizpGYSMDY" />
       </vue-plyr>
 
       <h1 class="display-1 primary--text">
@@ -118,14 +118,14 @@ export default {
               content:
                 "6 days a week, 3 hours lectures and practice sessions to improve problem solving skills",
               image:
-                "http://res.cloudinary.com/eskalate/image/upload/v1596886905/gallery/IMG_20200306_140909-scaled_ajf84u.jpg"
+                "/about/technical.jpg"
             },
             {
               title: "Contests",
               content:
                 "Bi-weekly contests to get better at competitive programming and problem solving on online platform",
               image:
-                "http://res.cloudinary.com/eskalate/image/upload/v1596886905/gallery/IMG_20200306_140909-scaled_ajf84u.jpg"
+                "https://res.cloudinary.com/eskalate/image/upload/v1609847800/activities/micky-feysel.jpg"
             },
             {
               title: "Q&As",
@@ -138,8 +138,7 @@ export default {
               title: "Problem Solving",
               content:
                 "Problem solving sessions to get a feel of explaining solutions on the whiteboard",
-              image:
-                "http://res.cloudinary.com/eskalate/image/upload/v1596886905/gallery/IMG_20200306_140909-scaled_ajf84u.jpg"
+              image: "about/problem-solving.PNG"
             },
             {
               title: "Learning How to Approach",

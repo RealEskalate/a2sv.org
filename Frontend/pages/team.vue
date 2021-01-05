@@ -30,6 +30,8 @@
             />
           </v-col>
         </template>
+
+
         <v-col
           v-for="(member, i) in getTeamMembers"
           :key="i"
@@ -44,11 +46,14 @@
               class="transparent frame overflow-hidden"
             >
               <v-container class="px-0" :class="{'tint' : hover}">
-                <v-img
+                <cld-image
+                  width="200"
                   class="d-block mx-auto"
-                  :src="'/pose' + changeFormat(member.img)"
-                  height="100%"
-                  max-width="80%"
+                  :public-id="changeFormat(member.img)"
+                  radius="max"
+                  fetch-format="auto"
+                  quality="auto"
+                  loading="lazy"
                 />
                 <v-card-title class="mx-auto text-center">
                   <p class="text-center mx-auto">
@@ -101,7 +106,7 @@ export default {
   },
   methods: {
     changeFormat(url) {
-      return url.replace(/jpeg|jpg|png/, "webp");
+      return url.substr(0, url.indexOf("."));
     }
   }
 };

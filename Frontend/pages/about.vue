@@ -96,9 +96,9 @@
 </template>
 
 <script>
-import Banner from "@/components/Core/TextOnlyBanner";
+import Banner from "@/components/core/TextOnlyBanner";
 import { mdiArrowDownBoldHexagonOutline } from "@mdi/js";
-import Partners from "@/components/Core/Partners";
+import Partners from "@/components/core/Partners";
 
 export default {
   components: {

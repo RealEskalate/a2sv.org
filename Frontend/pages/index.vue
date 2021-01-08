@@ -108,7 +108,7 @@
             <p class="col-12 text-center display-1 font-weight-bold pb-8">
               Impact story
             </p>
-            <v-col class="pa-0" cols="12" sm="6">
+            <v-col class="pa-0" cols="12" sm="10" md="6">
               <v-img
                 cover
                 src="/team/ise_transparent.webp"
@@ -162,7 +162,7 @@
   </div>
 </template>
 <script>
-import Partners from "@/components/Core/Partners";
+import Partners from "@/components/core/Partners";
 
 export default {
   name: "LandingPage",
@@ -200,7 +200,6 @@ export default {
 };
 </script>
 <style>
-@import 'https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css';
 .motto {
   font-family: Lato, serif !important;
   font-size: clamp(2rem, 0.5rem + 2.6vw, 4rem) !important;

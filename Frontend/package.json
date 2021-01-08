@@ -22,16 +22,14 @@
     "@mdi/js": "^5.8.55",
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/axios": "^5.12.2",
-    "@nuxtjs/cloudinary": "^1.0.3-beta-2",
     "@nuxtjs/vuetify": "^1.11.2",
-    "aos": "^3.0.0-beta.6",
+    "cloudinary-vue": "^1.1.2",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
     "nuxt-compress": "^4.0.0",
     "vue-carousel-3d": "^1.0.1",
     "vue-plyr": "^6.0.4",
-    "vue-responsive-video-background-player": "^1.1.4",
-    "vue-scrollto": "^2.19.1"
+    "vue-responsive-video-background-player": "^1.1.4"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",

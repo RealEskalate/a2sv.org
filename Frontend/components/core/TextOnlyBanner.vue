@@ -1,14 +1,7 @@
 <template v-slot:activator="{ on, attrs }">
-  <v-parallax src="/" class="blue-bg" height="450" jumbotron>
+  <div class="blue-bg" style="height: 70vh!important;">
     <v-container>
-      <h1
-        class="display-2 text-center blue-black text-uppercase"
-        style="
-        font-weight: 800;
-          font-size: 65px !important;
-          line-height: 72px !important;
-        "
-      >
+      <h1 class="display-2 text-center blue-black text-uppercase main-text">
         {{ title }}
       </h1>
       <p class="col-md-8 mx-auto text-center mt-6 blue-black" style="font-size: 25px;">
@@ -21,7 +14,7 @@
         style="bottom: 0; right: 0; position: absolute; max-width: 50vw!important; z-index: -1;"
       />
     </v-container>
-  </v-parallax>
+  </div>
 </template>
 <script>
 export default {
@@ -33,8 +26,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .blue-bg {
   background: #e8f5fd;
+}
+.main-text {
+  font-weight: 800;
+  font-size: 65px !important;
+  line-height: 72px !important;
+  margin: 9% 0 2% 0;
 }
 </style>

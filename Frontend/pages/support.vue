@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import Banner from "@/components/Core/TextOnlyBanner";
+import Banner from "@/components/core/TextOnlyBanner";
 
 export default {
   components: {

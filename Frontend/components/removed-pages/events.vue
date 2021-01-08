@@ -1739,7 +1739,7 @@
 </template>
 
 <script>
-import Banner from "@/components/Core/TextOnlyBanner.vue";
+import Banner from "@/components/core/TextOnlyBanner.vue";
 import { mdiCalendar, mdiChevronLeft, mdiChevronRight } from "@mdi/js";
 export default {
   components: {

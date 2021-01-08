@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import AppBar from "~/components/Core/AppBar";
-import AppFooter from "~/components/Core/AppFooter";
+import AppBar from "~/components/core/AppBar";
+import AppFooter from "~/components/core/AppFooter";
 export default {
   components: { AppBar, AppFooter }
 };

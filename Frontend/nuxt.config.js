@@ -1,6 +1,5 @@
 import head from "./config/head";
 import vuetify from "./config/vuetify";
-import cloudinary from "./config/cloudinary";
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -12,6 +11,7 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     "~/plugins/vue-plyr",
+    "~/plugins/cloudinary",
     { src: "~/plugins/video-background", ssr: false},
     { src: "~plugins/vue-carousel-3d", ssr: false }
   ],
@@ -31,9 +31,7 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
-    "@nuxtjs/axios",
-    "vue-scrollto/nuxt",
-    "@nuxtjs/cloudinary"
+    "@nuxtjs/axios"
   ],
   "nuxt-compress": {
     gzip: {
@@ -51,12 +49,10 @@ export default {
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify,
 
-  // cloudinary to serve optimized images
-  cloudinary,
-
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-    // extractCSS: true,
+    extractCSS: true,
+    analyze: true
   },
   loading: {
     color: "#00aeef"

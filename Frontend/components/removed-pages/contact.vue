@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import Banner from "@/components/Core/TextOnlyBanner";
+import Banner from "@/components/core/TextOnlyBanner";
 import { mdiMapMarkerOutline, mdiCellphone, mdiEmail } from "@mdi/js";
 export default {
   name: "Contact",

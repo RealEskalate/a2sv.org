@@ -6,12 +6,6 @@
       description="Gathered from different parts of the world, from different domain of expertise for the same goal"
       img=""
     />
-    <navigation-drawer
-      v-if="drawer"
-      :drawer="drawer"
-      :user-id="userId"
-      @toggle-drawer="drawer = !drawer"
-    />
     <v-container class="grey lighten-5">
       <v-row no-gutters>
         <template v-if="!getTeamMembers">
@@ -31,7 +25,6 @@
           </v-col>
         </template>
 
-
         <v-col
           v-for="(member, i) in getTeamMembers"
           :key="i"
@@ -47,13 +40,14 @@
             >
               <v-container class="px-0" :class="{'tint' : hover}">
                 <cld-image
+                  loading="lazy"
+                  crop="scale"
                   width="200"
-                  class="d-block mx-auto"
-                  :public-id="changeFormat(member.img)"
                   radius="max"
                   fetch-format="auto"
                   quality="auto"
-                  loading="lazy"
+                  class="d-block mx-auto"
+                  :public-id="changeFormat(member.img)"
                 />
                 <v-card-title class="mx-auto text-center">
                   <p class="text-center mx-auto">
@@ -78,22 +72,11 @@
 
 <script>
 import { mapGetters } from "vuex";
-import Banner from "@/components/Core/TextOnlyBanner";
-
+import Banner from "@/components/core/TextOnlyBanner";
 
 export default {
   components: {
-    Banner,
-    NavigationDrawer: () => import("~/components/Teams/NavigationDrawer")
-  },
-  data() {
-    return {
-      drawer: null,
-      userId: null,
-      baseUrl: process.env.baseUrl,
-      countries: ["Ethiopia", "Turkey", "USA"],
-      titles: ["Trainee", "Trainer", "Partners"]
-    };
+    Banner
   },
   head: {
     title: "Team"

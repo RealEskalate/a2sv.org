@@ -27,6 +27,9 @@ var teamSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+        priority: {
+            type: Number,
+        },
     },
     {
         timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
@@ -41,6 +44,7 @@ const validTeamSchema = Joi.object({
     country: Joi.string().max(50).required(),
     description: Joi.string().max(1000).required(),
     email: Joi.string().email().required(),
+    priority: Joi.number().optional(),
 })
 
 const validTeamSchemaForUpdate = Joi.object({
@@ -50,7 +54,8 @@ const validTeamSchemaForUpdate = Joi.object({
     country: Joi.string().max(50).optional(),
     description: Joi.string().max(1000).optional(),
     email: Joi.string().email().optional(),
-})
+    priority: Joi.number().optional(),
+});
 
 
 exports.validationSchema = validTeamSchema

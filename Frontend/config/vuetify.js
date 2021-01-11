@@ -1,7 +1,7 @@
 import colors from "vuetify/es5/util/colors";
 
 export default {
-  treeShake: true,
+    treeShake: true,
     defaultAssets: undefined,
     customVariables: ["~/assets/variables.scss"],
     theme: {

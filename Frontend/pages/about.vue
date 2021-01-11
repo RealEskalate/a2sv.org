@@ -8,7 +8,12 @@
     />
     <v-container class="text-center mt-12">
       <vue-plyr class="col-sm-10 col-md-10 mx-auto">
-        <div data-plyr-provider="youtube" data-plyr-embed-id="fFizpGYSMDY" />
+        <video poster="/team/lidia.webp">
+          <source
+            src="https://res.cloudinary.com/eskalate/video/upload/v1610371967/video/a2sv-promo.mp4"
+            type="video/mp4"
+          >
+        </video>
       </vue-plyr>
 
       <h1 class="display-1 primary--text">
@@ -96,14 +101,16 @@
 </template>
 
 <script>
-import Banner from "@/components/core/TextOnlyBanner";
 import { mdiArrowDownBoldHexagonOutline } from "@mdi/js";
+import Banner from "@/components/core/TextOnlyBanner";
 import Partners from "@/components/core/Partners";
+import VuePlyr from "vue-plyr/dist/vue-plyr.ssr.js";
 
 export default {
   components: {
     Banner,
-    Partners
+    Partners,
+    VuePlyr
   },
   data() {
     return {
@@ -202,10 +209,15 @@ export default {
     };
   },
   head: {
-    title: "About Us"
+    title: "About Us",
+    link: {
+      rel: "stylesheet",
+      link: ""
+    }
   }
 };
 </script>
 
 <style>
+@import "https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css";
 </style>

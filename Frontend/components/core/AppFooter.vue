@@ -4,13 +4,14 @@
       <v-card-text style="width: 100vw">
         <v-container>
           <v-btn
-            v-for="icon in icons"
-            :key="icon"
+            v-for="(link, i) in socialMediaLinks"
+            :key="i"
             class="mx-4 primary--text"
             icon
+            :to="link.url"
           >
             <v-icon size="24px">
-              {{ icon }}
+              {{ link.icon }}
             </v-icon>
           </v-btn>
           <v-row class="mt-5">
@@ -20,7 +21,7 @@
                 width="175"
                 class="mb-5"
                 contain
-                src="./logos/logo-blue.png"
+                src="/logos/logo-blue.png"
               />
               <p class="blackish footer-texts">
                 © Copyright 2020 A2SV. All rights reserved.
@@ -28,7 +29,7 @@
             </v-col>
             <v-col cols="6" md="2" class="mx-auto">
               <h3 class="text-left">
-                Products
+                Projects
               </h3>
               <v-list-item class="px-0">
                 <a
@@ -44,13 +45,6 @@
                 Legal
               </h3>
               <v-list>
-                <v-list-item class="px-0">
-                  <v-list-item-title
-                    class="blackish footer-texts"
-                  >
-                    Terms of Use
-                  </v-list-item-title>
-                </v-list-item>
                 <v-list-item class="px-0">
                   <v-list-item-title
                     class="blackish footer-texts"
@@ -83,13 +77,6 @@
                   <v-list-item-title
                     class="blackish footer-texts"
                   >
-                    Apply
-                  </v-list-item-title>
-                </v-list-item>
-                <v-list-item class="px-0">
-                  <v-list-item-title
-                    class="blackish footer-texts"
-                  >
                     Programmes
                   </v-list-item-title>
                 </v-list-item>
@@ -103,10 +90,15 @@
 </template>
 
 <script>
+import { mdiFacebook, mdiTwitter, mdiLinkedin } from "@mdi/js";
 export default {
   data() {
     return {
-      icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"]
+      socialMediaLinks: [
+        { icon: mdiFacebook, url: ""},
+        { icon: mdiTwitter, url: ""},
+        { icon: mdiLinkedin, url: ""}
+      ]
     };
   }
 };

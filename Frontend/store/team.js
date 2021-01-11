@@ -19,18 +19,7 @@ export const mutations = {
 };
 export const actions = {
   async fetchMembers({ commit }) {
-    const response = await this.$axios.get("/api/team");
-    commit("setTeamMembers", filterMembers(response.data));
+    const response = await this.$axios.get("/api/team?limit=30");
+    commit("setTeamMembers", response.data.data);
   }
 };
-
-// this will just filter out team members who have no nice profile picture :(
-function filterMembers(members) {
-  const blackListed = [
-    "Mike Ward",
-    "Kaleab Belay"
-  ];
-  return members.filter(member => {
-    return blackListed.includes(member.name) === false;
-  });
-}

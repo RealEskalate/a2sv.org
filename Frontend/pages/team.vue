@@ -47,7 +47,7 @@
                   fetch-format="auto"
                   quality="auto"
                   class="d-block mx-auto"
-                  :public-id="changeFormat(member.img)"
+                  :public-id="changeFormat(member.image)"
                 />
                 <v-card-title class="mx-auto text-center">
                   <p class="text-center mx-auto">
@@ -55,7 +55,7 @@
                   </p>
                 </v-card-title>
                 <v-card-subtitle class="text-center">
-                  {{ member.career }}
+                  {{ member.title }}
                 </v-card-subtitle>
                 <div class="details">
                   <h4>{{ member.name }}</h4>

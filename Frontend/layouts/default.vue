@@ -33,11 +33,7 @@ export default {
 .v-pagination__navigation {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1) !important;
 }
-
-</style>
-
-<style lang="scss">
-  .blue-black {
-    color: #1C202B!important;
-  }
+.blue-black {
+  color: #1C202B!important;
+}
 </style>

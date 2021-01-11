@@ -1,36 +1,38 @@
 <template>
   <div>
-    <video-background
-      src="/videoplayback.mp4"
-      poster="/team/lidia.webp"
-      :style="`height: ${$vuetify.breakpoint.mdAndUp ? '75vh' : '100vh'}`"
-      style="max-height: 900px; margin-top: -65px;"
-      overlay="rgba(0, 0, 0, 0.25)"
-    >
-      <div
-        class="d-flex align-center justify-center my-3"
-        style="height: 100%"
+    <clientOnly>
+      <video-background
+        src="/videoplayback.mp4"
+        poster="/team/lidia.webp"
+        :style="`height: ${$vuetify.breakpoint.mdAndUp ? '75vh' : '100vh'}`"
+        style="max-height: 900px; margin-top: -65px;"
+        overlay="rgba(0, 0, 0, 0.25)"
       >
         <div
-          class="pa-8 text-center col-md-9"
-          style="color: #d9d9d9"
+          class="d-flex align-center justify-center my-3"
+          style="height: 100%"
         >
-          <h2 class="display-3 text-uppercase text-bold">
-            Creating opportunities for African Students
-          </h2>
-          <p
-            class="mt-7"
-            style="
+          <div
+            class="pa-8 text-center col-md-9"
+            style="color: #d9d9d9"
+          >
+            <h2 class="display-3 text-uppercase text-bold">
+              Creating opportunities for African Students
+            </h2>
+            <p
+              class="mt-7"
+              style="
             font-size: 22px;
             line-height: 36px;
             font-family: Lato, sans-serif !important;
             "
-          >
-            Helping students get equal opportunities as the rest of the world.
-          </p>
+            >
+              Helping students get equal opportunities as the rest of the world.
+            </p>
+          </div>
         </div>
-      </div>
-    </video-background>
+      </video-background>
+    </clientOnly>
 
     <v-container class="mt-md-12 pa-5" style="background: url('bg.svg')">
       <v-row class="my-md-6">
@@ -163,38 +165,22 @@
 </template>
 <script>
 import Partners from "@/components/core/Partners";
+import Vue from "vue";
 
 export default {
   name: "LandingPage",
   components: {
-    Partners
-  },
-  data() {
-    return {
-      actions: [
-        { image: "/train.svg", action: "Learn More", description: "First training initially focuses on problem-solving and personal development.", link: "/" },
-        { image: "/mock.svg", action: "Learn More", description: "Mock interviews with peers, other trainees, and industry professionals.", link: "/" },
-        { image: "/work.svg", action: "Learn More", description: "Trainees work on social projects with industry experts.", link: "/" }
-      ]
-    };
+    Partners,
+    VideoBackground: () => import("vue-responsive-video-background-player")
   },
   head: {
     title: "Welcome"
   },
-  mounted() {
-    this.$store.dispatch("setActiveLink", "transparent");
-    window.addEventListener("scroll", this.onScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.onScroll);
-  },
-  methods: {
-    onScroll() {
-      if (window.top.scrollY < 65) {
-        this.$store.dispatch("setActiveLink", "transparent");
-      } else {
-        this.$store.dispatch("setActiveLink", "colored");
-      }
+  created() {
+    let VideoBackground;
+    if (process.client) {
+      VideoBackground = require("vue-responsive-video-background-player");
+      Vue.use(VideoBackground);
     }
   }
 };
@@ -211,14 +197,6 @@ export default {
   font-size: 18px;
   line-height: 32px;
   font-family: 'Nunito', sans-serif;
-}
-.donate {
-  border-radius: 10px;
-}
-.donate-p {
-  font-size: 17px;
-  line-height: 32px;
-  letter-spacing: 0.2px;
 }
 .plyr {
   --plyr-color-main: #334aC0;

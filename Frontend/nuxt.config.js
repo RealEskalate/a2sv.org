@@ -1,5 +1,6 @@
 import head from "./config/head";
 import vuetify from "./config/vuetify";
+import purgeCSS from "./plugins/purge-css";
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -10,9 +11,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    "~/plugins/vue-plyr",
     "~/plugins/cloudinary",
-    { src: "~/plugins/video-background", ssr: false},
     { src: "~plugins/vue-carousel-3d", ssr: false }
   ],
 
@@ -25,7 +24,8 @@ export default {
     "@nuxt/typescript-build",
     // https://go.nuxtjs.dev/vuetify
     "@nuxtjs/vuetify",
-    "nuxt-compress"
+    "nuxt-compress",
+    "nuxt-purgecss"
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -49,6 +49,8 @@ export default {
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify,
 
+  purgeCSS,
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     extractCSS: true,
@@ -58,4 +60,3 @@ export default {
     color: "#00aeef"
   }
 };
-

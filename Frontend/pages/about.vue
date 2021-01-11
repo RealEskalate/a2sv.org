@@ -120,7 +120,7 @@
       </carousel-3d>
       <div class="grey lighten-4 mt-10 text-center">
         <v-container>
-          <Partners :page="'about'" />
+          <Partners :message="message" />
         </v-container>
       </div>
       <v-icon size="100" class="my-5">
@@ -207,6 +207,7 @@ export default {
   data() {
     return {
       mdiArrowDownBoldHexagonOutline,
+      message: "At the end of phase 2, our students will have interviews with our partner companies.",
       lists: [
         {
           title: "Phase-1",

@@ -2,10 +2,9 @@
   <div>
     <clientOnly>
       <video-background
-        src="/videoplayback.mp4"
-        poster="/team/lidia.webp"
-        :style="`height: ${$vuetify.breakpoint.mdAndUp ? '75vh' : '100vh'}`"
-        style="max-height: 900px; margin-top: -65px;"
+        src="https://res.cloudinary.com/eskalate/video/upload/e_auto_brightness,f_auto,q_auto:best/v1610454190/video/homepage_video_1_gegjid.mp4"
+        :style="`height: ${$vuetify.breakpoint.mdAndUp ? '90vh' : '100vh'}`"
+        style="max-height: 900px;"
         overlay="rgba(0, 0, 0, 0.25)"
       >
         <div
@@ -14,10 +13,10 @@
         >
           <div
             class="pa-8 text-center col-md-9"
-            style="color: #d9d9d9"
+            style="color: #FFF"
           >
-            <h2 class="display-3 text-uppercase text-bold">
-              Creating opportunities for African Students
+            <h2 class="display-3 text-bold" style="font-weight: 900">
+              Creating opportunities
             </h2>
             <p
               class="mt-7"
@@ -29,6 +28,15 @@
             >
               Helping students get equal opportunities as the rest of the world.
             </p>
+            <v-btn
+              outlined
+              tile
+              dark
+              class="mt-md-12 mt-sm-5"
+              @click="$vuetify.goTo(target, options)"
+            >
+              Explore
+            </v-btn>
           </div>
         </div>
       </video-background>
@@ -49,7 +57,7 @@
           <v-img src="/landing/group.webp" />
         </v-col>
       </v-row>
-      <v-row class="mt-12">
+      <v-row id="main-content" class="mt-12">
         <v-col sm="12" md="6" class="mt-12">
           <v-img
             max-width="75%"
@@ -172,6 +180,16 @@ export default {
   components: {
     Partners,
     VideoBackground: () => import("vue-responsive-video-background-player")
+  },
+  data() {
+    return {
+      target: 1000,
+      options: {
+        duration: 1000,
+        offset: 200,
+        easing: "easeInOutCubic"
+      }
+    };
   },
   head: {
     title: "Welcome"

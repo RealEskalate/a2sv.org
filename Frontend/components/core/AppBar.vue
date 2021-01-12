@@ -4,8 +4,7 @@
       app
       height="70"
       elevate-on-scroll
-      class="px-md-8 shadow-sm"
-      color="white"
+      class="px-md-8 shadow"
     >
       <v-app-bar-nav-icon
         v-if="$vuetify.breakpoint.smAndDown"

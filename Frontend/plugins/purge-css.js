@@ -10,10 +10,14 @@ export default {
     "spacer",
     "col",
     "[type=button]",
-    "v-application p"
+    "v-application p",
   ],
   whitelistPatterns: [
     /^v-((?!application).)*$/,
+    /^v-((?!form).)*$/,
+    /^v-((?!input).)*$/,
+    /^v-((?!text).)*$/,
+    /^v-((?!textarea).)*$/,
     /^theme--*/,
     /.*-transition/,
     /^v-.*/,

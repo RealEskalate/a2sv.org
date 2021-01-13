@@ -1,6 +1,6 @@
-const router = require('express').Router()
-const webResourceController = require('../controllers/WebResourceController')
+const router = require("express").Router();
+const impactStoryResourceController = require("../controllers/ImpactStoryResourceController");
 
-router.get("/", webResourceController.getAllWebResources);
+router.get("/", impactStoryResourceController.getAllImpactStoryResources);
 
-module.exports = router
+module.exports = router;

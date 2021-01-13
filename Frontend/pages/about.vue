@@ -118,11 +118,12 @@
           </v-card>
         </slide>
       </carousel-3d>
-      <div class="grey lighten-4 mt-10 text-center">
-        <v-container>
-          <Partners :message="message" />
-        </v-container>
-      </div>
+    </v-container>
+
+    <div class="grey lighten-4 mt-10 text-center">
+      <Partners :message="message" />
+    </div>
+    <v-container>
       <v-icon size="100" class="my-5">
         {{ mdiArrowDownBoldHexagonOutline }}
       </v-icon>
@@ -131,19 +132,6 @@
           Phase-3
         </h1>
         <v-row align="center" justify="center">
-          <v-col col="12" sm="7">
-            <v-img
-              max-width="75%"
-              class="d-inline-flex"
-              src="/landing/selid.webp"
-              style="z-index: 1"
-            />
-            <v-img
-              width="12rem"
-              class="d-inline-block tracksym"
-              src="https://eskalate.io/img/tracksym.svg"
-            />
-          </v-col>
           <v-col col="12" sm="5">
             <p style="font-size: 1.2rem">
               In the last phase of the program, our students will work on a
@@ -158,10 +146,10 @@
         </v-row>
       </div>
       <div class="mt-10">
-        <h1 class="display-2 mb-5">
+        <h1 class="display-2 mb-5 text-center">
           What we hope to achieve
         </h1>
-        <p style="font-size: 1.2rem">
+        <p class="text-body col-md-10 mx-auto">
           Here in A2SV, we believe talent is everywhere, but the opportunity is
           not. We hope to change that for Africa.<br>
           Even though there are a lot of smart tech students with the talent and
@@ -175,18 +163,6 @@
           ultimate goal is to be the bridge between these two gaps and connect
           the talent with the opportunity.
         </p>
-      </div>
-      <div
-        class="my-10 py-6"
-        style="border-left: 6px solid grey; background-color: #f5f5f5"
-      >
-        <p style="font-size: 1.5rem">
-          You can help us reach our goal, join our mission, and support us in
-          any way you can.
-        </p>
-        <v-btn class="button-fill-bottom" large to="/support">
-          Support
-        </v-btn>
       </div>
     </v-container>
   </div>
@@ -322,4 +298,7 @@ export default {
 
 <style>
 @import 'https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css';
+.text-body {
+  font-size: 1.2rem;
+}
 </style>

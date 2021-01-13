@@ -59,21 +59,24 @@
       </v-row>
       <v-row id="main-content" class="mt-12">
         <v-col sm="12" md="6" class="mt-12">
-          <v-img
-            max-width="75%"
-            class="d-inline-flex"
-            src="/landing/selid.webp"
-            style="z-index: 1"
+          <cld-image
+            loading="lazy"
+            crop="scale"
+            width="400"
+            fetch-format="auto"
+            quality="auto"
+            class="d-inline-flex mx-auto"
+            public-id="a2sv/social_projects"
           />
           <v-img
-            width="12rem"
+            width="10rem"
             class="d-inline-block tracksym"
             src="https://eskalate.io/img/tracksym.svg"
           />
         </v-col>
         <v-col sm="12" md="6" class="my-md-12">
           <h1 class="display-2 text-uppercase my-3" style="font-weight: 800">
-            Develop scalable products
+            Trainees Develop scalable products
           </h1>
           <p style="font-size: 1.5rem;">
             Trainees work on social projects with industry experts.
@@ -118,38 +121,43 @@
             <p class="col-12 text-center display-1 font-weight-bold pb-8">
               Impact story
             </p>
-            <v-col class="pa-0" cols="12" sm="10" md="6">
-              <v-img
-                cover
-                src="/team/ise_transparent.webp"
-                style="height: 90%"
-              />
-            </v-col>
-            <v-col class="pa-12" cols="12" sm="10" md="6" style="margin-left: -5em; margin-top: -2em;">
-              <p class="quote">
-                Before I joined A2SV, I was clueless on what path to take in order
-                to become a good programmer. But after I joined the A2SV team, it
-                showed me one better direction to reach the level that I want to
-                get to. The challenges and the problems we solve every day has
-                showed to pay attention to the important parts of any problem and
-                come up with an efficient solution.
+            <v-card
+              v-for="(story, i) in getImpactStories"
+              :key="i"
+              outlined
+              class="col-md-5 col-10 mx-auto"
+              color="#efefff"
+            >
+              <p class="quote pa-5">
+                {{ story.content }}
               </p>
-              <span
-                class="d-inline pl-md-4"
-                style="font-size: 14px"
+              <v-col class="mx-auto" cols="4">
+                <cld-image
+                  loading="lazy"
+                  crop="scale"
+                  width="100"
+                  radius="max"
+                  fetch-format="auto"
+                  quality="auto"
+                  class="d-block mx-auto"
+                  :public-id="story.image"
+                />
+              </v-col>
+              <h1
+                class="mx-auto text-center blue-black"
+                style="font-size: 20px; font-weight: 800"
               >
-                &ndash; Ise Boge, 4th year SE student
-              </span>
-              <br>
-              <v-btn class="mt-5 button-fill-bottom" to="/">
-                More Impact stories
-              </v-btn>
-            </v-col>
+                {{ story.name }}
+              </h1>
+              <v-card-subtitle class="text-center">
+                {{ story.title }}
+              </v-card-subtitle>
+            </v-card>
           </v-row>
         </div>
       </v-row>
     </v-container>
-    <div class="grey lighten-4 mt-10 text-center">
+    <div class="grey lighten-4 text-center">
       <partners />
     </div>
     <v-container>
@@ -173,7 +181,7 @@
 </template>
 <script>
 import Partners from "@/components/core/Partners";
-import Vue from "vue";
+import {mapGetters} from "vuex";
 
 export default {
   name: "LandingPage",
@@ -194,22 +202,15 @@ export default {
   head: {
     title: "Welcome"
   },
+  computed: {
+  ...mapGetters("resources", ["getImpactStories"])
+  },
   created() {
-    let VideoBackground;
-    if (process.client) {
-      VideoBackground = require("vue-responsive-video-background-player");
-      Vue.use(VideoBackground);
-    }
+    this.$store.dispatch("resources/fetchMembers");
   }
 };
 </script>
 <style>
-.motto {
-  font-family: Lato, serif !important;
-  font-size: clamp(2rem, 0.5rem + 2.6vw, 4rem) !important;
-  line-height: clamp(3rem, 0.8rem + 2.8vw, 4rem) !important;
-  font-weight: 900;
-}
 .blackish {
   color: #545465;
   font-size: 18px;
@@ -224,10 +225,9 @@ export default {
 .quote {
   position: relative;
   padding-left: 1em;
-  border-left: 0.2em solid #0a61f7;
   font-weight: 100;
   line-height: 2em;
-  font-size: 1.25em;
+  font-size: 1.125em;
   font-family: Nunito, sans-serif;
 
 }
@@ -263,5 +263,8 @@ export default {
 }
 a {
   text-decoration: none;
+}
+.cld-image img{
+  z-index: 1!important;
 }
 </style>

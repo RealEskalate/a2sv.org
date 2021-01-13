@@ -8,7 +8,8 @@
             :key="i"
             class="mx-4 primary--text"
             icon
-            :to="link.url"
+            :href="link.url"
+            target="_blank"
           >
             <v-icon size="24px">
               {{ link.icon }}
@@ -90,14 +91,13 @@
 </template>
 
 <script>
-import { mdiFacebook, mdiTwitter, mdiLinkedin } from "@mdi/js";
+import { mdiLinkedin, mdiInstagram } from "@mdi/js";
 export default {
   data() {
     return {
       socialMediaLinks: [
-        { icon: mdiFacebook, url: ""},
-        { icon: mdiTwitter, url: ""},
-        { icon: mdiLinkedin, url: ""}
+        { icon: mdiLinkedin, url: "http://www.linkedin.com/company/a2sv"},
+        { icon: mdiInstagram, url: "http://www.instagram.com/a2sv_org"}
       ]
     };
   }

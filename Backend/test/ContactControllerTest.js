@@ -19,7 +19,8 @@ describe("Contact API", () => {
             name: "Darth Vader",
             email: "vader@tatooine.com",
             subject: "Death ray usage manual request.",
-            message: "test..........."
+            message: "test...........",
+            phase: "Phase-1"
         });
         await contact.save();
     });
@@ -98,7 +99,8 @@ describe("Contact API", () => {
                 name: "Darth Vader",
                 email: "vader@tatooine.com",
                 subject: "Death ray usage manual request.",
-                message: "test..........."
+                message: "test...........",
+                phase: "Phase-1"
             });
         expect(response).to.have.status(201);
         expect(response.body).to.be.a("object");

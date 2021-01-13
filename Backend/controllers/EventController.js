@@ -8,8 +8,11 @@ exports.addEvent = async(req, res) => {
 }
 
 exports.getAllEvents = async(req, res) => {
-    const aggregation = []
-    const query = Event.aggregate(aggregation)
+    let filter = {}
+    if (req.query.phase) {
+        filter.phase = req.query.phase;
+    }
+    const query = Event.aggregate([{$match: filter}])
     const paginatedResult = await paginate(req, query)
     return res.status(200).send(paginatedResult)
 }

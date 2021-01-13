@@ -45,7 +45,11 @@ const eventSchema = new mongoose.Schema({
     },
     gallery: {
         type: String
-    }
+    },
+    phase: {
+        type: String,
+        required: true
+    },
 }, { 
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 })
@@ -59,19 +63,21 @@ const validEventSchema = Joi.object({
     description: Joi.string().min(10).required(),
     eventType: Joi.string().valid('CONTEST', 'Q&A', 'PRODUCT RELEASE').required(),
     links: Joi.any(),
-    gallery: Joi.string()
+    gallery: Joi.string(),
+    phase: Joi.string().required()
 })
 
 const validEditEventSchema = Joi.object({
-    name: Joi.string(),
-    title: Joi.string(),
+    name: Joi.string().optional(),
+    title: Joi.string().optional(),
     start: Joi.date(),
     end: Joi.date(),
     description: Joi.string().min(10),
-    eventType: Joi.string().valid('CONTEST', 'Q&A', 'PRODUCT RELEASE'),
+    eventType: Joi.string().valid("CONTEST", "Q&A", "PRODUCT RELEASE"),
     links: Joi.any(),
-    gallery: Joi.string()
-})
+    gallery: Joi.string().optional(),
+    phase: Joi.string().optional(),
+});
 
 const validAddLinkSchema = Joi.object({
     name: Joi.string().required(),

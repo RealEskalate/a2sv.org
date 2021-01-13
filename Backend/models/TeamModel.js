@@ -30,6 +30,10 @@ var teamSchema = mongoose.Schema(
         priority: {
             type: Number,
         },
+        phase: {
+            type: String,
+            required: true,
+        },
     },
     {
         timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
@@ -45,6 +49,7 @@ const validTeamSchema = Joi.object({
     description: Joi.string().max(1000).required(),
     email: Joi.string().email().required(),
     priority: Joi.number().optional(),
+    phase: Joi.string().required()
 })
 
 const validTeamSchemaForUpdate = Joi.object({
@@ -55,6 +60,7 @@ const validTeamSchemaForUpdate = Joi.object({
     description: Joi.string().max(1000).optional(),
     email: Joi.string().email().optional(),
     priority: Joi.number().optional(),
+    phase: Joi.string().optional()
 });
 
 

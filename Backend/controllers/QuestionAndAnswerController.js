@@ -2,8 +2,11 @@ const { QuestionAndAnswer } = require("../models/QuestionAndAnswerModel.js");
 const { paginate } = require("../utilities/util");
 
 exports.getAllQuestionsAndAnswers = async (req, res) => {
-    const aggregation = [];
-    const query = QuestionAndAnswer.aggregate(aggregation);
+    let filter = {};
+    if (req.query.phase) {
+        filter.phase = req.query.phase;
+    }
+    const query = QuestionAndAnswer.aggregate([{$match: filter}]);
     const paginatedResult = await paginate(req, query);
     return res.status(200).send(paginatedResult);
 };

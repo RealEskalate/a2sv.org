@@ -10,6 +10,9 @@ exports.getAllImpactStoryResources = async (req, res) => {
     if (req.query.title) {
         filter.title = req.query.title;
     }
+    if (req.query.phase) {
+        filter.phase = req.query.phase;
+    }
 
     const aggregation = [{ $match: filter }];
     const query = ImpactStoryResource.aggregate(aggregation);

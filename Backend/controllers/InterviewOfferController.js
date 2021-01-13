@@ -7,9 +7,12 @@ exports.addInterviewOffer = async(req, res) => {
     return res.status(201).send(interviewOffer)
 }
 
-exports.getAllInterviewOffer = async(req,res) => {
-    const aggregation = []
-    const query = InterviewOffer.aggregate(aggregation)
+exports.getAllInterviewOffer = async (req, res) => {
+    let filter = {}
+    if (req.query.phase) {
+        filter.phase = req.query.phase;
+    }
+    const query = InterviewOffer.aggregate([{$match: filter}])
     const paginatedResult = await paginate(req, query)
     return res.status(200).send(paginatedResult)
 }

@@ -21,7 +21,8 @@ describe("Team API", () => {
             image: "https://pixabay.com/images/id-5163366/",
             title: "Head Cleaner",
             description: "40 years of cleaning up toxins",
-            country: "Unverified"
+            country: "Unverified",
+            phase: "Phase-1",
         });
         await team.save();
     });
@@ -117,7 +118,8 @@ describe("Team API", () => {
                 image: "https://pixabay.com/images/id-5163366/",
                 title: "Head Goof",
                 description: "40 years of cleaning up toxins",
-                country: "Unverified"
+                country: "Unverified",
+                phase: "Phase-1",
             };
             let response = await chai
                 .request(server)

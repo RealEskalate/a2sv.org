@@ -17,7 +17,8 @@ describe("Information API", () => {
     beforeEach(async () => {
         information = new Information({
             title: "Test title",
-            note: "This is the note for the test information"
+            note: "This is the note for the test information",
+            phase: "Phase-1",
         });
         await information.save();
     });
@@ -68,8 +69,9 @@ describe("Information API", () => {
     describe("POST information ", () => {
         const informationObject = {
             title: "Project Launch",
-            note: "Tracksym will be launched"
-        }
+            note: "Tracksym will be launched",
+            phase: "Phase-1",
+        };
         it("It should add information without description", async () => {   
             let response = await chai
                 .request(server)

@@ -19,6 +19,7 @@ describe("Interview Offer API", () => {
             name: "Adam Driver",
             company_email: "Manager@google.com",
             message: "Hi, I'm a tech veteran who's been in the industry of 20 years. I would like to know more about you and your peers, so please I'll be delighted if you reached out to me.",
+            phase: "Phase-1"
         });
         await interviewOffer.save();
     });
@@ -63,6 +64,7 @@ describe("Interview Offer API", () => {
                 company_email: "Actor@google.com",
                 message:
                     "Hi, I'm a tech veteran who's been in the industry of 20 years. I would like to know more about you and your peers, so please I'll be delighted if you reached out to me.",
+                phase: "Phase-1",
             });
         expect(response).to.have.status(201);
         expect(response.body).to.be.a("object");
@@ -123,6 +125,7 @@ describe("Interview Offer API", () => {
                 company_email: "Actor@google.com",
                 message:
                     "Hi, I'm a tech veteran who's been in the industry of 20 years. I would like to know more about you and your peers, so please I'll be delighted if you reached out to me.",
+                phase: "Phase-1",
             });
         let response = await chai
             .request(server)

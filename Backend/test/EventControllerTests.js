@@ -16,13 +16,15 @@ describe("Event API", () => {
     const invalid_id = "5fb41302700b9743133"
     beforeEach(async () => {
         event = new Event({
-            name: "Openning Ceremony",
-            title: "Openning Ceremony of A2S",
+            name: "Opening Ceremony",
+            title: "Opening Ceremony of A2S",
             start: "2020-11-17T18:14:26.178Z",
             end: "2020-11-17T18:15:46.178Z",
-            description: "Openning camp program take 2 for interview preparation",
+            description: "Opening camp program take 2 for interview preparation",
             eventType: "CONTEST",
-            gallery: "some html text" 
+            gallery: "some html text", 
+            phase: "Phase-1"
+
         });
         await event.save();
     });
@@ -79,7 +81,8 @@ describe("Event API", () => {
             end: "2020-11-17T18:15:46.178Z",
             description: "Openning camp program take 2 for interview preparation",
             eventType: "CONTEST",
-            gallery: "Some html text" 
+            gallery: "Some html text",
+            phase: "Phase-1"
         };
         it("It should add event ", async () => {   
             let response = await chai
@@ -98,7 +101,8 @@ describe("Event API", () => {
                 end: "2020-11-17T18:15:46.178Z",
                 description: "Openning camp program take 2 for interview preparation",
                 eventType: "CONTEST",
-                gallery: "Some html text" 
+                gallery: "Some html text",
+                phase: "Phase-1"
             });
             let response = await chai
                 .request(server)
@@ -114,7 +118,8 @@ describe("Event API", () => {
                 end: "2020-11-17T18:15:46.178Z",
                 description: "Openning camp program take 2 for interview preparation",
                 eventType: "SITDOWN",
-                gallery: "Some html text" 
+                gallery: "Some html text",
+                phase: "Phase-1"
             });
             let response = await chai
                 .request(server)

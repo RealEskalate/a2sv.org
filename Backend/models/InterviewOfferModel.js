@@ -14,6 +14,10 @@ const interviewOfferSchema = new mongoose.Schema(
         message: {
             type: String,
         },
+        phase: {
+            type: String,
+            required: true,
+        },
     },
     {
         timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
@@ -23,13 +27,15 @@ const interviewOfferSchema = new mongoose.Schema(
 const ValidationSchema = Joi.object({
     name: Joi.string().required(),
     company_email: Joi.string().email().required(),
-    message: Joi.string()
+    message: Joi.string(),
+    phase: Joi.string().required()
 })
 
 const EditValidationSchema = Joi.object({
-    name: Joi.string(),
-    company_email: Joi.string().email(),
-    message: Joi.string(),
+    name: Joi.string().optional(),
+    company_email: Joi.string().email().optional(),
+    message: Joi.string().optional(),
+    phase: Joi.string().optional(),
 });
 
 const InterviewOffer = mongoose.model('InterviewOffer', interviewOfferSchema)

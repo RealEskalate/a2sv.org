@@ -18,8 +18,11 @@ exports.get_all_team = async (req, res) => {
         filter.title = req.query.title;
     }
 
+    if (req.query.phase) {
+        filter.phase = req.query.phase;
+    }
 
-    const query =  Team.aggregate([{$match: filter}])
+    const query = Team.aggregate([{$match: filter}])
     const paginatedResult = await paginate(req, query)
 
     return res.send(paginatedResult);   

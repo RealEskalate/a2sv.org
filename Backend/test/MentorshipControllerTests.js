@@ -20,6 +20,7 @@ describe("Mentorship API", () => {
             email: "Manager@google.com",
             experience: "A veteran in the industry of 20 years",
             linkedin_url: "https://www.linkedin.com/in/khalid-sultan-2b3733141/",
+            phase: "Phase-1"
         });
         await mentorship.save();
     });
@@ -64,7 +65,8 @@ describe("Mentorship API", () => {
                 name: "Kevin Bacon",
                 email: "Actor@google.com",
                 experience: "An actor with an algorithm to his name",
-                linkedin_url: "https://www.linkedin.com/in/anteneh-admasu-699a3215b"
+                linkedin_url: "https://www.linkedin.com/in/anteneh-admasu-699a3215b",
+                phase: "Phase-1"
             });
         expect(response).to.have.status(201);
         expect(response.body).to.be.a("object");
@@ -127,7 +129,8 @@ describe("Mentorship API", () => {
                 name: "Kevin Bacon",
                 email: "Actor@google.com",
                 experience: "An actor with an algorithm to his name",
-                linkedin_url: "https://www.linkedin.com/in/anteneh-admasu-699a3215b"
+                linkedin_url: "https://www.linkedin.com/in/anteneh-admasu-699a3215b",
+                phase: "Phase-1"
             });
         let response = await chai
             .request(server)

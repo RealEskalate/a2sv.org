@@ -18,6 +18,10 @@ const impact_stories_schema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    phase: {
+        type: String,
+        required: true,
+    },
 });
 
 const ImpactStoryResource = mongoose.model("ImpactStory", impact_stories_schema);

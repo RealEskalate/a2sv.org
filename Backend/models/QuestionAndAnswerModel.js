@@ -17,6 +17,10 @@ const QuestionAndAnswerSchema = mongoose.Schema({
     bio: {
         type: String,
     },
+    phase: {
+        type: String,
+        required: true
+    },
 },{
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 }) 
@@ -26,13 +30,15 @@ const validationSchema = Joi.object({
     email: Joi.string().email().required(),
     profession: Joi.string().required(),
     bio: Joi.string(),
+    phase: Joi.string().required()
 });
 
 const editValidationSchema = Joi.object({
-    name: Joi.string(),
-    email: Joi.string().email(),
-    profession: Joi.string(),
-    bio: Joi.string(),
+    name: Joi.string().optional(),
+    email: Joi.string().email().optional(),
+    profession: Joi.string().optional(),
+    bio: Joi.string().optional(),
+    phase: Joi.string().optional(),
 });
 
 const QuestionAndAnswer = mongoose.model('QuestionAndAnswer', QuestionAndAnswerSchema)

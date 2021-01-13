@@ -23,6 +23,7 @@ app.use(router)
 
 // Centralizing error handling to avoid try catch blocks on the controllers
 app.use((err, req, res, next) => {
+    // console.log(err.toString())
     res.status(500).send('server error ' + err.toString())
     next(err)
 })

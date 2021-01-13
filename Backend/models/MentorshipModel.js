@@ -17,6 +17,11 @@ const MentorshipSchema = mongoose.Schema({
     linkedin_url: {
         type: String
     },
+    phase: {
+        type: String,
+        required: true
+    },
+
 },{
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 }) 
@@ -26,12 +31,14 @@ const validationSchema = Joi.object({
     email: Joi.string().email().required(),
     experience: Joi.string().required(),
     linkedin_url: Joi.string().uri(),
+    phase: Joi.string().required()
 });
 const editValidationSchema = Joi.object({
-    name: Joi.string(),
-    email: Joi.string().email(),
-    experience: Joi.string(),
-    linkedin_url: Joi.string().uri(),
+    name: Joi.string().optional(),
+    email: Joi.string().email().optional(),
+    experience: Joi.string().optional(),
+    linkedin_url: Joi.string().uri().optional(),
+    phase: Joi.string().optional(),
 });
 
 

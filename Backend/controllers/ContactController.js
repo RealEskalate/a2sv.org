@@ -19,9 +19,11 @@ exports.get_all_contacts = async (req, res) => {
         let re = new RegExp(req.query.subject, 'i') 
         Object.assign(filter,{subject : { $regex: re }})
     }
+    if (req.query.phase) {
+        filter.phase = req.query.phase;
+    }
 
-
-    const query =  Contact.aggregate([{$match: filter}])
+    const query = Contact.aggregate([{$match: filter}])
     const paginatedResult = await paginate(req, query)
 
     return res.send(paginatedResult);   

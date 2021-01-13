@@ -8,8 +8,12 @@ exports.addInformation = async(req, res) => {
 }
 
 exports.getAllInformation = async(req, res) => {
-    const aggregation = []
-    const query = Information.aggregate(aggregation)
+    let filter = {}
+    if (req.query.phase) {
+        filter.phase = req.query.phase;
+    }
+
+    const query = Information.aggregate([{$match: filter}])
     const paginatedResult = await paginate(req, query)
     return res.status(200).send(paginatedResult)
 }

@@ -16,10 +16,11 @@ describe('Question And Answer API', () => {
     beforeEach(async () => {
         questionAndAnswer = new QuestionAndAnswer({
             _id: mongoose.Types.ObjectId(),
-            name: 'Adam Driver',
-            email: 'Manager@google.com',
-            profession: 'Manager',
-            bio: 'A veteran in the industry of 20 years'
+            name: "Adam Driver",
+            email: "Manager@google.com",
+            profession: "Manager",
+            bio: "A veteran in the industry of 20 years",
+            phase: "Phase-1",
         });
         await questionAndAnswer.save();
     })
@@ -65,6 +66,7 @@ describe('Question And Answer API', () => {
                 email: "Actor@google.com",
                 profession: "Actor",
                 bio: "An actor with an algorithm to his name",
+                phase: "Phase-1",
             });
         expect(response).to.have.status(201);
         expect(response.body).to.be.a("object");
@@ -128,6 +130,7 @@ describe('Question And Answer API', () => {
                 email: "Actor@google.com",
                 profession: "Actor",
                 bio: "An actor with an algorithm to his name",
+                phase: "Phase-1",
             });
         let response = await chai
             .request(server)

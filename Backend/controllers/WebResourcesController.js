@@ -3,8 +3,8 @@ const { paginate } = require('../utilities/util')
 
 exports.getAllWebResources = async (req, res) => {
     let filter = {};
-    if (req.query.title) {
-        filter.title = req.query.title;
+    if (req.query.category) {
+        filter.category = req.query.category;
     }
     const aggregation = [{ $match: filter }];
     const query = WebResource.aggregate(aggregation);

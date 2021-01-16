@@ -36,4 +36,23 @@ export default {
 .blue-black {
   color: #1C202B!important;
 }
+.blackish {
+  color: #545465;
+  font-size: 18px;
+  line-height: 32px;
+  font-family: 'Nunito', sans-serif;
+}
+.button-fill-bottom {
+  color: #2b2a35;
+  box-shadow: inset 0 0 0 #2b2a35 !important;
+  transition: ease-in 0.5s !important;
+}
+.button-fill-bottom:hover {
+  color: white!important;
+  box-shadow: inset 0 -80px 0 #2b2a35 !important;
+}
+
+.display-1, .display-2 {
+  color: #2b2a35!important;
+}
 </style>

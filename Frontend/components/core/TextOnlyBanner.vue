@@ -1,7 +1,7 @@
 <template v-slot:activator="{ on, attrs }">
   <div class="blue-bg" style="height: 70vh!important;">
     <v-container>
-      <h1 class="display-2 text-center blue-black text-uppercase main-text">
+      <h1 class="display-2 text-center main-text">
         {{ title }}
       </h1>
       <p class="col-md-8 mx-auto text-center mt-6 blue-black" style="font-size: 25px;">
@@ -32,8 +32,9 @@ export default {
 }
 .main-text {
   font-weight: 800;
-  font-size: 65px !important;
+  font-size: 68px !important;
   line-height: 72px !important;
   margin: 9% 0 2% 0;
+  color: #0a61f7!important;
 }
 </style>

@@ -19,9 +19,6 @@
         </v-responsive>
       </template>
     </v-slide-group>
-    <v-btn v-if="isAboutPage()" class="mt-5 button-fill-bottom" to="/support">
-      Partner with us
-    </v-btn>
   </v-container>
 </template>
 
@@ -37,10 +34,10 @@ name: "Partners",
   data() {
   return {
     icons: [
-      "./partners-colorful/google.svg",
-      "./partners-colorful/coinbase.svg",
-      "./partners-colorful/palantir.svg",
-      "./partners-colorful/aau.svg"
+      "/partners-colorful/google.svg",
+      "/partners-colorful/coinbase.svg",
+      "/partners-colorful/palantir.svg",
+      "/partners-colorful/aau.svg"
     ]
   };
   },

@@ -45,8 +45,8 @@
     <v-container class="mt-md-12 pa-5" style="background: url('bg.svg')">
       <v-row class="my-md-6">
         <v-col sm="12" md="6" class="my-md-12">
-          <h1 class="display-2 text-uppercase my-3" style="font-weight: 800">
-            offers a 360° training
+          <h1 class="my-5 display-2">
+            Offers a 360° training
           </h1>
           <p style="font-size: 1.5rem;">
             A2SV offers a 360° software engineer training program that initially
@@ -75,8 +75,8 @@
           />
         </v-col>
         <v-col sm="12" md="6" class="my-md-12">
-          <h1 class="display-2 text-uppercase my-3" style="font-weight: 800">
-            Trainees Develop scalable products
+          <h1 class="my-5 display-2">
+            Trainees develop scalable products
           </h1>
           <p style="font-size: 1.5rem;">
             Trainees work on social projects with industry experts.
@@ -89,7 +89,7 @@
 
       <v-row class="px-10 my-12">
         <div class="col-md-8 mx-auto text-center">
-          <h1 class="display-2 text-uppercase my-3" style="font-weight: 800">
+          <h1 class="display-2 my-3">
             Within 3 months
           </h1>
           <p class="mt-md-7 blackish" style="font-size: 1.5em">
@@ -128,14 +128,14 @@
               class="col-md-5 col-10 mx-auto"
               color="#efefff"
             >
-              <p class="quote pa-5">
+              <p class="quote pa-5" style="height: 65%">
                 {{ story.content }}
               </p>
               <v-col class="mx-auto" cols="4">
                 <cld-image
                   loading="lazy"
                   crop="scale"
-                  width="100"
+                  height="100"
                   radius="max"
                   fetch-format="auto"
                   quality="auto"
@@ -210,18 +210,7 @@ export default {
   }
 };
 </script>
-<style>
-.blackish {
-  color: #545465;
-  font-size: 18px;
-  line-height: 32px;
-  font-family: 'Nunito', sans-serif;
-}
-.plyr {
-  --plyr-color-main: #334aC0;
-  /*--plyr-video-control-color: #fff;*/
-}
-
+<style scoped>
 .quote {
   position: relative;
   padding-left: 1em;
@@ -240,21 +229,6 @@ export default {
 .quote:after {
   content: '\201D';
 }
-.button-fill-bottom {
-  color: #2b2a35;
-  box-shadow: inset 0 0 0 #2b2a35 !important;
-  transition: ease-in 0.5s !important;
-}
-
-.button-fill-bottom:hover {
-  color: white!important;
-  box-shadow: inset 0 -80px 0 #2b2a35 !important;
-}
-
-.display-1, .display-2 {
-  color: #2b2a35!important;
-}
-
 .tracksym {
   margin-left: -10%;
   margin-top: 3%;
@@ -266,5 +240,9 @@ a {
 }
 .cld-image img{
   z-index: 1!important;
+}
+.display-2 {
+  font-weight: 800;
+  font-size: 50px!important;
 }
 </style>

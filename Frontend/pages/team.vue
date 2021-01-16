@@ -2,7 +2,7 @@
   <div>
     <banner
       img-width="15rem"
-      title="Meet our Team"
+      title="Meet our team"
       description="Gathered from different parts of the world, from different domain of expertise for the same goal"
       img=""
     />

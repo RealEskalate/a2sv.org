@@ -1,79 +1,33 @@
 <template>
-  <div>
+  <div class="mb-5">
     <banner
       img-width="10rem"
       img="/illustrations/character-15.svg"
       :title="banner.title_one"
       :description="banner.description"
     >
-      <v-btn class="mx-auto d-block" color="primary">
-        Donate
-      </v-btn>
+      <section>
+        <div v-for="( method, i ) in waysOfHelping" :key="i">
+          <input
+            :id="`control-${i}`"
+            type="radio"
+            name="select"
+            value="2"
+          >
+          <label :for="`control-${i}`">
+            <h2> {{ method.title }} </h2>
+            <p class="font-weight-light"> {{ method.description }} </p>
+          </label>
+        </div>
+      </section>
     </banner>
-
-    <v-container style="margin-top: -9%">
-      <v-card class="shadow mx-auto my-15 contact-us" max-width="800">
-        <v-card-title class="justify-center display-1 blue-black">
-          Contact Us
-        </v-card-title>
-        <v-row>
-          <v-col sm="10" md="6">
-            <p class="px-12 blue-black" style="font-size: 20px;">
-              If you want to help A2SV by giving a mentorship, sharing your experience (Question and Answer),
-              if you are a recruiter or even giving a general feedback fill this form. We will get back to you
-              as soon as possible.
-            </p>
-          </v-col>
-          <v-form ref="form" v-model="valid" class="px-12 col-md-6 col-sm-10" style="border-left: 0.2em solid #0a61f7;">
-            <v-text-field
-              v-model="contact.name"
-              class="v-card--shaped"
-              dense
-              :label="labels.name"
-              :rules="rules.nameRules"
-              counter="30"
-            />
-            <v-text-field
-              v-model="contact.email"
-              class="v-card--shaped"
-              dense
-              :label="labels.email"
-              :rules="rules.emailRules"
-            />
-            <v-select
-              label="Way of helping"
-              :items="['Q&A', 'Recruit', 'Mentor', 'Other']"
-            />
-
-            <v-text-field
-              v-model="contact.linkedin"
-              class="v-card--shaped"
-              dense
-              :label="labels.linkedin"
-            />
-            <v-textarea
-              v-model="contact.experience"
-              class="v-card--shaped"
-              dense
-              rows="5"
-              :label="labels.experience"
-              :rules="rules.experienceRules"
-            />
-            <div class="text-center py-3">
-              <v-btn width="100" class="primary mx-auto" @click="sendForm">
-                Send
-                <v-icon class="ml-2" small />
-              </v-btn>
-            </div>
-          </v-form>
-        </v-row>
-      </v-card>
-    </v-container>
   </div>
 </template>
 
 <script>
 import Banner from "@/components/core/TextOnlyBanner";
+import { mdiArrowRightBox } from "@mdi/js";
+
 
 export default {
   components: {
@@ -87,7 +41,14 @@ export default {
   },
   data: () => ({
     model: 0,
+    mdiArrowRightBox,
     colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
+    waysOfHelping: [
+      {title: "Recruit", description: "Connect us to recruiter. We will shine on your interviews"},
+      {title: "Mentor", description: "Now we're talking. It's gettin' a bit hairy out there in game land."},
+      {title: "Donate", description: "Awww, poor baby. You can donate $5"},
+      {title: "Contact us", description: "If you just wanna talk, we're down for that too."}
+    ],
     banner: {
       image_src: "https://i.ibb.co/xMHdzk6/team-hero-3.jpg",
       title_one: "Be part of our journey",
@@ -140,5 +101,82 @@ export default {
 <style scoped>
 .contact-us {
   background: rgba(255, 255, 255, 0.8)!important;
+}
+
+body {
+  padding: 1rem;
+  color: #797e86;
+}
+
+h1 {
+  color: #18191b;
+  margin-bottom: 2rem;
+}
+
+section {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+section > div {
+  flex: 1;
+  padding: 0.5rem;
+  font-family: Lato, Nunito, sans-serif !important;
+}
+
+input[type=radio] {
+  display: none;
+}
+input[type=radio]:not(:disabled) ~ label {
+  cursor: pointer;
+}
+input[type=radio]:disabled ~ label {
+  color: #bcc2bf;
+  border-color: #bcc2bf;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+label {
+  height: 100%;
+  display: block;
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  box-shadow: 0px 3px 10px -2px rgba(161, 170, 166, 0.5);
+  position: relative;
+}
+
+input[type=radio]:checked + label {
+  background: #1dc973;
+  color: white;
+  box-shadow: 0 0 20px rgba(0, 255, 128, 0.75);
+}
+input[type=radio]:checked + label::after {
+  color: #3d3f43;
+  font-size: 24px;
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.25);
+}
+
+p {
+  font-weight: 900;
+}
+
+@media only screen and (max-width: 700px) {
+  section {
+    flex-direction: column;
+  }
 }
 </style>

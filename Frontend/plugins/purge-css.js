@@ -10,7 +10,7 @@ export default {
     "spacer",
     "col",
     "[type=button]",
-    "v-application p",
+    "v-application p"
   ],
   whitelistPatterns: [
     /^v-((?!application).)*$/,

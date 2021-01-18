@@ -2,7 +2,7 @@
   <div>
     <clientOnly>
       <video-background
-        src="https://res.cloudinary.com/eskalate/video/upload/e_auto_brightness,f_auto,q_auto:best/v1610454190/video/homepage_video_1_gegjid.mp4"
+        src="https://res.cloudinary.com/eskalate/video/upload/f_auto,q_auto:best/v1610454190/video/homepage_video_wuu8d3.mp4"
         :style="`height: ${$vuetify.breakpoint.mdAndUp ? '90vh' : '100vh'}`"
         style="max-height: 900px;"
         overlay="rgba(0, 0, 0, 0.25)"

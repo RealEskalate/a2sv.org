@@ -25,7 +25,7 @@
                 src="/logos/logo-blue.png"
               />
               <p class="blackish footer-texts">
-                © Copyright 2020 A2SV. All rights reserved.
+                © Copyright {{ getDate() }} A2SV. All rights reserved.
               </p>
             </v-col>
             <v-col cols="6" md="2" class="mx-auto">
@@ -67,18 +67,23 @@
                 Organization
               </h3>
               <v-list>
-                <v-list-item class="px-0" to="/about">
+                <v-list-item v-for="(org, i) in organization" :key="i" class="px-0" :to="org.link">
                   <v-list-item-title
                     class="blackish footer-texts"
                   >
-                    About
+                    {{ org.title }}
                   </v-list-item-title>
                 </v-list-item>
-                <v-list-item class="px-0">
+              </v-list>
+              <h3 class="text-left">
+                Contact us
+              </h3>
+              <v-list>
+                <v-list-item v-for="(org, i) in emails" :key="i" class="px-0" :to="org.link">
                   <v-list-item-title
                     class="blackish footer-texts"
                   >
-                    Programmes
+                    {{ org.title }}
                   </v-list-item-title>
                 </v-list-item>
               </v-list>
@@ -98,8 +103,19 @@ export default {
       socialMediaLinks: [
         { icon: mdiLinkedin, url: "http://www.linkedin.com/company/a2sv"},
         { icon: mdiInstagram, url: "http://www.instagram.com/a2sv_org"}
+      ],
+      organization: [
+        { title: "About", link: "/about"}
+      ],
+      emails: [
+        { title: "contact@eskalate.io", link: ""}
       ]
     };
+  },
+  methods: {
+    getDate() {
+      return new Date().getFullYear();
+    }
   }
 };
 </script>

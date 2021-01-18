@@ -168,13 +168,6 @@ export default {
 
 <style scoped>
 @import "https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css";
-.text-body {
-  font-size: 21px;
-  font-weight: 400;
-  line-height: 37.8px;
-  color: #545465;
-  text-align: left;
-}
 .sub-titles {
   font-size: 60px;
   line-height: 60px;

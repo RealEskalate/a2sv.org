@@ -1,10 +1,10 @@
 <template v-slot:activator="{ on, attrs }">
   <div class="blue-bg" style="height: 70vh!important;">
     <v-container>
-      <h1 class="display-2 text-center main-text">
+      <h1 class="display-2 text-center main-text header-title animate-pop-in">
         {{ title }}
       </h1>
-      <p class="col-md-8 mx-auto text-center mt-6 blue-black" style="font-size: 25px;">
+      <p class="col-md-8 mx-auto text-center mt-6 blue-black header-subtitle animate-pop-in" style="font-size: 25px;">
         {{ description }}
       </p>
       <slot />
@@ -36,5 +36,13 @@ export default {
   line-height: 72px !important;
   margin: 9% 0 2% 0;
   color: #0a61f7!important;
+}
+
+.header-title {
+  animation-delay: .8s;
+}
+
+.header-subtitle {
+  animation-delay: 1s;
 }
 </style>

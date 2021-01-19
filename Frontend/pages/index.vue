@@ -232,7 +232,7 @@ export default {
   mounted() {
     setTimeout(() => {
         this.paused = true;
-      }, 1200);
+      }, 850);
   }
 };
 </script>

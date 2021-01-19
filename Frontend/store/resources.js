@@ -28,7 +28,7 @@ export const mutations = {
 };
 
 export const actions = {
-  async fetchMembers({ commit }) {
+  async fetchImpactStories({ commit }) {
     const response = await this.$axios.get("/api/impactStoryResource");
     commit("setImpactStories", response.data.data);
   },

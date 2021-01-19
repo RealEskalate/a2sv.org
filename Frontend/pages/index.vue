@@ -15,18 +15,14 @@
             class="pa-8 text-center col-md-9"
             style="color: #FFF"
           >
-            <h2 class="display-3 text-bold" style="font-weight: 900">
-              Creating opportunities
+            <h2 :class="{paused}" class="display-3 text-bold box-with-text py-3" style="font-weight: 900">
+              Talent is everywhere, opportunity is not.
             </h2>
             <p
-              class="mt-7"
-              style="
-            font-size: 22px;
-            line-height: 36px;
-            font-family: Lato, sans-serif !important;
-            "
+              class="mt-7 text-body text-center white--text"
+              style="font-family: Lato, sans-serif !important;"
             >
-              Helping students get equal opportunities as the rest of the world.
+              A2SV helps African students get equal opportunities as the rest of the world.
             </p>
             <v-btn
               outlined
@@ -46,15 +42,25 @@
       <v-row class="my-md-6">
         <v-col sm="12" md="6" class="my-md-12">
           <h1 class="my-5 display-2">
-            Offers a 360° training
+            360° training
           </h1>
           <p style="font-size: 1.5rem;">
-            A2SV offers a 360° software engineer training program that initially
-            focuses on problem-solving and personal development.
+            A2SV upskills students with a 360° software engineering program
+            that focuses on problem solving and personal development.
           </p>
         </v-col>
         <v-col sm="12" md="6" style="margin-top: -5%">
           <v-img src="/landing/group.webp" />
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col sm="10" md="8" class="mx-auto">
+          <h1 class="my-5 display-2 text-center">
+            Internship interviews
+          </h1>
+          <p class="text-body">
+            Students have internship interviews with top tech companies such as Google and Palantir.
+          </p>
         </v-col>
       </v-row>
       <v-row id="main-content" class="mt-12">
@@ -76,26 +82,40 @@
         </v-col>
         <v-col sm="12" md="6" class="my-md-12">
           <h1 class="my-5 display-2">
-            Trainees develop scalable products
+            Social Projects
           </h1>
-          <p style="font-size: 1.5rem;">
-            Trainees work on social projects with industry experts.
-            <a href="https://tracksym.app" target="_blank">Tracksym</a> is an ongoing project which the first
-            trainees, closely worked with <a href="https://www.ephi.gov.et/" target="_blank">EPHI</a>,
-            have worked on.
+          <p class="text-body">
+            Students work on social projects with industry experts to address the most pressing problems
+            in their community.
+          </p>
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col sm="10" md="8" class="mx-auto">
+          <h1 class="my-5 display-2 text-center">
+            Internships
+          </h1>
+          <p class="text-body">
+            Students who passed the interviews get 3-month internships to gain experience
+            in building scalable products that are commonly used around the world.
           </p>
         </v-col>
       </v-row>
 
       <v-row class="px-10 my-12">
         <div class="col-md-8 mx-auto text-center">
-          <h1 class="display-2 my-3">
-            Within 3 months
+          <h1 class="display-2 my-3 text-left">
+            What have we done so far?
           </h1>
-          <p class="mt-md-7 blackish" style="font-size: 1.5em">
-            Statistics shows that google's internship acceptance rate is only <b>2%</b>.
-            Our first trainees achieved an unheard rate of <b>27%</b> acceptance at
-            Google software engineering internship interviews.
+          <p class="mt-md-7 text-body">
+            A2SV was founded in Nov 2019 in Ethiopia. After 3-month training, our first group has achieved a
+            remarkable 27% success rate at Google internship interviews. Considering Google's internship
+            acceptance rate is only 2%, an A2SV student is 13.5 times more likely to succeed than an average candidate.
+            <br>
+            As a response to the COVID-19 outbreak, our first group has built a digital symptom tracking system,
+            <a href="https://tracksym.app" target="_blank">Tracksym</a>. We are currently collaborating with
+            Ethiopian Ministry of Health to make it a part of the official response.
           </p>
         </div>
         <v-col class="mx-auto" md="4" sm="6">
@@ -164,7 +184,7 @@
       <v-row class="my-md-10 py-12">
         <div class="col-md-11 ml-auto mr-auto text-center">
           <h1 class="display-2 blackish text-center" style="line-height: 70px;">
-            Do you want to be part of the digital transformation of Africa?
+            Do you want to contribute to the digital transformation of Africa?
           </h1>
           <v-btn
             x-large
@@ -172,7 +192,7 @@
             class="text-capitalize mt-10 mb-5 button-fill-bottom"
             to="/support"
           >
-            Join us
+            Support us
           </v-btn>
         </div>
       </v-row>
@@ -192,6 +212,7 @@ export default {
   data() {
     return {
       target: 1000,
+      paused: false,
       options: {
         duration: 1000,
         offset: 200,
@@ -206,7 +227,12 @@ export default {
   ...mapGetters("resources", ["getImpactStories"])
   },
   created() {
-    this.$store.dispatch("resources/fetchMembers");
+    this.$store.dispatch("resources/fetchImpactStories");
+  },
+  mounted() {
+    setTimeout(() => {
+        this.paused = true;
+      }, 1200);
   }
 };
 </script>
@@ -244,5 +270,45 @@ a {
 .display-2 {
   font-weight: 800;
   font-size: 50px!important;
+}
+.text-body {
+  font-size: 22px;
+}
+
+/* animations */
+
+.box-with-text {
+  font: bold 26vmax/.8 "Lato";
+  line-height: 1.5em !important;
+  background: rgba(46, 43, 229, 0.6);
+  display: table;
+  color: white;
+  mix-blend-mode: multiply
+}
+
+@-webkit-keyframes stripes {
+  to {
+    background-size:100% 100%;
+  }
+}
+
+@keyframes stripes {
+  to {
+    background-size:100% 100%;
+  }
+}
+.box-with-text {
+  margin: auto;
+  background: linear-gradient( crimson , crimson) turquoise no-repeat 0% 50%;
+  background: -webkit-linear-gradient( #0a61f7, #0a61f7) #f70a61 no-repeat 0% 50%;
+  background-size: 0 100%;
+  -webkit-animation: stripes 2s ease-in infinite;
+  animation: stripes 2s ease-in infinite;
+}
+.paused {
+  -webkit-animation-play-state: paused !important;
+  -moz-animation-play-state: paused !important;
+  -o-animation-play-state: paused !important;
+  animation-play-state: paused !important;
 }
 </style>

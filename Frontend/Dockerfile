@@ -1,9 +1,13 @@
-FROM node:15
+FROM node:14
 
-WORKDIR /a2sv_web
+WORKDIR /usr/src/app
 
-
-ADD . /a2sv_web
+COPY package.json ./
 RUN npm install
-RUN npm run generate
-CMD node server.js
+
+COPY . .
+EXPOSE 3000
+
+RUN npm run build
+
+CMD [ "npm", "run", "start" ]

@@ -30,7 +30,9 @@
     "vue-carousel-3d": "^1.0.1",
     "vue-plyr": "^6.0.4",
     "vue-responsive-video-background-player": "^1.1.4",
-    "vuetify-loader": "^1.4.3"
+    "vuetify-loader": "^1.4.3",
+    "@nuxtjs/vuetify": "^1.11.2",
+    "nuxt-purgecss": "^1.0.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",
@@ -38,7 +40,6 @@
     "@nuxtjs/eslint-config": "^3.1.0",
     "@nuxtjs/eslint-config-typescript": "^3.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
-    "@nuxtjs/vuetify": "^1.11.2",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.12.0",
@@ -47,7 +48,6 @@
     "eslint-plugin-vue": "^7.1.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
-    "nuxt-purgecss": "^1.0.0",
     "prettier": "^2.1.2"
   }
 }

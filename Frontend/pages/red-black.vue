@@ -224,15 +224,15 @@ export default {
     title: "Welcome"
   },
   computed: {
-  ...mapGetters("resources", ["getImpactStories"])
+    ...mapGetters("resources", ["getImpactStories"])
   },
   created() {
     this.$store.dispatch("resources/fetchImpactStories");
   },
   mounted() {
     setTimeout(() => {
-        this.paused = true;
-      }, 1200);
+      this.paused = true;
+    }, 1200);
   }
 };
 </script>
@@ -299,8 +299,8 @@ a {
 }
 .box-with-text {
   margin: auto;
-  background: -webkit-linear-gradient( #0a61f7, #0a61f7) rgba(0, 0, 0, 0.8) no-repeat 0 50%;
-  background: linear-gradient( #0a61f7, #0a61f7) rgba(0, 0, 0, 0.7) no-repeat 0 50%;
+  background: -webkit-linear-gradient( #f70a61, #f70a61)  rgba(0, 0, 0, 0.8) no-repeat 0 50%;
+  background: linear-gradient( #f70a61, #f70a61) rgba(0, 0, 0, 0.7) no-repeat 0 50%;
   background-size: 0 100%;
   -webkit-animation: stripes 2s ease-in infinite;
   animation: stripes 2s ease-in infinite;

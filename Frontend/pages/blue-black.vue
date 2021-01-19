@@ -224,15 +224,15 @@ export default {
     title: "Welcome"
   },
   computed: {
-  ...mapGetters("resources", ["getImpactStories"])
+    ...mapGetters("resources", ["getImpactStories"])
   },
   created() {
     this.$store.dispatch("resources/fetchImpactStories");
   },
   mounted() {
     setTimeout(() => {
-        this.paused = true;
-      }, 1200);
+      this.paused = true;
+    }, 1200);
   }
 };
 </script>

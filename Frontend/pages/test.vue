@@ -285,10 +285,10 @@ a {
 
 @keyframes rainbow {
   0% {
-    background-position: 0% 0%
+    background-position: 0 0;
   }
   100% {
-    background-position: -200% 0%
+    background-position: -200% 0;
   }
 }
 
@@ -326,7 +326,7 @@ a {
   -webkit-transition-property: transform,opacity;
   -moz-transition-property: transform,opacity;
   transition-property: transform,opacity;
-  -webkit-transition-duration: .3s,.9s;
+  -webkit-transition-duration: 5.8s,5.4s;
   -moz-transition-duration: .3s,.9s;
   transition-duration: .3s,.9s;
   -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);

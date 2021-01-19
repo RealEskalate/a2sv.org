@@ -1,4 +1,4 @@
-From node:14-slim
+FROM node:15
 
 WORKDIR /a2sv_web
 

@@ -15,11 +15,11 @@
             class="pa-8 text-center col-md-9"
             style="color: #FFF"
           >
-            <h2 :class="{paused}" class="display-3 text-bold box-with-text py-3" style="font-weight: 900">
+            <h2 class="display-3 text-bold rainbow-link py-3" style="font-weight: 900">
               Talent is everywhere, opportunity is not.
             </h2>
             <p
-              class="mt-7 text-body text-center white--text"
+              class="mt-7 text-body text-center rainbow-link"
               style="font-family: Lato, sans-serif !important;"
             >
               A2SV helps African students get equal opportunities as the rest of the world.
@@ -28,7 +28,7 @@
               outlined
               tile
               dark
-              class="mt-md-12 mt-sm-5"
+              class="mt-md-12 mt-sm-5 d-block mx-auto"
               @click="$vuetify.goTo(target, options)"
             >
               Explore
@@ -228,11 +228,6 @@ export default {
   },
   created() {
     this.$store.dispatch("resources/fetchImpactStories");
-  },
-  mounted() {
-    setTimeout(() => {
-        this.paused = true;
-      }, 1200);
   }
 };
 </script>
@@ -278,37 +273,68 @@ a {
 /* animations */
 
 .box-with-text {
-  font: bold 26vmax/.8 "Lato";
-  line-height: 1.5em !important;
-  background: rgba(46, 43, 229, 0.6);
-  display: table;
-  color: white;
-  mix-blend-mode: multiply
+  background-image: -webkit-linear-gradient(left, #6495ED, #DE3163, #E74C3C, #D35400 );
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-size: 100% 200px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-animation: stripes 2s linear infinite;
+  animation: stripes 2s linear infinite;
 }
 
-@-webkit-keyframes stripes {
-  to {
-    background-size:100% 100%;
+@keyframes rainbow {
+  0% {
+    background-position: 0% 0%
+  }
+  100% {
+    background-position: -200% 0%
   }
 }
 
-@keyframes stripes {
-  to {
-    background-size:100% 100%;
-  }
+.rainbow-link {
+  text-decoration: none;
+  background: -moz-linear-gradient(to left, #20ffc0 0%, #e9e708 10%, #ff6606 20%, #ba07e7 30%, #08adff 40%, #20ffc0 50%, #e9e708 60%, #ff6606 70%, #ba07e7 80%, #08adff 90%, #20ffc0 100%);
+  background: -webkit-linear-gradient(to left, #20ffc0 0%, #e9e708 10%, #ff6606 20%, #ba07e7 30%, #08adff 40%, #20ffc0 50%, #e9e708 60%, #ff6606 70%, #ba07e7 80%, #08adff 90%, #20ffc0 100%);
+  background: linear-gradient(to left, #20ffc0 0%, #e9e708 10%, #ff6606 20%, #ba07e7 30%, #08adff 40%, #20ffc0 50%, #e9e708 60%, #ff6606 70%, #ba07e7 80%, #08adff 90%, #20ffc0 100%);
+  background-size: 400% 100%;
+  background-repeat: repeat-x;
+  -webkit-background-clip: text;
+  color: transparent;
+  position: relative;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: rainbow 10.5s linear infinite;
 }
-.box-with-text {
-  margin: auto;
-  background: linear-gradient( crimson , crimson) turquoise no-repeat 0% 50%;
-  background: -webkit-linear-gradient( #0a61f7, #0a61f7) #f70a61 no-repeat 0% 50%;
-  background-size: 0 100%;
-  -webkit-animation: stripes 2s ease-in infinite;
-  animation: stripes 2s ease-in infinite;
-}
-.paused {
-  -webkit-animation-play-state: paused !important;
-  -moz-animation-play-state: paused !important;
-  -o-animation-play-state: paused !important;
-  animation-play-state: paused !important;
+.rainbow-link:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  bottom: 0;
+  border-radius: 4px;
+  left: 0;
+  z-index: -1;
+  opacity: 0.075;
+  background: -moz-linear-gradient(to left,#20ffc0 0%,#e9e708 10%,#ff6606 20%,#ba07e7 30%,#08adff 40%,#20ffc0 50%,#e9e708 60%,#ff6606 70%,#ba07e7 80%,#08adff 90%,#20ffc0 100%);
+  background: -webkit-linear-gradient(to left,#20ffc0 0%,#e9e708 10%,#ff6606 20%,#ba07e7 30%,#08adff 40%,#20ffc0 50%,#e9e708 60%,#ff6606 70%,#ba07e7 80%,#08adff 90%,#20ffc0 100%);
+  background: linear-gradient(to left,#20ffc0 0%,#e9e708 10%,#ff6606 20%,#ba07e7 30%,#08adff 40%,#20ffc0 50%,#e9e708 60%,#ff6606 70%,#ba07e7 80%,#08adff 90%,#20ffc0 100%);
+  background-size: 400% 100%;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition-property: transform,opacity;
+  -moz-transition-property: transform,opacity;
+  transition-property: transform,opacity;
+  -webkit-transition-duration: .3s,.9s;
+  -moz-transition-duration: .3s,.9s;
+  transition-duration: .3s,.9s;
+  -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  transition-delay: 0s;
+  animation: rainbow 10.5s linear infinite;
 }
 </style>

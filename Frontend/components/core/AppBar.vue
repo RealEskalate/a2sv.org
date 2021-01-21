@@ -34,7 +34,7 @@
 
       <v-spacer />
 
-      <v-btn tile color="primary" class="pa-5" to="/support">
+      <v-btn v-if="!onSupportUs" tile color="primary" class="pa-5" to="/support">
         Support Us
       </v-btn>
     </v-app-bar>
@@ -70,6 +70,7 @@ export default {
     return {
       drawer: false,
       mdiMenu,
+      onSupportUs: false,
       links: [
         {
           icon: mdiHome,
@@ -88,6 +89,14 @@ export default {
         }
       ]
     };
+  },
+  watch: {
+    $route(to) {
+      this.onSupportUs = to.path === "/support";
+    }
+  },
+  created() {
+    this.onSupportUs = this.$route.path === "/support";
   }
 };
 </script>

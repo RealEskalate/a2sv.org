@@ -15,20 +15,23 @@
             class="pa-8 text-center col-md-9"
             style="color: #FFF"
           >
-            <h2 :class="{paused}" class="display-3 text-bold box-with-text py-3" style="font-weight: 900">
+            <h2
+              :class="{ paused }"
+              class="display-4 text-bold rainbow-link py-3"
+              style="font-weight: 900"
+            >
               Talent is everywhere, opportunity is not.
             </h2>
             <p
-              class="mt-7 text-body text-center white--text"
-              style="font-family: Lato, sans-serif !important;"
+              class="mt-7 text-center hero-subtitle pa-5"
             >
-              A2SV helps African students get equal opportunities as the rest of the world.
+              African students deserves equal opportunities as the rest of the world.
             </p>
             <v-btn
               outlined
               tile
               dark
-              class="mt-md-12 mt-sm-5"
+              class="mt-md-12 mt-sm-5 d-block mx-auto"
               @click="$vuetify.goTo(target, options)"
             >
               Explore
@@ -71,7 +74,7 @@
             width="400"
             fetch-format="auto"
             quality="auto"
-            class="d-inline-flex mx-auto"
+            class="d-inline-flex mx-auto z-index-1"
             public-id="a2sv/social_projects"
           />
           <v-img
@@ -224,15 +227,13 @@ export default {
     title: "Welcome"
   },
   computed: {
-  ...mapGetters("resources", ["getImpactStories"])
+    ...mapGetters("resources", ["getImpactStories"])
   },
   created() {
     this.$store.dispatch("resources/fetchImpactStories");
-  },
-  mounted() {
     setTimeout(() => {
-        this.paused = true;
-      }, 1200);
+      this.paused = true;
+    }, 3000);
   }
 };
 </script>
@@ -244,7 +245,6 @@ export default {
   line-height: 2em;
   font-size: 1.125em;
   font-family: Nunito, sans-serif;
-
 }
 .quote:before, .quote:after {
   content: '\201C';
@@ -256,10 +256,11 @@ export default {
   content: '\201D';
 }
 .tracksym {
-  margin-left: -10%;
+  margin-left: -6%;
   margin-top: 3%;
   position: absolute;
   cursor: pointer;
+  z-index: 0;
 }
 a {
   text-decoration: none;
@@ -277,38 +278,35 @@ a {
 
 /* animations */
 
-.box-with-text {
-  font: bold 26vmax/.8 "Lato";
-  line-height: 1.5em !important;
-  background: rgba(46, 43, 229, 0.6);
-  display: table;
-  color: white;
-  mix-blend-mode: multiply
-}
-
-@-webkit-keyframes stripes {
-  to {
-    background-size:100% 100%;
+@keyframes rainbow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 
-@keyframes stripes {
-  to {
-    background-size:100% 100%;
-  }
-}
-.box-with-text {
-  margin: auto;
-  background: -webkit-linear-gradient( #0a61f7, #0a61f7) rgba(0, 0, 0, 0.8) no-repeat 0 50%;
-  background: linear-gradient( #0a61f7, #0a61f7) rgba(0, 0, 0, 0.7) no-repeat 0 50%;
-  background-size: 0 100%;
-  -webkit-animation: stripes 2s ease-in infinite;
-  animation: stripes 2s ease-in infinite;
+.rainbow-link  {
+  -webkit-text-stroke-color: transparent;
+  background: -moz-linear-gradient(to left, #20ffc0 0%, #e9e708 10%, #ff6606 20%, #ba07e7 30%, #08adff 40%, #20ffc0 50%, #e9e708 60%, #ff6606 70%, #ba07e7 80%, #08adff 90%, #20ffc0 100%);
+  background: linear-gradient(to left, #20ffc0 0%, #e9e708 10%, #ff6606 20%, #ba07e7 30%, #08adff 40%, #20ffc0 50%, #e9e708 60%, #ff6606 70%, #ba07e7 80%, #08adff 90%, #20ffc0 100%);
+  background-size: 400% 100%;
+  background-repeat: repeat-x;
+  -webkit-background-clip: text;
+  color: transparent;
+  position: relative;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: rainbow 10.5s linear infinite;
 }
 .paused {
   -webkit-animation-play-state: paused !important;
   -moz-animation-play-state: paused !important;
   -o-animation-play-state: paused !important;
   animation-play-state: paused !important;
+}
+.hero-subtitle {
+  font-size: 1.5em!important;
 }
 </style>

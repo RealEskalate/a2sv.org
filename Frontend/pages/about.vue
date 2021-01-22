@@ -15,18 +15,29 @@
         </p>
         <p class="text-body">
           For more information, please watch the following video, take
-          a look at the <a href="">progress sheet</a>, and check out the
-          <a href="">lecture videos</a>.
+          a look at the
+          <a href="https://www.youtube.com/watch?v=qy00E8FklC0&list=PL2y7PkGshr4srXSNlU7YW3QIbR_xsVCiF" target="_blank">
+            lecture videos</a>.
         </p>
       </div>
-      <vue-plyr>
-        <video poster="/team/lidia.webp">
-          <source
-            src="https://res.cloudinary.com/eskalate/video/upload/v1610371967/video/a2sv-promo.mp4"
-            type="video/mp4"
-          >
-        </video>
-      </vue-plyr>
+      <!-- wistia video player -->
+      <script src="https://fast.wistia.com/embed/medias/f8996d67s9.jsonp" async />
+      <script src="https://fast.wistia.com/assets/external/E-v1.js" async />
+      <div class="wistia_responsive_padding my-10" style="padding:56.25% 0 0 0;position:relative;">
+        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+          <div class="wistia_embed wistia_async_f8996d67s9 videoFoam=true" style="height:100%;position:relative;width:100%">
+            <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+              <img
+                src="https://fast.wistia.com/embed/medias/f8996d67s9/swatch"
+                style="filter:blur(5px);height:100%;object-fit:contain;width:100%;"
+                alt=""
+                aria-hidden="true"
+                onload="this.parentNode.style.opacity=1;"
+              >
+            </div>
+          </div>
+        </div>
+      </div>
       <div>
         <h1 class="my-12 sub-titles">
           How we do it
@@ -64,7 +75,7 @@
             <v-img
               class="white--text align-end"
               height="200px"
-              :src="item.image"
+              :src="getFullPath(item.image)"
             >
               <v-card-title class="mr-3" v-text="item.title" />
             </v-img>
@@ -102,7 +113,7 @@
           style="height: auto; background-color: transparent"
         >
           <v-card class="shadow" outlined shaped>
-            <v-img class="align-end" height="200px" :src="item.image" />
+            <v-img class="align-end" height="200px" :src="getFullPath(item.image)" />
             <v-card-title class="primary--text pb-0" v-text="item.title" />
             <v-card-text v-text="item.content" />
           </v-card>
@@ -138,13 +149,11 @@ import {mapGetters} from "vuex";
 import { mdiArrowDownBoldHexagonOutline } from "@mdi/js";
 import Banner from "@/components/core/TextOnlyBanner";
 import Partners from "@/components/core/Partners";
-import VuePlyr from "vue-plyr/dist/vue-plyr.ssr.js";
 
 export default {
   components: {
     Banner,
-    Partners,
-    VuePlyr
+    Partners
   },
   data() {
     return {
@@ -162,12 +171,16 @@ export default {
   created() {
     this.$store.dispatch("resources/setLearningPaths");
     this.$store.dispatch("resources/setAboutUs");
+  },
+  methods: {
+    getFullPath(publicId) {
+      return `https://res.cloudinary.com/eskalate/image/upload/q_auto:best,f_auto,w_600${publicId}`;
+    }
   }
 };
 </script>
 
 <style scoped>
-@import "https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.2/plyr.css";
 .sub-titles {
   font-size: 60px;
   line-height: 60px;

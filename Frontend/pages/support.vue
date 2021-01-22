@@ -116,7 +116,7 @@
           trainees. Your donation will also help us to cover assistant lecturer's expenses. Just give us damn money.
           Just donate it.
         </p>
-        <v-btn color="primary d-block mx-auto">
+        <v-btn color="primary d-block mx-auto my-0 pt-2" style="width: 7em" target="_blank" href="https://donorbox.org/a2sv-donation">
           Donate
         </v-btn>
       </v-container>

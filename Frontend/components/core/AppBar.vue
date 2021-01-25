@@ -7,22 +7,25 @@
       class="px-md-8 shadow"
     >
       <v-app-bar-nav-icon
-        v-if="$vuetify.breakpoint.smAndDown"
+        v-if="$device.isMobile"
         @click="drawer = !drawer"
       >
         <v-icon color="primary" large>
           {{ mdiMenu }}
         </v-icon>
       </v-app-bar-nav-icon>
-      <div style="max-width: 110px; width: 10vw; min-width: 50px" class="mx-5">
+      <div class="mx-5" style="min-width: 100px">
         <v-img
+          width="11vw"
+          max-width="115px"
+          min-width="80px"
           alt="A2SV LOGO"
           class="logo"
           src="/logos/logo-blue.png"
         />
       </div>
       <v-tabs
-        v-if="$vuetify.breakpoint.mdAndUp"
+        v-if="$device.isDesktopOrTablet"
         centered
         optional
         color="primary"
@@ -39,7 +42,7 @@
       </v-btn>
     </v-app-bar>
     <v-navigation-drawer
-      v-if="$vuetify.breakpoint.smAndDown"
+      v-if="$device.isMobile"
       v-model="drawer"
       app
     >

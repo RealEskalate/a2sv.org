@@ -53,7 +53,16 @@
           </p>
         </v-col>
         <v-col sm="12" md="6" style="margin-top: -5%">
-          <v-img src="/landing/group.webp" />
+          <cld-image
+            loading="lazy"
+            crop="scale"
+            width="550"
+            fetch-format="auto"
+            radius="250"
+            quality="auto"
+            class="d-inline-flex mx-auto z-index-1"
+            public-id="a2sv/group"
+          />
         </v-col>
       </v-row>
       <v-row>
@@ -69,18 +78,21 @@
       <v-row id="main-content" class="mt-12">
         <v-col sm="12" md="6" class="mt-12">
           <cld-image
+            style="border: 2px solid #d4e5ff; border-radius: 200px"
             loading="lazy"
             crop="scale"
-            width="400"
+            width="500"
+            radius="250"
             fetch-format="auto"
             quality="auto"
             class="d-inline-flex mx-auto z-index-1"
             public-id="a2sv/social_projects"
           />
           <v-img
-            width="10rem"
+            width="10vw"
+            max-width="9rem"
             class="d-inline-block tracksym"
-            src="https://eskalate.io/img/tracksym.svg"
+            src="https://res.cloudinary.com/eskalate/image/upload/v1611563687/a2sv/tracksym.svg"
           />
         </v-col>
         <v-col sm="12" md="6" class="my-md-12">
@@ -106,7 +118,7 @@
         </v-col>
       </v-row>
 
-      <v-row class="px-10 my-12">
+      <v-row class="px-md-10 my-12">
         <div class="col-md-8 mx-auto text-center">
           <h1 class="display-2 my-3 text-left">
             What have we done so far?
@@ -121,7 +133,7 @@
             Ethiopian Ministry of Health to make it a part of the official response.
           </p>
         </div>
-        <v-col class="mx-auto" md="4" sm="6">
+        <v-col class="mx-auto" md="4" sm="10">
           <v-sparkline
             height="250"
             :gradient="['#5EF7B7','#0CBB72']"
@@ -138,7 +150,7 @@
           </span>
         </v-col>
         <div
-          class="my-5 pa-0 mx-auto overflow-hidden"
+          class="my-5 pa-0 mx-auto overflow-hidden d-block"
         >
           <v-row>
             <p class="col-12 text-center display-1 font-weight-bold pb-8">

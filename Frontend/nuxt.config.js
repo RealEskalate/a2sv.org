@@ -20,9 +20,7 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
-    // https://go.nuxtjs.dev/typescript
     "@nuxt/typescript-build",
-    // https://go.nuxtjs.dev/vuetify
     "@nuxtjs/vuetify",
     "nuxt-compress",
     "nuxt-purgecss"
@@ -31,7 +29,8 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
-    "@nuxtjs/axios"
+    "@nuxtjs/axios",
+    "@nuxtjs/device"
   ],
   "nuxt-compress": {
     gzip: {

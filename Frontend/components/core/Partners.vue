@@ -3,22 +3,22 @@
     <h1 class="display-1 mb-10 mt-5" style="color: #2b2a35; font-weight: 600">
       {{ message }}
     </h1>
-    <v-slide-group class="my-6">
-      <template v-for="(icon, n) in icons">
-        <v-slide-item :key="n" class="align-self-center">
-          <v-img :src="icon" color="grey" contain height="40" width="128" />
-        </v-slide-item>
-        <v-responsive
-          v-if="n < 3"
-          :key="`divider-${n}`"
-          class="text-center"
-          height="56"
-          width="48"
-        >
-          <v-divider vertical />
-        </v-responsive>
-      </template>
-    </v-slide-group>
+    <v-row>
+      <v-col
+        v-for="(icon, i) in icons"
+        :key="i"
+        cols="4"
+        md="3"
+        class="px-3 mx-auto"
+      >
+        <v-img
+          :src="icon"
+          width="75%"
+          max-width="150px"
+          class="mx-auto"
+        />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 

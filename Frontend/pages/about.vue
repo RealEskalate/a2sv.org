@@ -10,9 +10,7 @@
         <h1 class="mb-8 sub-titles">
           What we do
         </h1>
-        <p v-if="getAboutUs" class="text-body">
-          {{ getAboutUs.whatWeDo.content }}
-        </p>
+        <p v-if="getAboutUs" class="text-body" v-html="getAboutUs.whatWeDo.content" />
         <p class="text-body">
           For more information, please watch the following video, take
           a look at the
@@ -42,16 +40,12 @@
         <h1 class="my-12 sub-titles">
           How we do it
         </h1>
-        <p v-if="getAboutUs" class="text-body">
-          {{ getAboutUs.howWeDoIt.content }}
-        </p>
+        <p v-if="getAboutUs" class="text-body" v-html="getAboutUs.howWeDoIt.content" />
       </div>
       <h1 v-if="getLearnPaths" class="display-1 my-6">
         {{ getLearnPaths["Phase-1"].title }}
       </h1>
-      <p v-if="getLearnPaths" class="justify-center text-body mb-10">
-        {{ getLearnPaths["Phase-1"].subtitle }}
-      </p>
+      <p v-if="getLearnPaths" class="justify-center text-body mb-10" v-html="getLearnPaths['Phase-1'].subtitle" />
 
       <carousel-3d
         v-if="getLearnPaths"
@@ -91,9 +85,7 @@
       <h1 v-if="getLearnPaths" class="display-1 my-6">
         {{ getLearnPaths["Phase-2"].title }}
       </h1>
-      <p v-if="getLearnPaths" class="justify-center text-body mb-10">
-        {{ getLearnPaths["Phase-2"].subtitle }}
-      </p>
+      <p v-if="getLearnPaths" class="justify-center text-body mb-10" v-html="getLearnPaths['Phase-2'].subtitle" />
       <carousel-3d
         v-if="getLearnPaths"
         style="min-height: 400px"

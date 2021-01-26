@@ -1,46 +1,49 @@
 <template>
   <div>
-    <clientOnly>
-      <video-background
-        src="https://res.cloudinary.com/eskalate/video/upload/e_auto_brightness,f_auto,q_auto:best/v1610454190/video/homepage_video_1_gegjid.mp4"
-        :style="`height: ${$vuetify.breakpoint.mdAndUp ? '90vh' : '100vh'}`"
-        style="max-height: 900px;"
-        overlay="rgba(0, 0, 0, 0.25)"
+    <div style="height: 90vh;" class="video-container">
+      <div
+        class="d-flex align-center justify-center my-3"
+        style="height: 100%; z-index: 2; position: relative;"
       >
         <div
-          class="d-flex align-center justify-center my-3"
-          style="height: 100%"
+          class="pa-8 text-center col-md-9"
+          style="color: #FFF;"
         >
-          <div
-            class="pa-8 text-center col-md-9"
-            style="color: #FFF"
+          <h2
+            :class="{ paused }"
+            class="display-4 text-bold rainbow-link py-3"
+            style="font-weight: 900"
           >
-            <h2
-              :class="{ paused }"
-              class="display-4 text-bold rainbow-link py-3"
-              style="font-weight: 900"
-            >
-              Talent is everywhere, opportunity is not.
-            </h2>
-            <p
-              class="mt-7 text-center hero-subtitle pa-5"
-            >
-              African students deserves equal opportunities as the rest of the world.
-            </p>
-            <v-btn
-              outlined
-              tile
-              dark
-              class="mt-md-12 mt-sm-5 d-block mx-auto"
-              @click="$vuetify.goTo(target, options)"
-            >
-              Explore
-            </v-btn>
-          </div>
+            Talent is everywhere, opportunity is not.
+          </h2>
+          <p
+            class="mt-7 text-center hero-subtitle pa-5"
+          >
+            African students deserves equal opportunities as the rest of the world.
+          </p>
+          <v-btn
+            outlined
+            tile
+            dark
+            class="mt-md-12 mt-sm-5 d-block mx-auto"
+            @click="$vuetify.goTo(target, options)"
+          >
+            Explore
+          </v-btn>
         </div>
-      </video-background>
-    </clientOnly>
-
+      </div>
+      <video
+        id="videoBG"
+        autoplay
+        loop
+        muted
+      >
+        <source
+          src="https://res.cloudinary.com/eskalate/video/upload/e_auto_brightness,f_auto,q_auto:best/v1610454190/video/homepage_video_1_gegjid.mp4"
+        >
+      </video>
+      <div class="overlay"></div>
+    </div>
     <v-container class="mt-md-12 pa-5" style="background: url('bg.svg')">
       <v-row class="my-md-6">
         <v-col sm="12" md="6" class="my-md-12">
@@ -221,8 +224,7 @@ import {mapGetters} from "vuex";
 export default {
   name: "LandingPage",
   components: {
-    Partners,
-    VideoBackground: () => import("vue-responsive-video-background-player")
+    Partners
   },
   data() {
     return {
@@ -320,5 +322,31 @@ a {
 }
 .hero-subtitle {
   font-size: 1.5em!important;
+}
+
+#videoBG {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -3%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  #videoBG {
+    width:100vw;
+  }
+}
+.video-container .overlay {
+  object-fit: cover;
+  top: 0;
+  width: 100vw;
+  height: 93.5vh;
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.25);
+  opacity: 0.5;
 }
 </style>

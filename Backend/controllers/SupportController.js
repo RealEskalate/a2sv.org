@@ -3,9 +3,6 @@ const { paginate } = require("../utilities/util");
 
 exports.getAllSupports = async (req, res) => {
     let filter = {};
-    if (req.query.phase) {
-        filter.phase = req.query.phase;
-    }
     if (req.query.way) {
         filter.way = req.query.way;
     }

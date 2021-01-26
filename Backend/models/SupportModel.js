@@ -18,10 +18,6 @@ const SupportSchema = new mongoose.Schema({
     experience:{
         type:String,
         required: true,
-    },
-    phase: {
-        type: String,
-        required: true
     }
 
 },{
@@ -35,14 +31,12 @@ const validationSchema = Joi.object({
     email: Joi.string().email().required(),
     way: Joi.string().valid("Q&A", "Recruit", "Mentor", "Other").required(),
     experience: Joi.string().required(),
-    phase: Joi.string().required(),
 });
 const editValidationSchema = Joi.object({
     name: Joi.string().optional(),
     email: Joi.string().email().optional(),
     way: Joi.string().optional(),
     experience: Joi.string().optional(),
-    phase: Joi.string().optional(),
 });
 
 const Support =  mongoose.model("Support", SupportSchema);

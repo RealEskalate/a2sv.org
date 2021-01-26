@@ -20,7 +20,6 @@ describe("Support API", () => {
             email: "Manager@google.com",
             experience: "A veteran in the industry of 20 years",
             way: "Q&A",
-            phase: "Phase-1",
         });
         await support.save();
     });
@@ -66,7 +65,6 @@ describe("Support API", () => {
                 email: "Actor@google.com",
                 experience: "An actor with an algorithm to his name",
                 way: "Mentor",
-                phase: "Phase-1"
             });
         expect(response).to.have.status(201);
         expect(response.body).to.be.a("object");
@@ -129,7 +127,6 @@ describe("Support API", () => {
                 email: "Actor@google.com",
                 experience: "An actor with an algorithm to his name",
                 way: "Other",
-                phase: "Phase-1"
             });
         let response = await chai
             .request(server)

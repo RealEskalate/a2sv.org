@@ -157,7 +157,7 @@
         >
           <v-row>
             <p class="col-12 text-center display-1 font-weight-bold pb-8">
-              Impact story
+              Impact Stories
             </p>
             <v-card
               v-for="(story, i) in getImpactStories"
@@ -166,14 +166,14 @@
               class="col-md-5 col-10 mx-auto"
               color="#efefff"
             >
-              <p class="quote pa-5" style="height: 65%">
+              <p class="quote pa-5" style="height:50%">
                 {{ story.content }}
               </p>
               <v-col class="mx-auto" cols="4">
                 <cld-image
                   loading="lazy"
                   crop="scale"
-                  height="100"
+                  height="150"
                   radius="max"
                   fetch-format="auto"
                   quality="auto"
@@ -256,7 +256,7 @@ export default {
   position: relative;
   padding-left: 1em;
   font-weight: 100;
-  line-height: 2em;
+  line-height: 1.6em;
   font-size: 1.125em;
   font-family: Nunito, sans-serif;
 }

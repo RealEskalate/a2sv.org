@@ -42,7 +42,7 @@
           src="https://res.cloudinary.com/eskalate/video/upload/e_auto_brightness,f_auto,q_auto:best/v1610454190/video/homepage_video_1_gegjid.mp4"
         >
       </video>
-      <div class="overlay"></div>
+      <div class="overlay" />
     </div>
     <v-container class="mt-md-12 pa-5" style="background: url('bg.svg')">
       <v-row class="my-md-6">

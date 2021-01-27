@@ -70,7 +70,6 @@
         class="justify-center text-body mb-10 text-center"
         v-html="getLearnPaths['Phase-1'].subtitle"
       />
-
       <carousel-3d
         v-if="getLearnPaths"
         style="min-height: 350px"

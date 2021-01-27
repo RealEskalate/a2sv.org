@@ -53,6 +53,18 @@
               </v-list-item>
             </v-list>
           </p>
+          <v-snackbar v-model="showAlert" rounded top :color="type" :timeout="5000">
+            <span class="ma-2" v-text="message" />
+            <v-btn
+              icon
+              x-small
+              class="float-right"
+              color="white"
+              @click="showAlert = false"
+            >
+              <v-icon v-text="mdiCloseCircleOutline" />
+            </v-btn>
+          </v-snackbar>
           <v-form ref="form" v-model="valid" class="mx-auto col-sm-10 col-md-8">
             <p class="text-body">
               Contact us
@@ -75,10 +87,12 @@
               :rules="rules.emailRules"
             />
             <v-select
+              v-model="contact.way"
               filled
               rounded
               label="Way of helping"
               :items="['Q&A', 'Recruit', 'Mentor', 'Other']"
+              :rules="rules.waysRules"
             />
             <v-textarea
               v-model="contact.experience"
@@ -90,7 +104,13 @@
               :rules="rules.experienceRules"
             />
             <div class="text-center py-3">
-              <v-btn width="100" class="primary mx-auto" @click="sendForm">
+              <v-btn
+                :loading="loading"
+                :disabled="!valid"
+                width="100"
+                class="primary mx-auto"
+                @click="sendForm"
+              >
                 Send
                 <v-icon class="ml-2" small />
               </v-btn>
@@ -126,6 +146,7 @@
 
 <script>
 import Banner from "@/components/core/TextOnlyBanner";
+import { mdiCloseCircleOutline } from "@mdi/js";
 
 export default {
   components: {
@@ -138,6 +159,11 @@ export default {
     }
   },
   data: () => ({
+    mdiCloseCircleOutline,
+    loading: false,
+    showAlert: false,
+    type: "success",
+    message: "",
     model: 0,
     colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
     banner: {
@@ -159,7 +185,7 @@ export default {
     contact: {
       name: "",
       email: "",
-      linkedin: "",
+      way: "",
       experience: ""
     },
     labels: {
@@ -176,6 +202,9 @@ export default {
       emailRules: [
         (v) => !!v || "E-mail is required",
         (v) => /.+@.+\..+/.test(v) || "E-mail must be valid"
+      ],
+      waysRules: [
+        (v) => !!v || "Way of helping is required"
       ],
       experienceRules: [
         (v) => !!v || "Experience is required",
@@ -209,7 +238,28 @@ export default {
   },
   methods: {
     sendForm() {
-      this.$refs.form.reset();
+      this.loading = true;
+      this.$axios
+        .post(
+          "/api/support",
+          this.contact
+        )
+        .then(
+          () => {
+            this.showAlert = true;
+            this.type = "success";
+            this.message = "Successful! We'll get back to you ASAP.";
+            this.$refs.form.reset();
+          },
+          () => {
+            this.showAlert = true;
+            this.type = "danger";
+            this.message = "Something went wrong. Please try again later.";
+          }
+        )
+        .finally(() => {
+          this.loading = false;
+        });
     }
   }
 };

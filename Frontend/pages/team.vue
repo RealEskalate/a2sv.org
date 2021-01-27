@@ -38,7 +38,7 @@
               flat
               class="transparent frame overflow-hidden"
             >
-              <v-container class="px-0" :class="{'tint' : hover}">
+              <div class="px-0" :class="{'tint' : hover}">
                 <cld-image
                   loading="lazy"
                   crop="scale"
@@ -58,10 +58,12 @@
                   {{ member.title }}
                 </v-card-subtitle>
                 <div class="details">
-                  <h4>{{ member.name }}</h4>
+                  <h4 class="my-5">
+                    {{ member.name }}
+                  </h4>
                   <p> {{ member.description }} </p>
                 </div>
-              </v-container>
+              </div>
             </v-card>
           </v-hover>
         </v-col>
@@ -103,8 +105,8 @@ export default {
   position: relative;
 }
 .frame .details {
-  height: 95%;
-  width: 100%;
+  height: 98%;
+  width: 97%;
   padding: 5% 8%;
   position: absolute;
   content: "";

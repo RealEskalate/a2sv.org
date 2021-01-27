@@ -1,24 +1,42 @@
 <template>
   <v-container>
-    <h1 class="display-1 mb-10 mt-5" style="color: #2b2a35; font-weight: 600">
+    <h1 class="display-1 mb-10 mt-10" style="color: #2b2a35; font-weight: 600">
       {{ message }}
     </h1>
-    <v-row>
-      <v-col
-        v-for="(icon, i) in icons"
+    <v-card
+      class="d-flex justify-space-around py-12"
+      color="transparent"
+      flat
+    >
+      <v-card
+        v-for="(company, i) in companies"
         :key="i"
-        cols="4"
-        md="3"
-        class="px-3 mx-auto"
+        color="transparent"
+        flat
       >
-        <v-img
-          :src="icon"
-          width="75%"
-          max-width="150px"
-          class="mx-auto"
-        />
-      </v-col>
-    </v-row>
+        <v-tooltip
+          bottom
+          open-delay="1000"
+        >
+          <template #activator="{ on, attrs }">
+            <a
+              :href="company.link"
+              v-bind="attrs"
+              target="_blank"
+              v-on="on"
+            >
+              <v-img
+                contain
+                height="100px"
+                width="200px"
+                :src="company.logo"
+              />
+            </a>
+          </template>
+          <span>{{ company.name }}</span>
+        </v-tooltip>
+      </v-card>
+    </v-card>
   </v-container>
 </template>
 
@@ -31,15 +49,18 @@ name: "Partners",
       type: String
     }
   },
-  data() {
-  return {
-    icons: [
-      "/partners-colorful/google.svg",
-      "/partners-colorful/coinbase.svg",
-      "/partners-colorful/palantir.svg",
-      "/partners-colorful/aau.svg"
-    ]
-  };
+  computed: {
+    companies() {
+      const companies = [
+        { name: "Google LLC", logo: "/partners-colorful/google.svg", link: "https://about.google/" },
+        { name: "Coinbase", logo: "/partners-colorful/coinbase.svg", link: "https://www.coinbase.com/about" },
+        { name: "Palantir Technologies", logo: "/partners-colorful/palantir.svg", link: "https://www.palantir.com/about/" }
+      ];
+      if (!this.isAboutPage()) companies.push(
+        { name: "Addis Ababa University", logo: "/partners-colorful/aau.png", link: "http://www.aau.edu.et/" }
+      );
+      return companies;
+    }
   },
   methods: {
     isAboutPage() {

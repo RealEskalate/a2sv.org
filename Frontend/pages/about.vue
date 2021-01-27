@@ -10,7 +10,11 @@
         <h1 class="mb-8 sub-titles">
           What we do
         </h1>
-        <p v-if="getAboutUs" class="text-body" v-html="getAboutUs.whatWeDo.content" />
+        <p
+          v-if="getAboutUs"
+          class="text-body"
+          v-html="getAboutUs.whatWeDo.content"
+        />
         <p class="text-body">
           For more information, please watch the following video, take
           a look at the
@@ -19,34 +23,53 @@
         </p>
       </div>
       <!-- wistia video player -->
-      <script type="application/javascript" src="https://fast.wistia.com/embed/medias/f8996d67s9.jsonp" async />
-      <script type="application/javascript" src="https://fast.wistia.com/assets/external/E-v1.js" async />
-      <div class="wistia_responsive_padding my-10" style="padding:56.25% 0 0 0;position:relative;">
-        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-          <div class="wistia_embed wistia_async_f8996d67s9 videoFoam=true" style="height:100%;position:relative;width:100%">
-            <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
-              <img
-                src="https://fast.wistia.com/embed/medias/f8996d67s9/swatch"
-                style="filter:blur(5px);height:100%;object-fit:contain;width:100%;"
-                alt=""
-                aria-hidden="true"
-                onload="this.parentNode.style.opacity=1;"
-              >
+      <v-lazy
+        v-model="isActive"
+        :options="{
+          threshold: .5
+        }"
+        min-height="200"
+        transition="fade-transition"
+      >
+        <div>
+          <script type="application/javascript" src="https://fast.wistia.com/embed/medias/f8996d67s9.jsonp" async />
+          <script type="application/javascript" src="https://fast.wistia.com/assets/external/E-v1.js" async />
+          <div class="wistia_responsive_padding my-10" style="padding:56.25% 0 0 0;position:relative;">
+            <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+              <div class="wistia_embed wistia_async_f8996d67s9 videoFoam=true" style="height:100%;position:relative;width:100%">
+                <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                  <img
+                    src="https://fast.wistia.com/embed/medias/f8996d67s9/swatch"
+                    style="filter:blur(5px);height:100%;object-fit:contain;width:100%;"
+                    alt=""
+                    aria-hidden="true"
+                    onload="this.parentNode.style.opacity=1;"
+                  >
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </v-lazy>
+
       <div>
         <h1 class="my-12 sub-titles">
           How we do it
         </h1>
-        <p v-if="getAboutUs" class="text-body" v-html="getAboutUs.howWeDoIt.content" />
+        <p
+          v-if="getAboutUs"
+          class="text-body"
+          v-html="getAboutUs.howWeDoIt.content"
+        />
       </div>
       <h1 v-if="getLearnPaths" class="display-1 my-6">
         {{ getLearnPaths["Phase-1"].title }}
       </h1>
-      <p v-if="getLearnPaths" class="justify-center text-body mb-10" v-html="getLearnPaths['Phase-1'].subtitle" />
-
+      <p
+        v-if="getLearnPaths"
+        class="justify-center text-body mb-10 text-center"
+        v-html="getLearnPaths['Phase-1'].subtitle"
+      />
       <carousel-3d
         v-if="getLearnPaths"
         style="min-height: 350px"
@@ -85,7 +108,11 @@
       <h1 v-if="getLearnPaths" class="display-1 my-6">
         {{ getLearnPaths["Phase-2"].title }}
       </h1>
-      <p v-if="getLearnPaths" class="justify-center text-body mb-10" v-html="getLearnPaths['Phase-2'].subtitle" />
+      <p
+        v-if="getLearnPaths"
+        class="justify-center text-body mb-10"
+        v-html="getLearnPaths['Phase-2'].subtitle"
+      />
       <carousel-3d
         v-if="getLearnPaths"
         style="min-height: 400px"
@@ -149,6 +176,7 @@ export default {
   },
   data() {
     return {
+      isActive: false,
       mdiArrowDownBoldHexagonOutline,
       message: "At the end of phase 2, trainees will interview with our partner companies."
     };

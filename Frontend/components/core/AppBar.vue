@@ -2,7 +2,7 @@
   <div>
     <v-app-bar
       app
-      height="70"
+      height="75"
       elevate-on-scroll
       class="px-md-8 shadow"
     >
@@ -17,7 +17,7 @@
       <div class="mx-5" style="min-width: 100px">
         <v-img
           width="11vw"
-          max-width="115px"
+          max-width="130px"
           min-width="80px"
           alt="A2SV LOGO"
           class="logo"

@@ -3,18 +3,30 @@
     <v-card flat tile class="white text-center">
       <v-card-text style="width: 100vw">
         <v-container>
-          <v-btn
+          <v-tooltip
             v-for="(link, i) in socialMediaLinks"
             :key="i"
-            class="mx-4 primary--text"
-            icon
-            :href="link.url"
-            target="_blank"
+            open-delay="1000"
+            top
           >
-            <v-icon size="24px">
-              {{ link.icon }}
-            </v-icon>
-          </v-btn>
+            <template #activator="{ on, attrs }">
+              <v-btn
+                v-bind="attrs"
+                class="mx-4 primary--text"
+                fab
+                depressed
+                :href="link.url"
+                target="_blank"
+                v-on="on"
+              >
+                <v-icon size="30px">
+                  {{ link.icon }}
+                </v-icon>
+              </v-btn>
+            </template>
+            <span>{{ link.name }}</span>
+          </v-tooltip>
+
           <v-row class="mt-5">
             <v-col cols="6" md="3" class="mx-auto">
               <v-img
@@ -101,8 +113,8 @@ export default {
   data() {
     return {
       socialMediaLinks: [
-        { icon: mdiLinkedin, url: "http://www.linkedin.com/company/a2sv"},
-        { icon: mdiInstagram, url: "http://www.instagram.com/a2sv_org"}
+        { name: "LinkedIn", icon: mdiLinkedin, url: "http://www.linkedin.com/company/a2sv"},
+        { name: "Instagram", icon: mdiInstagram, url: "http://www.instagram.com/a2sv_org"}
       ],
       organization: [
         { title: "About", link: "/about"}

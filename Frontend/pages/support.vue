@@ -146,7 +146,6 @@
 
 <script>
 import Banner from "@/components/core/TextOnlyBanner";
-import axios from "axios";
 import { mdiCloseCircleOutline } from "@mdi/js";
 
 export default {
@@ -240,9 +239,9 @@ export default {
   methods: {
     sendForm() {
       this.loading = true;
-      axios
+      this.$axios
         .post(
-          "https://a2sv-org-api-wtupbmwpnq-uc.a.run.app/api/support",
+          "/api/support",
           this.contact
         )
         .then(

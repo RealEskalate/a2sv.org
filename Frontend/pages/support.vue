@@ -85,23 +85,27 @@
               </v-btn>
             </v-snackbar>
             <v-form ref="form" v-model="valid" class="mx-auto col-sm-10 col-md-8">
-              <p class="text-body">
-                Contact us
-              </p>
+              <h3 class="display-1 text-center my-5">
+                Contact Us
+              </h3>
               <v-text-field
                 v-model="contact.name"
                 filled
                 class="v-card--shaped"
                 rounded
+                hide-details
+                dense
                 :label="labels.name"
                 :rules="rules.nameRules"
                 counter="30"
               />
               <v-text-field
                 v-model="contact.email"
-                class="v-card--shaped"
-                rounded
+                class="v-card--shaped my-4"
                 filled
+                rounded
+                hide-details
+                dense
                 :label="labels.email"
                 :rules="rules.emailRules"
               />
@@ -109,6 +113,9 @@
                 v-model="contact.way"
                 filled
                 rounded
+                hide-details
+                dense
+                class="v-card--shaped my-4"
                 label="Way of helping"
                 :items="['Q&A', 'Recruit', 'Mentor', 'Other']"
                 :rules="rules.waysRules"
@@ -117,7 +124,9 @@
                 v-model="contact.experience"
                 filled
                 rounded
-                class="v-card--shaped"
+                hide-details
+                dense
+                class="v-card--shaped my-4"
                 rows="5"
                 :label="labels.experience"
                 :rules="rules.experienceRules"
@@ -149,7 +158,7 @@
         />
         <v-col md="7">
           <h1 class="display-2 text-center mb-5">
-            Support A2SV by donation
+            Support A2SV by Donating
           </h1>
           <p class="text-body mt-10 px-5">
             Your donation will help us to open offices for training in Africa.

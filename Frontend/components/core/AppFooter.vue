@@ -28,77 +28,87 @@
           </v-tooltip>
 
           <v-row class="mt-5">
-            <v-col cols="6" md="3" class="mx-auto">
-              <v-img
-                alt="A2SV LOGO"
-                width="175"
-                class="mb-5"
-                contain
-                src="/logos/logo-blue.png"
-              />
-              <p class="blackish footer-texts">
-                © Copyright {{ getDate() }} A2SV. All rights reserved.
-              </p>
+            <v-col cols="12" md="3" class="d-flex">
+              <v-container>
+                <v-img
+                  alt="A2SV LOGO"
+                  width="175"
+                  class="mb-5 d-flex mx-auto mx-sm-0"
+                  contain
+                  src="/logos/logo-blue.png"
+                />
+                <p class="blackish footer-texts d-block">
+                  © Copyright {{ getDate() }} A2SV. All rights reserved.
+                </p>
+              </v-container>
             </v-col>
-            <v-col cols="6" md="2" class="mx-auto">
-              <h3 class="text-left">
-                Projects
-              </h3>
-              <v-list-item class="px-0">
-                <a
-                  class="text-decoration-none footer-texts"
-                  href="https://tracksym.app"
-                >
-                  <p class="blackish footer-texts">Tracksym</p>
-                </a>
-              </v-list-item>
-            </v-col>
-            <v-col cols="6" md="2" class="mx-auto">
-              <h3 class="text-left">
-                Legal
-              </h3>
-              <v-list>
-                <v-list-item class="px-0">
-                  <v-list-item-title
-                    class="blackish footer-texts"
-                  >
-                    Privacy Policy
-                  </v-list-item-title>
-                </v-list-item>
-                <v-list-item class="px-0">
-                  <v-list-item-title
-                    class="blackish footer-texts"
-                  >
-                    Legal Notice
-                  </v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-col>
-            <v-col cols="6" md="2" class="mx-auto">
-              <h3 class="text-left">
-                Organization
-              </h3>
-              <v-list>
-                <v-list-item v-for="(org, i) in organization" :key="i" class="px-0" :to="org.link">
-                  <v-list-item-title
-                    class="blackish footer-texts"
-                  >
-                    {{ org.title }}
-                  </v-list-item-title>
-                </v-list-item>
-              </v-list>
-              <h3 class="text-left">
-                Contact us
-              </h3>
-              <v-list>
-                <v-list-item v-for="(org, i) in emails" :key="i" class="px-0" :to="org.link">
-                  <v-list-item-title
-                    class="blackish footer-texts"
-                  >
-                    {{ org.title }}
-                  </v-list-item-title>
-                </v-list-item>
-              </v-list>
+            <v-col md="9">
+              <v-row>
+                <v-col cols="4" md="4" class="mx-auto">
+                  <h3 class="text-left">
+                    Projects
+                  </h3>
+                  <v-list-item class="px-0">
+                    <a
+                      class="text-decoration-none footer-texts"
+                      href="https://tracksym.app"
+                    >
+                      <p class="blackish footer-texts">Tracksym</p>
+                    </a>
+                  </v-list-item>
+                </v-col>
+                <v-col cols="4" md="4" class="mx-auto">
+                  <h3 class="text-left">
+                    Legal
+                  </h3>
+                  <v-list>
+                    <v-list-item class="px-0">
+                      <v-list-item-title class="blackish footer-texts">
+                        Privacy Policy
+                      </v-list-item-title>
+                    </v-list-item>
+                    <v-list-item class="px-0">
+                      <v-list-item-title class="blackish footer-texts">
+                        Legal Notice
+                      </v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                </v-col>
+                <v-col cols="4" md="4" class="mx-auto">
+                  <h3 class="text-left">
+                    Organization
+                  </h3>
+                  <v-list>
+                    <v-list-item
+                      v-for="(org, i) in organization"
+                      :key="i"
+                      class="px-0"
+                      :to="org.link"
+                    >
+                      <v-list-item-title class="blackish footer-texts">
+                        {{ org.title }}
+                      </v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                  <h3 class="text-left">
+                    Contact us
+                  </h3>
+                  <v-list>
+                    <v-list-item
+                      v-for="(org, i) in emails"
+                      :key="i"
+                      class="px-0"
+                      :to="org.link"
+                    >
+                      <v-list-item-title
+                        class="blackish footer-texts text-wrap"
+                      >
+                        {{ org.title }}
+                      </v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
         </v-container>
@@ -113,15 +123,19 @@ export default {
   data() {
     return {
       socialMediaLinks: [
-        { name: "LinkedIn", icon: mdiLinkedin, url: "http://www.linkedin.com/company/a2sv"},
-        { name: "Instagram", icon: mdiInstagram, url: "http://www.instagram.com/a2sv_org"}
+        {
+          name: "LinkedIn",
+          icon: mdiLinkedin,
+          url: "http://www.linkedin.com/company/a2sv"
+        },
+        {
+          name: "Instagram",
+          icon: mdiInstagram,
+          url: "http://www.instagram.com/a2sv_org"
+        }
       ],
-      organization: [
-        { title: "About", link: "/about"}
-      ],
-      emails: [
-        { title: "contact@eskalate.io", link: ""}
-      ]
+      organization: [{ title: "About", link: "/about" }],
+      emails: [{ title: "contact@eskalate.io", link: "" }]
     };
   },
   methods: {

@@ -10,8 +10,8 @@
           style="color: #FFF;"
         >
           <h2
-            :class="{ paused }"
-            class="display-4 text-bold rainbow-link py-3"
+            :class="{ paused, 'display-4' : $vuetify.breakpoint.mdAndUp, 'display-2' : $vuetify.breakpoint.smAndDown}"
+            class="text-bold rainbow-link py-3"
             style="font-weight: 900"
           >
             Talent is everywhere, opportunity is not.
@@ -44,7 +44,7 @@
       </video>
       <div class="overlay" />
     </div>
-    <v-container class="mt-md-12 pa-5" style="background: url('bg.svg')">
+    <v-container class="mt-15 mt-md-12 pa-5" style="background: url('bg.svg')">
       <v-row class="my-md-6">
         <v-col sm="12" md="6" class="my-md-12">
           <h1 class="my-5 display-2">

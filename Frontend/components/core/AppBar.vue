@@ -38,7 +38,12 @@
       <v-spacer />
 
       <v-btn v-if="!onSupportUs" tile color="primary" class="pa-5" to="/support">
-        Support Us
+        <v-icon v-if="$vuetify.breakpoint.smAndDown">
+          {{ mdiGift }}
+        </v-icon>
+        <span v-else>
+          Support Us
+        </span>
       </v-btn>
     </v-app-bar>
     <v-navigation-drawer
@@ -65,7 +70,8 @@ import {
   mdiMenu,
   mdiHome,
   mdiGroup,
-  mdiInformation
+  mdiInformation,
+  mdiGift
 } from "@mdi/js";
 
 export default {
@@ -73,6 +79,7 @@ export default {
     return {
       drawer: false,
       mdiMenu,
+      mdiGift,
       onSupportUs: false,
       links: [
         {

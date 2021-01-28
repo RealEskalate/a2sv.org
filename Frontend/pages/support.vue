@@ -6,13 +6,20 @@
       img="/illustrations/character-15.svg"
       :title="banner.title_one"
       :description="banner.description"
+      :class="{ 'pb-5': $vuetify.breakpoint.smAndDown }"
     >
       <div class="mx-auto" style="width: min-content">
         <transition duration="200">
-          <v-btn-toggle borderless light active-class="toggle-active" class="header-button animate-pop-in">
+          <v-btn-toggle
+            borderless
+            light
+            active-class="toggle-active"
+            class="header-button animate-pop-in"
+          >
             <v-btn
               color="primary"
-              x-large
+              :x-large="$vuetify.breakpoint.smAndUp"
+              :small="$vuetify.breakpoint.smAndDown"
               style="color: whitesmoke"
               @click="$vuetify.goTo(engineerLocation, options)"
             >
@@ -22,7 +29,8 @@
               class="mx-auto"
               color="orange"
               dark
-              x-large
+              :x-large="$vuetify.breakpoint.smAndUp"
+              :small="$vuetify.breakpoint.smAndDown"
               style="color: whitesmoke"
               @click="$vuetify.goTo(donateLocation, options)"
             >
@@ -32,16 +40,28 @@
         </transition>
       </div>
     </banner>
-    <div class="my-10 recruit-illustration">
+    <div class="my-10">
       <v-container>
         <h1 class="display-2 text-center">
           How can I help?
         </h1>
-        <v-col md="7" class="mx-auto mt-10 px-10">
-          <p class="text-center text-body">
-            If you are an engineer in silicon valley, you can help us by one of the following:
-            <v-list class="transparent ml-5">
-              <v-list-item v-for="(support, i) in support_ways" :key="i" three-line>
+        <v-row>
+          <v-col
+            v-if="!$vuetify.breakpoint.smAndDown"
+            md="3"
+            class="recruit-illustration"
+          />
+          <v-col md="9" class="mt-10 pl-5">
+            <p class="pl-4 text-body">
+              If you are an engineer in silicon valley, you can help us by one
+              of the following:
+            </p>
+            <v-list class="transparent">
+              <v-list-item
+                v-for="(support, i) in support_ways"
+                :key="i"
+                three-line
+              >
                 <v-list-item-content>
                   <v-list-item-title class="text-body text-left blue-black">
                     {{ support.title }}
@@ -52,94 +72,106 @@
                 </v-list-item-content>
               </v-list-item>
             </v-list>
-          </p>
-          <v-snackbar v-model="showAlert" rounded top :color="type" :timeout="5000">
-            <span class="ma-2" v-text="message" />
-            <v-btn
-              icon
-              x-small
-              class="float-right"
-              color="white"
-              @click="showAlert = false"
-            >
-              <v-icon v-text="mdiCloseCircleOutline" />
-            </v-btn>
-          </v-snackbar>
-          <v-form ref="form" v-model="valid" class="mx-auto col-sm-10 col-md-8">
-            <p class="text-body">
-              Contact us
-            </p>
-            <v-text-field
-              v-model="contact.name"
-              filled
-              class="v-card--shaped"
-              rounded
-              :label="labels.name"
-              :rules="rules.nameRules"
-              counter="30"
-            />
-            <v-text-field
-              v-model="contact.email"
-              class="v-card--shaped"
-              rounded
-              filled
-              :label="labels.email"
-              :rules="rules.emailRules"
-            />
-            <v-select
-              v-model="contact.way"
-              filled
-              rounded
-              label="Way of helping"
-              :items="['Q&A', 'Recruit', 'Mentor', 'Other']"
-              :rules="rules.waysRules"
-            />
-            <v-textarea
-              v-model="contact.experience"
-              filled
-              rounded
-              class="v-card--shaped"
-              rows="5"
-              :label="labels.experience"
-              :rules="rules.experienceRules"
-            />
-            <div class="text-center py-3">
+            <v-snackbar v-model="showAlert" rounded top :color="type" :timeout="5000">
+              <span class="ma-2" v-text="message" />
               <v-btn
-                :loading="loading"
-                :disabled="!valid"
-                width="100"
-                class="primary mx-auto"
-                @click="sendForm"
+                icon
+                x-small
+                class="float-right"
+                color="white"
+                @click="showAlert = false"
               >
-                Send
-                <v-icon class="ml-2" small />
+                <v-icon v-text="mdiCloseCircleOutline" />
               </v-btn>
-            </div>
-          </v-form>
-        </v-col>
+            </v-snackbar>
+            <v-form ref="form" v-model="valid" class="mx-auto col-sm-10 col-md-8">
+              <p class="text-body">
+                Contact us
+              </p>
+              <v-text-field
+                v-model="contact.name"
+                filled
+                class="v-card--shaped"
+                rounded
+                :label="labels.name"
+                :rules="rules.nameRules"
+                counter="30"
+              />
+              <v-text-field
+                v-model="contact.email"
+                class="v-card--shaped"
+                rounded
+                filled
+                :label="labels.email"
+                :rules="rules.emailRules"
+              />
+              <v-select
+                v-model="contact.way"
+                filled
+                rounded
+                label="Way of helping"
+                :items="['Q&A', 'Recruit', 'Mentor', 'Other']"
+                :rules="rules.waysRules"
+              />
+              <v-textarea
+                v-model="contact.experience"
+                filled
+                rounded
+                class="v-card--shaped"
+                rows="5"
+                :label="labels.experience"
+                :rules="rules.experienceRules"
+              />
+              <div class="text-center py-3">
+                <v-btn
+                  :loading="loading"
+                  :disabled="!valid"
+                  width="100"
+                  class="primary mx-auto"
+                  @click="sendForm"
+                >
+                  Send
+                  <v-icon class="ml-2" small />
+                </v-btn>
+              </div>
+            </v-form>
+          </v-col>
+        </v-row>
       </v-container>
     </div>
-    <div
-      id="donate-section"
-      class="my-md-10 donate-illustration"
-    >
-      <v-container>
-        <h1 class="display-2 text-center">
-          Support A2SV by donation
-        </h1>
-        <p class="col-md-6 text-center mx-auto text-body mt-10">
-          Your donation will help us to open offices for training in Africa. We are also covering basic needs of the
-          trainees. Your donation will also help us to cover assistant lecturer's expenses. Just give us damn money.
-          Just donate it.
-          <br>
-          Your donation will help us to open offices for training in Africa. We are also covering basic needs of the
-          trainees. Your donation will also help us to cover assistant lecturer's expenses. Just give us damn money.
-          Just donate it.
-        </p>
-        <v-btn color="primary d-block mx-auto my-0 pt-2" style="width: 7em" target="_blank" href="https://donorbox.org/a2sv-donation">
-          Donate
-        </v-btn>
-      </v-container>
+    <div id="donate-section" class="my-md-10">
+      <v-row>
+        <v-col
+          v-if="!$vuetify.breakpoint.smAndDown"
+          md="4"
+          class="donate-illustration"
+          style="min-height: 500px"
+        />
+        <v-col md="7">
+          <h1 class="display-2 text-center mb-5">
+            Support A2SV by donation
+          </h1>
+          <p class="text-body mt-10 px-5">
+            Your donation will help us to open offices for training in Africa.
+            We are also covering basic needs of the trainees. Your donation will
+            also help us to cover assistant lecturer's expenses. Just give us
+            damn money. Just donate it.
+            <br>
+            Your donation will help us to open offices for training in Africa.
+            We are also covering basic needs of the trainees. Your donation will
+            also help us to cover assistant lecturer's expenses. Just give us
+            damn money. Just donate it.
+          </p>
+          <v-btn
+            color="primary mx-auto d-block my-0 pt-2"
+            style="width: 7em"
+            target="_blank"
+            href="https://donorbox.org/a2sv-donation"
+          >
+            Donate
+          </v-btn>
+        </v-col>
+      </v-row>
     </div>
   </div>
 </template>
@@ -170,7 +202,8 @@ export default {
       image_src: "https://i.ibb.co/xMHdzk6/team-hero-3.jpg",
       title_one: "Be part of our journey",
       title_two: "Support us",
-      description: "Are you a recruiter or an engineer working in one of silicon valley companies?"
+      description:
+        "Are you a recruiter or an engineer working in one of silicon valley companies?"
     },
     donateLocation: 1800,
     engineerLocation: 650,
@@ -267,7 +300,7 @@ export default {
 
 <style scoped>
 .contact-us {
-  background: rgba(255, 255, 255, 0.8)!important;
+  background: rgba(255, 255, 255, 0.8) !important;
 }
 .toggle-active {
   color: white;
@@ -285,14 +318,14 @@ export default {
   font-size: 18px;
 }
 .v-text-field {
-  border-radius: 8px!important;
+  border-radius: 8px !important;
 }
 .recruit-illustration {
-  background: url("/illustrations/character-15.svg") no-repeat;
+  background: url('/illustrations/character-15.svg') no-repeat;
   background-size: 300px 600px;
 }
 .donate-illustration {
-  background: url("/illustrations/donate.svg") no-repeat;
+  background: url('/illustrations/donate.svg') no-repeat;
   background-size: 450px 500px;
 }
 </style>

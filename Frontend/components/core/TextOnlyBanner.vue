@@ -1,6 +1,8 @@
 <template v-slot:activator="{ on, attrs }">
   <div class="blue-bg" style="height: 70vh!important;">
     <v-container>
+      <v-row>
+     <v-col class="col-md-6">
       <h1 class="display-2 text-center main-text header-title animate-pop-in">
         {{ title }}
       </h1>
@@ -8,11 +10,15 @@
         {{ description }}
       </p>
       <slot />
+     </v-col>
+      <v-col class="col-md-6 hidden-md-and-above">
       <v-img
-        :width="imgWidth"
-        :src="img"
-        style="bottom: 0; right: 0; position: absolute; max-width: 50vw!important; z-index: -1;"
+
+        :src= "('/illustrations/' + img)"
+
       />
+      </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>

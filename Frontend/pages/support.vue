@@ -3,7 +3,7 @@
     <banner
       class="align-self-center"
       img-width="10rem"
-      img="/illustrations/character-15.svg"
+      img="donate.svg"
       :title="banner.title_one"
       :description="banner.description"
       :class="{ 'pb-5': $vuetify.breakpoint.smAndDown }"

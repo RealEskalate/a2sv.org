@@ -1,10 +1,11 @@
 <template>
   <div>
     <banner
+      img="team.svg"
       img-width="15rem"
       title="Meet our team"
       description="Gathered from different parts of the world, from different domain of expertise for the same goal"
-      img=""
+
     />
     <v-container class="grey lighten-5">
       <v-row no-gutters>

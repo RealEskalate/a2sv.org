@@ -45,6 +45,7 @@ exports.createSupports = async (req, res) => {
     await support.save();
 
     await forwardContactUsInformation(support)
+    await EmailSender.sendEmailToUser(support)
     
     return res.status(201).send(support);
 };

@@ -72,70 +72,71 @@
                 </v-list-item-content>
               </v-list-item>
             </v-list>
-          <v-snackbar v-model="showAlert" rounded top :color="type" :timeout="5000">
-            <span class="ma-2" v-text="message" />
-            <v-btn
-              icon
-              x-small
-              class="float-right"
-              color="white"
-              @click="showAlert = false"
-            >
-              <v-icon v-text="mdiCloseCircleOutline" />
-            </v-btn>
-          </v-snackbar>
-          <v-form ref="form" v-model="valid" class="mx-auto col-sm-10 col-md-8">
-            <p class="text-body">
-              Contact us
-            </p>
-            <v-text-field
-              v-model="contact.name"
-              filled
-              class="v-card--shaped"
-              rounded
-              :label="labels.name"
-              :rules="rules.nameRules"
-              counter="30"
-            />
-            <v-text-field
-              v-model="contact.email"
-              class="v-card--shaped"
-              rounded
-              filled
-              :label="labels.email"
-              :rules="rules.emailRules"
-            />
-            <v-select
-              v-model="contact.way"
-              filled
-              rounded
-              label="Way of helping"
-              :items="['Q&A', 'Recruit', 'Mentor', 'Other']"
-              :rules="rules.waysRules"
-            />
-            <v-textarea
-              v-model="contact.experience"
-              filled
-              rounded
-              class="v-card--shaped"
-              rows="5"
-              :label="labels.experience"
-              :rules="rules.experienceRules"
-            />
-            <div class="text-center py-3">
+            <v-snackbar v-model="showAlert" rounded top :color="type" :timeout="5000">
+              <span class="ma-2" v-text="message" />
               <v-btn
-                :loading="loading"
-                :disabled="!valid"
-                width="100"
-                class="primary mx-auto"
-                @click="sendForm"
+                icon
+                x-small
+                class="float-right"
+                color="white"
+                @click="showAlert = false"
               >
-                Send
-                <v-icon class="ml-2" small />
+                <v-icon v-text="mdiCloseCircleOutline" />
               </v-btn>
-            </div>
-          </v-form>
-        </v-col>
+            </v-snackbar>
+            <v-form ref="form" v-model="valid" class="mx-auto col-sm-10 col-md-8">
+              <p class="text-body">
+                Contact us
+              </p>
+              <v-text-field
+                v-model="contact.name"
+                filled
+                class="v-card--shaped"
+                rounded
+                :label="labels.name"
+                :rules="rules.nameRules"
+                counter="30"
+              />
+              <v-text-field
+                v-model="contact.email"
+                class="v-card--shaped"
+                rounded
+                filled
+                :label="labels.email"
+                :rules="rules.emailRules"
+              />
+              <v-select
+                v-model="contact.way"
+                filled
+                rounded
+                label="Way of helping"
+                :items="['Q&A', 'Recruit', 'Mentor', 'Other']"
+                :rules="rules.waysRules"
+              />
+              <v-textarea
+                v-model="contact.experience"
+                filled
+                rounded
+                class="v-card--shaped"
+                rows="5"
+                :label="labels.experience"
+                :rules="rules.experienceRules"
+              />
+              <div class="text-center py-3">
+                <v-btn
+                  :loading="loading"
+                  :disabled="!valid"
+                  width="100"
+                  class="primary mx-auto"
+                  @click="sendForm"
+                >
+                  Send
+                  <v-icon class="ml-2" small />
+                </v-btn>
+              </div>
+            </v-form>
+          </v-col>
+        </v-row>
       </v-container>
     </div>
     <div id="donate-section" class="my-md-10">
@@ -155,7 +156,7 @@
             We are also covering basic needs of the trainees. Your donation will
             also help us to cover assistant lecturer's expenses. Just give us
             damn money. Just donate it.
-            <br/>
+            <br>
             Your donation will help us to open offices for training in Africa.
             We are also covering basic needs of the trainees. Your donation will
             also help us to cover assistant lecturer's expenses. Just give us

@@ -2,7 +2,7 @@
   <div class="blue-bg" style="height: 70vh!important;">
     <v-container>
       <v-row>
-     <v-col class="col-md-6">
+     <v-col class="col-lg-6">
       <h1 class="display-2 text-center main-text header-title animate-pop-in">
         {{ title }}
       </h1>
@@ -11,7 +11,7 @@
       </p>
       <slot />
      </v-col>
-      <v-col class="col-md-6 hidden-md-and-above">
+      <v-col class="col-md-6 hidden-md-and-down">
       <v-img
 
         :src= "('/illustrations/' + img)"

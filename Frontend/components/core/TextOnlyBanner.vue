@@ -1,5 +1,5 @@
 <template v-slot:activator="{ on, attrs }">
-  <div class="blue-bg py-12">
+  <div class="blue-bg " style="padding: 4rem 0 8rem 0">
     <v-container>
       <h1 class="display-2 text-center main-text header-title animate-pop-in">
         {{ title }}

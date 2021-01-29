@@ -1,10 +1,10 @@
 <template v-slot:activator="{ on, attrs }">
-  <div class="blue-bg" style="height: 70vh!important;">
+  <div class="blue-bg py-12">
     <v-container>
       <h1 class="display-2 text-center main-text header-title animate-pop-in">
         {{ title }}
       </h1>
-      <p class="col-md-8 mx-auto text-center mt-6 blue-black header-subtitle animate-pop-in" style="font-size: 25px;">
+      <p class="col-md-9 mx-auto text-center mt-6 blue-black header-subtitle animate-pop-in" style="font-size: 25px;">
         {{ description }}
       </p>
       <slot />

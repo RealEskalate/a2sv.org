@@ -3,9 +3,29 @@
     <banner
       img-width="15rem"
       title="Meet our team"
-      description="Gathered from different parts of the world, from different domain of expertise for the same goal"
+      description="Gathered from different parts of the world, from different domain of expertise for the same goal. 
+                    Our goal is to optimize the circumstances for humankind to shine the true potential of the world."
       img=""
     />
+    <div v-if="getTeamValues" class="py-12" style="background: linear-gradient(91.56deg, #0a61f7 0,#8253ff 122.55%);">
+      <h1 class="display-2 text-center dark my-12" style="color: #fff!important">
+        Our Virtues
+      </h1>
+      <v-row>
+        <v-col
+          v-for="(title, i) in Object.keys(getTeamValues.Virtues)" 
+          :key="i" 
+          class="virtues mx-auto pa-5 my-2 col-5 col-sm-5 col-md-2"
+        >
+          <h1 class="text-center mt-1">
+            {{ title }}
+          </h1>
+          <p class="text-center">
+            {{ getTeamValues.Virtues[title] }}
+          </p>
+        </v-col>
+      </v-row>
+    </div>
     <v-container class="grey lighten-5">
       <v-row no-gutters>
         <template v-if="!getTeamMembers">
@@ -38,7 +58,7 @@
               flat
               class="transparent frame overflow-hidden"
             >
-              <div class="px-0" :class="{'tint' : hover}">
+              <v-container class="px-0" :class="{'tint' : hover}">
                 <cld-image
                   loading="lazy"
                   crop="scale"
@@ -58,12 +78,10 @@
                   {{ member.title }}
                 </v-card-subtitle>
                 <div class="details">
-                  <h4 class="my-5">
-                    {{ member.name }}
-                  </h4>
+                  <h4>{{ member.name }}</h4>
                   <p> {{ member.description }} </p>
                 </div>
-              </div>
+              </v-container>
             </v-card>
           </v-hover>
         </v-col>
@@ -84,14 +102,15 @@ export default {
     title: "Team"
   },
   computed: {
-    ...mapGetters("team", ["getTeamMembers"])
+    ...mapGetters("team", ["getTeamMembers", "getTeamValues"])
   },
   created() {
     this.$store.dispatch("team/fetchMembers");
+    this.$store.dispatch("team/fetchTeamValues");
   },
   methods: {
     changeFormat(url) {
-      return url.substr(0, url.indexOf("."));
+      return url.substr(0, url.indexOf(".")); 
     }
   }
 };
@@ -105,8 +124,8 @@ export default {
   position: relative;
 }
 .frame .details {
-  height: 98%;
-  width: 97%;
+  height: 95%;
+  width: 100%;
   padding: 5% 8%;
   position: absolute;
   content: "";
@@ -139,5 +158,14 @@ export default {
 }
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.virtues {
+  border: 2px solid #eee;
+  border-radius: 15px;
+  font-family: Lato, Nunito, sans-serif;
+  color: #eee;
+}
+.virtues p {
+  font-size: calc(13px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 </style>

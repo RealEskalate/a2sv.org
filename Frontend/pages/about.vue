@@ -1,6 +1,7 @@
 <template>
   <div>
     <banner
+      img="aboutus.svg"
       img-width="15rem"
       title="About A2SV"
       description="Africa to silicon valley company is founded to help african students to find internship in big companies."

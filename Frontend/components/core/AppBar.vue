@@ -38,7 +38,7 @@
       <v-spacer />
 
       <v-btn v-if="!onSupportUs" tile color="primary" class="pa-5" to="/support">
-        <v-icon v-if="$vuetify.breakpoint.smAndDown">
+        <v-icon v-if="$device.isMobile">
           {{ mdiGift }}
         </v-icon>
         <span v-else>

@@ -1,6 +1,26 @@
 const { Support } = require("../models/SupportModel");
 const { paginate } = require("../utilities/util");
+const  EmailSender = require("../service/EmailSender");
 
+// helper functions
+let forwardContactUsInformation = async (support) => {
+
+    let userMessage = {
+        email: support.email,
+        subject: `From ${support.name}/${support.email} offering his help on ${support.way}`,
+        body: `Message from ${support.name} : ${support.experience}`,
+    }
+
+    try {
+        await EmailSender.sendContactUsInfo(userMessage);
+        return 'Message successfully forward.';
+    } catch (error) {
+        return 'Unable to forward your message.'+ error.getMessage();
+    }
+  
+}
+
+// endpoints
 exports.getAllSupports = async (req, res) => {
     let filter = {};
     if (req.query.way) {
@@ -23,8 +43,13 @@ exports.getSupportByID = async (req, res) => {
 exports.createSupports = async (req, res) => {
     const support = new Support(req.body);
     await support.save();
+
+    await forwardContactUsInformation(support)
+    await EmailSender.sendEmailToUser(support)
+    
     return res.status(201).send(support);
 };
+
 
 exports.patchSupports = async (req, res) => {
     const { id } = req.params;

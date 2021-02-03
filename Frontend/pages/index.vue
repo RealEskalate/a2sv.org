@@ -1,25 +1,25 @@
 <template>
   <div>
-    <div style="height: 90vh;" class="video-container">
+    <div style="height: 90vh" class="video-container">
       <div
         class="d-flex align-center justify-center my-3"
-        style="height: 100%; z-index: 2; position: relative;"
+        style="height: 100%; z-index: 2; position: relative"
       >
-        <div
-          class="pa-8 text-center col-md-9"
-          style="color: #FFF;"
-        >
+        <div class="pa-8 text-center col-md-9" style="color: #fff">
           <h2
-            :class="{ paused, 'display-4' : $vuetify.breakpoint.mdAndUp, 'display-2' : $vuetify.breakpoint.smAndDown}"
+            :class="{
+              paused,
+              'display-4': $vuetify.breakpoint.mdAndUp,
+              'display-2': $vuetify.breakpoint.smAndDown,
+            }"
             class="text-bold rainbow-link py-3"
             style="font-weight: 900"
           >
             Talent is everywhere, opportunity is not.
           </h2>
-          <p
-            class="mt-7 text-center hero-subtitle pa-5"
-          >
-            African students deserves equal opportunities as the rest of the world.
+          <p class="mt-7 text-center hero-subtitle pa-5">
+            African students deserves equal opportunities as the rest of the
+            world.
           </p>
           <v-btn
             outlined
@@ -32,26 +32,39 @@
           </v-btn>
         </div>
       </div>
-      <video
-        id="videoBG"
-        autoplay
-        loop
-        muted
-      >
+      <video id="videoBG" autoplay loop muted>
         <source
           src="https://res.cloudinary.com/eskalate/video/upload/e_auto_brightness,f_auto,q_auto:best/v1610454190/video/homepage_video_1_gegjid.mp4"
         >
       </video>
       <div class="overlay" style="height: 94vh" />
     </div>
-    <v-container class="my-md-12 py-10 pa-5 pa-sm-10 text-center text-md-left" style="background: url('bg.svg')">
-      <v-row class="my-md-10">
+    <v-container
+      class="my-md-12 py-10 pa-5 pa-sm-10 text-center text-md-left"
+      style="background: url('bg.svg')"
+    >
+      <v-row justify="center" class="my-5">
+        <h1 class="mb-15 display-2">
+          We tick these UN Sustainable development goals
+        </h1>
+        <v-col v-for="u in un" :key="u" class="d-flex child-flex" cols="2">
+          <v-hover v-slot="{ hover }">
+            <v-card class="mx-auto" :href="u.link" target="_blank" :elevation="hover ? 16 : 2">
+              <v-img
+                :src="'/un/' + u.img"
+              />
+            </v-card>
+          </v-hover>
+        </v-col>
+      </v-row>
+
+      <v-row class="my-md-10 mt-12">
         <v-col cols="12" md="6" class="my-md-12 d-flex align-center">
           <div>
             <h1 class="my-5 display-2">
               360° training
             </h1>
-            <p style="font-size: 1.5rem;">
+            <p style="font-size: 1.5rem">
               A2SV upskills students with a 360° software engineering program
               that focuses on problem solving and personal development.
             </p>
@@ -76,7 +89,8 @@
             Internship Interviews
           </h1>
           <p class="text-body text-center">
-            Students have internship interviews with top tech companies such as Google and Palantir.
+            Students have internship interviews with top tech companies such as
+            Google and Palantir.
           </p>
         </v-col>
       </v-row>
@@ -99,8 +113,8 @@
               Social Projects
             </h1>
             <p class="text-body text-center text-md-left">
-              Students work on social projects with industry experts to address the most pressing problems
-              in their community.
+              Students work on social projects with industry experts to address
+              the most pressing problems in their community.
             </p>
           </div>
         </v-col>
@@ -112,8 +126,9 @@
             Internships
           </h1>
           <p class="text-body text-center">
-            Students who passed the interviews get 3-month internships to gain experience
-            in building scalable products that are commonly used around the world.
+            Students who passed the interviews get 3-month internships to gain
+            experience in building scalable products that are commonly used
+            around the world.
           </p>
         </v-col>
       </v-row>
@@ -150,17 +165,19 @@
           <div>
             <v-sparkline
               :height="graphHeight"
-              :gradient="['#5EF7B7','#0CBB72']"
+              :gradient="['#5EF7B7', '#0CBB72']"
               :smooth="5"
               type="bar"
               show-labels
               label-size="18"
               auto-line-width
-              :value="[2, 27,54]"
+              :value="[2, 27, 54]"
               :labels="['2%', '27%', '54%']"
             />
             <span style="font-size: small">
-              Google intern acceptance rate <b>vs</b> What we have achieved within  3 months <b>vs</b>  What we have achieved after  second round of training
+              Google intern acceptance rate <b>vs</b> What we have achieved
+              within 3 months <b>vs</b> What we have achieved after second round
+              of training
             </span>
           </div>
         </v-col>
@@ -176,19 +193,27 @@
           cols="12"
           md="6"
         >
-          <v-card
-            outlined
-            style="height: 100%"
-            class="mx-md-5"
-            color="#efefff"
-          >
-            <div class="d-flex align-center" :style="`height: ${$vuetify.breakpoint.smAndUp ? '350px' : '450px'}`">
+          <v-card outlined style="height: 100%" class="mx-md-5" color="#efefff">
+            <div
+              class="d-flex align-center"
+              :style="`height: ${
+                $vuetify.breakpoint.smAndUp ? '350px' : '450px'
+              }`"
+            >
               <p class="quote pa-5 text-center">
                 {{ story.content }}
               </p>
             </div>
 
-            <div class="mx-auto overflow-hidden my-5" style="width: 210px; height: 210px; border: 2px solid #d4e5ff; border-radius: 200px">
+            <div
+              class="mx-auto overflow-hidden my-5"
+              style="
+                width: 210px;
+                height: 210px;
+                border: 2px solid #d4e5ff;
+                border-radius: 200px;
+              "
+            >
               <cld-image
                 loading="lazy"
                 crop="scale"
@@ -219,19 +244,19 @@
     <v-container>
       <v-row class="my-md-10 py-12">
         <div class="col-md-11 ml-auto mr-auto text-center">
-          <h1 class="display-2 blackish text-center" style="line-height: 70px;">
+          <h1 class="display-2 blackish text-center" style="line-height: 70px">
             Do you want to contribute to the digital transformation of Africa?
           </h1>
           <v-hover v-slot="{ hover }">
-          <v-btn
-            x-large
-            color="primary"
-            :elevation=" hover ? 12 : 2"
-            class="text-capitalize mt-10 mb-5"
-            to="/support"
-          >
-            Support us
-          </v-btn>
+            <v-btn
+              x-large
+              color="primary"
+              :elevation="hover ? 12 : 2"
+              class="text-capitalize mt-10 mb-5"
+              to="/support"
+            >
+              Support us
+            </v-btn>
           </v-hover>
         </div>
       </v-row>
@@ -240,7 +265,7 @@
 </template>
 <script>
 import Partners from "@/components/core/Partners";
-import {mapGetters} from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   name: "LandingPage",
@@ -256,26 +281,55 @@ export default {
         offset: 200,
         easing: "easeInOutCubic"
       },
-       years: [
+      un:[
+        {
+          img:"1.png",
+          link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals/goal-3-good-health-and-well-being.html"
+        },
+        {
+          img:"2.png",
+          link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals/goal-4-quality-education.html"
+        },
+        {
+          img:"3.png",
+          link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals/goal-8-decent-work-and-economic-growth.html"
+        },
+        {
+          img:"4.png",
+          link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals/goal-9-industry-innovation-and-infrastructure.html"
+        },
+        {
+          img:"5.png",
+          link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals/goal-10-reduced-inequalities.html"
+        },
+        {
+          img:"6.png",
+          link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals/goal-17-partnerships-for-the-goals.html"
+        }
+      ],
+      years: [
         {
           color: "cyan",
           year: "February 2020",
-          desc:"We formed partnerships with Google, Palantir and Coinbase."
+          desc: "We formed partnerships with Google, Palantir and Coinbase."
         },
         {
           color: "green",
           year: "March 2020",
-          desc:"27% of our first group of trainees passed Google internship interviews after 3 months of training."
+          desc:
+            "27% of our first group of trainees passed Google internship interviews after 3 months of training."
         },
         {
           color: "orange",
           year: "October 2020 ",
-          desc :"Our students created a COVID-19 tracking app -<a href= 'https://tracksym.app/' target='_blank'> TrackSym </a> - for Ethiopia’s Ministry of Health."
+          desc:
+            "Our students created a COVID-19 tracking app -<a href= 'https://tracksym.app/' target='_blank'> TrackSym </a> - for Ethiopia’s Ministry of Health."
         },
         {
           color: "pink",
           year: "December 2020 ",
-          desc :"54% of our first group of trainees passed Google internship interviews after the second round of training."
+          desc:
+            "54% of our first group of trainees passed Google internship interviews after the second round of training."
         }
       ]
     };
@@ -285,7 +339,7 @@ export default {
   },
   computed: {
     ...mapGetters("resources", ["getImpactStories"]),
-    graphHeight(){
+    graphHeight() {
       if (this.$vuetify.breakpoint.lgAndUp) return 350;
       if (this.$vuetify.breakpoint.mdAndUp) return 400;
       return 200;
@@ -308,11 +362,12 @@ export default {
   font-size: 1.125em;
   font-family: Nunito, sans-serif;
 }
-.quote:before, .quote:after {
+.quote:before,
+.quote:after {
   content: '\201C';
-  font-family: 'Sanchez',serif;
+  font-family: 'Sanchez', serif;
   font-size: 40px;
-  color: #334aC0;
+  color: #334ac0;
 }
 .quote:after {
   content: '\201D';
@@ -327,8 +382,8 @@ export default {
 a {
   text-decoration: none;
 }
-.cld-image img{
-  z-index: 1!important;
+.cld-image img {
+  z-index: 1 !important;
 }
 .display-2 {
   font-weight: 800;
@@ -341,7 +396,6 @@ a {
   font-size: large;
 }
 
-
 /* animations */
 
 @keyframes rainbow {
@@ -353,10 +407,36 @@ a {
   }
 }
 
-.rainbow-link  {
+.rainbow-link {
   -webkit-text-stroke-color: transparent;
-  background: -moz-linear-gradient(to left, #20ffc0 0%, #e9e708 10%, #ff6606 20%, #ba07e7 30%, #08adff 40%, #20ffc0 50%, #e9e708 60%, #ff6606 70%, #ba07e7 80%, #08adff 90%, #20ffc0 100%);
-  background: linear-gradient(to left, #20ffc0 0%, #e9e708 10%, #ff6606 20%, #ba07e7 30%, #08adff 40%, #20ffc0 50%, #e9e708 60%, #ff6606 70%, #ba07e7 80%, #08adff 90%, #20ffc0 100%);
+  background: -moz-linear-gradient(
+    to left,
+    #20ffc0 0%,
+    #e9e708 10%,
+    #ff6606 20%,
+    #ba07e7 30%,
+    #08adff 40%,
+    #20ffc0 50%,
+    #e9e708 60%,
+    #ff6606 70%,
+    #ba07e7 80%,
+    #08adff 90%,
+    #20ffc0 100%
+  );
+  background: linear-gradient(
+    to left,
+    #20ffc0 0%,
+    #e9e708 10%,
+    #ff6606 20%,
+    #ba07e7 30%,
+    #08adff 40%,
+    #20ffc0 50%,
+    #e9e708 60%,
+    #ff6606 70%,
+    #ba07e7 80%,
+    #08adff 90%,
+    #20ffc0 100%
+  );
   background-size: 400% 100%;
   background-repeat: repeat-x;
   -webkit-background-clip: text;
@@ -373,7 +453,7 @@ a {
   animation-play-state: paused !important;
 }
 .hero-subtitle {
-  font-size: 1.5em!important;
+  font-size: 1.5em !important;
 }
 
 #videoBG {
@@ -387,7 +467,7 @@ a {
 
 @media (min-aspect-ratio: 16/9) {
   #videoBG {
-    width:100vw;
+    width: 100vw;
   }
 }
 .video-container .overlay {

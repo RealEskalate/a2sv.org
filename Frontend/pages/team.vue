@@ -4,9 +4,8 @@
       img="team.svg"
       img-width="15rem"
       title="Meet our team"
-      description="Gathered from different parts of the world, from different domain of expertise for the same goal. 
+      description="Gathered from different parts of the world, from different domain of expertise for the same goal.
                     Our goal is to optimize the circumstances for humankind to shine the true potential of the world."
-      img=""
     />
     <div v-if="getTeamValues" class="py-12" style="background: linear-gradient(91.56deg, #0a61f7 0,#8253ff 122.55%);">
       <h1 class="display-2 text-center dark my-12" style="color: #fff!important">
@@ -14,8 +13,8 @@
       </h1>
       <v-row>
         <v-col
-          v-for="(title, i) in Object.keys(getTeamValues.Virtues)" 
-          :key="i" 
+          v-for="(title, i) in Object.keys(getTeamValues.Virtues)"
+          :key="i"
           class="virtues mx-auto pa-5 my-2 col-5 col-sm-5 col-md-2"
         >
           <h1 class="text-center mt-1">
@@ -111,7 +110,7 @@ export default {
   },
   methods: {
     changeFormat(url) {
-      return url.substr(0, url.indexOf(".")); 
+      return url.substr(0, url.indexOf("."));
     }
   }
 };

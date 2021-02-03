@@ -222,14 +222,17 @@
           <h1 class="display-2 blackish text-center" style="line-height: 70px;">
             Do you want to contribute to the digital transformation of Africa?
           </h1>
+          <v-hover v-slot="{ hover }">
           <v-btn
             x-large
-            outlined
-            class="text-capitalize mt-10 mb-5 button-fill-bottom"
+            color="primary"
+            :elevation=" hover ? 12 : 2"
+            class="text-capitalize mt-10 mb-5"
             to="/support"
           >
             Support us
           </v-btn>
+          </v-hover>
         </div>
       </v-row>
     </v-container>

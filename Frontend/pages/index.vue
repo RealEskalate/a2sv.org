@@ -92,12 +92,6 @@
             class="z-index-1 overflow-hidden"
             public-id="a2sv/social_projects"
           />
-          <v-img
-            width="10vw"
-            max-width="9rem"
-            class="d-md-inline-block d-none tracksym"
-            src="https://res.cloudinary.com/eskalate/image/upload/v1611563687/a2sv/tracksym.svg"
-          />
         </v-col>
         <v-col cols="12" md="6" class="my-md-12 d-flex align-center">
           <div>

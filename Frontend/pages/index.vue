@@ -181,7 +181,7 @@
               </p>
             </div>
 
-            <div class="mx-auto overflow-hidden my-5" style="width: 150px; height: 150px; border: 2px solid #d4e5ff; border-radius: 200px">
+            <div class="mx-auto overflow-hidden my-5" style="width: 210px; height: 210px; border: 2px solid #d4e5ff; border-radius: 200px">
               <cld-image
                 loading="lazy"
                 crop="scale"

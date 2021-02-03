@@ -92,12 +92,6 @@
             class="z-index-1 overflow-hidden"
             public-id="a2sv/social_projects"
           />
-          <v-img
-            width="10vw"
-            max-width="9rem"
-            class="d-md-inline-block d-none tracksym"
-            src="https://res.cloudinary.com/eskalate/image/upload/v1611563687/a2sv/tracksym.svg"
-          />
         </v-col>
         <v-col cols="12" md="6" class="my-md-12 d-flex align-center">
           <div>
@@ -125,21 +119,34 @@
       </v-row>
 
       <v-row class="px-md-10 my-12">
-        <v-col cols="12" md="8" class="text-center text-md-left">
-          <h1 class="display-2 my-3">
-            What have we done so far?
-          </h1>
-          <p class="mt-md-7 text-body">
-            A2SV was founded in Nov 2019 in Ethiopia. After 3-month training, our first group has achieved a
-            remarkable 27% success rate at Google internship interviews. Considering Google's internship
-            acceptance rate is only 2%, an A2SV student is 13.5 times more likely to succeed than an average candidate.
-            <br>
-            As a response to the COVID-19 outbreak, our first group has built a digital symptom tracking system,
-            <a href="https://tracksym.app" target="_blank">Tracksym</a>. We are currently collaborating with
-            Ethiopian Ministry of Health to make it a part of the official response.
-          </p>
+        <h1 class="display-2 my-3">
+          Since November 2019, A2SV has achieved the following:
+        </h1>
+        <v-col md="6" sm="12" class="text-center text-md-left">
+          <v-timeline>
+            <v-timeline-item
+              v-for="(year, i) in years"
+              :key="i"
+              :color="year.color"
+              small
+            >
+              <template #opposite>
+                <span
+                  :class="`headline font-weight-bold ${year.color}--text`"
+                  v-text="year.year"
+                />
+              </template>
+              <div class="py-3">
+                <div>
+                  <p class="timeline-txt" v-html="year.desc">
+                    {{ year.desc }}
+                  </p>
+                </div>
+              </div>
+            </v-timeline-item>
+          </v-timeline>
         </v-col>
-        <v-col class="mx-auto px-12 d-md-flex align-center" md="4" sm="12">
+        <v-col class="mx-auto px-12 d-md-flex align-center" md="6" sm="8">
           <div>
             <v-sparkline
               :height="graphHeight"
@@ -149,11 +156,11 @@
               show-labels
               label-size="18"
               auto-line-width
-              :value="[2, 27]"
-              :labels="['2%', '27%']"
+              :value="[2, 27,54]"
+              :labels="['2%', '27%', '54%']"
             />
             <span style="font-size: small">
-              Google intern acceptance rate <b>vs</b> What we have achieved within 3 months
+              Google intern acceptance rate <b>vs</b> What we have achieved within  3 months <b>vs</b>  What we have achieved after  second round of training
             </span>
           </div>
         </v-col>
@@ -181,7 +188,7 @@
               </p>
             </div>
 
-            <div class="mx-auto overflow-hidden my-5" style="width: 150px; height: 150px; border: 2px solid #d4e5ff; border-radius: 200px">
+            <div class="mx-auto overflow-hidden my-5" style="width: 210px; height: 210px; border: 2px solid #d4e5ff; border-radius: 200px">
               <cld-image
                 loading="lazy"
                 crop="scale"
@@ -215,14 +222,17 @@
           <h1 class="display-2 blackish text-center" style="line-height: 70px;">
             Do you want to contribute to the digital transformation of Africa?
           </h1>
+          <v-hover v-slot="{ hover }">
           <v-btn
             x-large
-            outlined
-            class="text-capitalize mt-10 mb-5 button-fill-bottom"
+            color="primary"
+            :elevation=" hover ? 12 : 2"
+            class="text-capitalize mt-10 mb-5"
             to="/support"
           >
             Support us
           </v-btn>
+          </v-hover>
         </div>
       </v-row>
     </v-container>
@@ -245,7 +255,29 @@ export default {
         duration: 1000,
         offset: 200,
         easing: "easeInOutCubic"
-      }
+      },
+       years: [
+        {
+          color: "cyan",
+          year: "February 2020",
+          desc:"We formed partnerships with Google, Palantir and Coinbase."
+        },
+        {
+          color: "green",
+          year: "March 2020",
+          desc:"27% of our first group of trainees passed Google internship interviews after 3 months of training."
+        },
+        {
+          color: "orange",
+          year: "October 2020 ",
+          desc :"Our students created a COVID-19 tracking app -<a href= 'https://tracksym.app/' target='_blank'> TrackSym </a> - for Ethiopia’s Ministry of Health."
+        },
+        {
+          color: "pink",
+          year: "December 2020 ",
+          desc :"54% of our first group of trainees passed Google internship interviews after the second round of training."
+        }
+      ]
     };
   },
   head: {
@@ -300,11 +332,15 @@ a {
 }
 .display-2 {
   font-weight: 800;
-  font-size: 50px!important;
+  font-size: 3em !important;
 }
 .text-body {
   font-size: 22px;
 }
+.timeline-txt {
+  font-size: large;
+}
+
 
 /* animations */
 

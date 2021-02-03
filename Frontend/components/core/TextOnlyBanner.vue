@@ -2,22 +2,21 @@
   <div class="blue-bg " style="padding: 4rem 0 8rem 0">
     <v-container>
       <v-row>
-     <v-col class="col-lg-6">
-      <h1 class="display-2 text-center main-text header-title animate-pop-in">
-        {{ title }}
-      </h1>
-      <p class="col-md-9 mx-auto text-center mt-6 blue-black header-subtitle animate-pop-in" style="font-size: 25px;">
-        {{ description }}
-      </p>
-      <slot />
-     </v-col>
-      <v-col class="col-md-6 hidden-md-and-down">
-      <v-img
+        <v-col class="col-lg-6">
+          <h1 class="display-2 text-center main-text header-title animate-pop-in">
+            {{ title }}
+          </h1>
+          <p class="col-md-9 mx-auto text-center mt-6 blue-black header-subtitle animate-pop-in" style="font-size: 25px;">
+            {{ description }}
+          </p>
+          <slot />
+        </v-col>
+        <v-col class="col-md-6 hidden-md-and-down">
+          <v-img
 
-        :src= "('/illustrations/' + img)"
-
-      />
-      </v-col>
+            :src="('/illustrations/' + img)"
+          />
+        </v-col>
       </v-row>
     </v-container>
   </div>

@@ -37,7 +37,7 @@
 
       <v-spacer />
 
-      <v-btn v-if="!onSupportUs" tile color="primary" class="pa-5" to="/support">
+      <v-btn v-if="!onSupportUs" depressed color="primary" class="pa-5" to="/support">
         <v-icon v-if="$device.isMobile">
           {{ mdiGift }}
         </v-icon>
@@ -51,8 +51,16 @@
       v-model="drawer"
       app
     >
+      <div class="mx-12 my-6">
+        <v-img
+          width="100%"
+          alt="A2SV LOGO"
+          class="logo"
+          src="/logos/logo-blue.png"
+        />
+      </div>
       <v-list rounded>
-        <v-list-item v-for="item in links" :key="item.title" link :to="item.to">
+        <v-list-item color="primary" v-for="item in links" :key="item.title" link :to="item.to">
           <v-list-item-icon>
             <v-icon> {{ item.icon }} </v-icon>
           </v-list-item-icon>
@@ -69,7 +77,7 @@
 import {
   mdiMenu,
   mdiHome,
-  mdiGroup,
+  mdiAccountGroup,
   mdiInformation,
   mdiGift
 } from "@mdi/js";
@@ -88,7 +96,7 @@ export default {
           to: "/"
         },
         {
-          icon: mdiGroup,
+          icon: mdiAccountGroup,
           title: "Team",
           to: "/team"
         },
@@ -115,5 +123,14 @@ export default {
   font-family: Lato, sans-serif !important;
   text-transform: capitalize !important;
   font-size: 16px;
+}
+</style>
+
+<style>
+.v-tabs-slider-wrapper {
+  height: 6px !important;
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+  overflow: hidden;
 }
 </style>

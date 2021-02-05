@@ -5,21 +5,37 @@
         class="d-flex align-center justify-center my-3"
         style="height: 100%; z-index: 2; position: relative"
       >
-        <!-- <div class="pa-8 text-center col-md-9" style="color: #fff">
+        <div class="pa-8 text-center col-md-9 animate-pop-in" style="color: #fff">
+          <h2
+            :class="{
+              paused,
+              'display-4': $vuetify.breakpoint.mdAndUp,
+              'display-2': $vuetify.breakpoint.smAndDown,
+            }"
+            class="text-bold rainbow-link py-3"
+            style="font-weight: 900"
+          >
+            Talent is everywhere, opportunity is not.
+          </h2>
+          <!-- <p class="mt-7 text-center hero-subtitle pa-5">
+            African students deserves equal opportunities as the rest of the
+            world.
+          </p> -->
           <v-btn
             outlined
             tile
             dark
+            x-large
             class="mt-md-12 mt-sm-5 d-block mx-auto"
             @click="$vuetify.goTo(target, options)"
           >
             Explore
           </v-btn>
-        </div> -->
+        </div>
       </div>
       <video id="videoBG" autoplay loop muted>
         <source
-          src="/a2sv banner.mp4"
+          src="/a2sv homepage.mp4"
         >
       </video>
       <div class="overlay" style="height: 94vh" />

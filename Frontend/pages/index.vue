@@ -15,7 +15,7 @@
             class="text-bold rainbow-link py-3"
             style="font-weight: 900"
           >
-            Talent is everywhere, opportunity is not.
+            Talent is everywhere but opportunity is not
           </h2>
           <!-- <p class="mt-7 text-center hero-subtitle pa-5">
             African students deserves equal opportunities as the rest of the

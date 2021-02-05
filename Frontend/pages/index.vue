@@ -44,17 +44,18 @@
       style="background: url('bg.svg')"
     >
       <v-row justify="center" class="my-5">
-        <h1 class="mb-15 display-2">
+        <v-col cols="12"  class="my-md-12 d-flex align-center">
+        <h1 class="display-2">
           We tick these UN Sustainable development goals
         </h1>
-        <v-col v-for="u in un" :key="u" class="d-flex child-flex" cols="2">
-          <v-hover v-slot="{ hover }">
-            <v-card class="mx-auto" :href="u.link" target="_blank" :elevation="hover ? 16 : 2">
+        </v-col>
+
+        <v-col v-for="u in un" :key="u" class="d-flex child-flex col-md-2 col-sm-3" cols="6">
+            <v-card class="mx-auto box" :href="u.link" target="_blank">
               <v-img
                 :src="'/un/' + u.img"
               />
             </v-card>
-          </v-hover>
         </v-col>
       </v-row>
 
@@ -148,6 +149,7 @@
               <template #opposite>
                 <span
                   :class="`headline font-weight-bold ${year.color}--text`"
+
                   v-text="year.year"
                 />
               </template>
@@ -247,17 +249,15 @@
           <h1 class="display-2 blackish text-center" style="line-height: 70px">
             Do you want to contribute to the digital transformation of Africa?
           </h1>
-          <v-hover v-slot="{ hover }">
             <v-btn
               x-large
               color="primary"
-              :elevation="hover ? 12 : 2"
-              class="text-capitalize mt-10 mb-5"
+              class="text-capitalize mt-10 mb-5 box"
               to="/support"
             >
               Support us
             </v-btn>
-          </v-hover>
+
         </div>
       </v-row>
     </v-container>
@@ -394,6 +394,9 @@ a {
 }
 .timeline-txt {
   font-size: large;
+}
+.box:hover {
+  box-shadow: 0 5px 15px #4b4545 !important;
 }
 
 /* animations */

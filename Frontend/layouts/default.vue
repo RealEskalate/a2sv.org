@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
     <app-bar />
-    <v-main class="white">
+    <v-main class="grey lighten-5">
       <nuxt />
     </v-main>
     <app-footer />

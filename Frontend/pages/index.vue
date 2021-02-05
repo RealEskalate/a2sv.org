@@ -45,18 +45,18 @@
       style="background: url('bg.svg')"
     >
       <v-row justify="center" class="my-5">
-        <v-col cols="12"  class="my-md-12 d-flex align-center">
-        <h1 class="display-2">
-          We tick these UN Sustainable development goals
-        </h1>
+        <v-col cols="12" class="my-md-12 d-flex align-center">
+          <h1 class="display-2">
+            We tick these UN Sustainable development goals
+          </h1>
         </v-col>
 
-        <v-col v-for="u in un" :key="u" class="d-flex child-flex col-md-2 col-sm-3" cols="6">
-            <v-card class="mx-auto box" :href="u.link" target="_blank">
-              <v-img
-                :src="'/un/' + u.img"
-              />
-            </v-card>
+        <v-col v-for="(u, ind) in un" :key="ind" class="d-flex child-flex col-md-2 col-sm-3" cols="6">
+          <v-card class="mx-auto box" :href="u.link" target="_blank">
+            <v-img
+              :src="'/un/' + u.img"
+            />
+          </v-card>
         </v-col>
       </v-row>
 
@@ -122,7 +122,7 @@
         </v-col>
       </v-row>
 
-      <v-row>
+      <v-row class="my-10">
         <v-col cols="10" md="8" class="mx-auto text-center">
           <h1 class="my-5 display-2">
             Internships
@@ -135,11 +135,11 @@
         </v-col>
       </v-row>
 
+      <h1 class="display-2 mt-12 text-center">
+        Achievements
+      </h1>
       <v-row class="px-md-10 my-12">
-        <h1 class="display-2 my-3">
-          Since November 2019, A2SV has achieved the following:
-        </h1>
-        <v-col md="6" sm="12" class="text-center text-md-left">
+        <v-col md="7" cols="12" class="text-center text-md-left d-md-flex align-center">
           <v-timeline>
             <v-timeline-item
               v-for="(year, i) in years"
@@ -150,7 +150,6 @@
               <template #opposite>
                 <span
                   :class="`headline font-weight-bold ${year.color}--text`"
-
                   v-text="year.year"
                 />
               </template>
@@ -164,12 +163,12 @@
             </v-timeline-item>
           </v-timeline>
         </v-col>
-        <v-col class="mx-auto px-12 d-md-flex align-center" md="6" sm="8">
+        <v-col class="mx-auto px-12 d-md-flex align-center" md="5" cols="12">
           <div>
             <v-sparkline
               :height="graphHeight"
-              :gradient="['#5EF7B7', '#0CBB72']"
-              :smooth="5"
+              :gradient="['#0D60F7', '#05AEEE', '#05E576']"
+              :smooth="4"
               type="bar"
               show-labels
               label-size="18"
@@ -177,18 +176,24 @@
               :value="[2, 27, 54]"
               :labels="['2%', '27%', '54%']"
             />
-            <span style="font-size: small">
-              Google intern acceptance rate <b>vs</b> What we have achieved
-              within 3 months <b>vs</b> What we have achieved after second round
-              of training
-            </span>
+            <v-row class="text-center" style="font-size: small">
+              <v-col cols="4">
+                Google Intern Acceptance Rate
+              </v-col>
+              <v-col cols="4">
+                Our Acceptance Rate: March, 2020
+              </v-col>
+              <v-col cols="4">
+                Our Acceptance Rate: February, 2020
+              </v-col>
+            </v-row>
           </div>
         </v-col>
       </v-row>
       <h1 class="display-2 mt-12 text-center">
         Impact Stories
       </h1>
-      <v-row class="pa-lg-12 pa-5">
+      <v-row class="pa-lg-12 pa-sm-5">
         <v-col
           v-for="(story, i) in getImpactStories"
           :key="i"
@@ -196,7 +201,7 @@
           cols="12"
           md="6"
         >
-          <v-card outlined style="height: 100%" class="mx-md-5" color="#efefff">
+          <v-card outlined style="height: 100%" class="mx-md-5 my-3" color="#efefff">
             <div
               class="d-flex align-center"
               :style="`height: ${
@@ -213,7 +218,7 @@
               style="
                 width: 210px;
                 height: 210px;
-                border: 2px solid #d4e5ff;
+                border: 2px solid #66666C55;
                 border-radius: 200px;
               "
             >
@@ -250,15 +255,14 @@
           <h1 class="display-2 blackish text-center" style="line-height: 70px">
             Do you want to contribute to the digital transformation of Africa?
           </h1>
-            <v-btn
-              x-large
-              color="primary"
-              class="text-capitalize mt-10 mb-5 box"
-              to="/support"
-            >
-              Support us
-            </v-btn>
-
+          <v-btn
+            x-large
+            color="primary"
+            class="text-capitalize mt-10 mb-5 box"
+            to="/support"
+          >
+            Support us
+          </v-btn>
         </div>
       </v-row>
     </v-container>
@@ -310,24 +314,24 @@ export default {
       ],
       years: [
         {
-          color: "cyan",
+          color: "success",
           year: "February 2020",
           desc: "We formed partnerships with Google, Palantir and Coinbase."
         },
         {
-          color: "green",
+          color: "accent",
           year: "March 2020",
           desc:
             "27% of our first group of trainees passed Google internship interviews after 3 months of training."
         },
         {
-          color: "orange",
+          color: "warning",
           year: "October 2020 ",
           desc:
             "Our students created a COVID-19 tracking app -<a href= 'https://tracksym.app/' target='_blank'> TrackSym </a> - for Ethiopia’s Ministry of Health."
         },
         {
-          color: "pink",
+          color: "primary",
           year: "December 2020 ",
           desc:
             "54% of our first group of trainees passed Google internship interviews after the second round of training."
@@ -341,9 +345,9 @@ export default {
   computed: {
     ...mapGetters("resources", ["getImpactStories"]),
     graphHeight() {
-      if (this.$vuetify.breakpoint.lgAndUp) return 350;
-      if (this.$vuetify.breakpoint.mdAndUp) return 400;
-      return 200;
+      if (this.$vuetify.breakpoint.lgAndUp) return 400;
+      if (this.$vuetify.breakpoint.mdAndUp) return 450;
+      return 250;
     }
   },
   created() {

@@ -336,7 +336,7 @@ export default {
     };
   },
   head: {
-    title: "Welcome"
+    title: "Welcome to Africa to Silicon Valley"
   },
   computed: {
     ...mapGetters("resources", ["getImpactStories"]),

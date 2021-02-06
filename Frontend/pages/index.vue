@@ -5,17 +5,28 @@
         class="d-flex align-center justify-center my-3"
         style="height: 100%; z-index: 2; position: relative"
       >
-        <div class="pa-8 text-center col-md-9 animate-pop-in" style="color: #fff">
+        <div class="pa-8 text-center col-md-10 animate-pop-in">
           <h2
             :class="{
               paused,
               'display-4': $vuetify.breakpoint.mdAndUp,
               'display-2': $vuetify.breakpoint.smAndDown,
             }"
-            class="text-bold rainbow-link py-3"
-            style="font-weight: 900"
+            class="text-bold py-3 mb-md-12"
+            style="font-weight: 900; color: #edededed !important; line-height: 70px"
           >
-            Talent is everywhere but opportunity is not
+            <span class="px-4 pb-3 shadow-sm" style="background-color: #286EF7BB; border-radius: 10px">Talent</span> is Everywhere.
+          </h2>
+          <h2
+            :class="{
+              paused,
+              'display-4': $vuetify.breakpoint.mdAndUp,
+              'display-2': $vuetify.breakpoint.smAndDown,
+            }"
+            class="text-bold py-3 mt-md-12 mb-12"
+            style="font-weight: 900; color: #edededed !important;; line-height: 70px"
+          >
+            <span class="px-4 pb-3 shadow-sm" style="background-color: #09ADEFBB; border-radius: 10px">Opportunity</span> is Not.
           </h2>
           <!-- <p class="mt-7 text-center hero-subtitle pa-5">
             African students deserves equal opportunities as the rest of the
@@ -23,13 +34,17 @@
           </p> -->
           <v-btn
             outlined
-            tile
             dark
-            x-large
-            class="mt-md-12 mt-sm-5 d-block mx-auto"
+            large
+            fab
+            absolute
+            bottom
+            right
+            left
+            class="mb-12 d-block mx-auto pa-3 pt-4"
             @click="$vuetify.goTo(target, options)"
           >
-            Explore
+            <v-img src="/down-arrow.gif" />
           </v-btn>
         </div>
       </div>
@@ -149,7 +164,7 @@
             >
               <template #opposite>
                 <span
-                  :class="`headline font-weight-bold ${year.color}--text`"
+                  class="headline font-weight-bold"
                   v-text="year.year"
                 />
               </template>
@@ -279,10 +294,10 @@ export default {
   },
   data() {
     return {
-      target: 1000,
+      target: 1300,
       paused: false,
       options: {
-        duration: 1000,
+        duration: 2000,
         offset: 200,
         easing: "easeInOutCubic"
       },
@@ -401,7 +416,7 @@ a {
   font-size: large;
 }
 .box:hover {
-  box-shadow: 0 5px 15px #4b4545 !important;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15) !important;
 }
 
 /* animations */

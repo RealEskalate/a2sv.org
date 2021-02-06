@@ -14,7 +14,7 @@ import AppBar from "~/components/core/AppBar";
 import AppFooter from "~/components/core/AppFooter";
 import ScrollToTop from "~/components/core/ScrollToTop";
 export default {
-  components: { ScrollToTop, AppBar, AppFooter },
+  components: { ScrollToTop, AppBar, AppFooter }
 };
 </script>
 

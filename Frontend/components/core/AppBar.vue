@@ -60,7 +60,7 @@
         />
       </div>
       <v-list rounded>
-        <v-list-item color="primary" v-for="item in links" :key="item.title" link :to="item.to">
+        <v-list-item v-for="item in links" :key="item.title" color="primary" link :to="item.to">
           <v-list-item-icon>
             <v-icon> {{ item.icon }} </v-icon>
           </v-list-item-icon>

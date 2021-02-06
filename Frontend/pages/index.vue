@@ -59,22 +59,6 @@
       class="my-md-12 py-10 pa-5 pa-sm-10 text-center text-md-left"
       style="background: url('bg.svg')"
     >
-      <v-row justify="center" class="my-5">
-        <v-col cols="12" class="my-md-12 d-flex align-center">
-          <h1 class="display-2">
-            We tick these UN Sustainable development goals
-          </h1>
-        </v-col>
-
-        <v-col v-for="(u, ind) in un" :key="ind" class="d-flex child-flex col-md-2 col-sm-3" cols="6">
-          <v-card class="mx-auto box" :href="u.link" target="_blank">
-            <v-img
-              :src="'/un/' + u.img"
-            />
-          </v-card>
-        </v-col>
-      </v-row>
-
       <v-row class="my-md-10 mt-12">
         <v-col cols="12" md="6" class="my-md-12 d-flex align-center">
           <div>
@@ -265,6 +249,27 @@
       <partners />
     </div>
     <v-container>
+      <h1 class="display-2 blackish text-center mt-12" style="line-height: 70px">
+        UN SDGs
+      </h1>
+      <v-row justify="center" class="my-12">
+        <v-col
+          v-for="(u, ind) in un"
+          :key="ind"
+          class="d-flex child-flex"
+          md="2"
+          sm="4"
+          cols="6"
+        >
+          <v-card class="mx-auto shadow-sm" style="opacity: 0.9" :href="u.link" target="_blank">
+            <v-img
+              aspect-ratio="1"
+              :src="'/un/' + u.img"
+            />
+          </v-card>
+        </v-col>
+      </v-row>
+
       <v-row class="my-md-10 py-12">
         <div class="col-md-11 ml-auto mr-auto text-center">
           <h1 class="display-2 blackish text-center" style="line-height: 70px">

@@ -105,7 +105,7 @@
             fetch-format="auto"
             quality="auto"
             class="z-index-1 overflow-hidden"
-            public-id="a2sv/social_projects"
+            public-id="https://res.cloudinary.com/dfc7snpy5/image/upload/v1612601149/lidselam.png"
           />
         </v-col>
         <v-col cols="12" md="6" class="my-md-12 d-flex align-center">
@@ -249,9 +249,6 @@
       <partners />
     </div>
     <v-container>
-      <h1 class="display-2 blackish text-center mt-12" style="line-height: 70px">
-        UN SDGs
-      </h1>
       <v-row justify="center" class="my-12">
         <v-col
           v-for="(u, ind) in un"
@@ -261,7 +258,7 @@
           sm="4"
           cols="6"
         >
-          <v-card class="mx-auto shadow-sm" style="opacity: 0.9" :href="u.link" target="_blank">
+          <v-card class="mx-auto shadow-sm unbox" :href="u.link" target="_blank">
             <v-img
               aspect-ratio="1"
               :src="'/un/' + u.img"
@@ -308,6 +305,10 @@ export default {
       },
       un:[
         {
+          img:"0.png",
+          link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals.html"
+        },
+        {
           img:"1.png",
           link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals/goal-3-good-health-and-well-being.html"
         },
@@ -322,10 +323,6 @@ export default {
         {
           img:"4.png",
           link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals/goal-9-industry-innovation-and-infrastructure.html"
-        },
-        {
-          img:"5.png",
-          link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals/goal-10-reduced-inequalities.html"
         },
         {
           img:"6.png",
@@ -423,7 +420,9 @@ a {
 .box:hover {
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15) !important;
 }
-
+.unbox:hover{
+  box-shadow: rgb(75, 69, 69) 0px 5px 15px !important;
+}
 /* animations */
 
 @keyframes rainbow {

@@ -7,22 +7,29 @@
       description="Gathered from different parts of the world, from different domain of expertise for the same goal.
                     Our goal is to optimize the circumstances for humankind to shine the true potential of the world."
     />
-    <div v-if="getTeamValues" class="py-12" style="background: linear-gradient(91.56deg, #0a61f7 0,#8253ff 122.55%);">
-      <h1 class="display-2 text-center dark my-12" style="color: #fff!important">
+    <div v-if="getTeamValues" class="mb-12 pa-8 py-md-12" style="background: linear-gradient(90deg, #2C3A8B 0,#286DF7 100%);">
+      <h1 class="display-2 mb-6 mb-md-12 text-center" style="color: #ffffff !important;">
         Our Virtues
       </h1>
       <v-row>
         <v-col
           v-for="(title, i) in Object.keys(getTeamValues.Virtues)"
           :key="i"
-          class="virtues mx-auto pa-5 my-2 col-5 col-sm-5 col-md-2"
+          cols="12"
+          sm="6"
+          md="3"
+          class="pa-5"
         >
-          <h1 class="text-center mt-1">
-            {{ title }}
-          </h1>
-          <p class="text-center">
-            {{ getTeamValues.Virtues[title] }}
-          </p>
+          <v-card class="pa-5 shadow-lg d-flex align-center justify-center white--text" color="transparent" height="100%">
+            <div>
+              <h1 class="overline text-center mb-5 mt-3" style="font-size: xx-large !important;">
+                {{ title }}
+              </h1>
+              <p class="text-center caption" style="font-size: larger !important;">
+                {{ getTeamValues.Virtues[title] }}
+              </p>
+            </div>
+          </v-card>
         </v-col>
       </v-row>
     </div>
@@ -159,13 +166,13 @@ export default {
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
-.virtues {
-  border: 2px solid #eee;
-  border-radius: 15px;
-  font-family: Lato, Nunito, sans-serif;
-  color: #eee;
-}
 .virtues p {
   font-size: calc(13px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
+
+.display-2 {
+  font-weight: 800;
+  font-size: 3em !important;
+}
+
 </style>

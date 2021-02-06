@@ -37,7 +37,7 @@
 
       <v-spacer />
 
-      <v-btn v-if="!onSupportUs" depressed color="primary" class="pa-5" to="/support">
+      <v-btn v-if="!onSupportUs" depressed color="primary" class="pa-5 text-capitalize" to="/support">
         <v-icon v-if="$device.isMobile">
           {{ mdiGift }}
         </v-icon>

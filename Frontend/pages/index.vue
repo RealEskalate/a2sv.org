@@ -331,23 +331,23 @@ export default {
       ],
       years: [
         {
-          color: "success",
+          color: "pink",
           year: "November 2019",
           desc: "A2SV Started"
         },
         {
-          color: "accent",
+          color: "success",
           year: "February 2020",
           desc: "We formed partnerships with Google, Palantir and Coinbase."
         },
         {
-          color: "warning",
+          color: "accent",
           year: "March 2020",
           desc:
             "27% of our first group of trainees passed Google internship interviews after 3 months of training."
         },
         {
-          color: "pink",
+          color: "warning",
           year: "October 2020 ",
           desc:
             "Our students created a COVID-19 tracking app -<a href= 'https://tracksym.app/' target='_blank'> TrackSym </a> - for Ethiopia’s Ministry of Health."

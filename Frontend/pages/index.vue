@@ -50,7 +50,7 @@
       </div>
       <video id="videoBG" autoplay loop muted>
         <source
-          src="/a2sv homepage.mp4"
+          src="https://res.cloudinary.com/linktender/video/upload/v1612519602/a2sv_homepage_fdziq5.mp4"
         >
       </video>
       <div class="overlay" style="height: 94vh" />
@@ -332,17 +332,22 @@ export default {
       years: [
         {
           color: "success",
+          year: "November 2019",
+          desc: "A2SV Started"
+        },
+        {
+          color: "accent",
           year: "February 2020",
           desc: "We formed partnerships with Google, Palantir and Coinbase."
         },
         {
-          color: "accent",
+          color: "warning",
           year: "March 2020",
           desc:
             "27% of our first group of trainees passed Google internship interviews after 3 months of training."
         },
         {
-          color: "warning",
+          color: "pink",
           year: "October 2020 ",
           desc:
             "Our students created a COVID-19 tracking app -<a href= 'https://tracksym.app/' target='_blank'> TrackSym </a> - for Ethiopia’s Ministry of Health."

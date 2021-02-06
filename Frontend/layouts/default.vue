@@ -3,6 +3,7 @@
     <app-bar />
     <v-main class="grey lighten-5">
       <nuxt />
+      <scroll-to-top />
     </v-main>
     <app-footer />
   </v-app>
@@ -11,8 +12,9 @@
 <script>
 import AppBar from "~/components/core/AppBar";
 import AppFooter from "~/components/core/AppFooter";
+import ScrollToTop from "~/components/core/ScrollToTop";
 export default {
-  components: { AppBar, AppFooter }
+  components: { ScrollToTop, AppBar, AppFooter }
 };
 </script>
 

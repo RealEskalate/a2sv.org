@@ -69,16 +69,17 @@
           :key="i"
           class="d-flex align-center"
           color="primary lighten-1"
-          fill-dot
           small
         >
           <div class="py-4" :class="`text-${ evenPhase(i) ? 'right' : 'left' }`" style="height: 100%">
-            <h1 v-if="getLearnPaths" class="font-weight-light primary--text">
+            <h1 v-if="getLearnPaths" style="font-size: x-large !important;" class="overline font-weight-light primary--text">
               {{ phase.title }}
             </h1>
-            <v-divider class="primary lighten-5 my-4" :class="`float-${ evenPhase(i) ? 'right' : 'left' }`" style="width: 75px; border-width: 2px; border-radius: 2px" />
-            <br>
-            <br>
+            <div class="d-flex" :class="`justify-${ evenPhase(i) ? 'end' : 'start' }`">
+              <div style="width: 135px;">
+                <v-divider class="primary lighten-5 my-4" style="border-width: 1.5px; border-radius: 2px" />
+              </div>
+            </div>
             <p
               class="text-body font-weight-light"
               :class="`text-${ evenPhase(i) ? 'right' : 'left' }`"

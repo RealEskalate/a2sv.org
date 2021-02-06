@@ -5,7 +5,7 @@
         class="d-flex align-center justify-center my-3"
         style="height: 100%; z-index: 2; position: relative"
       >
-        <div class="pa-8 text-center col-md-9" style="color: #fff">
+        <div class="pa-8 text-center col-md-9 animate-pop-in" style="color: #fff">
           <h2
             :class="{
               paused,
@@ -15,16 +15,17 @@
             class="text-bold rainbow-link py-3"
             style="font-weight: 900"
           >
-            Talent is everywhere, opportunity is not.
+            Talent is everywhere but opportunity is not
           </h2>
-          <p class="mt-7 text-center hero-subtitle pa-5">
+          <!-- <p class="mt-7 text-center hero-subtitle pa-5">
             African students deserves equal opportunities as the rest of the
             world.
-          </p>
+          </p> -->
           <v-btn
             outlined
             tile
             dark
+            x-large
             class="mt-md-12 mt-sm-5 d-block mx-auto"
             @click="$vuetify.goTo(target, options)"
           >
@@ -34,7 +35,7 @@
       </div>
       <video id="videoBG" autoplay loop muted>
         <source
-          src="https://res.cloudinary.com/eskalate/video/upload/e_auto_brightness,f_auto,q_auto:best/v1610454190/video/homepage_video_1_gegjid.mp4"
+          src="/a2sv homepage.mp4"
         >
       </video>
       <div class="overlay" style="height: 94vh" />
@@ -44,17 +45,18 @@
       style="background: url('bg.svg')"
     >
       <v-row justify="center" class="my-5">
-        <h1 class="mb-15 display-2">
+        <v-col cols="12"  class="my-md-12 d-flex align-center">
+        <h1 class="display-2">
           We tick these UN Sustainable development goals
         </h1>
-        <v-col v-for="u in un" :key="u" class="d-flex child-flex" cols="2">
-          <v-hover v-slot="{ hover }">
-            <v-card class="mx-auto" :href="u.link" target="_blank" :elevation="hover ? 16 : 2">
+        </v-col>
+
+        <v-col v-for="u in un" :key="u" class="d-flex child-flex col-md-2 col-sm-3" cols="6">
+            <v-card class="mx-auto box" :href="u.link" target="_blank">
               <v-img
                 :src="'/un/' + u.img"
               />
             </v-card>
-          </v-hover>
         </v-col>
       </v-row>
 
@@ -148,6 +150,7 @@
               <template #opposite>
                 <span
                   :class="`headline font-weight-bold ${year.color}--text`"
+
                   v-text="year.year"
                 />
               </template>
@@ -247,17 +250,15 @@
           <h1 class="display-2 blackish text-center" style="line-height: 70px">
             Do you want to contribute to the digital transformation of Africa?
           </h1>
-          <v-hover v-slot="{ hover }">
             <v-btn
               x-large
               color="primary"
-              :elevation="hover ? 12 : 2"
-              class="text-capitalize mt-10 mb-5"
+              class="text-capitalize mt-10 mb-5 box"
               to="/support"
             >
               Support us
             </v-btn>
-          </v-hover>
+
         </div>
       </v-row>
     </v-container>
@@ -394,6 +395,9 @@ a {
 }
 .timeline-txt {
   font-size: large;
+}
+.box:hover {
+  box-shadow: 0 5px 15px #4b4545 !important;
 }
 
 /* animations */

@@ -3,7 +3,7 @@ import Vue from "vue";
 export const states = () => ({
   impactStories: [],
   learnings: [],
-  aboutUs: []
+  aboutUs: {}
 });
 
 export const getters = {

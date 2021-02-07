@@ -34,7 +34,7 @@
               style="color: whitesmoke"
               @click="$vuetify.goTo(donateLocation, options)"
             >
-              No, But wanna help
+              No, but I wanna help
             </v-btn>
           </v-btn-toggle>
         </transition>
@@ -45,46 +45,95 @@
         <h1 class="display-2 text-center">
           How can I help?
         </h1>
-        <v-row>
-          <v-col
-            v-if="!$vuetify.breakpoint.smAndDown"
-            md="3"
-            class="recruit-illustration"
-          />
-          <v-col md="9" class="mt-10 pl-5">
+        <v-row class="mt-10">
+          <v-col cols="12" sm="12" md="6" class="pl-5">
             <p class="pl-4 text-body">
-              If you are an engineer in silicon valley, you can help us by one
-              of the following:
+              If you are working in a top tech company:
             </p>
             <v-list class="transparent">
-              <v-list-item
-                v-for="(support, i) in support_ways"
-                :key="i"
-                three-line
-              >
+              <v-list-item v-for="(support, i) in support_ways" :key="i">
                 <v-list-item-content>
-                  <v-list-item-title class="text-body text-left blue-black">
-                    {{ support.title }}
+                  <v-list-item-title
+                    class="text-body text-left blue-black text-decoration-underline"
+                  >
+                    <a
+                      style="color: inherit"
+                      @click="scrollDown(support.title)"
+                    >{{ support.title }}</a>
                   </v-list-item-title>
-                  <v-list-item-subtitle class="text-left">
+                  <p class="text-left" style="color: gray">
                     {{ support.description }}
-                  </v-list-item-subtitle>
+                  </p>
                 </v-list-item-content>
               </v-list-item>
             </v-list>
-            <v-snackbar v-model="showAlert" rounded top :color="type" :timeout="5000">
-              <span class="ma-2" v-text="message" />
-              <v-btn
-                icon
-                x-small
-                class="float-right"
-                color="white"
-                @click="showAlert = false"
+            <div style="border-left: 6px solid grey; background-color: #f5f5f5; border-right: 6px solid grey; background-color: #f5f5f5">
+              <p class="pl-5 text-body text-center font-italic blue-black">
+                You can also
+                <a
+                  class="text-decoration-underline"
+                  @click="$vuetify.goTo(donateLocation, options)"
+                >donate!</a>
+              </p>
+            </div>
+          </v-col>
+          <v-col cols="12" sm="12" md="6" class="pl-5">
+            <p class="pl-4 text-body">
+              If you are a non-tech person:
+            </p>
+            <v-list class="transparent">
+              <v-list-item
+                v-for="(support, i) in support_ways_non_tech"
+                :key="i"
               >
-                <v-icon v-text="mdiCloseCircleOutline" />
-              </v-btn>
-            </v-snackbar>
-            <v-form ref="form" v-model="valid" class="mx-auto col-sm-10 col-md-8">
+                <v-list-item-content>
+                  <v-list-item-title
+                    class="text-body text-left blue-black text-decoration-underline"
+                  >
+                    <a
+                      style="color: inherit"
+                      @click="scrollDown(support.title)"
+                    >{{ support.title }}</a>
+                  </v-list-item-title>
+                  <p class="text-left" style="color: gray">
+                    {{ support.description }}
+                  </p>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-col>
+          <v-snackbar
+            v-model="showAlert"
+            rounded
+            top
+            :color="type"
+            :timeout="5000"
+          >
+            <span class="ma-2" v-text="message" />
+            <v-btn
+              icon
+              x-small
+              class="float-right"
+              color="white"
+              @click="showAlert = false"
+            >
+              <v-icon v-text="mdiCloseCircleOutline" />
+            </v-btn>
+          </v-snackbar>
+        </v-row>
+        <v-row>
+          <v-col
+            v-if="!$vuetify.breakpoint.smAndDown"
+            cols="12"
+            md="3"
+            class="recruit-illustration transparent"
+          />
+          <v-col cols="12" md="9">
+            <v-form
+              ref="form"
+              v-model="valid"
+              class="mx-auto col-sm-10 col-md-8"
+            >
               <h3 class="display-1 text-center my-5">
                 Contact Us
               </h3>
@@ -149,31 +198,27 @@
       </v-container>
     </div>
     <div id="donate-section" class="my-md-10">
-      <v-row>
+      <v-row justify="center" align="center">
         <v-col
           v-if="!$vuetify.breakpoint.smAndDown"
           md="4"
           class="donate-illustration"
           style="min-height: 500px"
         />
-        <v-col md="7">
-          <h1 class="display-2 text-center mb-5">
+        <v-col id="donate" md="7">
+          <h3 class="display-1 text-center my-5">
             Support A2SV by Donating
-          </h1>
+          </h3>
           <p class="text-body mt-10 px-5">
-            Your donation will help us to open offices for training in Africa.
-            We are also covering basic needs of the trainees. Your donation will
-            also help us to cover assistant lecturer's expenses. Just give us
-            damn money. Just donate it.
-            <br>
-            Your donation will help us to open offices for training in Africa.
-            We are also covering basic needs of the trainees. Your donation will
-            also help us to cover assistant lecturer's expenses. Just give us
-            damn money. Just donate it.
+            A2SV covers basic needs of students on their training such as
+            Internet expenses, meals, etc. Also, our teachers are full-time
+            teachers with no payment from the programme. In order to keep A2SV
+            going strong, your donation will help a lot.
           </p>
           <v-btn
-            color="primary mx-auto d-block my-0 pt-2"
-            style="width: 7em"
+            x-large
+            color="primary mx-auto d-block my-0 pt-3"
+            style="width: 8em"
             target="_blank"
             href="https://donorbox.org/a2sv-donation"
           >
@@ -188,6 +233,7 @@
 <script>
 import Banner from "@/components/core/TextOnlyBanner";
 import { mdiCloseCircleOutline } from "@mdi/js";
+import goTo from "vuetify/es5/services/goto";
 
 export default {
   components: {
@@ -211,14 +257,13 @@ export default {
       image_src: "https://i.ibb.co/xMHdzk6/team-hero-3.jpg",
       title_one: "Be part of our journey",
       title_two: "Support us",
-      description:
-        "Are you a recruiter or an engineer working in one of silicon valley companies?"
+      description: "Are you working in top tech companies?"
     },
-    donateLocation: 1800,
-    engineerLocation: 650,
+    donateLocation: "#donate",
+    engineerLocation: "form",
     options: {
       duration: 1000,
-      offset: 100,
+      offset: 50,
       easing: "easeInOutCubic"
     },
     form_type: "",
@@ -245,9 +290,7 @@ export default {
         (v) => !!v || "E-mail is required",
         (v) => /.+@.+\..+/.test(v) || "E-mail must be valid"
       ],
-      waysRules: [
-        (v) => !!v || "Way of helping is required"
-      ],
+      waysRules: [(v) => !!v || "Way of helping is required"],
       experienceRules: [
         (v) => !!v || "Experience is required",
         (v) =>
@@ -257,21 +300,41 @@ export default {
     },
     support_ways: [
       {
-        title: "  Interviews",
+        title: "Internship Interviews",
         description:
-          "Connect our students with your company for internship positions.",
-        button_text: "Contact Us"
+          "If you are a recruiter, you can help us by recruiting our students for your companies internship positions. Otherwise, you can help us by becoming our referrals to your company and helping us get in contact with recruiters."
       },
       {
-        title: "Mentorship",
-        description: "We want experienced people to guide our students.",
-        button_text: "Contact Us"
+        title: "Be a Mentor",
+        description:
+          "You can teach our students and give guidance on their projects. Mentors teach our students about their fields in the tech industry to help them develop the necessary skills to succeed in that field."
       },
       {
-        title: "Q & A",
+        title: "Be a Q&A guest",
         description:
-          "Share your story with us and let's have a fun Q & A session.",
-        button_text: "Request"
+          "In our Q&A sessions, we try to learn about your life and your career journey. We would love to get to know your experiences in the industry as well as in your life."
+      },
+      {
+        title: "Mock interviews",
+        description:
+          "We want our students to get the real experience of an interview before their real interviews. We are looking for engineers working in top companies to conduct mock interviews with our students exactly like they would conduct a real interview for their company."
+      }
+    ],
+    support_ways_non_tech: [
+      {
+        title: "Donate",
+        description:
+          "A2SV covers basic needs of students on their training such as Internet expenses, meals, etc. Also, our teachers are full-time teachers with no payment from the programme. In order to keep A2SV going strong, your donation will help a lot."
+      },
+      {
+        title: "Be a Q&A guest",
+        description:
+          "In our Q&A sessions we try to learn about your life and your career journey. We would love to get to know your experiences in the industry as well as in your life."
+      },
+      {
+        title: "Project Advisory",
+        description:
+          "Even if you are not working in the tech world, you can still provide us guidance in our projects related to your field. We believe getting advice from the people working in the field we are trying to tackle is very important therefore feel free to reach out."
       }
     ]
   }),
@@ -282,10 +345,7 @@ export default {
     sendForm() {
       this.loading = true;
       this.$axios
-        .post(
-          "/api/support",
-          this.contact
-        )
+        .post("/api/support", this.contact)
         .then(
           () => {
             this.showAlert = true;
@@ -302,6 +362,28 @@ export default {
         .finally(() => {
           this.loading = false;
         });
+    },
+    scrollDown(title) {
+      if (title === "Donate") {
+        // return window.location.href = "https://donorbox.org/a2sv-donation";
+        return goTo(this.donateLocation, this.options);
+      }
+      let supportWay = "";
+      switch (title) {
+        case "Internship Interviews":
+          supportWay = "Recruit";
+          break;
+        case "Be a Q&A guest":
+          supportWay = "Q&A";
+          break;
+        case "Be a Mentor":
+          supportWay = "Mentor";
+          break;
+        default:
+          supportWay = "Other";
+      }
+      this.contact.way = supportWay;
+      return goTo(this.engineerLocation, this.options);
     }
   }
 };

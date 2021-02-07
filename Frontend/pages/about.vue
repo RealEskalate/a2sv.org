@@ -1,47 +1,79 @@
 <template>
   <div>
+    <!-- section 1 -->
     <banner
       img="aboutus.svg"
       img-width="15rem"
-      title="About A2SV"
-      description="Africa to silicon valley company is founded to help african students to find internship in big companies."
+      title="A2SV - Africa to Silicon Valley"
+      description="Empowering Young Software Engineers for Tech-Driven Change in Africa "
     />
     <v-container class="text-center mt-12 px-12">
-      <div>
+      <div v-if="getAboutUs">
+        <!-- section 2 -->
         <h1 class="my-12 sub-titles">
-          What We Do
+          {{ getAboutUs.whatWeDo.title }}
         </h1>
-        <p
-          v-if="getAboutUs"
-          class="text-body"
-          v-html="getAboutUs.whatWeDo.content"
-        />
-        <p class="text-body">
-          For more information, please watch the following video, take
-          a look at the
-          <a href="https://www.youtube.com/watch?v=qy00E8FklC0&list=PL2y7PkGshr4srXSNlU7YW3QIbR_xsVCiF" target="_blank">
-            lecture videos</a>.
-        </p>
+        <p class="text-body" v-html="getAboutUs.whatWeDo.content" />
       </div>
       <!-- wistia video player -->
       <v-lazy
         v-model="isActive"
         :options="{
-          threshold: .5
+          threshold: 0.5,
         }"
         min-height="200"
         transition="fade-transition"
       >
         <div>
-          <script type="application/javascript" src="https://fast.wistia.com/embed/medias/f8996d67s9.jsonp" async />
-          <script type="application/javascript" src="https://fast.wistia.com/assets/external/E-v1.js" async />
-          <div class="wistia_responsive_padding my-10" style="padding:56.25% 0 0 0;position:relative;">
-            <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-              <div class="wistia_embed wistia_async_f8996d67s9 videoFoam=true" style="height:100%;position:relative;width:100%">
-                <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+          <script
+            type="application/javascript"
+            src="https://fast.wistia.com/embed/medias/f8996d67s9.jsonp"
+            async
+          />
+          <script
+            type="application/javascript"
+            src="https://fast.wistia.com/assets/external/E-v1.js"
+            async
+          />
+          <div
+            class="wistia_responsive_padding my-10"
+            style="padding: 56.25% 0 0 0; position: relative"
+          >
+            <div
+              class="wistia_responsive_wrapper"
+              style="
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 100%;
+              "
+            >
+              <div
+                class="wistia_embed wistia_async_f8996d67s9 videoFoam=true"
+                style="height: 100%; position: relative; width: 100%"
+              >
+                <div
+                  class="wistia_swatch"
+                  style="
+                    height: 100%;
+                    left: 0;
+                    opacity: 0;
+                    overflow: hidden;
+                    position: absolute;
+                    top: 0;
+                    transition: opacity 200ms;
+                    width: 100%;
+                  "
+                >
                   <img
                     src="https://fast.wistia.com/embed/medias/f8996d67s9/swatch"
-                    style="filter:blur(5px);height:100%;object-fit:contain;width:100%;"
+                    style="
+                      filter: blur(5px);
+                      height: 100%;
+                      object-fit: contain;
+                      width: 100%;
+                    "
                     alt=""
                     aria-hidden="true"
                     onload="this.parentNode.style.opacity=1;"
@@ -53,15 +85,25 @@
         </div>
       </v-lazy>
     </v-container>
+    <!-- Section 3 -->
+    <v-container class="text-center mt-12 px-12">
+      <div v-if="getAboutUs">
+        <h1 class="my-12 sub-titles">
+          {{ getAboutUs.problemWeSolve.title }}
+        </h1>
+        <p class="text-body" v-html="getAboutUs.problemWeSolve.content" />
+      </div>
+    </v-container>
     <v-container class="py-12 text-center">
-      <h1 class="my-12 sub-titles">
-        How We Do It
-      </h1>
-      <p
-        v-if="getAboutUs"
-        class="text-body text-center"
-        v-html="getAboutUs.howWeDoIt.content"
-      />
+      <div v-if="getAboutUs">
+        <h1 class="my-12 sub-titles">
+          {{ getAboutUs.howWeDoIt.title }}
+        </h1>
+        <p
+          class="text-body text-center"
+          v-html="getAboutUs.howWeDoIt.content"
+        />
+      </div>
 
       <v-timeline class="my-12">
         <v-timeline-item
@@ -71,18 +113,24 @@
           color="primary lighten-1"
           small
         >
-          <div class="py-4" :class="`text-${ evenPhase(i) ? 'right' : 'left' }`" style="height: 100%">
-            <h1 v-if="getLearnPaths" style="font-size: x-large !important;" class="overline font-weight-light primary--text">
+          <div
+            class="py-4"
+            :class="`text-${evenPhase(i) ? 'right' : 'left'}`"
+            style="height: 100%"
+          >
+            <h1 v-if="getLearnPaths" class="font-weight-light primary--text">
               {{ phase.title }}
             </h1>
-            <div class="d-flex" :class="`justify-${ evenPhase(i) ? 'end' : 'start' }`">
-              <div style="width: 135px;">
-                <v-divider class="primary lighten-5 my-4" style="border-width: 1.5px; border-radius: 2px" />
-              </div>
-            </div>
+            <v-divider
+              class="primary lighten-5 my-4"
+              :class="`float-${evenPhase(i) ? 'right' : 'left'}`"
+              style="width: 75px; border-width: 2px; border-radius: 2px"
+            />
+            <br>
+            <br>
             <p
               class="text-body font-weight-light"
-              :class="`text-${ evenPhase(i) ? 'right' : 'left' }`"
+              :class="`text-${evenPhase(i) ? 'right' : 'left'}`"
               v-html="phase.subtitle"
             />
           </div>
@@ -108,8 +156,16 @@
                 style="height: auto; background-color: transparent"
               >
                 <v-card class="shadow-sm" shaped>
-                  <v-img style="opacity: 0.85" class="align-end" height="150px" :src="getFullPath(item.image)" />
-                  <v-card-title class="primary--text pb-2" v-text="item.title" />
+                  <v-img
+                    style="opacity: 0.85"
+                    class="align-end"
+                    height="150px"
+                    :src="getFullPath(item.image)"
+                  />
+                  <v-card-title
+                    class="primary--text pb-2"
+                    v-text="item.title"
+                  />
                   <v-card-text v-text="item.content" />
                 </v-card>
               </slide>
@@ -126,15 +182,21 @@
 
     <v-container v-if="getAboutUs" class="my-12 py-12 text-center">
       <h1 class="my-12 sub-titles">
-        Our Goal
+        {{ getAboutUs.whatWeHopeToAchieve.title }}
       </h1>
-      <p class="text-body" v-html="getAboutUs.whatWeHopeToAchieve.content" />
+      <v-list-item v-for="(goal, i) in getAboutUs.whatWeHopeToAchieve.content2" :key="i">
+        <v-list-item-content>
+          <v-list-item-title class="text-body">
+            {{ goal }}
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
     </v-container>
   </div>
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import { mapGetters } from "vuex";
 import { mdiArrowDownBoldHexagonOutline } from "@mdi/js";
 import Banner from "@/components/core/TextOnlyBanner";
 import Partners from "@/components/core/Partners";
@@ -166,7 +228,7 @@ export default {
     getFullPath(publicId) {
       return `https://res.cloudinary.com/eskalate/image/upload/q_auto:best,f_auto,w_600${publicId}`;
     },
-    evenPhase(phase){
+    evenPhase(phase) {
       const num = parseInt(phase.split("-")[1]);
       return num % 2 === 0;
     }
@@ -175,7 +237,6 @@ export default {
 </script>
 
 <style lang="sass">
-
 </style>
 <style scoped>
 .sub-titles {

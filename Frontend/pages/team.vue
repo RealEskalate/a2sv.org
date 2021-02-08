@@ -4,8 +4,7 @@
       img="team.svg"
       img-width="15rem"
       title="Meet our team"
-      description="Gathered from different parts of the world, from different domain of expertise for the same goal.
-                    Our goal is to optimize the circumstances for humankind to shine the true potential of the world."
+      description="Gathered from different parts of the world, from different domains for the same goal: Optimize the circumstances for humankind to shine the true potential of the world."
     />
     <div v-if="getTeamValues" class="mb-12 pa-8 py-md-12" style="background: linear-gradient(90deg, #2C3A8B 0,#286DF7 100%);">
       <h1 class="display-2 mb-6 mb-md-12 text-center" style="color: #ffffff !important;">

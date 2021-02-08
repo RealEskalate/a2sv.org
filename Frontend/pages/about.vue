@@ -4,7 +4,7 @@
     <banner
       img="aboutus.svg"
       img-width="15rem"
-      title="A2SV - Africa to Silicon Valley"
+      title="Africa to Silicon Valley"
       description="Empowering Young Software Engineers for Tech-Driven Change in Africa "
     />
     <v-container class="text-center mt-12 px-12">
@@ -184,13 +184,27 @@
       <h1 class="my-12 sub-titles">
         {{ getAboutUs.whatWeHopeToAchieve.title }}
       </h1>
-      <v-list-item v-for="(goal, i) in getAboutUs.whatWeHopeToAchieve.content2" :key="i">
-        <v-list-item-content>
-          <v-list-item-title class="text-body">
-            {{ goal }}
-          </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
+      <v-row>
+        <v-col
+          v-for="(title, i) in Object.keys(getAboutUs.whatWeHopeToAchieve.content2)"
+          :key="i"
+          cols="12"
+          sm="12"
+          md="4"
+          class="pa-5"
+        >
+          <v-card class="pa-5 shadow-lg d-flex align-center justify-center" color="transparent" height="100%">
+            <div>
+              <h1 class="overline text-center mb-5 mt-3" style="font-size: xx-large !important;">
+                {{ title }}
+              </h1>
+              <p class="text-center caption" style="font-size: larger !important;">
+                {{ getAboutUs.whatWeHopeToAchieve.content2[title] }}
+              </p>
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>

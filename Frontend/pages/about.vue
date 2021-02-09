@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- section 1 -->
     <banner
       img="aboutus.svg"
       img-width="15rem"
@@ -9,7 +8,6 @@
     />
     <v-container class="text-center mt-12 px-12">
       <div v-if="getAboutUs">
-        <!-- section 2 -->
         <h1 class="my-12 sub-titles">
           {{ getAboutUs.whatWeDo.title }}
         </h1>
@@ -26,17 +24,15 @@
       >
         <div>
           <script
-            type="application/javascript"
-            src="https://fast.wistia.com/embed/medias/f8996d67s9.jsonp"
+            src="https://fast.wistia.com/embed/medias/5ds01h3w7i.jsonp"
             async
           />
           <script
-            type="application/javascript"
             src="https://fast.wistia.com/assets/external/E-v1.js"
             async
           />
           <div
-            class="wistia_responsive_padding my-10"
+            class="wistia_responsive_padding"
             style="padding: 56.25% 0 0 0; position: relative"
           >
             <div
@@ -50,7 +46,7 @@
               "
             >
               <div
-                class="wistia_embed wistia_async_f8996d67s9 videoFoam=true"
+                class="wistia_embed wistia_async_5ds01h3w7i videoFoam=true"
                 style="height: 100%; position: relative; width: 100%"
               >
                 <div
@@ -67,7 +63,7 @@
                   "
                 >
                   <img
-                    src="https://fast.wistia.com/embed/medias/f8996d67s9/swatch"
+                    src="https://fast.wistia.com/embed/medias/5ds01h3w7i/swatch"
                     style="
                       filter: blur(5px);
                       height: 100%;
@@ -85,7 +81,6 @@
         </div>
       </v-lazy>
     </v-container>
-    <!-- Section 3 -->
     <v-container class="text-center mt-12 px-12">
       <div v-if="getAboutUs">
         <h1 class="my-12 sub-titles">
@@ -186,19 +181,31 @@
       </h1>
       <v-row>
         <v-col
-          v-for="(title, i) in Object.keys(getAboutUs.whatWeHopeToAchieve.content2)"
+          v-for="(title, i) in Object.keys(
+            getAboutUs.whatWeHopeToAchieve.content2
+          )"
           :key="i"
           cols="12"
           sm="12"
           md="4"
           class="pa-5"
         >
-          <v-card class="pa-5 shadow-lg d-flex align-center justify-center" color="transparent" height="100%">
+          <v-card
+            class="pa-5 shadow-lg d-flex align-center justify-center"
+            color="transparent"
+            height="100%"
+          >
             <div>
-              <h1 class="overline text-center mb-5 mt-3" style="font-size: xx-large !important;">
+              <h1
+                class="overline text-center mb-5 mt-3"
+                style="font-size: xx-large !important"
+              >
                 {{ title }}
               </h1>
-              <p class="text-center caption" style="font-size: larger !important;">
+              <p
+                class="text-center caption"
+                style="font-size: larger !important"
+              >
                 {{ getAboutUs.whatWeHopeToAchieve.content2[title] }}
               </p>
             </div>

@@ -248,8 +248,19 @@
     <div class="grey lighten-4 text-center">
       <partners />
     </div>
-    <v-container>
-      <v-row justify="center" class="my-12">
+    <v-container class="my-12">
+      <v-col sm="12" justify="center" align="center">
+      <a  href="https://www.undp.org/content/undp/en/home/sustainable-development-goals.html" target="_blank">
+        <v-img
+            sm="6"
+            max-height="38em"
+            max-width="38em"
+            src="un/un_logo.png"
+        />
+      </a>
+      </v-col>
+
+      <v-row justify="center" class="my-5">
         <v-col
           v-for="(u, ind) in un"
           :key="ind"
@@ -305,10 +316,6 @@ export default {
       },
       un:[
         {
-          img:"0.png",
-          link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals.html"
-        },
-        {
           img:"1.png",
           link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals/goal-3-good-health-and-well-being.html"
         },
@@ -323,6 +330,10 @@ export default {
         {
           img:"4.png",
           link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals/goal-9-industry-innovation-and-infrastructure.html"
+        },
+        {
+          img:"5.png",
+          link: "https://www.undp.org/content/undp/en/home/sustainable-development-goals/goal-10-reduced-inequalities.html"
         },
         {
           img:"6.png",

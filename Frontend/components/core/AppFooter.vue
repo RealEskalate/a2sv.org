@@ -32,13 +32,6 @@
         </v-tooltip>
       </v-card-text>
 
-      <v-container>
-        <v-card-text class="px-12 mx-auto">
-          <!--TODO Update content for the footer-->
-          Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-        </v-card-text>
-      </v-container>
-
       <v-divider />
 
       <v-card-text>
@@ -49,7 +42,7 @@
 </template>
 
 <script>
-import { mdiLinkedin, mdiInstagram, mdiEmailOutline } from "@mdi/js";
+import { mdiLinkedin, mdiInstagram, mdiTwitter, mdiEmailOutline } from "@mdi/js";
 export default {
   data() {
     return {
@@ -63,6 +56,11 @@ export default {
           name: "Instagram",
           icon: mdiInstagram,
           url: "http://www.instagram.com/a2sv_org"
+        },
+        {
+          name: "Twitter",
+          icon: mdiTwitter,
+          url: "https://twitter.com/a2sv_org"
         },
         {
           name: "Email",

@@ -11,7 +11,7 @@
         <h1 class="my-12 sub-titles">
           {{ getAboutUs.whatWeDo.title }}
         </h1>
-        <p class="text-body" v-html="getAboutUs.whatWeDo.content" />
+        <p class="text-body text-center" v-html="getAboutUs.whatWeDo.content" />
       </div>
       <!-- wistia video player -->
       <v-lazy
@@ -86,7 +86,7 @@
         <h1 class="my-12 sub-titles">
           {{ getAboutUs.problemWeSolve.title }}
         </h1>
-        <p class="text-body" v-html="getAboutUs.problemWeSolve.content" />
+        <p class="text-body text-center" v-html="getAboutUs.problemWeSolve.content" />
       </div>
     </v-container>
     <v-container class="py-12 text-center">
@@ -170,10 +170,10 @@
         </v-timeline-item>
       </v-timeline>
     </v-container>
-    <Card 
+    <Card
       v-if="getAboutUs"
       :main-title="getAboutUs.whatWeHopeToAchieve.title"
-      :content="getAboutUs.whatWeHopeToAchieve.content2" 
+      :content="getAboutUs.whatWeHopeToAchieve.content2"
     />
     <section class="grey lighten-4 text-center" style="margin-top: -48px">
       <Partners :message="message" />
@@ -198,7 +198,7 @@ export default {
     return {
       isActive: false,
       mdiArrowDownBoldHexagonOutline,
-      message: "Companies We Had Interviews With."
+      message: "Current Interview Partners"
     };
   },
   head: {
@@ -232,10 +232,8 @@ export default {
   line-height: 60px;
   font-weight: 800;
   font-family: Lato, Nunito, sans-serif;
-  text-align: center;
 }
 .text-body {
-  text-align: center;
   font-weight: 300;
 }
 </style>

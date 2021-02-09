@@ -15,7 +15,7 @@
             class="text-bold py-3 mb-md-12"
             style="font-weight: 900; color: #edededed !important; line-height: 70px"
           >
-            <span class="px-4 pb-3 shadow-sm" style="background-color: #286EF7BB; border-radius: 10px">Talent</span> is Everywhere.
+            <span class="px-4 pb-3 shadow-sm" style="background-color: #286EF7BB; border-radius: 10px">Talent</span> is everywhere
           </h2>
           <h2
             :class="{
@@ -26,7 +26,7 @@
             class="text-bold py-3 mt-md-12 mb-12"
             style="font-weight: 900; color: #edededed !important;; line-height: 70px"
           >
-            <span class="px-4 pb-3 shadow-sm" style="background-color: #09ADEFBB; border-radius: 10px">Opportunity</span> is Not.
+            <span class="px-4 pb-3 shadow-sm" style="background-color: #09ADEFBB; border-radius: 10px">Opportunity</span> is not
           </h2>
           <!-- <p class="mt-7 text-center hero-subtitle pa-5">
             African students deserves equal opportunities as the rest of the

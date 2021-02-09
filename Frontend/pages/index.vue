@@ -254,15 +254,15 @@
       <partners />
     </div>
     <v-container class="my-12">
-      <v-col sm="12" justify="center" align="center">
-      <a  href="https://www.undp.org/content/undp/en/home/sustainable-development-goals.html" target="_blank">
-        <v-img
+      <v-col sm="12" justify="center" align="center" class="my-10">
+        <a href="https://www.undp.org/content/undp/en/home/sustainable-development-goals.html" target="_blank">
+          <v-img
             sm="6"
             max-height="38em"
             max-width="38em"
             src="un/un_logo.png"
-        />
-      </a>
+          />
+        </a>
       </v-col>
 
       <v-row justify="center" class="my-5">
@@ -274,7 +274,7 @@
           sm="4"
           cols="6"
         >
-          <v-card class="mx-auto shadow-sm unbox" :href="u.link" target="_blank">
+          <v-card class="mx-auto shadow-lg box" :href="u.link" target="_blank">
             <v-img
               aspect-ratio="1"
               :src="'/un/' + u.img"
@@ -291,7 +291,7 @@
           <v-btn
             x-large
             color="primary"
-            class="text-capitalize mt-10 mb-5 box"
+            class="text-capitalize mt-10 mb-5 box shadow-lg"
             to="/support"
           >
             Support us
@@ -439,7 +439,7 @@ a {
   font-size: large;
 }
 .box:hover {
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1) !important;
 }
 .unbox:hover{
   box-shadow: rgb(75, 69, 69) 0px 5px 15px !important;

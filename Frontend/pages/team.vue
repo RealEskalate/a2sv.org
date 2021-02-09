@@ -6,32 +6,11 @@
       title="Meet our team"
       description="Gathered from different parts of the world, from different domains for the same goal: Optimize the circumstances for humankind to shine the true potential of the world."
     />
-    <div v-if="getTeamValues" class="mb-12 pa-8 py-md-12" style="background: linear-gradient(90deg, #2C3A8B 0,#286DF7 100%);">
-      <h1 class="display-2 mb-6 mb-md-12 text-center" style="color: #ffffff !important;">
-        Our Virtues
-      </h1>
-      <v-row>
-        <v-col
-          v-for="(title, i) in Object.keys(getTeamValues.Virtues)"
-          :key="i"
-          cols="12"
-          sm="6"
-          md="3"
-          class="pa-5"
-        >
-          <v-card class="pa-5 shadow-lg d-flex align-center justify-center white--text" color="transparent" height="100%">
-            <div>
-              <h1 class="overline text-center mb-5 mt-3" style="font-size: xx-large !important;">
-                {{ title }}
-              </h1>
-              <p class="text-center caption" style="font-size: larger !important;">
-                {{ getTeamValues.Virtues[title] }}
-              </p>
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-    </div>
+    <Card 
+      v-if="getTeamValues"
+      :main-title="mainTitle"
+      :content="getTeamValues.Virtues" 
+    />
     <v-container class="grey lighten-5">
       <v-row no-gutters>
         <template v-if="!getTeamMembers">
@@ -99,11 +78,16 @@
 <script>
 import { mapGetters } from "vuex";
 import Banner from "@/components/core/TextOnlyBanner";
+import Card from "@/components/core/Card";
 
 export default {
   components: {
-    Banner
+    Banner,
+    Card
   },
+  data: () => ({
+    mainTitle: "Our Virtues"
+  }),
   head: {
     title: "Team"
   },

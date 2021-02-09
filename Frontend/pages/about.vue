@@ -170,49 +170,14 @@
         </v-timeline-item>
       </v-timeline>
     </v-container>
-
-    <section class="grey lighten-4 mt-10 text-center">
+    <Card 
+      v-if="getAboutUs"
+      :main-title="getAboutUs.whatWeHopeToAchieve.title"
+      :content="getAboutUs.whatWeHopeToAchieve.content2" 
+    />
+    <section class="grey lighten-4 text-center" style="margin-top: -48px">
       <Partners :message="message" />
     </section>
-
-    <v-container v-if="getAboutUs" class="my-12 py-12 text-center">
-      <h1 class="my-12 sub-titles">
-        {{ getAboutUs.whatWeHopeToAchieve.title }}
-      </h1>
-      <v-row>
-        <v-col
-          v-for="(title, i) in Object.keys(
-            getAboutUs.whatWeHopeToAchieve.content2
-          )"
-          :key="i"
-          cols="12"
-          sm="12"
-          md="4"
-          class="pa-5"
-        >
-          <v-card
-            class="pa-5 shadow-lg d-flex align-center justify-center"
-            color="transparent"
-            height="100%"
-          >
-            <div>
-              <h1
-                class="overline text-center mb-5 mt-3"
-                style="font-size: xx-large !important"
-              >
-                {{ title }}
-              </h1>
-              <p
-                class="text-center caption"
-                style="font-size: larger !important"
-              >
-                {{ getAboutUs.whatWeHopeToAchieve.content2[title] }}
-              </p>
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
   </div>
 </template>
 
@@ -221,11 +186,13 @@ import { mapGetters } from "vuex";
 import { mdiArrowDownBoldHexagonOutline } from "@mdi/js";
 import Banner from "@/components/core/TextOnlyBanner";
 import Partners from "@/components/core/Partners";
+import Card from "@/components/core/Card";
 
 export default {
   components: {
     Banner,
-    Partners
+    Partners,
+    Card
   },
   data() {
     return {

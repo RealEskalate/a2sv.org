@@ -1,13 +1,13 @@
 <template>
   <v-container>
-    <h1 class="display-1 my-10" style="color: #2b2a35; font-weight: 600">
+    <h1 class="my-10 display-2">
       {{ message }}
     </h1>
-    <v-card class="pb-12" color="transparent" flat>
+    <v-card class="pb-10" color="transparent" flat>
       <v-row>
         <v-col v-for="(company, i) in companies" :key="i" cols="12" :sm="12 / companies.length" class="d-flex">
           <v-card
-            class="d-flex mx-auto"
+            class="d-flex mx-auto my-3"
             color="transparent"
             flat
           >
@@ -22,7 +22,7 @@
                   <v-img
                     contain
                     height="100px"
-                    width="200px"
+                    width="230px"
                     :src="company.logo"
                   />
                 </a>
@@ -80,3 +80,10 @@ export default {
   }
 };
 </script>
+
+<style>
+.display-2 {
+  font-weight: 800 !important;
+  font-size: 3em !important;
+}
+</style>

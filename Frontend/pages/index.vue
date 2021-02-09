@@ -177,13 +177,18 @@
             />
             <v-row class="text-center" style="font-size: small">
               <v-col cols="4">
-                Google Intern Acceptance Rate
+                Average Acceptance Rate
               </v-col>
               <v-col cols="4">
-                Our Acceptance Rate: March, 2020
+                A2SV 2020 Acceptance Rate
               </v-col>
               <v-col cols="4">
-                Our Acceptance Rate: February, 2020
+                A2SV 2021 Acceptance Rate
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" class="text-center">
+                Google Internship Interviews Acceptance Rate Comparison
               </v-col>
             </v-row>
           </div>

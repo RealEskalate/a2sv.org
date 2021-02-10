@@ -1,56 +1,9 @@
 <template>
   <div>
     <div style="height: 90vh" class="video-container">
-      <div
-        class="d-flex align-center justify-center my-3"
-        style="height: 100%; z-index: 2; position: relative"
-      >
-        <div class="pa-8 text-center col-md-10 animate-pop-in">
-          <h2
-            :class="{
-              paused,
-              'display-4': $vuetify.breakpoint.mdAndUp,
-              'display-2': $vuetify.breakpoint.smAndDown,
-            }"
-            class="text-bold py-3 mb-md-12"
-            style="font-weight: 900; color: #edededed !important; line-height: 70px"
-          >
-            <span class="px-4 pb-3 shadow-sm" style="background-color: #286EF7BB; border-radius: 10px">Talent</span> is everywhere
-          </h2>
-          <h2
-            :class="{
-              paused,
-              'display-4': $vuetify.breakpoint.mdAndUp,
-              'display-2': $vuetify.breakpoint.smAndDown,
-            }"
-            class="text-bold py-3 mt-md-12 mb-12"
-            style="font-weight: 900; color: #edededed !important;; line-height: 70px"
-          >
-            <span class="px-4 pb-3 shadow-sm" style="background-color: #09ADEFBB; border-radius: 10px">Opportunity</span> is not
-          </h2>
-          <!-- <p class="mt-7 text-center hero-subtitle pa-5">
-            African students deserves equal opportunities as the rest of the
-            world.
-          </p> -->
-          <v-btn
-            outlined
-            dark
-            large
-            fab
-            absolute
-            bottom
-            right
-            left
-            class="mb-12 d-block mx-auto pa-3 pt-4"
-            @click="$vuetify.goTo(target, options)"
-          >
-            <v-img src="/down-arrow.gif" />
-          </v-btn>
-        </div>
-      </div>
       <video id="videoBG" autoplay loop muted>
         <source
-          src="https://res.cloudinary.com/linktender/video/upload/v1612519602/a2sv_homepage_fdziq5.mp4"
+          src="https://res.cloudinary.com/dfc7snpy5/video/upload/v1612959070/a2sv_promo_vtce0j.mp4"
         >
       </video>
       <div class="overlay" style="height: 94vh" />

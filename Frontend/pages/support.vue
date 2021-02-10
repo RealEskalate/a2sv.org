@@ -47,60 +47,70 @@
         </h1>
         <v-row class="mt-10">
           <v-col cols="12" sm="12" md="6" class="pl-5">
-            <p class="pl-4 text-body">
-              If you are working in a top tech company:
+            <p class="pl-4 text-body text-center">
+              If you are working in a tech company
             </p>
-            <v-list class="transparent">
-              <v-list-item v-for="(support, i) in support_ways" :key="i">
-                <v-list-item-content>
-                  <v-list-item-title
-                    class="text-body text-left blue-black text-decoration-underline"
-                  >
-                    <a
-                      style="color: inherit"
-                      @click="scrollDown(support.title)"
-                    >{{ support.title }}</a>
-                  </v-list-item-title>
-                  <p class="text-left" style="color: gray">
-                    {{ support.description }}
-                  </p>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-            <div style="border-left: 6px solid grey; background-color: #f5f5f5; border-right: 6px solid grey; background-color: #f5f5f5">
-              <p class="pl-5 text-body text-center font-italic blue-black">
-                You can also
-                <a
-                  class="text-decoration-underline"
-                  @click="$vuetify.goTo(donateLocation, options)"
-                >donate!</a>
-              </p>
-            </div>
+            <carousel-3d
+              v-if="support_ways"
+              style="min-height: 100px"
+              :border="0"
+              :perspective="25"
+              :inverse-scaling="300"
+              :space="220"
+              autoplay
+              :display="3"
+              :autoplay-timeout="5000"
+              width="300"
+            >
+              <slide
+                v-for="(support, i) in support_ways"
+                :key="i"
+                class="overflow-visible"
+                :index="i"
+                style="height: auto; background-color: transparent"
+              >
+                <v-card class="shadow" shaped>
+                  <v-card-title
+                    class="primary--text pb-2"
+                    v-text="support.title"
+                  />
+                  <v-card-text v-text="support.description" />
+                </v-card>
+              </slide>
+            </carousel-3d>
           </v-col>
           <v-col cols="12" sm="12" md="6" class="pl-5">
-            <p class="pl-4 text-body">
-              If you are a non-tech person:
+            <p class="pl-4 text-body text-center">
+              If you are not a tech person
             </p>
-            <v-list class="transparent">
-              <v-list-item
+            <carousel-3d
+              v-if="support_ways"
+              style="min-height: 100px"
+              :border="0"
+              :perspective="25"
+              :inverse-scaling="300"
+              :space="220"
+              autoplay
+              :display="3"
+              :autoplay-timeout="5000"
+              width="300"
+            >
+              <slide
                 v-for="(support, i) in support_ways_non_tech"
                 :key="i"
+                class="overflow-visible"
+                :index="i"
+                style="height: auto; background-color: transparent"
               >
-                <v-list-item-content>
-                  <v-list-item-title
-                    class="text-body text-left blue-black text-decoration-underline"
-                  >
-                    <a
-                      style="color: inherit"
-                      @click="scrollDown(support.title)"
-                    >{{ support.title }}</a>
-                  </v-list-item-title>
-                  <p class="text-left" style="color: gray">
-                    {{ support.description }}
-                  </p>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
+                <v-card class="shadow" shaped>
+                  <v-card-title
+                    class="primary--text pb-2"
+                    v-text="support.title"
+                  />
+                  <v-card-text v-text="support.description" />
+                </v-card>
+              </slide>
+            </carousel-3d>
           </v-col>
           <v-snackbar
             v-model="showAlert"
@@ -134,9 +144,9 @@
               v-model="valid"
               class="mx-auto col-sm-10 col-md-8"
             >
-              <h3 class="display-1 text-center my-5">
+              <h1 class="display-2 text-center my-8">
                 Contact Us
-              </h3>
+              </h1>
               <v-text-field
                 v-model="contact.name"
                 filled
@@ -205,11 +215,11 @@
           class="donate-illustration"
           style="min-height: 500px"
         />
-        <v-col id="donate" md="7">
-          <h3 class="display-1 text-center my-5">
+        <v-col id="donate" md="7" class="text-center">
+          <h1 class="display-2 text-center">
             Support A2SV by Donating
-          </h3>
-          <p class="text-body mt-10 px-5">
+          </h1>
+          <p class="text-body text-center mt-10 px-5">
             A2SV covers basic needs of students on their training such as
             Internet expenses, meals, etc. Also, our teachers are full-time
             teachers with no payment from the programme. In order to keep A2SV
@@ -217,8 +227,9 @@
           </p>
           <v-btn
             x-large
-            color="primary mx-auto d-block my-0 pt-3"
-            style="width: 8em"
+            color="primary"
+            class="mx-auto my-5"
+            width="8em"
             target="_blank"
             href="https://donorbox.org/a2sv-donation"
           >

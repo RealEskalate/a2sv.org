@@ -23,14 +23,6 @@
         transition="fade-transition"
       >
         <div>
-          <script
-            src="https://fast.wistia.com/embed/medias/5ds01h3w7i.jsonp"
-            async
-          />
-          <script
-            src="https://fast.wistia.com/assets/external/E-v1.js"
-            async
-          />
           <div
             class="wistia_responsive_padding"
             style="padding: 56.25% 0 0 0; position: relative"
@@ -208,6 +200,13 @@ export default {
     ...mapGetters("resources", ["getLearnPaths"]),
     ...mapGetters("resources", ["getAboutUs"])
   },
+  watch : {
+    isActive(val) {
+      if (val) {
+        this.loadWistiaScripts();
+      }
+    }
+  },
   created() {
     this.$store.dispatch("resources/setLearningPaths");
     this.$store.dispatch("resources/setAboutUs");
@@ -219,6 +218,19 @@ export default {
     evenPhase(phase) {
       const num = parseInt(phase.split("-")[1]);
       return num % 2 === 0;
+    },
+    loadWistiaScripts() {
+      if (!process.browser)
+        return;
+      [
+        "https://fast.wistia.com/assets/external/E-v1.js",
+        "https://fast.wistia.com/embed/medias/5ds01h3w7i.jsonp"
+      ].forEach(link => {
+        const script = document.createElement("script");
+        script.src = link;
+        document.body.appendChild(script);
+      });
+
     }
   }
 };

@@ -8,137 +8,70 @@
       :description="banner.description"
       :class="{ 'pb-5': $vuetify.breakpoint.smAndDown }"
     >
-      <div class="mx-auto" style="width: min-content">
-        <transition duration="200">
-          <v-btn-toggle
-            borderless
-            light
-            active-class="toggle-active"
-            class="header-button animate-pop-in"
-          >
-            <v-btn
-              color="primary"
-              :x-large="$vuetify.breakpoint.smAndUp"
-              :small="$vuetify.breakpoint.smAndDown"
-              style="color: whitesmoke"
-              @click="$vuetify.goTo(engineerLocation, options)"
-            >
-              Yes, I am
-            </v-btn>
-            <v-btn
-              class="mx-auto"
-              color="orange"
-              dark
-              :x-large="$vuetify.breakpoint.smAndUp"
-              :small="$vuetify.breakpoint.smAndDown"
-              style="color: whitesmoke"
-              @click="$vuetify.goTo(donateLocation, options)"
-            >
-              No, but I wanna help
-            </v-btn>
-          </v-btn-toggle>
-        </transition>
-      </div>
+      <!--      <div class="mx-auto" style="width: min-content">-->
+      <!--        <transition duration="200">-->
+      <!--          <v-btn-toggle-->
+      <!--            borderless-->
+      <!--            light-->
+      <!--            active-class="toggle-active"-->
+      <!--            class="header-button animate-pop-in"-->
+      <!--          >-->
+      <!--            <v-btn-->
+      <!--              color="primary"-->
+      <!--              :x-large="$vuetify.breakpoint.smAndUp"-->
+      <!--              :small="$vuetify.breakpoint.smAndDown"-->
+      <!--              style="color: whitesmoke"-->
+      <!--              @click="$vuetify.goTo(engineerLocation, options)"-->
+      <!--            >-->
+      <!--              Yes, I am-->
+      <!--            </v-btn>-->
+      <!--            <v-btn-->
+      <!--              class="mx-auto"-->
+      <!--              color="orange"-->
+      <!--              dark-->
+      <!--              :x-large="$vuetify.breakpoint.smAndUp"-->
+      <!--              :small="$vuetify.breakpoint.smAndDown"-->
+      <!--              style="color: whitesmoke"-->
+      <!--              @click="$vuetify.goTo(donateLocation, options)"-->
+      <!--            >-->
+      <!--              No, but I wanna help-->
+      <!--            </v-btn>-->
+      <!--          </v-btn-toggle>-->
+      <!--        </transition>-->
+      <!--      </div>-->
     </banner>
     <div class="my-10">
-      <v-container>
+      <v-container class="pt-12">
         <h1 class="display-2 text-center">
-          How can I help?
+          How Can You Help?
         </h1>
-        <v-row class="mt-10">
-          <v-col cols="12" sm="12" md="6" class="pl-5">
-            <p class="pl-4 text-body text-center">
-              If you are working in a tech company
-            </p>
-            <carousel-3d
-              v-if="support_ways"
-              style="min-height: 100px"
-              :border="0"
-              :perspective="25"
-              :inverse-scaling="300"
-              :space="220"
-              autoplay
-              :display="3"
-              :autoplay-timeout="5000"
-              width="300"
-            >
-              <slide
-                v-for="(support, i) in support_ways"
-                :key="i"
-                class="overflow-visible"
-                :index="i"
-                style="height: auto; background-color: transparent"
-              >
-                <v-card class="shadow" shaped>
-                  <v-card-title
-                    class="primary--text pb-2"
-                    v-text="support.title"
-                  />
-                  <v-card-text v-text="support.description" />
-                </v-card>
-              </slide>
-            </carousel-3d>
+
+        <v-row v-for="(way, i) in support_ways" :key="'way' + i" class="my-10 mt-12">
+          <v-col v-for="j in 2" :key="'col' + j" cols="12" md="6" class="pa-md-10 d-flex align-center">
+            <div v-if="(i + j) % 2">
+              <h1 class="my-5 display-2 text-md-left text-center">
+                {{ way.title }}
+              </h1>
+              <p style="font-size: 1.5rem" class="text-md-left text-center">
+                {{ way.description }}
+              </p>
+            </div>
+            <cld-image
+              v-else
+              style="border: 2px solid #d4e5ff; border-radius: 200px"
+              loading="lazy"
+              crop="scale"
+              responsive
+              fetch-format="auto"
+              quality="auto"
+              class="z-index-1 overflow-hidden"
+              :public-id="way.img"
+            />
           </v-col>
-          <v-col cols="12" sm="12" md="6" class="pl-5">
-            <p class="pl-4 text-body text-center">
-              If you are not a tech person
-            </p>
-            <carousel-3d
-              v-if="support_ways"
-              style="min-height: 100px"
-              :border="0"
-              :perspective="25"
-              :inverse-scaling="300"
-              :space="220"
-              autoplay
-              :display="3"
-              :autoplay-timeout="5000"
-              width="300"
-            >
-              <slide
-                v-for="(support, i) in support_ways_non_tech"
-                :key="i"
-                class="overflow-visible"
-                :index="i"
-                style="height: auto; background-color: transparent"
-              >
-                <v-card class="shadow" shaped>
-                  <v-card-title
-                    class="primary--text pb-2"
-                    v-text="support.title"
-                  />
-                  <v-card-text v-text="support.description" />
-                </v-card>
-              </slide>
-            </carousel-3d>
-          </v-col>
-          <v-snackbar
-            v-model="showAlert"
-            rounded
-            top
-            :color="type"
-            :timeout="5000"
-          >
-            <span class="ma-2" v-text="message" />
-            <v-btn
-              icon
-              x-small
-              class="float-right"
-              color="white"
-              @click="showAlert = false"
-            >
-              <v-icon v-text="mdiCloseCircleOutline" />
-            </v-btn>
-          </v-snackbar>
         </v-row>
+
         <v-row>
-          <v-col
-            v-if="!$vuetify.breakpoint.smAndDown"
-            cols="12"
-            md="3"
-            class="recruit-illustration transparent"
-          />
-          <v-col cols="12" md="9">
+          <v-col cols="12" md="8">
             <v-form
               ref="form"
               v-model="valid"
@@ -204,6 +137,12 @@
               </div>
             </v-form>
           </v-col>
+          <v-col
+            v-if="!$vuetify.breakpoint.smAndDown"
+            cols="12"
+            md="4"
+            class="recruit-illustration transparent"
+          />
         </v-row>
       </v-container>
     </div>
@@ -215,7 +154,7 @@
           class="donate-illustration"
           style="min-height: 500px"
         />
-        <v-col id="donate" md="7" class="text-center">
+        <v-col id="donate" md="8" class="text-center">
           <h1 class="display-2 text-center">
             Support A2SV by Donating
           </h1>
@@ -311,41 +250,42 @@ export default {
     },
     support_ways: [
       {
-        title: "Internship Interviews",
+        title: "Interviews",
         description:
-          "If you are a recruiter, you can help us by recruiting our students for your companies internship positions. Otherwise, you can help us by becoming our referrals to your company and helping us get in contact with recruiters."
+          "If you are a recruiter, you can help us by recruiting our students for your companies internship positions. Otherwise, you can help us by becoming our referrals to your company and helping us get in contact with recruiters.",
+        img: "a2sv/group"
       },
       {
-        title: "Be a Mentor",
+        title: "Mentorship",
         description:
-          "You can teach our students and give guidance on their projects. Mentors teach our students about their fields in the tech industry to help them develop the necessary skills to succeed in that field."
+          "You can teach our students and give guidance on their projects. Mentors teach our students about their fields in the tech industry to help them develop the necessary skills to succeed in that field.",
+        img: "a2sv/group"
       },
       {
-        title: "Be a Q&A guest",
+        title: "Q&A Guest",
         description:
-          "In our Q&A sessions, we try to learn about your life and your career journey. We would love to get to know your experiences in the industry as well as in your life."
+          "In our Q&A sessions, we try to learn about your life and your career journey. We would love to get to know your experiences in the industry as well as in your life.",
+        img: "a2sv/group"
       },
-      {
-        title: "Mock interviews",
-        description:
-          "We want our students to get the real experience of an interview before their real interviews. We are looking for engineers working in top companies to conduct mock interviews with our students exactly like they would conduct a real interview for their company."
-      }
-    ],
-    support_ways_non_tech: [
       {
         title: "Donate",
         description:
-          "A2SV covers basic needs of students on their training such as Internet expenses, meals, etc. Also, our teachers are full-time teachers with no payment from the programme. In order to keep A2SV going strong, your donation will help a lot."
-      },
+          "A2SV covers basic needs of students on their training such as Internet expenses, meals, etc. Also, our teachers are full-time teachers with no payment from the programme. In order to keep A2SV going strong, your donation will help a lot.",
+        img: "a2sv/group"
+      }
+    ],
+    support_ways_remaining: [
       {
-        title: "Be a Q&A guest",
+        title: "Mock interviews",
         description:
-          "In our Q&A sessions we try to learn about your life and your career journey. We would love to get to know your experiences in the industry as well as in your life."
+          "We want our students to get the real experience of an interview before their real interviews. We are looking for engineers working in top companies to conduct mock interviews with our students exactly like they would conduct a real interview for their company.",
+        img: "a2sv/group"
       },
       {
         title: "Project Advisory",
         description:
-          "Even if you are not working in the tech world, you can still provide us guidance in our projects related to your field. We believe getting advice from the people working in the field we are trying to tackle is very important therefore feel free to reach out."
+          "Even if you are not working in the tech world, you can still provide us guidance in our projects related to your field. We believe getting advice from the people working in the field we are trying to tackle is very important therefore feel free to reach out.",
+        img: "a2sv/group"
       }
     ]
   }),

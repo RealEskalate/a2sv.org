@@ -273,20 +273,6 @@ export default {
           "A2SV covers basic needs of students on their training such as Internet expenses, meals, etc. Also, our teachers are full-time teachers with no payment from the programme. In order to keep A2SV going strong, your donation will help a lot.",
         img: "a2sv/group"
       }
-    ],
-    support_ways_remaining: [
-      {
-        title: "Mock interviews",
-        description:
-          "We want our students to get the real experience of an interview before their real interviews. We are looking for engineers working in top companies to conduct mock interviews with our students exactly like they would conduct a real interview for their company.",
-        img: "a2sv/group"
-      },
-      {
-        title: "Project Advisory",
-        description:
-          "Even if you are not working in the tech world, you can still provide us guidance in our projects related to your field. We believe getting advice from the people working in the field we are trying to tackle is very important therefore feel free to reach out.",
-        img: "a2sv/group"
-      }
     ]
   }),
   head: {

@@ -13,7 +13,7 @@
         v-if="$device.isMobile"
         @click="drawer = !drawer"
       >
-        <v-icon color="primary" large>
+        <v-icon :color="transparent ? 'white' : 'primary'" large>
           {{ mdiMenu }}
         </v-icon>
       </v-app-bar-nav-icon>
@@ -128,7 +128,7 @@ export default {
     const self = this;
     if (process.browser)
       window.addEventListener("scroll", function() {
-        self.transparent = self.onHome && window.pageYOffset < 150;
+        self.transparent = self.onHome && window.pageYOffset < 75;
       });
   }
 };

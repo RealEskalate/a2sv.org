@@ -1,12 +1,12 @@
 <template>
   <div>
     <div style="height: 90vh" class="video-container">
-      <video id="videoBG" autoplay loop muted>
+      <video id="videoBG" style="margin-top: -75px" autoplay loop muted>
         <source
           src="https://res.cloudinary.com/dfc7snpy5/video/upload/v1612959070/a2sv_promo_vtce0j.mp4"
         >
       </video>
-      <div class="overlay" style="height: 94vh" />
+      <div class="overlay" style="height: 94vh; margin-top: -75px" />
     </div>
     <v-container
       class="my-md-12 py-10 pa-5 pa-sm-10 text-center text-md-left"
@@ -302,7 +302,7 @@ export default {
         {
           color: "pink",
           year: "November 2019",
-          desc: "A2SV Started"
+          desc: "A2SV was founded in Ethiopia."
         },
         {
           color: "success",
@@ -478,6 +478,6 @@ a {
   height: 93.5vh;
   position: absolute;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.15);
 }
 </style>

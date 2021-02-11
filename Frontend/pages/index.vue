@@ -15,10 +15,10 @@
       <v-row class="my-md-10 mt-12">
         <v-col cols="12" md="6" class="my-md-12 d-flex align-center">
           <div>
-            <h1 class="my-5 display-2">
+            <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
               360° training
             </h1>
-            <p style="font-size: 1.5rem">
+            <p class="text-body">
               A2SV upskills students with a 360° software engineering program
               that focuses on problem solving and personal development.
             </p>
@@ -39,7 +39,7 @@
       </v-row>
       <v-row class="mt-12">
         <v-col cols="10" md="8" class="mx-auto text-center">
-          <h1 class="my-5 display-2">
+          <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
             Internship Interviews
           </h1>
           <p class="text-body text-center">
@@ -63,7 +63,7 @@
         </v-col>
         <v-col cols="12" md="6" class="my-md-12 d-flex align-center">
           <div>
-            <h1 class="my-5 display-2">
+            <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
               Social Projects
             </h1>
             <p class="text-body text-center text-md-left">
@@ -74,9 +74,9 @@
         </v-col>
       </v-row>
 
-      <v-row class="my-10">
+      <v-row class="mt-10">
         <v-col cols="10" md="8" class="mx-auto text-center">
-          <h1 class="my-5 display-2">
+          <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
             Internships
           </h1>
           <p class="text-body text-center">
@@ -87,7 +87,7 @@
         </v-col>
       </v-row>
 
-      <h1 class="display-2 mt-12 text-center">
+      <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp,'text-center':$vuetify.breakpoint.smAndUp}">
         Achievements
       </h1>
       <v-row class="px-md-10 my-12">
@@ -101,13 +101,14 @@
             >
               <template #opposite>
                 <span
+                  :class="{'timeline-year-txt': $vuetify.breakpoint.smAndDown}"
                   class="headline font-weight-bold"
                   v-text="year.year"
                 />
               </template>
               <div class="py-3">
                 <div>
-                  <p class="timeline-txt" v-html="year.desc">
+                  <p :class="{'text-medium': $vuetify.breakpoint.smAndDown, 'timeline-txt': $vuetify.breakpoint.mdAndUp}" v-html="year.desc">
                     {{ year.desc }}
                   </p>
                 </div>
@@ -147,7 +148,7 @@
           </div>
         </v-col>
       </v-row>
-      <h1 class="display-2 mt-12 text-center">
+      <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp, 'text-center':$vuetify.breakpoint.smAndUp}">
         Impact Stories
       </h1>
       <v-row class="pa-lg-12 pa-sm-5">
@@ -206,7 +207,7 @@
     <div class="grey lighten-4 text-center">
       <partners />
     </div>
-    <v-container class="my-12">
+    <v-container class="my-5">
       <v-col sm="12" justify="center" align="center" class="my-10">
         <a href="https://www.undp.org/content/undp/en/home/sustainable-development-goals.html" target="_blank">
           <v-img
@@ -218,7 +219,7 @@
         </a>
       </v-col>
 
-      <v-row justify="center" class="my-5">
+      <v-row justify="center">
         <v-col
           v-for="(u, ind) in un"
           :key="ind"
@@ -238,7 +239,7 @@
 
       <v-row class="my-md-10 py-12">
         <div class="col-md-11 ml-auto mr-auto text-center">
-          <h1 class="display-2 blackish text-center" style="line-height: 70px">
+          <h1 style="line-height:1.2" :class="{'subheading': $vuetify.breakpoint.smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp}" class="my-5">
             Do you want to contribute to the digital transformation of Africa?
           </h1>
           <v-btn
@@ -390,6 +391,9 @@ a {
 }
 .timeline-txt {
   font-size: large;
+}
+.timeline-year-txt {
+  font-size: medium  !important;
 }
 .box:hover {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1) !important;

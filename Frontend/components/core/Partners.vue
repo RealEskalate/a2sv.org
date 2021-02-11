@@ -1,13 +1,13 @@
 <template>
   <v-container>
-    <h1 class="my-10 display-2">
+    <h1 style="line-height:1.2" :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-10':$vuetify.breakpoint.smAndUp}">
       {{ message }}
     </h1>
     <v-card class="pb-10" color="transparent" flat>
       <v-row>
         <v-col v-for="(company, i) in companies" :key="i" cols="12" :sm="12 / companies.length" class="d-flex">
           <v-card
-            class="d-flex mx-auto my-3"
+            class="d-flex mx-auto"
             color="transparent"
             flat
           >

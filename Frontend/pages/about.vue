@@ -8,7 +8,7 @@
     />
     <v-container class="text-center mt-12 px-12">
       <div v-if="getAboutUs">
-        <h1 class="my-12 sub-titles">
+        <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
           {{ getAboutUs.whatWeDo.title }}
         </h1>
         <p class="text-body text-center" v-html="getAboutUs.whatWeDo.content" />
@@ -73,9 +73,9 @@
         </div>
       </v-lazy>
     </v-container>
-    <v-container class="text-center mt-12 px-12">
+    <v-container :class="{'mt-12': $vuetify.breakpoint.mdAndUp }" class="text-center  px-12">
       <div v-if="getAboutUs">
-        <h1 class="my-12 sub-titles">
+        <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
           {{ getAboutUs.problemWeSolve.title }}
         </h1>
         <p class="text-body text-center" v-html="getAboutUs.problemWeSolve.content" />
@@ -83,7 +83,7 @@
     </v-container>
     <v-container class="py-12 text-center">
       <div v-if="getAboutUs">
-        <h1 class="my-12 sub-titles">
+        <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
           {{ getAboutUs.howWeDoIt.title }}
         </h1>
         <p
@@ -92,7 +92,7 @@
         />
       </div>
 
-      <v-timeline class="my-12">
+      <v-timeline class="my-12 hidden-sm-and-down">
         <v-timeline-item
           v-for="(phase, i) in getLearnPaths"
           :key="i"
@@ -105,7 +105,7 @@
             :class="`text-${evenPhase(i) ? 'right' : 'left'}`"
             style="height: 100%"
           >
-            <h1 v-if="getLearnPaths" class="font-weight-light primary--text">
+            <h1 v-if="getLearnPaths"  class="font-weight-light primary--text">
               {{ phase.title }}
             </h1>
             <v-divider
@@ -161,13 +161,63 @@
           </template>
         </v-timeline-item>
       </v-timeline>
+
+      <div class="hidden-md-and-up mx-2" >
+      <v-row v-for="(phase, i) in getLearnPaths"
+          :key="i">
+          <h1 v-if="getLearnPaths"  class="mx-4 font-weight-light primary--text">
+            {{ phase.title }}
+          </h1>
+          <p
+              class="text-body mx-4 font-weight-light"
+              v-html="phase.subtitle"
+            />
+        <template >
+            <carousel-3d
+              v-if="phase.list"
+              style="min-height: 400px"
+              :border="0"
+              :perspective="20"
+              :inverse-scaling="300"
+              :space="300"
+              autoplay
+              :display="3"
+              :autoplay-timeout="5000"
+              width="250"
+            >
+              <slide
+                v-for="(item, j) in phase.list"
+                :key="j"
+                class="overflow-visible"
+                :index="j"
+                style="height: auto; background-color: transparent"
+              >
+                <v-card class="shadow-sm" shaped>
+                  <v-img
+                    style="opacity: 0.85"
+                    class="align-end"
+                    height="150px"
+                    :src="getFullPath(item.image)"
+                  />
+                  <v-card-title
+                    class="primary--text pb-2"
+                    v-text="item.title"
+                  />
+                  <v-card-text v-text="item.content" />
+                </v-card>
+              </slide>
+            </carousel-3d>
+            <v-img v-else src="illustrations/aboutus.svg" />
+          </template>
+      </v-row>
+      </div>
     </v-container>
     <Card
       v-if="getAboutUs"
       :main-title="getAboutUs.whatWeHopeToAchieve.title"
       :content="getAboutUs.whatWeHopeToAchieve.content2"
     />
-    <section class="grey lighten-4 text-center" style="margin-top: -48px">
+    <section :class="{'pt-10': $vuetify.breakpoint. smAndDown}" class="grey lighten-4 text-center" style="margin-top: -48px">
       <Partners :message="message" />
     </section>
   </div>
@@ -239,12 +289,7 @@ export default {
 <style lang="sass">
 </style>
 <style scoped>
-.sub-titles {
-  font-size: 60px;
-  line-height: 60px;
-  font-weight: 800;
-  font-family: Lato, Nunito, sans-serif;
-}
+
 .text-body {
   font-weight: 300;
 }

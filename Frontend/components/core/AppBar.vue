@@ -4,13 +4,16 @@
       app
       height="75"
       elevate-on-scroll
-      class="px-md-8 shadow"
+      :color="transparent ? 'transparent' : 'white'"
+      :flat="transparent"
+      class="px-md-8"
+      :class="transparent ? '' : 'shadow'"
     >
       <v-app-bar-nav-icon
         v-if="$device.isMobile"
         @click="drawer = !drawer"
       >
-        <v-icon color="primary" large>
+        <v-icon :color="transparent ? 'white' : 'primary'" large>
           {{ mdiMenu }}
         </v-icon>
       </v-app-bar-nav-icon>
@@ -21,23 +24,23 @@
           min-width="80px"
           alt="A2SV LOGO"
           class="logo"
-          src="/logos/logo-blue.png"
+          :src="`/logos/logo-${transparent? 'white' : 'blue'}.png`"
         />
       </div>
       <v-tabs
         v-if="$device.isDesktopOrTablet"
         centered
         optional
-        color="primary"
+        :color="transparent ? 'white' : 'primary'"
       >
-        <v-tab v-for="link in links" :key="link.to" :to="link.to" class="blue-black">
+        <v-tab v-for="link in links" :key="link.to" :to="link.to" :class="transparent ? 'white--text' : 'blue-black'">
           {{ link.title }}
         </v-tab>
       </v-tabs>
 
       <v-spacer />
 
-      <v-btn v-if="!onSupportUs" depressed color="primary" class="pa-5 text-capitalize" to="/support">
+      <v-btn v-if="!onSupportUs" depressed :color="transparent ? 'white' : 'primary'" class="pa-5 text-capitalize" to="/support">
         <v-icon v-if="$device.isMobile">
           {{ mdiGift }}
         </v-icon>
@@ -88,6 +91,7 @@ export default {
       drawer: false,
       mdiMenu,
       mdiGift,
+      onHome: false,
       onSupportUs: false,
       links: [
         {
@@ -105,16 +109,27 @@ export default {
           title: "About Us",
           to: "/about"
         }
-      ]
+      ],
+      transparent: false
     };
   },
   watch: {
     $route(to) {
       this.onSupportUs = to.path === "/support";
+      this.onHome = to.path === "/";
+      this.transparent = process.browser && this.onHome && window.pageYOffset < 75;
     }
   },
   created() {
     this.onSupportUs = this.$route.path === "/support";
+    this.onHome = this.$route.path === "/";
+    this.transparent = process.browser && this.onHome && window.pageYOffset < 75;
+
+    const self = this;
+    if (process.browser)
+      window.addEventListener("scroll", function() {
+        self.transparent = self.onHome && window.pageYOffset < 75;
+      });
   }
 };
 </script>

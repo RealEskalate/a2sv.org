@@ -81,7 +81,7 @@
         <p class="text-body text-center" v-html="getAboutUs.problemWeSolve.content" />
       </div>
     </v-container>
-    <v-container class="py-12 text-center">
+    <v-container :class="{'invisible': $vuetify.breakpoint.smAndDown }" class="py-12 text-center">
       <div v-if="getAboutUs">
         <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
           {{ getAboutUs.howWeDoIt.title }}
@@ -162,7 +162,7 @@
         </v-timeline-item>
       </v-timeline>
     </v-container>
-    <v-container class="hidden-md-and-up py-12 text-center px-4">
+    <v-container :class="{'invisible': $vuetify.breakpoint.mdAndUp }" class="py-12 text-center px-4">
       <div v-if="getAboutUs">
         <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
           {{ getAboutUs.howWeDoIt.title }}
@@ -304,6 +304,6 @@ export default {
   font-weight: 300;
 }
 .invisible{
-  visibility: hidden;
+  content-visibility:hidden;
 }
 </style>

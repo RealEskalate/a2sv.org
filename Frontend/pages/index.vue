@@ -222,7 +222,7 @@
     <div class="grey lighten-4 text-center">
       <partners />
     </div>
-    <v-container class="my-5">
+    <v-container class="my-12 py-12">
       <v-col sm="12" justify="center" align="center" class="my-10">
         <a href="https://www.undp.org/content/undp/en/home/sustainable-development-goals.html" target="_blank">
           <v-img
@@ -234,7 +234,7 @@
         </a>
       </v-col>
 
-      <v-row justify="center">
+      <v-row class="mb-12" justify="center">
         <v-col
           v-for="(u, ind) in un"
           :key="ind"
@@ -243,7 +243,7 @@
           sm="4"
           cols="6"
         >
-          <v-card class="mx-auto shadow-lg box" :href="u.link" target="_blank">
+          <v-card class="mx-auto shadow box" :href="u.link" target="_blank">
             <v-img
               aspect-ratio="1"
               :src="'/un/' + u.img"
@@ -260,7 +260,7 @@
           <v-btn
             x-large
             color="primary"
-            class="text-capitalize mt-10 mb-5 box shadow-lg"
+            class="text-capitalize mt-10 mb-5 box shadow"
             to="/support"
           >
             Support us

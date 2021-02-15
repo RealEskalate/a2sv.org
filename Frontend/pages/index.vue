@@ -1,21 +1,29 @@
 <template>
   <div>
-    <v-responsive :aspect-ratio="16/9" style="margin-top: -75px">
+    <v-responsive ref="videoContainer" :aspect-ratio="16/9" max-height="100vh" style="margin-top: -75px">
       <video id="videoBG" autoplay loop muted>
         <source
           src="https://res.cloudinary.com/dfc7snpy5/video/upload/v1612959070/a2sv_promo_vtce0j.mp4"
         >
       </video>
+      <v-btn
+        outlined
+        dark
+        large
+        fab
+        absolute
+        bottom
+        right
+        left
+        class="mb-12 d-none d-lg-block mx-auto pa-3 pt-4"
+        @click="$vuetify.goTo(target, options)"
+      >
+        <v-img src="/down-arrow.gif" />
+      </v-btn>
     </v-responsive>
-    <!--    <div style="height: 90vh" class="video-container">-->
-    <!--      <video id="videoBG" style="margin-top: -75px" autoplay loop muted>-->
-    <!--        <source-->
-    <!--          src="https://res.cloudinary.com/dfc7snpy5/video/upload/v1612959070/a2sv_promo_vtce0j.mp4"-->
-    <!--        >-->
-    <!--      </video>-->
-    <!--      <div class="overlay" style="height: 94vh; margin-top: -75px" />-->
-    <!--    </div>-->
+
     <v-container
+      id="first-container"
       class="my-md-12 py-10 pa-5 pa-sm-10 text-center text-md-left"
       style="background: url('bg.svg')"
     >
@@ -273,11 +281,11 @@ export default {
   },
   data() {
     return {
-      target: 1300,
       paused: false,
+      target: "#first-container",
       options: {
-        duration: 2000,
-        offset: 200,
+        duration: 1000,
+        offset: 0,
         easing: "easeInOutCubic"
       },
       un:[
@@ -309,29 +317,29 @@ export default {
       years: [
         {
           color: "pink",
-          year: "November 2019",
+          year: "November, 2019",
           desc: "A2SV was founded in Ethiopia."
         },
         {
           color: "success",
-          year: "February 2020",
+          year: "February, 2020",
           desc: "We formed partnerships with Google, Palantir and Coinbase."
         },
         {
           color: "accent",
-          year: "March 2020",
+          year: "March, 2020",
           desc:
             "27% of our first group of trainees passed Google internship interviews after 3 months of training."
         },
         {
           color: "warning",
-          year: "October 2020 ",
+          year: "October, 2020",
           desc:
             "Our students created a COVID-19 tracking app -<a href= 'https://tracksym.app/' target='_blank'> TrackSym </a> - for Ethiopia’s Ministry of Health."
         },
         {
           color: "primary",
-          year: "December 2020 ",
+          year: "January, 2021",
           desc:
             "54% of our first group of trainees passed Google internship interviews after the second round of training."
         }

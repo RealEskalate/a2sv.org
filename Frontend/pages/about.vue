@@ -161,8 +161,18 @@
           </template>
         </v-timeline-item>
       </v-timeline>
+    </v-container>
+    <v-container class="hidden-md-and-up py-12 text-center px-4">
+      <div v-if="getAboutUs">
+        <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
+          {{ getAboutUs.howWeDoIt.title }}
+        </h1>
+        <p
+          class="text-body text-center"
+          v-html="getAboutUs.howWeDoIt.content"
+        />
+      </div>
 
-      <div class="hidden-md-and-up mx-2" >
       <v-row v-for="(phase, i) in getLearnPaths"
           :key="i">
           <h1 v-if="getLearnPaths"  class="mx-4 font-weight-light primary--text">
@@ -210,7 +220,7 @@
             <v-img v-else src="illustrations/aboutus.svg" />
           </template>
       </v-row>
-      </div>
+
     </v-container>
     <Card
       v-if="getAboutUs"
@@ -292,5 +302,8 @@ export default {
 
 .text-body {
   font-weight: 300;
+}
+.invisible{
+  visibility: hidden;
 }
 </style>

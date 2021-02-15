@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mdiLinkedin, mdiInstagram, mdiTwitter, mdiEmailOutline } from "@mdi/js";
+import { mdiLinkedin, mdiInstagram, mdiTwitter, mdiEmailOutline,mdiYoutube } from "@mdi/js";
 export default {
   data() {
     return {
@@ -66,6 +66,11 @@ export default {
           name: "Email",
           icon: mdiEmailOutline,
           url: "mailto:contact@eskalate.io"
+        },
+        {
+          name: "YouTube",
+          icon: mdiYoutube,
+          url: "https://www.youtube.com/channel/UC70kFW6mFFGEjsucvNZk6-A"
         }
       ],
       organization: [{ title: "About", link: "/about" }],

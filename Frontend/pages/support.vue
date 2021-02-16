@@ -41,18 +41,18 @@
       <!--      </div>-->
     </banner>
     <div class="my-10">
-      <v-container :class="{'pt-4': $vuetify.breakpoint. smAndDown, 'pt-12': $vuetify.breakpoint.mdAndUp}">
-        <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp}" class="text-center">
+      <v-container class="pt-12">
+        <h1 class="display-2 text-center">
           How Can You Help?
         </h1>
 
-        <v-row v-for="(way, i) in support_ways" :key="'way' + i" :class="{'my-10 mt-12': $vuetify.breakpoint.mdAndUp}">
-          <v-col v-for="j in 2" :key="'col' + j" cols="12" md="6" class="pa-md-10 d-flex align-center">
+        <v-row v-for="(way, i) in support_ways" :key="'way' + i" class="my-10 mt-12">
+          <v-col v-for="j in 2" :key="'col' + j" cols="12" md="6" class="pa-md-5 d-flex align-center">
             <div v-if="(i + j) % 2">
-              <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp}" class="my-5 text-md-left text-center">
+              <h1 class="my-5 display-2 text-md-left text-center">
                 {{ way.title }}
               </h1>
-              <p class="text-md-left text-center text-body">
+              <p style="font-size: 1.5rem" class="text-md-left text-center">
                 {{ way.description }}
               </p>
             </div>
@@ -70,6 +70,10 @@
           </v-col>
         </v-row>
 
+
+        <h1 class="display-2 text-center my-8 pt-12">
+          Contact Us
+        </h1>
         <v-row>
           <v-col cols="12" md="8">
             <v-form
@@ -77,9 +81,6 @@
               v-model="valid"
               class="mx-auto col-sm-10 col-md-8"
             >
-              <h1 :class="{'subheading my-3': $vuetify.breakpoint. smAndDown, 'display-2 my-8': $vuetify.breakpoint.mdAndUp}" class="text-center">
-                Contact Us
-              </h1>
               <v-text-field
                 v-model="contact.name"
                 filled
@@ -147,17 +148,17 @@
       </v-container>
     </div>
     <div id="donate-section" class="my-md-10">
+      <h1 class="display-2 text-center my-8 pt-12">
+        Support A2SV by Donating
+      </h1>
       <v-row justify="center" align="center">
         <v-col
           v-if="!$vuetify.breakpoint.smAndDown"
           md="4"
           class="donate-illustration"
-          style="min-height: 500px"
+          style="min-height: 300px"
         />
         <v-col id="donate" md="8" class="text-center">
-          <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp}" class="text-center">
-            Support A2SV by Donating
-          </h1>
           <p class="text-body text-center mt-10 px-5">
             A2SV covers basic needs of students on their training such as
             Internet expenses, meals, etc. Also, our teachers are full-time
@@ -349,11 +350,11 @@ export default {
   border-radius: 8px !important;
 }
 .recruit-illustration {
-  background: url('/illustrations/character-15.svg') no-repeat;
-  background-size: 300px 600px;
+  background: url('/illustrations/character-15.svg') no-repeat center;
+  background-size: contain;
 }
 .donate-illustration {
-  background: url('/illustrations/donate.svg') no-repeat;
-  background-size: 450px 500px;
+  background: url('/illustrations/donate.svg') no-repeat center;
+  background-size: contain;
 }
 </style>

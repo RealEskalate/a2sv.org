@@ -5,12 +5,15 @@
       img-width="15rem"
       title="Meet our team"
       description="Gathered from different parts of the world, from different domains for the same goal: Optimize the circumstances for humankind to shine the true potential of the world."
+      scroll-target="#virtues"
     />
-    <Card 
-      v-if="getTeamValues"
-      :main-title="mainTitle"
-      :content="getTeamValues.Virtues" 
-    />
+    <div id="virtues">
+      <Card
+        v-if="getTeamValues"
+        :main-title="mainTitle"
+        :content="getTeamValues.Virtues"
+      />
+    </div>
     <v-container class="grey lighten-5">
       <v-row no-gutters>
         <template v-if="!getTeamMembers">
@@ -133,21 +136,6 @@ export default {
 .frame:hover .details {
   transform: translate(-50%, -50%) rotateY(0deg);
   opacity: 1;
-}
-::-webkit-scrollbar {
-  width: 3px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-  background: #5668c6;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #5668c6;
-}
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 .virtues p {
   font-size: calc(13px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));

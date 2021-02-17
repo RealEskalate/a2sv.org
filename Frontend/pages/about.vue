@@ -4,9 +4,10 @@
       img="aboutus.svg"
       img-width="15rem"
       title="Africa to Silicon Valley"
-      description="Empowering Young Software Engineers for Tech-Driven Change in Africa "
+      description="Empowering young software engineers for tech-driven change in Africa."
+      scroll-target="#promotional-video"
     />
-    <v-container class="text-center mt-12 px-12">
+    <v-container id="promotional-video" class="text-center mt-12 px-12">
       <div v-if="getAboutUs">
         <h1
           :class="{
@@ -209,14 +210,20 @@
         />
       </div>
 
-      <v-row v-for="(phase, i) in getLearnPaths" :key="i" class="mx-5">
+      <v-row
+        v-for="(phase, i) in getLearnPaths"
+        :key="i"
+        class="mx-5"
+      >
         <v-col class="col-sm-12 text-center">
           <h1 v-if="getLearnPaths" class="mx-4 font-weight-light primary--text">
             {{ phase.title }}
           </h1>
         </v-col>
-
-        <p class="text-body mx-4 font-weight-light" v-html="phase.subtitle" />
+        <p
+          class="text-body mx-4 font-weight-light"
+          v-html="phase.subtitle"
+        />
         <template>
           <carousel-3d
             v-if="phase.list"
@@ -244,7 +251,10 @@
                   height="150px"
                   :src="getFullPath(item.image)"
                 />
-                <v-card-title class="primary--text pb-2" v-text="item.title" />
+                <v-card-title
+                  class="primary--text pb-2"
+                  v-text="item.title"
+                />
                 <v-card-text v-text="item.content" />
               </v-card>
             </slide>
@@ -314,7 +324,7 @@ export default {
       const num = parseInt(phase.split("-")[1]);
       return num % 2 === 0;
     },
-    
+
     loadWistiaScripts() {
       if (!process.browser) return
       ;[
@@ -333,10 +343,7 @@ export default {
 <style lang="sass">
 </style>
 <style scoped>
-.text-body {
-  font-weight: 300;
-}
-.invisible {
-  content-visibility: hidden;
+.invisible{
+  content-visibility:hidden;
 }
 </style>

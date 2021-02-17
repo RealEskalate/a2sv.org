@@ -8,7 +8,13 @@
     />
     <v-container class="text-center mt-12 px-12">
       <div v-if="getAboutUs">
-        <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
+        <h1
+          :class="{
+            subheading: $vuetify.breakpoint.smAndDown,
+            'display-2': $vuetify.breakpoint.mdAndUp,
+            'my-5': $vuetify.breakpoint.smAndUp,
+          }"
+        >
           {{ getAboutUs.whatWeDo.title }}
         </h1>
         <p class="text-body text-center" v-html="getAboutUs.whatWeDo.content" />
@@ -38,7 +44,7 @@
               "
             >
               <div
-                class="wistia_embed wistia_async_5ds01h3w7i videoFoam=true"
+                class="wistia_embed wistia_async_uleugevxj5 videoFoam=true"
                 style="height: 100%; position: relative; width: 100%"
               >
                 <div
@@ -55,7 +61,7 @@
                   "
                 >
                   <img
-                    src="https://fast.wistia.com/embed/medias/5ds01h3w7i/swatch"
+                    src="https://fast.wistia.com/embed/medias/uleugevxj5/swatch"
                     style="
                       filter: blur(5px);
                       height: 100%;
@@ -73,17 +79,38 @@
         </div>
       </v-lazy>
     </v-container>
-    <v-container :class="{'mt-12': $vuetify.breakpoint.mdAndUp }" class="text-center  px-12">
+    <v-container
+      :class="{ 'mt-12': $vuetify.breakpoint.mdAndUp }"
+      class="text-center px-12"
+    >
       <div v-if="getAboutUs">
-        <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
+        <h1
+          :class="{
+            subheading: $vuetify.breakpoint.smAndDown,
+            'display-2': $vuetify.breakpoint.mdAndUp,
+            'my-5': $vuetify.breakpoint.smAndUp,
+          }"
+        >
           {{ getAboutUs.problemWeSolve.title }}
         </h1>
-        <p class="text-body text-center" v-html="getAboutUs.problemWeSolve.content" />
+        <p
+          class="text-body text-center"
+          v-html="getAboutUs.problemWeSolve.content"
+        />
       </div>
     </v-container>
-    <v-container :class="{'invisible': $vuetify.breakpoint.smAndDown }" class="py-12 text-center">
+    <v-container
+      :class="{ invisible: $vuetify.breakpoint.smAndDown }"
+      class="py-12 text-center"
+    >
       <div v-if="getAboutUs">
-        <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
+        <h1
+          :class="{
+            subheading: $vuetify.breakpoint.smAndDown,
+            'display-2': $vuetify.breakpoint.mdAndUp,
+            'my-5': $vuetify.breakpoint.smAndUp,
+          }"
+        >
           {{ getAboutUs.howWeDoIt.title }}
         </h1>
         <p
@@ -105,7 +132,7 @@
             :class="`text-${evenPhase(i) ? 'right' : 'left'}`"
             style="height: 100%"
           >
-            <h1 v-if="getLearnPaths"  class="font-weight-light primary--text">
+            <h1 v-if="getLearnPaths" class="font-weight-light primary--text">
               {{ phase.title }}
             </h1>
             <v-divider
@@ -162,9 +189,18 @@
         </v-timeline-item>
       </v-timeline>
     </v-container>
-    <v-container :class="{'invisible': $vuetify.breakpoint.mdAndUp }" class="py-12 text-center px-4">
+    <v-container
+      :class="{ invisible: $vuetify.breakpoint.mdAndUp }"
+      class="py-12 text-center px-4"
+    >
       <div v-if="getAboutUs">
-        <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
+        <h1
+          :class="{
+            subheading: $vuetify.breakpoint.smAndDown,
+            'display-2': $vuetify.breakpoint.mdAndUp,
+            'my-5': $vuetify.breakpoint.smAndUp,
+          }"
+        >
           {{ getAboutUs.howWeDoIt.title }}
         </h1>
         <p
@@ -173,64 +209,60 @@
         />
       </div>
 
-      <v-row v-for="(phase, i) in getLearnPaths"
-          :key="i" class="mx-5">
-          <v-col class="col-sm-12 text-center">
-          <h1 v-if="getLearnPaths"  class="mx-4 font-weight-light primary--text">
+      <v-row v-for="(phase, i) in getLearnPaths" :key="i" class="mx-5">
+        <v-col class="col-sm-12 text-center">
+          <h1 v-if="getLearnPaths" class="mx-4 font-weight-light primary--text">
             {{ phase.title }}
           </h1>
-          </v-col>
+        </v-col>
 
-          <p
-              class="text-body mx-4 font-weight-light"
-              v-html="phase.subtitle"
-            />
-        <template >
-            <carousel-3d
-              v-if="phase.list"
-              style="min-height: 400px"
-              :border="0"
-              :perspective="20"
-              :inverse-scaling="300"
-              :space="300"
-              autoplay
-              :display="3"
-              :autoplay-timeout="5000"
-              width="250"
+        <p class="text-body mx-4 font-weight-light" v-html="phase.subtitle" />
+        <template>
+          <carousel-3d
+            v-if="phase.list"
+            style="min-height: 400px"
+            :border="0"
+            :perspective="20"
+            :inverse-scaling="300"
+            :space="300"
+            autoplay
+            :display="3"
+            :autoplay-timeout="5000"
+            width="250"
+          >
+            <slide
+              v-for="(item, j) in phase.list"
+              :key="j"
+              class="overflow-visible"
+              :index="j"
+              style="height: auto; background-color: transparent"
             >
-              <slide
-                v-for="(item, j) in phase.list"
-                :key="j"
-                class="overflow-visible"
-                :index="j"
-                style="height: auto; background-color: transparent"
-              >
-                <v-card class="shadow-sm" shaped>
-                  <v-img
-                    style="opacity: 0.85"
-                    class="align-end"
-                    height="150px"
-                    :src="getFullPath(item.image)"
-                  />
-                  <v-card-title
-                    class="primary--text pb-2"
-                    v-text="item.title"
-                  />
-                  <v-card-text v-text="item.content" />
-                </v-card>
-              </slide>
-            </carousel-3d>
-            <v-img v-else src="illustrations/aboutus.svg" />
-          </template>
+              <v-card class="shadow-sm" shaped>
+                <v-img
+                  style="opacity: 0.85"
+                  class="align-end"
+                  height="150px"
+                  :src="getFullPath(item.image)"
+                />
+                <v-card-title class="primary--text pb-2" v-text="item.title" />
+                <v-card-text v-text="item.content" />
+              </v-card>
+            </slide>
+          </carousel-3d>
+          <v-img v-else src="illustrations/aboutus.svg" />
+        </template>
       </v-row>
-
     </v-container>
     <Card
       v-if="getAboutUs"
       :main-title="getAboutUs.whatWeHopeToAchieve.title"
       :content="getAboutUs.whatWeHopeToAchieve.content2"
     />
-    <section :class="{'pt-10': $vuetify.breakpoint. smAndDown}" class="grey lighten-4 text-center" style="margin-top: -48px">
+    <section
+      :class="{ 'pt-10': $vuetify.breakpoint.smAndDown }"
+      class="grey lighten-4 text-center"
+      style="margin-top: -48px"
+    >
       <Partners :message="message" />
     </section>
   </div>
@@ -263,7 +295,7 @@ export default {
     ...mapGetters("resources", ["getLearnPaths"]),
     ...mapGetters("resources", ["getAboutUs"])
   },
-  watch : {
+  watch: {
     isActive(val) {
       if (val) {
         this.loadWistiaScripts();
@@ -282,18 +314,17 @@ export default {
       const num = parseInt(phase.split("-")[1]);
       return num % 2 === 0;
     },
+    
     loadWistiaScripts() {
-      if (!process.browser)
-        return;
-      [
+      if (!process.browser) return
+      ;[
         "https://fast.wistia.com/assets/external/E-v1.js",
         "https://fast.wistia.com/embed/medias/5ds01h3w7i.jsonp"
-      ].forEach(link => {
+      ].forEach((link) => {
         const script = document.createElement("script");
         script.src = link;
         document.body.appendChild(script);
       });
-
     }
   }
 };
@@ -302,11 +333,10 @@ export default {
 <style lang="sass">
 </style>
 <style scoped>
-
 .text-body {
   font-weight: 300;
 }
-.invisible{
-  content-visibility:hidden;
+.invisible {
+  content-visibility: hidden;
 }
 </style>

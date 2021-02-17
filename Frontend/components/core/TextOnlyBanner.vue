@@ -3,13 +3,16 @@
     <v-container>
       <v-row>
         <v-col class="col-lg-6">
-          <h1 :class="{'small-text': $vuetify.breakpoint.smAndDown, 'main-text': $vuetify.breakpoint.mdAndUp}"
-          class="text-center header-title animate-pop-in">
+          <h1
+            :class="{'small-text': $vuetify.breakpoint.smAndDown, 'main-text': $vuetify.breakpoint.mdAndUp}"
+            class="text-center header-title animate-pop-in"
+          >
             {{ title }}
           </h1>
           <p
-          :class="{'small-text-subt': $vuetify.breakpoint.smAndDown, 'header-subtitle':$vuetify.breakpoint.mdAndUp}"
-           class="col-md-9 mx-auto text-center  blue-black animate-pop-in">
+            :class="{'small-text-subt': $vuetify.breakpoint.smAndDown, 'header-subtitle':$vuetify.breakpoint.mdAndUp}"
+            class="col-md-9 mx-auto text-center  blue-black animate-pop-in"
+          >
             {{ description }}
           </p>
           <slot />

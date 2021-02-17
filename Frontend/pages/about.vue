@@ -174,10 +174,13 @@
       </div>
 
       <v-row v-for="(phase, i) in getLearnPaths"
-          :key="i">
+          :key="i" class="mx-5">
+          <v-col class="col-sm-12 text-center">
           <h1 v-if="getLearnPaths"  class="mx-4 font-weight-light primary--text">
             {{ phase.title }}
           </h1>
+          </v-col>
+
           <p
               class="text-body mx-4 font-weight-light"
               v-html="phase.subtitle"

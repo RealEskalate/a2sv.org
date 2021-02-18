@@ -22,8 +22,7 @@ export default {
   buildModules: [
     "@nuxt/typescript-build",
     "@nuxtjs/vuetify",
-    "nuxt-compress",
-    "nuxt-purgecss"
+    "nuxt-compress"
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)

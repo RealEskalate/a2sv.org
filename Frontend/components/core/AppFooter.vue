@@ -48,6 +48,12 @@ export default {
     return {
       socialMediaLinks: [
         {
+          name: "Email",
+          icon: mdiEmailOutline,
+          url: "mailto:contact@a2sv.org",
+          color: "pink"
+        },
+        {
           name: "LinkedIn",
           icon: mdiLinkedin,
           url: "http://www.linkedin.com/company/a2sv",
@@ -64,12 +70,6 @@ export default {
           icon: mdiTwitter,
           url: "https://twitter.com/a2sv_org",
           color: "light-blue"
-        },
-        {
-          name: "Email",
-          icon: mdiEmailOutline,
-          url: "mailto:contact@eskalate.io",
-          color: "primary"
         },
         {
           name: "YouTube",

@@ -34,7 +34,8 @@ export const actions = {
   },
   async setLearningPaths({ commit }) {
     const response = await this.$axios.get("/api/webResource?category=Phases");
-    commit("setLearningPaths", response.data.data[0].body);
+    const result = Object.keys(response.data.data[0].body).map((key) => response.data.data[0].body[key]);
+    commit("setLearningPaths", result);
   },
   async setAboutUs({ commit }) {
     const response = await this.$axios.get("/api/webResource?category=About Us");

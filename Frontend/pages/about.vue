@@ -320,9 +320,8 @@ export default {
     getFullPath(publicId) {
       return `https://res.cloudinary.com/eskalate/image/upload/q_auto:best,f_auto,w_600${publicId}`;
     },
-    evenPhase(phase) {
-      const num = parseInt(phase.split("-")[1]);
-      return num % 2 === 0;
+    evenPhase(index) {
+      return index % 2 === 1;
     },
 
     loadWistiaScripts() {

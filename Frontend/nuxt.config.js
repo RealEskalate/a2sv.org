@@ -1,6 +1,6 @@
-import head from "./config/head";
-import vuetify from "./config/vuetify";
-import purgeCSS from "./plugins/purge-css";
+import head from './config/head'
+import vuetify from './config/vuetify'
+import purgeCSS from './plugins/purge-css'
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -10,38 +10,31 @@ export default {
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-    "~/plugins/cloudinary",
-    "~plugins/vue-carousel-3d.client"
-  ],
+  plugins: ['~/plugins/cloudinary', '~plugins/vue-carousel-3d.client'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: false,
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
-  buildModules: [
-    "@nuxt/typescript-build",
-    "@nuxtjs/vuetify",
-    "nuxt-compress"
-  ],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify', 'nuxt-compress'],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
-    "@nuxtjs/axios",
-    "@nuxtjs/device"
+    '@nuxtjs/axios',
+    '@nuxtjs/device',
   ],
-  "nuxt-compress": {
+  'nuxt-compress': {
     gzip: {
-      cache: true
+      cache: true,
     },
     brotli: {
-      threshold: 10240
-    }
+      threshold: 10240,
+    },
   },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: "https://a2sv-org-api-wtupbmwpnq-uc.a.run.app/"
+    baseURL: process.env.BASE_URL,
   },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
@@ -51,14 +44,14 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-    extractCSS: true
+    extractCSS: true,
   },
   loading: {
-    color: "#00aeef"
+    color: '#00aeef',
   },
   server: {
     port: 3000, // default: 3000
-    host: "0.0.0.0", // default: localhost,
-    timing: false
-  }
-};
+    host: '0.0.0.0', // default: localhost,
+    timing: false,
+  },
+}

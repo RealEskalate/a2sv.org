@@ -23,7 +23,7 @@
               target="_blank"
               v-on="on"
             >
-              <v-icon size="30px">
+              <v-icon size="30px" :color="link.color">
                 {{ link.icon }}
               </v-icon>
             </v-btn>
@@ -50,27 +50,32 @@ export default {
         {
           name: "LinkedIn",
           icon: mdiLinkedin,
-          url: "http://www.linkedin.com/company/a2sv"
+          url: "http://www.linkedin.com/company/a2sv",
+          color: "light-blue darken-2"
         },
         {
           name: "Instagram",
           icon: mdiInstagram,
-          url: "http://www.instagram.com/a2sv_org"
+          url: "http://www.instagram.com/a2sv_org",
+          color: "purple"
         },
         {
           name: "Twitter",
           icon: mdiTwitter,
-          url: "https://twitter.com/a2sv_org"
+          url: "https://twitter.com/a2sv_org",
+          color: "light-blue"
         },
         {
           name: "Email",
           icon: mdiEmailOutline,
-          url: "mailto:contact@eskalate.io"
+          url: "mailto:contact@eskalate.io",
+          color: "primary"
         },
         {
           name: "YouTube",
           icon: mdiYoutube,
-          url: "https://www.youtube.com/channel/UC70kFW6mFFGEjsucvNZk6-A"
+          url: "https://www.youtube.com/channel/UC70kFW6mFFGEjsucvNZk6-A",
+          color: "red"
         }
       ],
       organization: [{ title: "About", link: "/about" }],

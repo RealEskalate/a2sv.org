@@ -7,79 +7,70 @@
       :title="banner.title_one"
       :description="banner.description"
       :class="{ 'pb-5': $vuetify.breakpoint.smAndDown }"
+      scroll-target="#our-needs"
     >
-      <!--      <div class="mx-auto" style="width: min-content">-->
-      <!--        <transition duration="200">-->
-      <!--          <v-btn-toggle-->
-      <!--            borderless-->
-      <!--            light-->
-      <!--            active-class="toggle-active"-->
-      <!--            class="header-button animate-pop-in"-->
-      <!--          >-->
-      <!--            <v-btn-->
-      <!--              color="primary"-->
-      <!--              :x-large="$vuetify.breakpoint.smAndUp"-->
-      <!--              :small="$vuetify.breakpoint.smAndDown"-->
-      <!--              style="color: whitesmoke"-->
-      <!--              @click="$vuetify.goTo(engineerLocation, options)"-->
-      <!--            >-->
-      <!--              Yes, I am-->
-      <!--            </v-btn>-->
-      <!--            <v-btn-->
-      <!--              class="mx-auto"-->
-      <!--              color="orange"-->
-      <!--              dark-->
-      <!--              :x-large="$vuetify.breakpoint.smAndUp"-->
-      <!--              :small="$vuetify.breakpoint.smAndDown"-->
-      <!--              style="color: whitesmoke"-->
-      <!--              @click="$vuetify.goTo(donateLocation, options)"-->
-      <!--            >-->
-      <!--              No, but I wanna help-->
-      <!--            </v-btn>-->
-      <!--          </v-btn-toggle>-->
-      <!--        </transition>-->
-      <!--      </div>-->
+      <div class="mx-auto" style="width: min-content">
+        <transition duration="200">
+          <v-btn
+            large
+            color="primary"
+            class="mt-10 mb-5 box shadow"
+            target="_blank"
+            href="https://donorbox.org/a2sv-donation"
+          >
+            Donate
+          </v-btn>
+        </transition>
+      </div>
     </banner>
-    <div class="my-10">
-      <v-container :class="{'pt-4': $vuetify.breakpoint. smAndDown, 'pt-12': $vuetify.breakpoint.mdAndUp}">
-        <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp}" class="text-center">
-          How Can You Help?
-        </h1>
-
-        <v-row v-for="(way, i) in support_ways" :key="'way' + i" :class="{'my-10 mt-12': $vuetify.breakpoint.mdAndUp}">
-          <v-col v-for="j in 2" :key="'col' + j" cols="12" md="6" class="pa-md-10 d-flex align-center">
-            <div v-if="(i + j) % 2">
-              <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp}" class="my-5 text-md-left text-center">
-                {{ way.title }}
-              </h1>
-              <p class="text-md-left text-center text-body">
-                {{ way.description }}
-              </p>
-            </div>
-            <cld-image
-              v-else
-              style="border: 2px solid #d4e5ff; border-radius: 200px"
-              loading="lazy"
-              crop="scale"
-              responsive
-              fetch-format="auto"
-              quality="auto"
-              class="z-index-1 overflow-hidden"
-              :public-id="way.img"
-            />
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col cols="12" md="8">
+    <div id="our-needs" class="my-10 px-10">
+      <v-row>
+        <v-col cols="12" md="9">
+          <h1 class="display-2 text-center my-12 py-8">
+            What We Need
+          </h1>
+          <v-card class="shadow-lg overflow-hidden pop-in">
+            <scroll-snap>
+              <v-row v-for="(way, i) in support_ways" :key="'way' + i" class="my-10 mt-12 px-8 item grey lighten-4">
+                <v-col v-for="j in 2" :key="'col' + j" cols="12" md="6" class="pa-md-5 d-flex align-center">
+                  <div v-if="(i + j) % 2">
+                    <h1 class="mb-5 display-2 text-md-left text-center">
+                      {{ way.title }}
+                    </h1>
+                    <p style="font-size: 1.5rem" class="text-md-left text-center">
+                      {{ way.description }}
+                    </p>
+                  </div>
+                  <v-img
+                    v-else-if="$vuetify.breakpoint.lgAndUp"
+                    :src="`https://res.cloudinary.com/dfc7snpy5/image/upload/v1613553337/a2sv/${way.img}`"
+                    contain
+                  />
+                  <!--                  <cld-image-->
+                  <!--                    v-else-if="$vuetify.breakpoint.lgAndUp"-->
+                  <!--                    style="border: 2px solid #d4e5ff; border-radius: 200px"-->
+                  <!--                    loading="lazy"-->
+                  <!--                    crop="scale"-->
+                  <!--                    responsive-->
+                  <!--                    fetch-format="auto"-->
+                  <!--                    quality="auto"-->
+                  <!--                    class="z-index-1 overflow-hidden"-->
+                  <!--                    :public-id="way.img"-->
+                  <!--                  />-->
+                </v-col>
+              </v-row>
+            </scroll-snap>
+          </v-card>
+        </v-col>
+        <v-col cols="12" md="3" class="d-flex align-center">
+          <div class="full-width px-md-2 pt-md-12 mt-md-12">
+            <h1 class="display-2 text-center my-10 pt-5">
+              Contact Us
+            </h1>
             <v-form
               ref="form"
               v-model="valid"
-              class="mx-auto col-sm-10 col-md-8"
             >
-              <h1 :class="{'subheading my-3': $vuetify.breakpoint. smAndDown, 'display-2 my-8': $vuetify.breakpoint.mdAndUp}" class="text-center">
-                Contact Us
-              </h1>
               <v-text-field
                 v-model="contact.name"
                 filled
@@ -136,47 +127,27 @@
                 </v-btn>
               </div>
             </v-form>
-          </v-col>
-          <v-col
-            v-if="!$vuetify.breakpoint.smAndDown"
-            cols="12"
-            md="4"
-            class="recruit-illustration transparent"
-          />
-        </v-row>
-      </v-container>
-    </div>
-    <div id="donate-section" class="my-md-10">
-      <v-row justify="center" align="center">
-        <v-col
-          v-if="!$vuetify.breakpoint.smAndDown"
-          md="4"
-          class="donate-illustration"
-          style="min-height: 500px"
-        />
-        <v-col id="donate" md="8" class="text-center">
-          <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp}" class="text-center">
-            Support A2SV by Donating
-          </h1>
-          <p class="text-body text-center mt-10 px-5">
-            A2SV covers basic needs of students on their training such as
-            Internet expenses, meals, etc. Also, our teachers are full-time
-            teachers with no payment from the programme. In order to keep A2SV
-            going strong, your donation will help a lot.
-          </p>
-          <v-btn
-            x-large
-            color="primary"
-            class="mx-auto my-5"
-            width="8em"
-            target="_blank"
-            href="https://donorbox.org/a2sv-donation"
-          >
-            Donate
-          </v-btn>
+          </div>
         </v-col>
       </v-row>
     </div>
+
+    <v-row class="my-md-10 py-12">
+      <v-container class="text-center">
+        <h1 style="line-height:1.2" :class="{'subheading': $vuetify.breakpoint.smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp}" class="my-5">
+          Do you want to contribute to the digital transformation of Africa?
+        </h1>
+        <v-btn
+          x-large
+          color="primary"
+          class="mt-10 mb-5 box shadow"
+          target="_blank"
+          href="https://donorbox.org/a2sv-donation"
+        >
+          Donate
+        </v-btn>
+      </v-container>
+    </v-row>
   </div>
 </template>
 
@@ -184,9 +155,11 @@
 import Banner from "@/components/core/TextOnlyBanner";
 import { mdiCloseCircleOutline } from "@mdi/js";
 import goTo from "vuetify/es5/services/goto";
+import ScrollSnap from "@/components/core/ScrollSnap";
 
 export default {
   components: {
+    ScrollSnap,
     Banner
   },
   filters: {
@@ -205,9 +178,9 @@ export default {
     colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
     banner: {
       image_src: "https://i.ibb.co/xMHdzk6/team-hero-3.jpg",
-      title_one: "Be part of our journey",
+      title_one: "Be a part of our journey",
       title_two: "Support us",
-      description: "Are you working in top tech companies?"
+      description: "A2SV covers basic needs of students such as internet connection, meals, etc. Your financial support will help keep our academy up, but you can also help in other ways."
     },
     donateLocation: "#donate",
     engineerLocation: "form",
@@ -252,26 +225,26 @@ export default {
       {
         title: "Interviews",
         description:
-          "If you are a recruiter, you can help us by recruiting our students for your companies internship positions. Otherwise, you can help us by becoming our referrals to your company and helping us get in contact with recruiters.",
-        img: "a2sv/group"
+          "Our students are working towards world class internships and full-time opportunities. We are not asking for positive discrimination, but a chance to shine. You can help us by offering interviews.",
+        img: "interview_gsd5h5.svg"
       },
       {
-        title: "Mentorship",
+        title: "Mentorships",
         description:
-          "You can teach our students and give guidance on their projects. Mentors teach our students about their fields in the tech industry to help them develop the necessary skills to succeed in that field.",
-        img: "a2sv/group"
+          "Our students are quite talented, however, they still need experience. If you have relevant skills to guide us on our journey, you can help us by offering mentorships.",
+        img: "mentor_p6vtvg.svg"
       },
       {
-        title: "Q&A Guest",
+        title: "Q&A Guests",
         description:
-          "In our Q&A sessions, we try to learn about your life and your career journey. We would love to get to know your experiences in the industry as well as in your life.",
-        img: "a2sv/group"
+          "Our students learn a lot from connecting with experts in different domains. If you have interesting stories or experiences to share, you can help us by becoming our Q&A guest.",
+        img: "Q_A_wxmeyt.svg"
       },
       {
-        title: "Donate",
+        title: "Mock Interviews",
         description:
-          "A2SV covers basic needs of students on their training such as Internet expenses, meals, etc. Also, our teachers are full-time teachers with no payment from the programme. In order to keep A2SV going strong, your donation will help a lot.",
-        img: "a2sv/group"
+          "Our students benefit from exposure to real interview conditions. If you conduct coding interviews at top tech companies, you can help us by providing mock interviews.",
+        img: "interview_gsd5h5.svg"
       }
     ]
   }),
@@ -349,11 +322,25 @@ export default {
   border-radius: 8px !important;
 }
 .recruit-illustration {
-  background: url('/illustrations/character-15.svg') no-repeat;
-  background-size: 300px 600px;
+  background: url('/illustrations/character-15.svg') no-repeat center;
+  background-size: contain;
 }
 .donate-illustration {
-  background: url('/illustrations/donate.svg') no-repeat;
-  background-size: 450px 500px;
+  background: url('/illustrations/donate.svg') no-repeat center;
+  background-size: contain;
+}
+.item {
+  /* Set the minimum height of the items to be the same as the height of the scroll-snap-container.*/
+  min-height: 60vh;
+}
+.full-width {
+  width: 100%;
+}
+</style>
+
+<style>
+.scroll-snap-container {
+  height: 60vh;
+  width: 100%;
 }
 </style>

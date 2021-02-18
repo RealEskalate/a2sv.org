@@ -18,7 +18,7 @@
         class="mb-12 d-none d-lg-block mx-auto pa-3 pt-4"
         @click="$vuetify.goTo(target, options)"
       >
-        <v-img src="/down-arrow.gif" />
+        <v-icon large v-text="mdiChevronDoubleDown" />
       </v-btn>
     </v-responsive>
 
@@ -139,25 +139,34 @@
               :smooth="4"
               type="bar"
               show-labels
-              label-size="18"
+              label-size="15"
               auto-line-width
               :value="[2, 27, 54]"
               :labels="['2%', '27%', '54%']"
-            />
-            <v-row class="text-center" style="font-size: small">
-              <v-col cols="4">
-                Average Acceptance Rate
+            >
+              <template #label="item" style="color: red">
+                {{ item.value }}
+              </template>
+            </v-sparkline>
+            <v-row class="text-center">
+              <v-col cols="4" class="py-1">
+                <b>AVERAGE</b>
               </v-col>
-              <v-col cols="4">
-                A2SV 2020 Acceptance Rate
+              <v-col cols="4" class="py-1">
+                <b>A2SV 2020</b>
               </v-col>
-              <v-col cols="4">
-                A2SV 2021 Acceptance Rate
+              <v-col cols="4" class="py-1">
+                <b>A2SV 2021</b>
               </v-col>
             </v-row>
             <v-row>
-              <v-col cols="12" class="text-center">
-                Google Internship Interviews Acceptance Rate Comparison
+              <v-col cols="12" class="text-center py-1">
+                <b>Google Internship Interviews Acceptance Rate Comparison</b>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" class="text-center py-0">
+                A2SV students are 26 times more likely to pass Google internship interviews than average candidates.
               </v-col>
             </v-row>
           </div>
@@ -273,6 +282,7 @@
 <script>
 import Partners from "@/components/core/Partners";
 import { mapGetters } from "vuex";
+import { mdiChevronDoubleDown } from "@mdi/js";
 
 export default {
   name: "LandingPage",
@@ -281,6 +291,7 @@ export default {
   },
   data() {
     return {
+      mdiChevronDoubleDown,
       paused: false,
       target: "#first-container",
       options: {
@@ -413,59 +424,11 @@ a {
 .box:hover {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1) !important;
 }
-.unbox:hover{
-  box-shadow: rgb(75, 69, 69) 0px 5px 15px !important;
+.unbox:hover {
+  box-shadow: rgb(75, 69, 69) 0 5px 15px !important;
 }
 /* animations */
 
-@keyframes rainbow {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-}
-
-.rainbow-link {
-  -webkit-text-stroke-color: transparent;
-  background: -moz-linear-gradient(
-    to left,
-    #20ffc0 0%,
-    #e9e708 10%,
-    #ff6606 20%,
-    #ba07e7 30%,
-    #08adff 40%,
-    #20ffc0 50%,
-    #e9e708 60%,
-    #ff6606 70%,
-    #ba07e7 80%,
-    #08adff 90%,
-    #20ffc0 100%
-  );
-  background: linear-gradient(
-    to left,
-    #20ffc0 0%,
-    #e9e708 10%,
-    #ff6606 20%,
-    #ba07e7 30%,
-    #08adff 40%,
-    #20ffc0 50%,
-    #e9e708 60%,
-    #ff6606 70%,
-    #ba07e7 80%,
-    #08adff 90%,
-    #20ffc0 100%
-  );
-  background-size: 400% 100%;
-  background-repeat: repeat-x;
-  -webkit-background-clip: text;
-  color: transparent;
-  position: relative;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-  animation: rainbow 10.5s linear infinite;
-}
 .paused {
   -webkit-animation-play-state: paused !important;
   -moz-animation-play-state: paused !important;
@@ -480,15 +443,5 @@ a {
   height: 100%;
   width: 100%;
   object-fit: cover;
-}
-
-.video-container .overlay {
-  object-fit: cover;
-  top: 0;
-  width: 100vw;
-  height: 93.5vh;
-  position: absolute;
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.15);
 }
 </style>

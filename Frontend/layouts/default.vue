@@ -62,6 +62,21 @@ export default {
   animation: pop-in .6s cubic-bezier(0, 0.9, 0.3, 1.2) forwards;
   opacity: 0;
 }
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #5668c6;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5668c6aa;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
 
 /* Animations */
 @keyframes fade-slide-down {

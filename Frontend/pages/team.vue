@@ -32,7 +32,64 @@
             />
           </v-col>
         </template>
-
+      </v-row>
+      <!-- Advisors -->
+      <h1
+        v-if="getTeamMembers"
+        class="display-2 my-6 text-center"
+      >
+        Our Advisors
+      </h1>
+      <v-row no-gutters>
+        <v-col
+          v-for="(member, i) in getAdvisors"
+          :key="i"
+          cols="12"
+          sm="6"
+          md="3"
+          class="pa-5 py-0"
+        >
+          <v-hover v-slot="{ hover }">
+            <v-card
+              flat
+              class="transparent frame overflow-hidden"
+            >
+              <v-container class="px-0" :class="{'tint' : hover}">
+                <cld-image
+                  loading="lazy"
+                  crop="scale"
+                  width="200"
+                  radius="max"
+                  fetch-format="auto"
+                  quality="auto"
+                  class="d-block mx-auto"
+                  :public-id="changeFormat(member.image)"
+                />
+                <v-card-title class="mx-auto text-center">
+                  <p class="text-center mx-auto">
+                    {{ member.name }}
+                  </p>
+                </v-card-title>
+                <v-card-subtitle class="text-center">
+                  {{ member.title }}
+                </v-card-subtitle>
+                <div class="details">
+                  <h4>{{ member.name }}</h4>
+                  <p> {{ member.description }} </p>
+                </div>
+              </v-container>
+            </v-card>
+          </v-hover>
+        </v-col>
+      </v-row>
+      <!-- Team -->
+      <h1
+        v-if="getTeamMembers"
+        class="display-2 my-6 text-center"
+      >
+        Our Team
+      </h1>
+      <v-row no-gutters> 
         <v-col
           v-for="(member, i) in getTeamMembers"
           :key="i"
@@ -95,7 +152,7 @@ export default {
     title: "Team"
   },
   computed: {
-    ...mapGetters("team", ["getTeamMembers", "getTeamValues"])
+    ...mapGetters("team", ["getTeamMembers", "getAdvisors", "getTeamValues"])
   },
   created() {
     this.$store.dispatch("team/fetchMembers");

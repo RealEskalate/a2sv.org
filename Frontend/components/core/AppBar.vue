@@ -108,6 +108,11 @@ export default {
           icon: mdiInformation,
           title: "About Us",
           to: "/about"
+        },
+        {
+          icon: mdiGift,
+          title: "Support Us",
+          to: "/support"
         }
       ],
       transparent: false

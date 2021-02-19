@@ -45,7 +45,7 @@
               "
             >
               <div
-                class="wistia_embed wistia_async_uleugevxj5 videoFoam=true"
+                class="wistia_embed wistia_async_jh34e4juxz videoFoam=true"
                 style="height: 100%; position: relative; width: 100%"
               >
                 <div
@@ -62,7 +62,7 @@
                   "
                 >
                   <img
-                    src="https://fast.wistia.com/embed/medias/uleugevxj5/swatch"
+                    src="https://fast.wistia.com/embed/medias/jh34e4juxz/swatch"
                     style="
                       filter: blur(5px);
                       height: 100%;
@@ -210,20 +210,13 @@
         />
       </div>
 
-      <v-row
-        v-for="(phase, i) in getLearnPaths"
-        :key="i"
-        class="mx-5"
-      >
+      <v-row v-for="(phase, i) in getLearnPaths" :key="i" class="mx-5">
         <v-col class="col-sm-12 text-center">
           <h1 v-if="getLearnPaths" class="mx-4 font-weight-light primary--text">
             {{ phase.title }}
           </h1>
         </v-col>
-        <p
-          class="text-body mx-4 font-weight-light"
-          v-html="phase.subtitle"
-        />
+        <p class="text-body mx-4 font-weight-light" v-html="phase.subtitle" />
         <template>
           <carousel-3d
             v-if="phase.list"
@@ -251,10 +244,7 @@
                   height="150px"
                   :src="getFullPath(item.image)"
                 />
-                <v-card-title
-                  class="primary--text pb-2"
-                  v-text="item.title"
-                />
+                <v-card-title class="primary--text pb-2" v-text="item.title" />
                 <v-card-text v-text="item.content" />
               </v-card>
             </slide>
@@ -323,12 +313,11 @@ export default {
     evenPhase(index) {
       return index % 2 === 1;
     },
-
     loadWistiaScripts() {
       if (!process.browser) return
       ;[
         "https://fast.wistia.com/assets/external/E-v1.js",
-        "https://fast.wistia.com/embed/medias/5ds01h3w7i.jsonp"
+        "https://fast.wistia.com/embed/medias/jh34e4juxz.jsonp"
       ].forEach((link) => {
         const script = document.createElement("script");
         script.src = link;
@@ -342,7 +331,7 @@ export default {
 <style lang="sass">
 </style>
 <style scoped>
-.invisible{
-  content-visibility:hidden;
+.invisible {
+  content-visibility: hidden;
 }
 </style>

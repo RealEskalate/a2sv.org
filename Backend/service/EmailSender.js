@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const {SocketLabsClient, BulkMessage, BulkRecipient } = require('@socketlabs/email');
 
 exports.sendContactUsInfo= async (userMessage) =>{

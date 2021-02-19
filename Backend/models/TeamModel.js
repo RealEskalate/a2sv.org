@@ -30,6 +30,11 @@ var teamSchema = mongoose.Schema(
         priority: {
             type: Number,
         },
+        member_type: {
+            type: String,
+            enum: ['ADVISOR', 'MEMBER'],
+            default: 'MEMBER',
+        },
         phase: {
             type: String,
             required: true,
@@ -48,6 +53,7 @@ const validTeamSchema = Joi.object({
     country: Joi.string().max(50).required(),
     description: Joi.string().max(1000).required(),
     email: Joi.string().email().required(),
+    member_type: Joi.string().valid("ADVISOR", "MEMBER").optional(),
     priority: Joi.number().optional(),
     phase: Joi.string().required()
 })
@@ -59,6 +65,7 @@ const validTeamSchemaForUpdate = Joi.object({
     country: Joi.string().max(50).optional(),
     description: Joi.string().max(1000).optional(),
     email: Joi.string().email().optional(),
+    member_type: Joi.string().email().optional(),
     priority: Joi.number().optional(),
     phase: Joi.string().optional()
 });

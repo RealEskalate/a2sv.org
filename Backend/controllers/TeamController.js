@@ -21,7 +21,9 @@ exports.get_all_team = async (req, res) => {
     if (req.query.phase) {
         filter.phase = req.query.phase;
     }
-
+    if (req.query.member_type) {
+        filter.member_type = req.query.member_type;
+    }
     const query = Team.aggregate([{$match: filter}])
     const paginatedResult = await paginate(req, query)
 

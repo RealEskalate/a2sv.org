@@ -51,13 +51,13 @@
             public-id="https://res.cloudinary.com/dfc7snpy5/image/upload/v1613802639/a2sv/africa3_aj1i05.jpg"
           />
         </v-col>
-        <v-col cols="12" md="6" class="my-md-8 d-flex align-center">
+        <v-col cols="12" md="6" class="my-md-2 d-flex align-center">
           <div class="text-center">
             <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
               Who We Are
             </h1>
             <p class="text-body text-center">
-              A2SV was founded by <b>Emre Varol</b>, a former competitive programmer who worked at <b>Google Research, Palantir and Liftoff.</b> He moved to Ethiopia in October 2019 to train youth with just as much potential, but less opportunity  and launched A2SV through a partnership with AAiT, the best technical university in the country. In July 2020,<b> Burak Saglam</b>, former International Math Olympiad medalist, and <b>Erden Oktay(MSc Tufts University)</b>, senior software engineer, joined.
+              A2SV was founded by <b>Emre Varol</b>, a competitive programmer and machine learning engineer who worked at <b>Google Research, Palantir,</b> and <b> Liftoff.</b> He moved to Ethiopia in October 2019 to train youth with just as much potential, but less opportunity  and launched A2SV through a partnership with Addis Ababa Institute of Technology, the best technical university in the country. In July 2020,<b> Burak Saglam</b>, former <b>International Math Olympiad medalist,</b> and <b>Erden Oktay</b>(MSc Tufts University), senior software engineer, joined.
             </p>
           </div>
         </v-col>
@@ -67,7 +67,7 @@
         <v-col cols="12" md="6" class="my-md-12 d-flex align-center">
           <div>
             <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
-              360° Training?
+              360° Training
             </h1>
             <p class="text-body">
               A2SV upskills students with a 360° software engineering program

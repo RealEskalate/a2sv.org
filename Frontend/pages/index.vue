@@ -57,7 +57,7 @@
               Who We Are
             </h1>
             <p class="text-body text-center">
-              A2SV was founded by <b>Emre Varol</b>, a competitive programmer and machine learning engineer who worked at <b>Google Research, Palantir,</b> and <b> Liftoff.</b> He moved to Ethiopia in October 2019 to train youth with just as much potential, but less opportunity  and launched A2SV through a partnership with Addis Ababa Institute of Technology, the best technical university in the country. In July 2020,<b> Burak Saglam</b>, former <b>International Math Olympiad medalist,</b> and <b>Erden Oktay</b>(MSc Tufts University), senior software engineer, joined.
+              A2SV was founded by <b>Emre Varol</b>, former competitive programmer and machine learning engineer who worked at <b>Google Research, Palantir,</b> and Liftoff. He moved to Ethiopia in October 2019 to train youth with just as much potential, but less opportunity  and launched A2SV through a partnership with Addis Ababa Institute of Technology, the best technical university in the country. In July 2020,<b> Burak Saglam</b>, former <b>International Math Olympiad medalist,</b> and <b>Erden Oktay</b>(MSc Tufts University), senior software engineer, joined.
             </p>
           </div>
         </v-col>

@@ -11,7 +11,7 @@
       <Card
         v-if="getTeamValues"
         :main-title="mainTitle"
-        :content="getTeamValues.Virtues"
+        :content="getTeamValues.virtues"
       />
     </div>
     <v-container class="grey lighten-5">
@@ -89,7 +89,7 @@
       >
         Our Team
       </h1>
-      <v-row no-gutters> 
+      <v-row no-gutters>
         <v-col
           v-for="(member, i) in getTeamMembers"
           :key="i"

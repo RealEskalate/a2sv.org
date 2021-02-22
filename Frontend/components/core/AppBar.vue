@@ -33,7 +33,7 @@
         optional
         :color="transparent ? 'white' : 'primary'"
       >
-        <v-tab v-for="link in links" :key="link.to" :to="link.to" :class="transparent ? 'white--text' : 'blue-black'">
+        <v-tab v-for="link in links.slice(0, 3)" :key="link.to" :to="link.to" :class="transparent ? 'white--text' : 'blue-black'">
           {{ link.title }}
         </v-tab>
       </v-tabs>

@@ -256,7 +256,7 @@
     <Card
       v-if="getAboutUs"
       :main-title="getAboutUs.whatWeHopeToAchieve.title"
-      :content="getAboutUs.whatWeHopeToAchieve.content2"
+      :content="getAboutUs.whatWeHopeToAchieve.goals"
     />
     <section
       :class="{ 'pt-10': $vuetify.breakpoint.smAndDown }"

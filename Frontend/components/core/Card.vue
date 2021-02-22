@@ -11,7 +11,7 @@
     </h1>
     <v-row>
       <v-col
-        v-for="(title, i) in Object.keys(content)"
+        v-for="(item, i) in content"
         :key="i"
         cols="12"
         sm="6"
@@ -24,25 +24,25 @@
           height="100%"
           flat
         >
-          <v-btn
-            text
-            disabled
+          <v-card
+            flat
+            color="transparent"
             class="overflow-hidden d-block mx-auto pa-3"
             width="150px"
             height="150px"
           >
-            <v-img circle :src="images[i]" width="150px" />
-          </v-btn>
+            <v-img circle :src="item.icon" width="150px" />
+          </v-card>
           <div>
             <h1
               class="display-1 my-5 text-center"
               style="color: #ffffff !important; font-weight: 800"
             >
-              {{ title }}
+              {{ item.title }}
             </h1>
 
             <p class="text-center caption" style="font-size: larger !important">
-              {{ content[title] }}
+              {{ item.description }}
             </p>
           </div>
         </v-card>
@@ -61,16 +61,16 @@ export default {
     },
     content: {
       default: () => {},
-      type: Object
+      type: Array
     }
   },
   data() {
     return {
       images: [
-        "/honesty.svg",
-        "/fist.svg",
-        "/courage.svg",
-        "/love.svg"
+        "https://res.cloudinary.com/dfc7snpy5/image/upload/v1613670314/a2sv/honesty_2x_legwa1.png",
+        "https://res.cloudinary.com/dfc7snpy5/image/upload/v1613670315/a2sv/respect_2x_bhhoju.png",
+        "https://res.cloudinary.com/dfc7snpy5/image/upload/v1613670314/a2sv/courage1_2x_cuqtnl.png",
+        "https://res.cloudinary.com/dfc7snpy5/image/upload/v1613670314/a2sv/humanity_2x_no6lvn.png"
       ]
     };
   }

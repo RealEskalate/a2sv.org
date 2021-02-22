@@ -245,6 +245,12 @@ export default {
         description:
           "Our students benefit from exposure to real interview conditions. If you conduct coding interviews at top tech companies, you can help us by providing mock interviews.",
         img: "interview_gsd5h5.svg"
+      },
+      {
+        title: "Educational Partnerships",
+        description:
+          "We started from Ethiopia and want to expand to more African countries. You can help us by initiating an educational partnership with other African universities.",
+        img: "Q_A_wxmeyt.svg"
       }
     ]
   }),

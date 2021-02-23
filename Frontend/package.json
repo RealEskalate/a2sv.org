@@ -19,7 +19,7 @@
     }
   },
   "dependencies": {
-    "@babel/preset-env": "^7.13.0",
+    "@babel/preset-env": "^7.12.17",
     "@mdi/js": "^5.8.55",
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/axios": "^5.12.5",

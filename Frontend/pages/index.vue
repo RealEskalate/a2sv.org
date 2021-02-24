@@ -26,7 +26,8 @@
       id="first-container"
       class="mt-md-3 mb-md-12 py-10 pa-5 pa-sm-10 text-center text-md-left"
       style="background: url('bg.svg')"
-    ><v-row class="my-md-4" style="justify-content: center;">
+    >
+      <v-row class="my-md-4" style="justify-content: center;">
         <v-col cols="12" md="12" class=" d-flex align-center">
           <div class="text-center">
             <h1 class="mb-8" :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
@@ -38,8 +39,8 @@
           </div>
         </v-col>
       </v-row>
-    <v-row class="my-md-10 " style="justify-content: center;">
-      <v-col cols="12" md="6" class="d-flex align-center">
+      <v-row class="my-md-10 " style="justify-content: center;">
+        <v-col cols="12" md="6" class="d-flex align-center">
           <cld-image
             style="border: 2px solid #d4e5ff; border-radius: 200px"
             loading="lazy"
@@ -61,7 +62,6 @@
             </p>
           </div>
         </v-col>
-
       </v-row>
       <v-row class="my-md-10 mt-12">
         <v-col cols="12" md="6" class="my-md-12 d-flex align-center">

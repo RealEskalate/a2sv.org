@@ -24,7 +24,7 @@
 
     <v-container
       id="first-container"
-      class="my-md-12 py-10 pa-5 pa-sm-10 text-center text-md-left"
+      class="mt-md-3 mb-md-12 py-10 pa-5 pa-sm-10 text-center text-md-left"
       style="background: url('bg.svg')"
     >
       <v-row class="my-md-4" style="justify-content: center;">
@@ -40,7 +40,7 @@
         </v-col>
       </v-row>
       <v-row class="my-md-10 " style="justify-content: center;">
-        <v-col cols="12" md="6">
+        <v-col cols="12" md="6" class="d-flex align-center">
           <cld-image
             style="border: 2px solid #d4e5ff; border-radius: 200px"
             loading="lazy"
@@ -49,16 +49,16 @@
             fetch-format="auto"
             quality="auto"
             class="z-index-1 overflow-hidden "
-            public-id="https://res.cloudinary.com/dfc7snpy5/image/upload/v1613802639/a2sv/africa3_aj1i05.jpg"
+            public-id="https://res.cloudinary.com/dfc7snpy5/image/upload/v1613997442/a2sv/africa5_g7mwn9.png"
           />
         </v-col>
-        <v-col cols="12" md="6" class="my-md-2 d-flex align-center">
-          <div class="text-center">
+        <v-col cols="12" md="6" class="d-flex align-center">
+          <div>
             <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
               Who We Are
             </h1>
-            <p class="text-body text-center">
-              A2SV was founded by <b>Emre Varol</b>, former competitive programmer and machine learning engineer who worked at <b>Google Research, Palantir,</b> and Liftoff for 7 years. He moved to Ethiopia in October 2019 to train youth with just as much potential, but less opportunity  and launched A2SV through a partnership with Addis Ababa Institute of Technology, the best technical university in the country. In July 2020,<b> Burak Saglam</b>, former <b>International Math Olympiad medalist,</b> and <b>Erden Oktay</b>(MSc Tufts University), senior software engineer, joined.
+            <p class="text-body">
+              Emre Varol, a former competitive programmer and <b>Google Research, Palantir </b>, Liftoff software/ML engineer launched A2SV in Ethiopia through a partnership with Addis Ababa University in October 2019. In July 2020, <b>Burak Saglam</b>, a former <b>International Math Olympiad medalist</b>, and <b>Erden Oktay</b>(MSc Tufts University), senior software engineer, joined.
             </p>
           </div>
         </v-col>

@@ -177,8 +177,8 @@
               show-labels
               label-size="15"
               auto-line-width
-              :value="[2, 27, 54]"
-              :labels="['2%', '27%', '54%']"
+              :value="[2, 27, 62]"
+              :labels="['2%', '27%', '62%']"
             >
               <template #label="item" style="color: red">
                 {{ item.value }}
@@ -202,7 +202,7 @@
             </v-row>
             <v-row>
               <v-col cols="12" class="text-center py-0">
-                A2SV students are 26 times more likely to pass Google internship interviews than average candidates.
+                A2SV students are 30 times more likely to pass Google internship interviews than average candidates.
               </v-col>
             </v-row>
           </div>
@@ -388,7 +388,7 @@ export default {
           color: "primary",
           year: "January, 2021",
           desc:
-            "54% of our first group of trainees passed Google internship interviews after the second round of training."
+            "62% of our first group of trainees passed Google internship interviews after the second round of training."
         }
       ]
     };

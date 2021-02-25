@@ -23,43 +23,59 @@
         </transition>
       </div>
     </banner>
-    <div id="our-needs" class="my-10 px-10">
+    <div id="our-needs" class="my-10 px-md-10 px-4">
       <v-row>
         <v-col cols="12" md="9">
-          <h1 class="display-2 text-center my-12 py-8">
+          <h1 class="display-2 text-center my-12 mb-8 py-8">
             What We Need
           </h1>
-          <v-card class="shadow-lg overflow-hidden pop-in">
-            <scroll-snap>
-              <v-row v-for="(way, i) in support_ways" :key="'way' + i" class="my-10 mt-12 px-8 item grey lighten-4">
-                <v-col v-for="j in 2" :key="'col' + j" cols="12" md="6" class="pa-md-5 d-flex align-center">
-                  <div v-if="(i + j) % 2">
-                    <h1 class="mb-5 display-2 text-md-left text-center">
-                      {{ way.title }}
-                    </h1>
-                    <p style="font-size: 1.5rem" class="text-md-left text-center">
-                      {{ way.description }}
-                    </p>
-                  </div>
-                  <v-img
-                    v-else-if="$vuetify.breakpoint.lgAndUp"
-                    :src="`https://res.cloudinary.com/dfc7snpy5/image/upload/v1613553337/a2sv/${way.img}`"
-                    contain
-                  />
-                  <!--                  <cld-image-->
-                  <!--                    v-else-if="$vuetify.breakpoint.lgAndUp"-->
-                  <!--                    style="border: 2px solid #d4e5ff; border-radius: 200px"-->
-                  <!--                    loading="lazy"-->
-                  <!--                    crop="scale"-->
-                  <!--                    responsive-->
-                  <!--                    fetch-format="auto"-->
-                  <!--                    quality="auto"-->
-                  <!--                    class="z-index-1 overflow-hidden"-->
-                  <!--                    :public-id="way.img"-->
-                  <!--                  />-->
-                </v-col>
-              </v-row>
-            </scroll-snap>
+          <v-card class="shadow overflow-hidden pop-in">
+            <v-carousel
+              v-model="carouselValue"
+              :height="$vuetify.breakpoint.mdAndDown ? 650 : 500"
+              :cycle="carouselValue === -1"
+              interval="10000"
+              class="primary"
+              hide-delimiter-background
+              :show-arrows="false"
+              :prev-icon="mdiChevronLeft"
+              :next-icon="mdiChevronRight"
+              :delimiter-icon="mdiCircleMedium"
+              light
+            >
+              <v-carousel-item v-for="(way, i) in support_ways" :key="'way' + i">
+                <v-row class="px-8 white" style="height: 100%">
+                  <v-col
+                    v-for="j in 2"
+                    :key="'col' + j"
+                    cols="12"
+                    md="6"
+                    class="pa-md-5 d-flex align-center"
+                    style="max-height: 100%"
+                  >
+                    <div v-if="(i + j) % 2">
+                      <h1
+                        :class="$vuetify.breakpoint.mdAndDown ? 'display-1 font-weight-bold' : 'display-2'"
+                        class="mb-5 text-md-left text-center"
+                      >
+                        {{ way.title }}
+                      </h1>
+                      <p style="font-size: 1.5rem" class="text-md-left text-center black--text">
+                        {{ way.description }}
+                      </p>
+                    </div>
+                    <v-img
+                      v-else
+                      max-width="100%"
+                      max-height="100%"
+                      class="my-5"
+                      :src="`https://res.cloudinary.com/dfc7snpy5/image/upload/v1613553337/a2sv/${way.img}`"
+                      contain
+                    />
+                  </v-col>
+                </v-row>
+              </v-carousel-item>
+            </v-carousel>
           </v-card>
         </v-col>
         <v-col cols="12" md="3" class="d-flex align-center">
@@ -100,7 +116,7 @@
                 dense
                 class="v-card--shaped my-4"
                 label="Way of helping"
-                :items="['Q&A', 'Recruit', 'Mentor', 'Other']"
+                :items="forms"
                 :rules="rules.waysRules"
               />
               <v-textarea
@@ -152,14 +168,12 @@
 </template>
 
 <script>
+import { mdiCircleMedium, mdiChevronLeft, mdiChevronRight } from "@mdi/js";
 import Banner from "@/components/core/TextOnlyBanner";
-import { mdiCloseCircleOutline } from "@mdi/js";
 import goTo from "vuetify/es5/services/goto";
-import ScrollSnap from "@/components/core/ScrollSnap";
 
 export default {
   components: {
-    ScrollSnap,
     Banner
   },
   filters: {
@@ -169,12 +183,15 @@ export default {
     }
   },
   data: () => ({
-    mdiCloseCircleOutline,
+    mdiChevronLeft,
+    mdiChevronRight,
+    mdiCircleMedium,
     loading: false,
     showAlert: false,
     type: "success",
     message: "",
     model: 0,
+    carousel: 0,
     colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
     banner: {
       image_src: "https://i.ibb.co/xMHdzk6/team-hero-3.jpg",
@@ -190,7 +207,6 @@ export default {
       easing: "easeInOutCubic"
     },
     form_type: "",
-    forms: ["Interviews", "Mentorship", "Q & A"],
     valid: false,
     contact: {
       name: "",
@@ -244,18 +260,27 @@ export default {
         title: "Mock Interviews",
         description:
           "Our students benefit from exposure to real interview conditions. If you conduct coding interviews at top tech companies, you can help us by providing mock interviews.",
-        img: "interview_gsd5h5.svg"
+        img: "Mock_Interview_yzmgu8.svg"
       },
       {
         title: "Educational Partnerships",
         description:
           "We started from Ethiopia and want to expand to more African countries. You can help us by initiating an educational partnership with other African universities.",
-        img: "Q_A_wxmeyt.svg"
+        img: "Educational_Partnership_uzpgua.svg"
       }
     ]
   }),
   head: {
     title: "Support Us"
+  },
+  computed: {
+    forms() {
+      return this.support_ways.map(way => way.title.slice(0, -1));
+    },
+    carouselValue() {
+      const list = this.forms;
+      return list.indexOf(this.contact.way);
+    }
   },
   methods: {
     sendForm() {
@@ -335,18 +360,13 @@ export default {
   background: url('/illustrations/donate.svg') no-repeat center;
   background-size: contain;
 }
-.item {
-  /* Set the minimum height of the items to be the same as the height of the scroll-snap-container.*/
-  min-height: 60vh;
-}
 .full-width {
   width: 100%;
 }
 </style>
 
 <style>
-.scroll-snap-container {
-  height: 60vh;
-  width: 100%;
+.v-carousel__controls__item {
+  color: #1161F7 !important;
 }
 </style>

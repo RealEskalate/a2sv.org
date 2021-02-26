@@ -29,58 +29,44 @@
           <h1 class="display-2 text-center my-12 mb-8 py-8">
             What We Need
           </h1>
-          <v-card class="shadow overflow-hidden pop-in">
-            <v-carousel
-              v-model="carouselValue"
-              :height="$vuetify.breakpoint.mdAndDown ? 650 : 500"
-              :cycle="carouselValue === -1"
-              interval="10000"
-              class="primary"
-              hide-delimiter-background
-              :show-arrows="false"
-              :prev-icon="mdiChevronLeft"
-              :next-icon="mdiChevronRight"
-              :delimiter-icon="mdiCircleMedium"
-              light
-            >
-              <v-carousel-item v-for="(way, i) in support_ways" :key="'way' + i">
-                <v-row class="px-8 white" style="height: 100%">
-                  <v-col
-                    v-for="j in 2"
-                    :key="'col' + j"
-                    cols="12"
-                    md="6"
-                    class="pa-md-5 d-flex align-center"
-                    style="max-height: 100%"
+          <div>
+            <v-row v-for="(way, i) in support_ways" :key="'way' + i" class="px-8 py-3 pop-in">
+              <v-col
+                v-for="j in 2"
+                :key="'col' + j"
+                cols="12"
+                md="6"
+                class="pa-md-5 d-flex align-center"
+                style="max-height: 100%"
+              >
+                <div v-if="(i + j) % 2">
+                  <h1
+                    :class="$vuetify.breakpoint.mdAndDown ? 'display-1 font-weight-bold' : 'display-2'"
+                    class="mb-5 text-md-left text-center"
                   >
-                    <div v-if="(i + j) % 2">
-                      <h1
-                        :class="$vuetify.breakpoint.mdAndDown ? 'display-1 font-weight-bold' : 'display-2'"
-                        class="mb-5 text-md-left text-center"
-                      >
-                        {{ way.title }}
-                      </h1>
-                      <p style="font-size: 1.5rem" class="text-md-left text-center black--text">
-                        {{ way.description }}
-                      </p>
-                    </div>
-                    <v-img
-                      v-else
-                      max-width="100%"
-                      max-height="100%"
-                      class="my-5"
-                      :src="`https://res.cloudinary.com/dfc7snpy5/image/upload/v1613553337/a2sv/${way.img}`"
-                      contain
-                    />
-                  </v-col>
-                </v-row>
-              </v-carousel-item>
-            </v-carousel>
-          </v-card>
+                    {{ way.title }}
+                  </h1>
+                  <p style="font-size: 1.5rem" class="text-md-left text-center black--text">
+                    {{ way.description }}
+                  </p>
+                </div>
+                <v-img
+                  v-else
+                  max-width="100%"
+                  max-height="100%"
+                  class="my-5"
+                  :src="`https://res.cloudinary.com/dfc7snpy5/image/upload/v1613553337/a2sv/${way.img}`"
+                  contain
+                />
+              </v-col>
+            </v-row>
+          </div>
         </v-col>
-        <v-col cols="12" md="3" class="d-flex align-center">
-          <div class="full-width px-md-2 pt-md-12 mt-md-12">
-            <h1 class="display-2 text-center my-10 pt-5">
+        <v-col cols="12" md="3">
+          <div
+            class="contact-us-container px-md-2"
+          >
+            <h1 class="display-2 text-center my-12 mb-8 pt-8">
               Contact Us
             </h1>
             <v-form
@@ -89,46 +75,30 @@
             >
               <v-text-field
                 v-model="contact.name"
-                filled
-                class="v-card--shaped"
-                rounded
-                hide-details
-                dense
+                v-bind="common_form_props"
                 :label="labels.name"
                 :rules="rules.nameRules"
                 counter="30"
               />
               <v-text-field
                 v-model="contact.email"
-                class="v-card--shaped my-4"
-                filled
-                rounded
-                hide-details
-                dense
+                v-bind="common_form_props"
                 :label="labels.email"
                 :rules="rules.emailRules"
               />
               <v-select
                 v-model="contact.way"
-                filled
-                rounded
-                hide-details
-                dense
-                class="v-card--shaped my-4"
-                label="Way of helping"
-                :items="forms"
+                v-bind="common_form_props"
+                :label="labels.way"
+                :items="support_forms"
                 :rules="rules.waysRules"
               />
               <v-textarea
                 v-model="contact.experience"
-                filled
-                rounded
-                hide-details
-                dense
-                class="v-card--shaped my-4"
-                rows="5"
+                v-bind="common_form_props"
                 :label="labels.experience"
                 :rules="rules.experienceRules"
+                rows="5"
               />
               <div class="text-center py-3">
                 <v-btn
@@ -199,6 +169,13 @@ export default {
       title_two: "Support us",
       description: "A2SV covers basic needs of students such as internet connection, meals, etc. Your financial support will help keep our academy up, but you can also help in other ways."
     },
+    common_form_props: {
+      "filled": true,
+      "rounded": true,
+      "hide-details": true,
+      "dense": true,
+      "class": "v-card--shaped my-4"
+    },
     donateLocation: "#donate",
     engineerLocation: "form",
     options: {
@@ -218,7 +195,8 @@ export default {
       name: "Name",
       email: "Email",
       linkedin: "LinkedIn Profile URL (Optional)",
-      experience: "Experience"
+      experience: "Experience",
+      way: "Way of helping"
     },
     rules: {
       nameRules: [
@@ -274,12 +252,8 @@ export default {
     title: "Support Us"
   },
   computed: {
-    forms() {
+    support_forms() {
       return this.support_ways.map(way => way.title.slice(0, -1));
-    },
-    carouselValue() {
-      const list = this.forms;
-      return list.indexOf(this.contact.way);
     }
   },
   methods: {
@@ -360,8 +334,9 @@ export default {
   background: url('/illustrations/donate.svg') no-repeat center;
   background-size: contain;
 }
-.full-width {
-  width: 100%;
+.contact-us-container {
+  position: sticky;
+  top: 75px
 }
 </style>
 

@@ -58,7 +58,7 @@
               Who We Are
             </h1>
             <p class="text-body">
-              Emre Varol, a former competitive programmer and <b>Google Research, Palantir </b>, Liftoff software/ML engineer launched A2SV in Ethiopia through a partnership with Addis Ababa University in October 2019. In July 2020, <b>Burak Saglam</b>, a former <b>International Math Olympiad medalist</b>, and <b>Erden Oktay</b>(MSc Tufts University), senior software engineer, joined.
+              Emre Varol, a former competitive programmer and <b>Google Research, Palantir</b>, Liftoff software/ML engineer launched A2SV in Ethiopia through a partnership with Addis Ababa University in October 2019. In July 2020, <b>Burak Saglam</b>, a former <b>International Math Olympiad medalist</b>, and <b>Erden Oktay</b>(MSc Tufts University), senior software engineer, joined.
             </p>
           </div>
         </v-col>

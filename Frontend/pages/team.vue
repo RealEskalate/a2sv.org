@@ -38,7 +38,7 @@
         v-if="getTeamMembers"
         class="display-2 my-6 text-center"
       >
-        Our Advisors
+        Our Advisors & Mentors
       </h1>
       <v-row no-gutters>
         <v-col

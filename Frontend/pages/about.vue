@@ -133,13 +133,19 @@
             :class="`text-${evenPhase(i) ? 'right' : 'left'}`"
             style="height: 100%"
           >
-            <h1 v-if="getLearnPaths" class="font-weight-light primary--text">
+            <h1
+              :class="{
+                subheading: $vuetify.breakpoint.smAndDown,
+                'display-1': $vuetify.breakpoint.mdAndUp,
+                'mt-5': $vuetify.breakpoint.smAndUp,
+              }"
+            >
               {{ phase.title }}
             </h1>
             <v-divider
-              class="primary lighten-5 my-4"
+              class="grey my-4"
               :class="`float-${evenPhase(i) ? 'right' : 'left'}`"
-              style="width: 75px; border-width: 2px; border-radius: 2px"
+              style="width: 120px; border-width: 1px; border-radius: 2px"
             />
             <br>
             <br>
@@ -212,45 +218,53 @@
 
       <v-row v-for="(phase, i) in getLearnPaths" :key="i" class="mx-5">
         <v-col class="col-sm-12 text-center">
-          <h1 v-if="getLearnPaths" class="mx-4 font-weight-light primary--text">
+          <h1
+            :class="{
+              subheading: $vuetify.breakpoint.smAndDown,
+              'display-1': $vuetify.breakpoint.mdAndUp,
+              'mt-5': $vuetify.breakpoint.smAndUp,
+            }"
+          >
             {{ phase.title }}
           </h1>
+          <v-divider
+            class="grey my-4 mx-auto"
+            style="width: 120px; border-width: 1px; border-radius: 2px"
+          />
         </v-col>
-        <p class="text-body mx-4 font-weight-light" v-html="phase.subtitle" />
-        <template>
-          <carousel-3d
-            v-if="phase.list"
-            style="min-height: 400px"
-            :border="0"
-            :perspective="20"
-            :inverse-scaling="300"
-            :space="300"
-            autoplay
-            :display="3"
-            :autoplay-timeout="5000"
-            width="250"
+        <p class="text-body font-weight-light text-center" v-html="phase.subtitle" />
+        <carousel-3d
+          v-if="phase.list"
+          style="min-height: 400px"
+          :border="0"
+          :perspective="20"
+          :inverse-scaling="300"
+          :space="300"
+          autoplay
+          :display="3"
+          :autoplay-timeout="5000"
+          width="250"
+        >
+          <slide
+            v-for="(item, j) in phase.list"
+            :key="j"
+            class="overflow-visible"
+            :index="j"
+            style="height: auto; background-color: transparent"
           >
-            <slide
-              v-for="(item, j) in phase.list"
-              :key="j"
-              class="overflow-visible"
-              :index="j"
-              style="height: auto; background-color: transparent"
-            >
-              <v-card class="shadow-sm" shaped>
-                <v-img
-                  style="opacity: 0.85"
-                  class="align-end"
-                  height="150px"
-                  :src="getFullPath(item.image)"
-                />
-                <v-card-title class="primary--text pb-2" v-text="item.title" />
-                <v-card-text v-text="item.content" />
-              </v-card>
-            </slide>
-          </carousel-3d>
-          <v-img v-else src="illustrations/aboutus.svg" />
-        </template>
+            <v-card class="shadow-sm" shaped>
+              <v-img
+                style="opacity: 0.85"
+                class="align-end"
+                height="150px"
+                :src="getFullPath(item.image)"
+              />
+              <v-card-title class="primary--text pb-2" v-text="item.title" />
+              <v-card-text v-text="item.content" />
+            </v-card>
+          </slide>
+        </carousel-3d>
+        <v-img v-else src="illustrations/aboutus.svg" />
       </v-row>
     </v-container>
     <Card

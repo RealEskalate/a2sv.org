@@ -96,7 +96,7 @@
           cols="12"
           sm="6"
           md="3"
-          class="pa-5 py-0"
+          class="pa-5 py-0 mx-auto"
         >
           <v-hover v-slot="{ hover }">
             <v-card

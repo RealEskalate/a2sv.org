@@ -63,6 +63,17 @@
           </div>
         </v-col>
       </v-row>
+      <v-row class="mt-12">
+        <v-col cols="10" md="8" class="mx-auto text-center">
+          <h1 :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint.mdAndUp, 'my-5':$vuetify.breakpoint.smAndUp}">
+            Our Belief
+          </h1>
+          <p class="text-body text-center">
+            The world is yet to see that talent is everywhere, but the opportunity is not.
+            That is why we want to provide quality education in underdeveloped areas.
+          </p>
+        </v-col>
+      </v-row>
       <v-row class="my-md-10 mt-12">
         <v-col cols="12" md="6" class="my-md-12 d-flex align-center">
           <div>
